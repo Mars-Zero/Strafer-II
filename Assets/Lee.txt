@@ -1,0 +1,120 @@
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+class Pozitie{
+    int lin, col, prec;
+    Pozitie(int x, int y, int prec){
+        this.lin=x;
+        this.col=y;
+        this.prec=prec;
+    }
+}
+
+
+public class main {
+	
+	private static void Lee(int startL, int startC, int x, int y){
+	    int[][] mat={{ -1,  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+	            { -1,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+	            { -1,  0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+	            { -1,  0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+	            { -1,  0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1 },
+	            { -1,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1 },
+	            { -1,  0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+	            { -1,  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }
+	    };  
+	    
+	    final int[] dx = {0,1,0,-1};
+	    final int[] dy = {1,0,-1,0};
+	    
+	    
+	    Pozitie[] v=new Pozitie[131];
+	    v[0]=new Pozitie(startL,startC,-1);
+	    mat[startL][startC]=1;
+	    boolean gasit=false;
+	    int st=0,dr=0;
+	    
+	    while(st<=dr)
+	    {
+	        Pozitie start=v[st];
+	        int l=start.lin;
+	        int c=start.col;
+	        
+	        
+	        for(int i=0; i<4; i++)
+	        {
+	            if(mat[l+dx[i]][c+dy[i]]==0)
+	            {
+	                //nu am mai fost aici
+	                //adaug in coada
+	                dr++;
+	                Pozitie elem=new Pozitie(l+dx[i],c+dy[i],st);
+	                v[dr]=elem;
+	                mat[elem.lin][elem.col]=mat[l][c]+1;//marchez elementul ca parcurs
+	                if(elem.lin==x && elem.col==y)
+	                {
+	                    //gasesc playerul
+	                    gasit=true;
+	                    break;//ies din while
+	                }
+	            }
+	             
+	        }
+	        if(gasit==true)
+	        {
+	            break;
+	        }
+	        st++;
+	    }
+	    
+	    //gasesc pathul
+	    int pasi=1,val=dr;
+	    char[] ord=new char[131];
+	    while(v[val].prec!=-1)
+	    {
+	        if(v[val].lin>v[v[val].prec].lin)
+	        {
+	            //am mers in nord
+	            ord[pasi]='N';
+	        }
+	        else if(v[val].lin<v[v[val].prec].lin)
+	        {
+	            //am fost in sud
+	            ord[pasi]='S';
+	        }
+	        else if(v[val].lin==v[v[val].prec].lin && v[val].col>v[v[val].prec].col)
+	        {
+	            //merg in vest
+	            ord[pasi]='V';
+	        }
+	        else if(v[val].lin==v[v[val].prec].lin && v[val].col<v[v[val].prec].col)
+	        {
+	            //merg in est
+	            ord[pasi]='E';
+	        }
+	        pasi++;
+	        val=v[val].prec;
+	    }
+	    for(int i=0; i<8; i++)
+	    {
+	      for(int j=0; j<16; j++)
+	      {
+	    	  System.out.printf("%d ",mat[i][j]);
+	      }
+	      System.out.print("\n");
+	    }
+	    for(int i=0; i<pasi; i++)
+	    {
+	       System.out.printf("%c %d\n",ord[i],i);
+	    }
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Lee(1,1,8,16);
+	}
+
+}
+
+
+
+
+ 
