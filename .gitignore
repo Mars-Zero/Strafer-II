@@ -21,3 +21,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/NetBeansProj/nbproject/private/
+/NetBeansProj/dist/
+/NetBeansProj/build/
+/StraferII/greenfoot-source-main/greenfoot-source-main/target/
+/nbpr/nbproject/private/
+/nbpr/dist/
+/nbpr/build/

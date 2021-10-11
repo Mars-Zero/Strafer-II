@@ -25,7 +25,7 @@ public class Npc extends Actor
     protected static int pasi=1;
      protected static boolean gasit=false;
      
-     public static int[][] matElem=new int[11][23]; //matricea copiata din nivel
+     public static int[][] matElem=new int[11][23]; //matricea copiata din nivelx
      
      
     protected static void Lee(int startL, int startC, int x, int y){
