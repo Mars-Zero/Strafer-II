@@ -15,9 +15,10 @@ public class StartWorld extends World
      */
     public StartWorld()
     {    super(1280, 720, 1); 
-        GreenfootImage background=new GreenfootImage("ankha.png");//imi pun fundalul
+        GreenfootImage background=new GreenfootImage("test/ankha.png");//imi pun fundalul
         setBackground(background);
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        addObject(new Inamic(),200,200);
+       
         
     }
 }

@@ -9,12 +9,35 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Inamic extends Npc
 
 {
-    /**
-     * Act - do whatever the Inamic wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    private Animation animation;
+    private GifImage gif;
+    
+    public Inamic(){
+        //animation
+       
+        java.util.List<GreenfootImage> imgs = new GifImage("images/player/player_m_A.gif").getImages();
+        GreenfootImage[] images = new GreenfootImage[imgs.size()];
+        for (int i=0; i<imgs.size(); i++){ 
+                images[i] = (GreenfootImage)imgs.get(i);
+        }
+        
+        animation = new Animation(this, images);
+        animation.setCycleActs(70);
+        animation.setCycleCount(3);
+        animation.run();
+        animation.setActiveState(true);
+        //animation
+        
+        //gif
+        gif=new GifImage("images/player/player_m_D.gif");
+        setImage(gif.getCurrentImage());
+        //gif
+        
+    }
+    public void act()
     {
-        // Add your action code here.
-    }    
+       
+           animation.run();
+            //setImage(gif.getCurrentImage());
+    }   
 }

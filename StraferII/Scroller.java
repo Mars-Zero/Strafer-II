@@ -1,7 +1,6 @@
 import greenfoot.*;
 /**
  * CLASS: Scroller (extends Object)
- * AUTHOR: danpost (greenfoot.org username)
  * DATE: November 11, 2016
  * MODIFIED: December 22, 2016 (fixed 'scroll' method for limited no-image scrolling)
  * MODIFIED: February 21, 2017 (fixed scroll offsets for unlimited no-image scrolling)

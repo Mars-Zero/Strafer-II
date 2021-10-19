@@ -142,14 +142,17 @@ public class Animation
 
 
 /*
-
-  public constructor()
+public class Clasa(){
+    
+    private Animation animation;
+    private int nrframeuri;
+  public Clasa()
     {
-        java.util.List<GreenfootImage> imgs = new GifImage(".gif").getImages();
+        java.util.List<GreenfootImage> imgs = new GifImage("gif.gif").getImages();
         GreenfootImage[] images = new GreenfootImage[imgs.size()];
         for (int i=0; i<imgs.size(); i++) images[i] = (GreenfootImage)imgs.get(i);
         animation = new Animation(this, images);
-        animation.setCycleActs(frameuri);
+        animation.setCycleActs(nrframeuri);
         animation.run();
         animation.setActiveState(true);
     }
@@ -158,4 +161,5 @@ public class Animation
     {
         animation.run();
     }
+}
 */
