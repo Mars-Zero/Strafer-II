@@ -1,3 +1,0 @@
-tile size 64*64px
-visible world size(resolution) 1024*576px
-map size 
