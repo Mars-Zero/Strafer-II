@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MapGen", "MapGen.vcxproj", "{567227DA-D770-4619-84FB-583A405F410A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{567227DA-D770-4619-84FB-583A405F410A}.Debug|x64.ActiveCfg = Debug|x64
+		{567227DA-D770-4619-84FB-583A405F410A}.Debug|x64.Build.0 = Debug|x64
+		{567227DA-D770-4619-84FB-583A405F410A}.Debug|x86.ActiveCfg = Debug|Win32
+		{567227DA-D770-4619-84FB-583A405F410A}.Debug|x86.Build.0 = Debug|Win32
+		{567227DA-D770-4619-84FB-583A405F410A}.Release|x64.ActiveCfg = Release|x64
+		{567227DA-D770-4619-84FB-583A405F410A}.Release|x64.Build.0 = Release|x64
+		{567227DA-D770-4619-84FB-583A405F410A}.Release|x86.ActiveCfg = Release|Win32
+		{567227DA-D770-4619-84FB-583A405F410A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A217EFA7-E637-4D4D-8D43-826B7CBDDE49}
+	EndGlobalSection
+EndGlobal

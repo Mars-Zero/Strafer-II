@@ -28,3 +28,4 @@ hs_err_pid*
 /nbpr/nbproject/private/
 /nbpr/dist/
 /nbpr/build/
+*.ipch
