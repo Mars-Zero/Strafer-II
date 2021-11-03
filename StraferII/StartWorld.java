@@ -42,6 +42,9 @@ public class StartWorld extends World{
         addObject(new PereteInvizibil("A","mare90"),0,300);//margini
           addObject(new PereteInvizibil("W","mic"), 690,340);
          addObject(new PereteInvizibil("W","mic"), 750,340);
+           addObject(new PereteInvizibil("W","mic"), 690,340);
+    
+         
          
          addObject(new PereteInvizibil("A","mic90"), 795,300);
          addObject(new PereteInvizibil("D","mic90"), 585,300);

@@ -1,0 +1,199 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "C:/Users/miche/Desktop/n.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/miche/Desktop/untitled.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1088,
+                "y": 1394
+            }
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/[A]Flower_pipo.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/[A]Grass_pipo.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/[A]WaterFall_pipo.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/[A]Water_pipo.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/samplemap.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1229,
+                "y": 1340
+            }
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/samplemap.tmx#[Base]BaseChip_pipo": {
+            "scaleInDock": 1
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/TilesetGrass/grass_biome.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/TilesetGrass/map1.tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 190.875,
+                "y": 605.5
+            }
+        },
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/infinite.tmx": {
+            "scale": 1.67734375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 0,
+                "y": 0.5961807172799354
+            }
+        },
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/infinite.tmx#demo-tileset": {
+            "scaleInDock": 1
+        },
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx": {
+            "scale": 3.3546875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 127.88076385654402,
+                "y": 127.88076385654402
+            }
+        },
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx#demo-tileset": {
+            "scaleInDock": 1
+        },
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx": {
+            "scale": 2.1003906249999997,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 255.42867770132048,
+                "y": 65.22596243258323
+            }
+        },
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx#demo-tileset": {
+            "scaleInDock": 1.5
+        },
+        "fdsffsg.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "green.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "map.json": {
+            "scale": 0.4193359375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -512.715416860736,
+                "y": 312.398695854681
+            }
+        },
+        "map.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1480,
+                "y": 316
+            }
+        },
+        "map.tmx#grass1": {
+            "scaleInEditor": 1
+        },
+        "map.tmx#tileLayout": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "map.tmx#znou": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map1..js": {
+            "scale": 0.5250976562499999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -1.9044076622653847,
+                "y": 510.3812534870747
+            }
+        },
+        "map1.json": {
+            "scale": 0.5250976562499999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 0,
+                "y": 512.2856611493398
+            }
+        },
+        "map1.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -556,
+                "y": -80964
+            }
+        },
+        "tilesets/grass_biome.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
+    "last.externalTilesetPath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps/tilesets",
+    "last.imagePath": "D:/Games/CV9 projekt red/Strafer II/Assets/tiles",
+    "last.worldFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
+    "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
+    "loadedWorlds": [
+    ],
+    "map.fixedSize": true,
+    "map.height": 100,
+    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.renderOrder": null,
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 100,
+    "openFiles": [
+        "map.tmx"
+    ],
+    "project": "Strafer-II-maps.tiled-project",
+    "property.type": "object",
+    "recentFiles": [
+        "tilesets/grass_biome.tsx",
+        "map.tmx",
+        "green.tsx",
+        "fdsffsg.tsx",
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/samplemap.tmx",
+        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/TilesetGrass/map1.tmx",
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/infinite.tmx",
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx",
+        "map1.tmx",
+        "map.json",
+        "map1.json"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
+}

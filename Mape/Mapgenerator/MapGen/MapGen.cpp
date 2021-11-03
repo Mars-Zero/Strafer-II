@@ -42,6 +42,8 @@ void openFile()
 
 
 }
+
+
 int main() {
 	openFile();
 
