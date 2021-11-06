@@ -5,6 +5,7 @@
     },
     "activeFile": "map.tmx",
     "expandedProjectPaths": [
+        "tilesets",
         ".",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
@@ -109,11 +110,11 @@
             }
         },
         "map.tmx": {
-            "scale": 0.25,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1480,
-                "y": 316
+                "x": 2539,
+                "y": 4093
             }
         },
         "map.tmx#grass1": {
@@ -151,14 +152,62 @@
                 "y": -80964
             }
         },
+        "snow.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "tilesets/Terrain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/apa1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/decor1.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/detoate1.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/detoate2.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/dungeon1.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/dungeon2.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/dungeon3.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/grass1.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/grass2.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/grass3.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tilesets/grass_biome.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tilesets/snow.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/snow1.tsx": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
     "last.externalTilesetPath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps/tilesets",
-    "last.imagePath": "D:/Games/CV9 projekt red/Strafer II/Assets/tiles",
+    "last.imagePath": "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/LPC_Terrain",
     "last.worldFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
     "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
     "loadedWorlds": [
@@ -172,13 +221,16 @@
     "map.tileWidth": 64,
     "map.width": 100,
     "openFiles": [
-        "map.tmx"
+        "map.tmx",
+        "tilesets/grass3.tsx",
+        "tilesets/apa1.tsx"
     ],
     "project": "Strafer-II-maps.tiled-project",
     "property.type": "object",
     "recentFiles": [
-        "tilesets/grass_biome.tsx",
         "map.tmx",
+        "tilesets/snow.tsx",
+        "tilesets/grass_biome.tsx",
         "green.tsx",
         "fdsffsg.tsx",
         "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/samplemap.tmx",
@@ -187,8 +239,7 @@
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/infinite.tmx",
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx",
         "map1.tmx",
-        "map.json",
-        "map1.json"
+        "map.json"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",
