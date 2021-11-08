@@ -12,9 +12,9 @@ public class TestActor extends Npc
     private Animation animation;
     private GifImage gif;
      public static MouseInfo m; 
-    public TestActor(){
+    public TestActor(Scroller scrl){
         //animation
-       
+        super(scrl);
         java.util.List<GreenfootImage> imgs = new GifImage("images/world/casuta.png").getImages();
         GreenfootImage[] images = new GreenfootImage[imgs.size()];
         for (int i=0; i<imgs.size(); i++){ 

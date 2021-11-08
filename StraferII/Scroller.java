@@ -128,6 +128,12 @@ public class Scroller
             Actor actor = (Actor) obj;
             actor.setLocation(actor.getX()-dsx, actor.getY()-dsy);
         }
+          if(Greenfoot.isKeyDown("enter")){
+              System.out.println("scrolled X ");
+            System.out.println(this.getScrolledX());
+            System.out.println("scrolled Y ");
+            System.out.println(this.getScrolledY());
+        }
     }
    
     /**

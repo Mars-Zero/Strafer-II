@@ -5,9 +5,9 @@
     },
     "activeFile": "map.tmx",
     "expandedProjectPaths": [
-        "tilesets",
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
         ".",
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
+        "tilesets"
     ],
     "fileStates": {
         "": {
@@ -110,11 +110,11 @@
             }
         },
         "map.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 2539,
-                "y": 4093
+                "x": 1995.3333333333333,
+                "y": 154.33333333333334
             }
         },
         "map.tmx#grass1": {
@@ -226,8 +226,10 @@
         "tilesets/apa1.tsx"
     ],
     "project": "Strafer-II-maps.tiled-project",
-    "property.type": "object",
+    "property.type": "string",
     "recentFiles": [
+        "tilesets/apa1.tsx",
+        "tilesets/grass3.tsx",
         "map.tmx",
         "tilesets/snow.tsx",
         "tilesets/grass_biome.tsx",
@@ -237,9 +239,7 @@
         "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/TilesetGrass/map1.tmx",
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/infinite.tmx",
-        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx",
-        "map1.tmx",
-        "map.json"
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",

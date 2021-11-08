@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 class Pozitie{
     int lin, col, prec;
     Pozitie(int x, int y, int prec){
@@ -18,18 +19,44 @@ class Pozitie{
 
 public class Npc extends Actor
 {
-    protected static final int rez=60;
+    int scrolledX;
+    int scrolledY;
+    Scroller scroller;
+    
+    protected static final int rez=64;
     
     protected String gif="Idle";
     protected static String[] ord=new String[203];
     protected static int pasi=1;
      protected static boolean gasit=false;
      
-     public static int[][] matElem=new int[11][23]; //matricea copiata din nivelx
+     public static int[][] matElem=new int[110][230]; //matricea copiata din nivelx
+     
+     
+     
+     
+     protected int getScrollX(){
+         int nx=this.getX();
+         return nx;
+     }
+     protected int getScrollY(){
+         int ny=this.getY();
+         return ny;
+     }
+      protected void updateScroll(){
+        this.scrolledX=scroller.getScrolledX();
+        this.scrolledY=scroller.getScrolledY();
+    }
+     
+     public Npc(Scroller scrl){
+          scroller=scrl;
+        this.scrolledX=scroller.getScrolledX();
+        this.scrolledY=scroller.getScrolledY();
+     }
      
      
     protected static void Lee(int startL, int startC, int x, int y){
-        int[][] mat=new int[11][23];
+        int[][] mat=new int[110][230];
         for(int i=0; i<11; i++)
         {
           for(int j=0; j<23; j++){
@@ -126,6 +153,6 @@ public class Npc extends Actor
    
     public void act() 
     {
-    
+        updateScroll();
     }    
 }

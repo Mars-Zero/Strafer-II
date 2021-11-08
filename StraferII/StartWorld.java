@@ -2,11 +2,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class StartWorld extends World{
     
-    Scroller scroller;
-    Player player;
-    Fps fps;
     static final int WIDE=1024, HIGH= 576;
-    static int originalX=30,originalY=200;
+    
+   public Scroller scroller;
+    Player player;  static int originalX=30,originalY=200;
+    Fps fps;
+    
+  
    
     public StartWorld(){
         super(WIDE,HIGH, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
@@ -38,7 +40,7 @@ public class StartWorld extends World{
      
      public void addWorldObjects(){ 
        
-        addObject(new TestActor(),1000,2000);
+        addObject(new Goblin(scroller),100,200);
         addObject(new PereteInvizibil("A","mare90"),0,300);//margini
           addObject(new PereteInvizibil("W","mic"), 690,340);
          addObject(new PereteInvizibil("W","mic"), 750,340);
@@ -57,7 +59,7 @@ public class StartWorld extends World{
         addObject(new PereteInvizibil("D","mic90"),1185,60);//margini
         addObject(new PereteInvizibil("D","mic90"),1185,120);//margini
         addObject(new PereteInvizibil("D","mic90"),1185,180);//margini
-        addObject(new TestActor(),1000,2000);
+        addObject(new TestActor(scroller),1000,2000);
        for(int i=1;i<=10500;i+=1024){
            addObject(new PereteInvizibil("W", "mare"),i,16);
         }

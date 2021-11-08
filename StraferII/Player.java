@@ -16,7 +16,7 @@ public class Player extends Jucator
     boolean isMoving;
     
     static int originalX, originalY;
-    static int worldX, worldY;
+    public static int worldX, worldY;
     static int previousWorldX, previousWorldY;
     
     
@@ -120,7 +120,7 @@ public class Player extends Jucator
         //if(super.gif!="idle" && super.gif!="right" &&super.gif!="up" &&super.gif!="down" && super.gif!="left"){atingeNpc();}
         checkMove();
        // if(super.gif!="idle" && super.gif!="right" &&super.gif!="up" &&super.gif!="down" && super.gif!="left"){atingeNpc();}
-        
+      
         playerImg=directie.get(this.gif);
     }
     protected void vedere(){
