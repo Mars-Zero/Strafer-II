@@ -15,7 +15,11 @@ public class StartWorld extends World{
         addPlayer();
        addWorldObjects();
         
-        //setBackground(background);
+         for(int i=0; i<110; i++){
+          for(int j=0; j<110; j++){
+            Npc.matElem[i][j]=0;
+           }
+        }
     }
     
      public void addPlayer()

@@ -26,11 +26,11 @@ public class Npc extends Actor
     protected static final int rez=64;
     
     protected String gif="Idle";
-    protected static String[] ord=new String[203];
+    protected static String[] ord=new String[12101];
     protected static int pasi=1;
      protected static boolean gasit=false;
      
-     public static int[][] matElem=new int[110][230]; //matricea copiata din nivelx
+     public static int[][] matElem=new int[110][110]; //matricea copiata din nivelx
      
      
      
@@ -56,14 +56,14 @@ public class Npc extends Actor
      
      
     protected static void Lee(int startL, int startC, int x, int y){
-        int[][] mat=new int[110][230];
-        for(int i=0; i<11; i++)
+        int[][] mat=new int[110][110];
+        for(int i=0; i<110; i++)
         {
-          for(int j=0; j<23; j++){
+          for(int j=0; j<110; j++){
             mat[i][j]=matElem[i][j];
            }
         }
-            for(int i=0;i<203;i++)
+            for(int i=0;i<12101;i++)
             {
             ord[i]=" ";
             }
@@ -73,7 +73,7 @@ public class Npc extends Actor
         final int[] dx={0,0,1,-1,-1,1,-1,1};
         
         
-        Pozitie[] v=new Pozitie[203];
+        Pozitie[] v=new Pozitie[12101];
         v[0]=new Pozitie(startL,startC,-1);
         mat[startL][startC]=1;
        
@@ -153,6 +153,6 @@ public class Npc extends Actor
    
     public void act() 
     {
-        updateScroll();
+       
     }    
 }
