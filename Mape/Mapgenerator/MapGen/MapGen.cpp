@@ -48,6 +48,13 @@ int main() {
 	openFile();
 
 
-	std::cout << fisier::fisierIncarcat << "\n " << fisier::fisierFolosit;
-	return 0;
+	tson::Tileson t;
+	std::unique_ptr<tson::Map> map = t.parse(fisier::fisierFolosit);
+    if (map->getStatus() == tson::ParseStatus::OK)
+    {
+		std::cout << "aaaaa";
+       
+       
+    } 
+        return 0;
 }
