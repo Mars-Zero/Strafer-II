@@ -57,14 +57,12 @@ public class Npc extends Actor
      
     protected static void Lee(int startL, int startC, int x, int y){
         int[][] mat=new int[110][110];
-        for(int i=0; i<110; i++)
-        {
+        for(int i=0; i<110; i++){
           for(int j=0; j<110; j++){
             mat[i][j]=matElem[i][j];
            }
         }
-            for(int i=0;i<12101;i++)
-            {
+            for(int i=0;i<12101;i++){
             ord[i]=" ";
             }
             

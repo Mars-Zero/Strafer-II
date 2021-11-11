@@ -13,8 +13,8 @@ public class Player extends Jucator
     
     int moveTime = 7;
    
-    boolean isMoving;
     
+    boolean isMoving;
     static int originalX, originalY;
     public static int worldX, worldY;
     static int previousWorldX, previousWorldY;
@@ -30,17 +30,20 @@ public class Player extends Jucator
     protected String gif="D";
     public static String gifSabie;
     public static String gifLaser;
+    public static String gifPortalGun;
     public static HashSet<String> iteme = new HashSet<String>();
+
     protected long timpPrec;
     private long timp=0;
-    
-       private long timpSab=0,timpLaser=0,timpBoaba=0,timpPumni=0;
+    rivate long timpSab=0,timpLaser=0,timpBoaba=0,timpPumni=0;
     
     public static boolean apas;
     
     
     public Player(){
-        
+          
+        //sta
+        directie.put("idle", new GifImage("player/player_m_Idle.gif"));
         //moarte
         directie.put("death",new GifImage("player/player_death.gif"));
         
@@ -49,10 +52,7 @@ public class Player extends Jucator
         directie.put("W",new GifImage("player/player_m_W.gif"));
         directie.put("A",new GifImage("player/player_m_A.gif"));
         directie.put("S",new GifImage("player/player_m_S.gif"));
-        
-        //sta
-        directie.put("idle", new GifImage("player/player_m_Idle.gif"));
-        
+      
         //se uita
         directie.put("right",new GifImage("player/vedere_D.gif"));
         directie.put("up",new GifImage("player/vedere_W.gif"));
@@ -133,9 +133,7 @@ public class Player extends Jucator
     }
         
     
-    public void act() 
-    {
-        // Add your action code here.
+    public void act() {
        lovit();
        move();
        
