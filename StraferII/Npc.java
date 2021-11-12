@@ -72,7 +72,7 @@ public class Npc extends Actor
         
         
         Pozitie[] v=new Pozitie[12101];
-        v[0]=new Pozitie(startL,startC,-1);
+        v[0]=new Pozitie(startL+((this.scrolledY)/64),startC+((this.scrolledX)/64),-1);
         mat[startL][startC]=1;
        
         int st=0,dr=0;
