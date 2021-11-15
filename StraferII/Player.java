@@ -35,7 +35,7 @@ public class Player extends Jucator
 
     protected long timpPrec;
     private long timp=0;
-    rivate long timpSab=0,timpLaser=0,timpBoaba=0,timpPumni=0;
+    private long timpSab=0,timpLaser=0,timpBoaba=0,timpPumni=0;
     
     public static boolean apas;
     

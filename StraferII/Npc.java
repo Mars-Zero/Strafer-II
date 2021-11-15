@@ -26,7 +26,7 @@ public class Npc extends Actor
     protected static final int rez=64;
     
     protected String gif="Idle";
-    protected static String[] ord=new String[12101];
+    protected static String[] ord=new String[121001];
     protected static int pasi=1;
      protected static boolean gasit=false;
      
@@ -55,14 +55,14 @@ public class Npc extends Actor
      }
      
      
-    protected static void Lee(int startL, int startC, int x, int y){
-        int[][] mat=new int[110][110];
-        for(int i=0; i<110; i++){
-          for(int j=0; j<110; j++){
-            mat[i][j]=matElem[i][j];
+    protected void Lee(int startL, int startC, int x, int y){
+        int[][] mat=new int[1000][1000];
+        for(int i=0; i<1000; i++){
+          for(int j=0; j<1000; j++){
+            mat[i][j]=0;
            }
         }
-            for(int i=0;i<12101;i++){
+            for(int i=0;i<12102;i++){
             ord[i]=" ";
             }
             
@@ -72,7 +72,7 @@ public class Npc extends Actor
         
         
         Pozitie[] v=new Pozitie[12101];
-        v[0]=new Pozitie(startL+((this.scrolledY)/64),startC+((this.scrolledX)/64),-1);
+        v[0]=new Pozitie(startL,startC,-1);
         mat[startL][startC]=1;
        
         int st=0,dr=0;
@@ -93,7 +93,7 @@ public class Npc extends Actor
             for(int i=0; i<8; i++)
             {
                 
-                if(mat[l+dx[i]][c+dy[i]]==0)
+                if(mat[l+dx[i]][c+dy[i]]==0 && l+dx[i]>0 && c+dy[i]>0 &&l+dx[i]<1000 && c+dy[i]<1000 )
                 {
                     //nu am mai fost aici
                     //adaug in coada

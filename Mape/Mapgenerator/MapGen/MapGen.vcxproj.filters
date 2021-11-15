@@ -24,4 +24,12 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\maps\maps\map.json">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="matrix.txt">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

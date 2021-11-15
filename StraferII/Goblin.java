@@ -73,8 +73,13 @@ public class Goblin extends Npc
             {
                 gX++;
             }
-       
-            super.Lee(gY,gX,playerY,playerX);
+            
+            System.out.println("GX\n");
+            System.out.println(playerX);
+ 
+            System.out.println("GY\n");
+            System.out.println(playerY);
+           super.Lee(gY,gX,playerY,playerX);
         }
        
        if(super.gasit==true){

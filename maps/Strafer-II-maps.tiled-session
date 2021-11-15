@@ -83,10 +83,10 @@
         },
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx": {
             "scale": 2.1003906249999997,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 255.42867770132048,
-                "y": 65.22596243258323
+                "x": 255.66672865910363,
+                "y": 65.4640133903664
             }
         },
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx#demo-tileset": {
@@ -110,15 +110,49 @@
             }
         },
         "map.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 0.33,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 1995.3333333333333,
-                "y": 154.33333333333334
+                "x": 2027.2727272727273,
+                "y": 939.3939393939395
             }
         },
+        "map.tmx#Terrain": {
+            "scaleInDock": 1
+        },
+        "map.tmx#apa1": {
+            "scaleInDock": 1
+        },
+        "map.tmx#decor1": {
+            "scaleInDock": 1
+        },
+        "map.tmx#detoate1": {
+            "scaleInDock": 1
+        },
+        "map.tmx#detoate2": {
+            "scaleInDock": 1
+        },
+        "map.tmx#dungeon1": {
+            "scaleInDock": 1
+        },
+        "map.tmx#dungeon2": {
+            "scaleInDock": 1
+        },
+        "map.tmx#dungeon3": {
+            "scaleInDock": 1
+        },
         "map.tmx#grass1": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "map.tmx#grass2": {
+            "scaleInDock": 1
+        },
+        "map.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map.tmx#snow1": {
+            "scaleInDock": 1
         },
         "map.tmx#tileLayout": {
             "scaleInDock": 0.25,
@@ -165,7 +199,8 @@
             "scaleInEditor": 1
         },
         "tilesets/decor1.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/detoate1.tsx": {
             "scaleInDock": 1
@@ -186,7 +221,8 @@
             "scaleInDock": 1
         },
         "tilesets/grass2.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/grass3.tsx": {
             "dynamicWrapping": false,
@@ -202,7 +238,8 @@
             "scaleInEditor": 1
         },
         "tilesets/snow1.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.exportedFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
@@ -221,27 +258,26 @@
     "map.tileWidth": 64,
     "map.width": 100,
     "openFiles": [
-        "map.tmx",
-        "tilesets/grass3.tsx",
-        "tilesets/apa1.tsx"
+        "map.tmx"
     ],
     "project": "Strafer-II-maps.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "tilesets/apa1.tsx",
-        "tilesets/grass3.tsx",
         "map.tmx",
+        "tilesets/grass3.tsx",
+        "tilesets/Terrain.tsx",
+        "tilesets/snow1.tsx",
+        "tilesets/decor1.tsx",
+        "tilesets/apa1.tsx",
+        "tilesets/grass2.tsx",
+        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
         "tilesets/snow.tsx",
         "tilesets/grass_biome.tsx",
         "green.tsx",
-        "fdsffsg.tsx",
-        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/Pipoya RPG Tileset 32x32/SampleMap/samplemap.tmx",
-        "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/TilesetGrass/map1.tmx",
-        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
-        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/infinite.tmx",
-        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/simple_map.tmx"
+        "fdsffsg.tsx"
     ],
     "tileset.embedInMap": true,
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 64,

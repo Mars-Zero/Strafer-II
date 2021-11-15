@@ -156,6 +156,10 @@
   <ItemGroup>
     <ClInclude Include="include\tileson.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\maps\maps\map.json" />
+    <None Include="matrix.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
