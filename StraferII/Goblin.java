@@ -7,7 +7,7 @@ import java.util.List;
 public class Goblin extends Npc
 {
     
-    public static int speed=3;
+    public static int speed=5;
     private int hp=150;
 
     Scroller scroller;
@@ -24,6 +24,8 @@ public class Goblin extends Npc
     private long timpPrec;
     public  String gifSabie;
     
+    Vector2d vect;
+    
     public Goblin(Scroller scrl){
        super(scrl);
        this.scrolledX=super.scrolledX;
@@ -38,6 +40,7 @@ public class Goblin extends Npc
         directie.put("idle", new GifImage("npc/inamic/goblin/goblin_m_Idle.gif"));
         
         directie.put("death",new GifImage("npc/inamic/goblin/goblin_death.gif"));
+        
         this.timpSab=0;
         this.timpBolt=0;
         this.timpAtins=0;
@@ -104,10 +107,10 @@ public class Goblin extends Npc
     
    
     protected void move(){
-        pasi=super.pasi-1;
+        pasi=super.pasi;
         if(pasi>0){
             
-            String directie=super.ord[pasi];
+            String directie=super.ord.get(pasi).toString();
              int gY=(getY()+scrolledY)/super.rez;
             if((getY()+scrolledY)%super.rez>0)
             {
@@ -312,80 +315,87 @@ public class Goblin extends Npc
     
     public void act() 
     {
-        updateScroll();
         
-        if(mort==true)
-        {
-           //moare
-            
-           /* 
-            setImage(playerImg.getCurrentImage());
-            if(timpMort>=super.rez+28)
+     if(!WorldData.PAUZA){
+            updateScroll();
+        
+            if(mort==true)
             {
-                
-                World lume=getWorld();
-                if(lume instanceof Nivel2_7){
-                    Nivel2_7.inamici--;
-                }
-                if(lume instanceof Nivel3_4){
-                    Nivel3_4.inamici--;
-                }
-                if(lume instanceof Nivel4_2){
-                    Nivel4_2.inamici--;
-                }
-                getWorld().removeObject(this);//dispare
-                return;
-            }
-           timpMort++;
-*/
-           
-        }
-        else{
-            atins();
-          //lovitSabie();
-          //lovitLaser();
-          int x=(getX()+scrolledX); /////{
-          int y=(getY()+scrolledY);   //calculeaza un nr in functie de care sa setam o pauza
-          long a=x*y/2000; //}
-          
-          if(isTouching(Jucator.class)){
-            timpAtins=0;//{
-            atingePlayer=true;//ataca
-            atac();///////{
+                //moare
             
-            gif="idle";
-            //lovitSabie();//{
-           // lovitLaser();//verifica daca e lovit
-                         //{
-            playerImg=directie.get(super.gif); 
-                  
-          }
-          else{
-           // lovitSabie();
-           // lovitLaser();
-            
-            long pauza=Greenfoot.getRandomNumber(20)+30+a;//{
-            if(atingePlayer==true)
-            {
-                timpAtins++;
-                if(timpAtins>=pauza)   ///////////////////////ia o pauza
+                /* 
+                setImage(playerImg.getCurrentImage());
+                if(timpMort>=super.rez+28)
                 {
-                    atingePlayer=false;
-                  
-                }
-            }//////////////////////////////////////////////{
-            else{
                 
-                  gaseste();//cauta playerul
-                 
+                    World lume=getWorld();
+                    if(lume instanceof Nivel2_7){
+                        Nivel2_7.inamici--;
+                    }
+                    if(lume instanceof Nivel3_4){
+                        Nivel3_4.inamici--;
+                    }
+                    if(lume instanceof Nivel4_2){
+                        Nivel4_2.inamici--;
+                    }
+                    getWorld().removeObject(this);//dispare
+                    return;
+                }
+                timpMort++;
+                */
+           
             }
+            else{
+                atins();
+                //lovitSabie();
+                //lovitLaser();
+                int x=(getX()+scrolledX); /////{
+                int y=(getY()+scrolledY);   //calculeaza un nr in functie de care sa setam o pauza
+                long a=x*y/2000; //}
+          
+                if(isTouching(Jucator.class)){
+                    timpAtins=0;//{
+                    atingePlayer=true;//ataca
+                    atac();///////{
             
-          }
-        }
-        
-        
+                    gif="idle";
+                    //lovitSabie();//{
+                    // lovitLaser();//verifica daca e lovit
+                         //{
+                playerImg=directie.get(super.gif); 
+                  
+            }
+            else{
+                // lovitSabie();
+                // lovitLaser();
+            
+                    long pauza=Greenfoot.getRandomNumber(20)+30+a;//{
+                    if(atingePlayer==true)
+                    {
+                        timpAtins++;
+                        if(timpAtins>=pauza)   ///////////////////////ia o pauza
+                        {
+                            atingePlayer=false;
+                  
+                        }
+                    }//////////////////////////////////////////////{
+                    else{
+                
+                        gaseste();//cauta playerul
+                 
+                    }
+            
+            }
+            }
+     }
+       playerImg=directie.get("idle");
         setImage(playerImg.getCurrentImage());
     }    
+    
+    
+    
+    
+    
     private void health(int dmg){
         hp-=dmg;
     }

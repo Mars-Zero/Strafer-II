@@ -28,9 +28,12 @@ public class Player extends Jucator
     
     
     protected String gif="D";
-    public static String gifSabie;
-    public static String gifLaser;
-    public static String gifPortalGun;
+                                                public static boolean equipSabie=false;
+                                                public static boolean equipLaser=false;
+                                                public static boolean equipPortalGun=false;
+                                                
+                                                public static boolean toggledInventory=false;
+                                                
     public static HashSet<String> iteme = new HashSet<String>();
 
     protected long timpPrec;
@@ -124,9 +127,78 @@ public class Player extends Jucator
         playerImg=directie.get(this.gif);
     }
     protected void vedere(){
-   
+        
         playerImg=directie.get(this.gif);
     }
+    protected void useItem(){
+        
+        //portalGun
+        if(Greenfoot.mouseClicked(null)){
+            if(Greenfoot.getMouseInfo().getButton()==1){
+                equipPortalGun=!equipPortalGun;
+            }
+        }
+        
+        if(equipPortalGun){
+            long timpCurent=System.currentTimeMillis(); 
+            if(timpCurent-timpPrec>=20)
+            {
+                if(getWorld().getObjects(PortalGun.class).isEmpty())
+                 getWorld().addObject(new PortalGun(),getX(),getY());
+                 timpPrec=timpCurent;
+            }
+            Item.itemGif=gif;
+            if(Greenfoot.isKeyDown("t")){
+                equipPortalGun=false;
+            }
+        }
+        //portalGun
+        
+        
+        //sabie
+        if(Greenfoot.isKeyDown("Q")){
+            equipSabie=!equipSabie;
+        }
+        if(equipSabie){
+             long timpCurent=System.currentTimeMillis(); 
+            if(timpCurent-timpPrec>=30)
+            {
+                if(getWorld().getObjects(Sabie.class).isEmpty()){
+                    getWorld().addObject(new Sabie(),getX(),getY());
+                }
+                timpPrec=timpCurent;
+            }
+            Item.itemGif=gif; 
+        }
+        //sabie
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    protected void toggleMenu(){
+        
+        if(!toggledInventory){
+            
+            long timpCurent=System.currentTimeMillis(); 
+            if(timpCurent-timpPrec>=20){
+                if(Greenfoot.isKeyDown("E")){
+                    toggledInventory=!toggledInventory;
+                    getWorld().addObject(new Inventory(),915,475);
+                }
+                timpPrec=timpCurent;
+            }
+        }
+    
+    }
+    
+    
     
     protected void lovit(){
        
@@ -134,10 +206,18 @@ public class Player extends Jucator
         
     
     public void act() {
-       lovit();
-       move();
-       
-        setImage(playerImg.getCurrentImage());    
+        
+        if(Greenfoot.isKeyDown("9")){
+            WorldData.PAUZA=!WorldData.PAUZA;
+        }
+        
+        if(!WorldData.PAUZA){
+           useItem();
+            lovit();
+            move();
+            toggleMenu();
+        }
+       setImage(playerImg.getCurrentImage());    
     }   
     
     

@@ -26,9 +26,10 @@ public class Npc extends Actor
     protected static final int rez=64;
     
     protected String gif="Idle";
-    protected static String[] ord=new String[121001];
-    protected static int pasi=1;
-     protected static boolean gasit=false;
+    //protected static String[] ord=new String[121001];
+    protected ArrayList<StringBuilder> ord=new ArrayList<>();
+    protected int pasi=0;
+     protected boolean gasit=false;
      
      public static int[][] matElem=new int[110][110]; //matricea copiata din nivelx
      
@@ -54,7 +55,6 @@ public class Npc extends Actor
         this.scrolledY=scroller.getScrolledY();
      }
      
-     
     protected void Lee(int startL, int startC, int x, int y){
         int[][] mat=new int[1000][1000];
         for(int i=0; i<1000; i++){
@@ -62,9 +62,7 @@ public class Npc extends Actor
             mat[i][j]=0;
            }
         }
-            for(int i=0;i<12102;i++){
-            ord[i]=" ";
-            }
+        ord.clear();
             
 
         final int[] dy={1,-1,0,0,-1,1,1,-1};
@@ -117,37 +115,62 @@ public class Npc extends Actor
         
         //gasesc pathul
         int val=dr;
-        pasi=1;
         while(v[val].prec!=-1 && v[val].prec!=-2)
         {
-            ord[pasi]="";
+            ord.add(new StringBuilder());
             if(v[val].lin>v[v[val].prec].lin)
                 {
                 //am mers in sud
-                ord[pasi]+="S";
+                StringBuilder idn=ord.get(ord.size()-1);
+                idn.append("S");
+                ord.set(ord.size()-1, idn);
                 
-                }
-                else if(v[val].lin<v[v[val].prec].lin)
-                {
+            }
+            else if(v[val].lin<v[v[val].prec].lin)
+            {
                 //am fost in nord
-                ord[pasi]+="W";
-                }
+                StringBuilder idn=ord.get(ord.size()-1);
+                idn.append("W");
+                ord.set(ord.size()-1, idn);
+                
+
+            }
                 
                 if(v[val].col>v[v[val].prec].col)
                 {
                 //merg in est
-                ord[pasi]+="D";
+                    StringBuilder idn=ord.get(ord.size()-1);
+                    idn.append("D");
+                    ord.set(ord.size()-1, idn);
+                    
                 }
                else if(v[val].col<v[v[val].prec].col)
                {
                 //merg in vest
-                ord[pasi]+="A";
+                   StringBuilder idn=ord.get(ord.size()-1);
+                   idn.append("A");
+                   ord.set(ord.size()-1, idn);
+                   
                }
             
            pasi++;
            val=v[val].prec;
         }
+    
+    
+        
+
+     
     }
+    
+    
+    
+     public void knockback(){
+       
+     }
+    
+    
+    
    
     public void act() 
     {

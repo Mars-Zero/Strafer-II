@@ -5,9 +5,9 @@
     },
     "activeFile": "map.tmx",
     "expandedProjectPaths": [
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
         ".",
-        "tilesets"
+        "tilesets",
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
     "fileStates": {
         "": {
@@ -110,11 +110,11 @@
             }
         },
         "map.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 0,
+            "scale": 0.125,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 2027.2727272727273,
-                "y": 939.3939393939395
+                "x": 4656,
+                "y": 3964
             }
         },
         "map.tmx#Terrain": {
@@ -149,6 +149,9 @@
             "scaleInDock": 1
         },
         "map.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map.tmx#perete": {
             "scaleInDock": 1
         },
         "map.tmx#snow1": {
@@ -244,7 +247,7 @@
     },
     "last.exportedFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
     "last.externalTilesetPath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps/tilesets",
-    "last.imagePath": "D:/Games/CV9 projekt red/Strafer II/Assets/tiles/LPC_Terrain",
+    "last.imagePath": "D:/Games/CV9 projekt red/Strafer II/Assets/tiles",
     "last.worldFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
     "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
     "loadedWorlds": [
