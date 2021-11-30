@@ -1,5 +1,6 @@
 import greenfoot.*;  
-import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.PriorityQueue;
 import java.util.ArrayList;
 /**
  * Write a description of class Npc here.
@@ -28,7 +29,6 @@ public class Npc extends Actor
     protected String gif="Idle";
     //protected static String[] ord=new String[121001];
     protected ArrayList<StringBuilder> ord=new ArrayList<>();
-    protected int pasi=0;
      protected boolean gasit=false;
      
      public static int[][] matElem=new int[110][110]; //matricea copiata din nivelx
@@ -68,22 +68,21 @@ public class Npc extends Actor
         final int[] dy={1,-1,0,0,-1,1,1,-1};
         final int[] dx={0,0,1,-1,-1,1,-1,1};
         
-        
-        Pozitie[] v=new Pozitie[12101];
-        v[0]=new Pozitie(startL,startC,-1);
+        ArrayList<Pozitie> v=new ArrayList<>();
+       
+        v.add(new Pozitie(startL,startC,-1));
         mat[startL][startC]=1;
        
         int st=0,dr=0;
         if(startL==x && startC==y)
         {
-            pasi=1;
             st=1;
         }
         
         gasit=false;
         while(st<=dr)
         {
-            Pozitie start=v[st];
+            Pozitie start=v.get(st);
             int l=start.lin;
             int c=start.col;
             
@@ -97,7 +96,7 @@ public class Npc extends Actor
                     //adaug in coada
                     dr++;
                     Pozitie elem=new Pozitie(l+dx[i],c+dy[i],st);
-                    v[dr]=elem;
+                    v.add(elem);
                     mat[elem.lin][elem.col]=mat[l][c]+1;//marchez elementul ca parcurs
                     if(elem.lin==x && elem.col==y)
                     {
@@ -115,10 +114,10 @@ public class Npc extends Actor
         
         //gasesc pathul
         int val=dr;
-        while(v[val].prec!=-1 && v[val].prec!=-2)
+        while(v.get(val).prec!=-1 && v.get(val).prec!=-2)
         {
             ord.add(new StringBuilder());
-            if(v[val].lin>v[v[val].prec].lin)
+            if(v.get(val).lin>v.get(v.get(val).prec).lin)
                 {
                 //am mers in sud
                 StringBuilder idn=ord.get(ord.size()-1);
@@ -126,7 +125,7 @@ public class Npc extends Actor
                 ord.set(ord.size()-1, idn);
                 
             }
-            else if(v[val].lin<v[v[val].prec].lin)
+            else if(v.get(val).lin<v.get(v.get(val).prec).lin)
             {
                 //am fost in nord
                 StringBuilder idn=ord.get(ord.size()-1);
@@ -136,7 +135,7 @@ public class Npc extends Actor
 
             }
                 
-                if(v[val].col>v[v[val].prec].col)
+                if(v.get(val).col>v.get(v.get(val).prec).col)
                 {
                 //merg in est
                     StringBuilder idn=ord.get(ord.size()-1);
@@ -144,7 +143,7 @@ public class Npc extends Actor
                     ord.set(ord.size()-1, idn);
                     
                 }
-               else if(v[val].col<v[v[val].prec].col)
+               else if(v.get(val).col<v.get(v.get(val).prec).col)
                {
                 //merg in vest
                    StringBuilder idn=ord.get(ord.size()-1);
@@ -153,8 +152,7 @@ public class Npc extends Actor
                    
                }
             
-           pasi++;
-           val=v[val].prec;
+           val=v.get(val).prec;
         }
     
     

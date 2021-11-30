@@ -13,7 +13,7 @@ public class Goblin extends Npc
     Scroller scroller;
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage playerImg=directie.get(super.gif);
-    private int pasi=super.pasi-1;
+    private int pasi;
     private int dist=0;
     
     private boolean atingePlayer=false;
@@ -107,7 +107,7 @@ public class Goblin extends Npc
     
    
     protected void move(){
-        pasi=super.pasi;
+        pasi=super.ord.size()-1;
         if(pasi>0){
             
             String directie=super.ord.get(pasi).toString();
