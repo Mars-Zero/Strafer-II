@@ -43,8 +43,8 @@ public class Sabie extends Item
             move();
         
             time++;
-            if(time>20){
-                Player.equipSabie=false;
+            if(time>25){
+                
                 getWorld().removeObject(this);
             }
         }

@@ -2,7 +2,7 @@
 public class WorldData  
 {
 
-    public static boolean PAUZA=false;
+    public static boolean PAUZA;
     
     public WorldData()
     {

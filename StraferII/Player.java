@@ -28,9 +28,13 @@ public class Player extends Jucator
     
     
     protected String gif="D";
-                                                public static boolean equipSabie=false;
+                                                public static boolean equipSword=false;
                                                 public static boolean equipLaser=false;
                                                 public static boolean equipPortalGun=false;
+                                                public static boolean equipIceLock=false;
+                                                public static boolean equipLantern=false;
+                                                public static boolean equipBlackHole=false;
+                                                
                                                 
                                                 public static boolean toggledInventory=false;
                                                 
@@ -45,6 +49,9 @@ public class Player extends Jucator
     
     public Player(){
           
+       
+        prepareData();
+        
         //sta
         directie.put("idle", new GifImage("player/player_m_Idle.gif"));
         //moarte
@@ -67,6 +74,21 @@ public class Player extends Jucator
         
         
        this.timpPrec=System.currentTimeMillis();
+    }
+    
+    
+    private void prepareData(){
+    
+        equipSword=false;
+        equipLaser=false;
+        equipPortalGun=false;
+        equipIceLock=false;
+        equipLantern=false;
+        equipBlackHole=false;
+        
+        toggledInventory=false;
+        
+        WorldData.PAUZA=false;
     }
     
     protected void checkMove(){
@@ -126,18 +148,38 @@ public class Player extends Jucator
       
         playerImg=directie.get(this.gif);
     }
+    
+    
     protected void vedere(){
         
         playerImg=directie.get(this.gif);
     }
-    protected void useItem(){
+    
+     protected void toggleMenu(){
         
-        //portalGun
-        if(Greenfoot.mouseClicked(null)){
-            if(Greenfoot.getMouseInfo().getButton()==1){
-                equipPortalGun=!equipPortalGun;
+        if(!toggledInventory){
+            
+            long timpCurent=System.currentTimeMillis(); 
+            if(timpCurent-timpPrec>=20){
+                if(Greenfoot.isKeyDown("E")){
+                    toggledInventory=!toggledInventory;
+                    getWorld().addObject(new Inventory(),875,430);
+                    
+                    getWorld().addObject(new ItemSelect(),875,430);
+                }
+                timpPrec=timpCurent;
             }
         }
+    
+    }
+     
+     
+    protected void useItem(){
+        
+        
+        
+        //portalGun
+      
         
         if(equipPortalGun){
             long timpCurent=System.currentTimeMillis(); 
@@ -156,19 +198,22 @@ public class Player extends Jucator
         
         
         //sabie
-        if(Greenfoot.isKeyDown("Q")){
-            equipSabie=!equipSabie;
-        }
-        if(equipSabie){
-             long timpCurent=System.currentTimeMillis(); 
-            if(timpCurent-timpPrec>=30)
-            {
-                if(getWorld().getObjects(Sabie.class).isEmpty()){
-                    getWorld().addObject(new Sabie(),getX(),getY());
+       
+          
+        
+        if(equipSword){ 
+            if(Greenfoot.isKeyDown("Q")){
+                
+                long timpCurent=System.currentTimeMillis(); 
+                if(timpCurent-timpPrec>=30)
+                {
+                    if(getWorld().getObjects(Sabie.class).isEmpty()){
+                        getWorld().addObject(new Sabie(),getX(),getY());
+                    }
+                    timpPrec=timpCurent;
                 }
-                timpPrec=timpCurent;
+                Item.itemGif=gif; 
             }
-            Item.itemGif=gif; 
         }
         //sabie
         
@@ -182,22 +227,15 @@ public class Player extends Jucator
     }
     
     
-    protected void toggleMenu(){
-        
-        if(!toggledInventory){
-            
-            long timpCurent=System.currentTimeMillis(); 
-            if(timpCurent-timpPrec>=20){
-                if(Greenfoot.isKeyDown("E")){
-                    toggledInventory=!toggledInventory;
-                    getWorld().addObject(new Inventory(),915,475);
-                }
-                timpPrec=timpCurent;
+   
+    
+    protected void checkPauza(){
+            if(Greenfoot.isKeyDown("p")){
+                WorldData.PAUZA=true;
             }
-        }
-    
+       
+           
     }
-    
     
     
     protected void lovit(){
@@ -207,9 +245,7 @@ public class Player extends Jucator
     
     public void act() {
         
-        if(Greenfoot.isKeyDown("9")){
-            WorldData.PAUZA=!WorldData.PAUZA;
-        }
+       checkPauza();
         
         if(!WorldData.PAUZA){
            useItem();
