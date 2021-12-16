@@ -82,12 +82,12 @@ public class Inventory extends Menu{
            if(grade>=-90&&grade<-30){
                 nrItem=1;
                 this.setRotation(0);
-              
+                
            }
            if(grade>=-30&&grade<30){
                 nrItem=2;
                 this.setRotation(60);
-              
+               
            }
            if(grade>=30&&grade<90){
                nrItem=3;
@@ -98,16 +98,22 @@ public class Inventory extends Menu{
                nrItem=4;
                this.setRotation(180);
                
+               
            }
-           if(grade>=150&&grade<210){
+           if(grade>=150&&grade<240){
                nrItem=5;
                this.setRotation(240);
                
+               
+           }
+           if(grade>=-180&& grade<-150){
+               nrItem=5;
+               this.setRotation(240);
            }
            if(grade>=-150&&grade<-90){
                nrItem=6;
                this.setRotation(300);
-               
+              
            }
            
           

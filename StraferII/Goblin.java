@@ -41,6 +41,9 @@ public class Goblin extends Npc
         
         directie.put("death",new GifImage("npc/inamic/goblin/goblin_death.gif"));
         
+        gif="idle";
+       
+        
         this.timpSab=0;
         this.timpBolt=0;
         this.timpAtins=0;
@@ -318,7 +321,7 @@ public class Goblin extends Npc
         
      if(!WorldData.PAUZA){
             updateScroll();
-        
+            gif="idle";
             if(mort==true)
             {
                 //moare
@@ -388,7 +391,8 @@ public class Goblin extends Npc
             }
             }
      }
-       playerImg=directie.get("idle");
+     
+        playerImg=directie.get(gif);
         setImage(playerImg.getCurrentImage());
     }    
     

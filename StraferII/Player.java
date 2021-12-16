@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.lang.Math; 
 
-public class Player extends Jucator
-{
-     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
+public class Player extends Jucator{
+    
+    HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage playerImg=directie.get(this.gif);
     
     static int direction;
@@ -37,6 +37,7 @@ public class Player extends Jucator
                                                 
                                                 
                                                 public static boolean toggledInventory=false;
+                                                public static boolean toggledPause=false;
                                                 
     public static HashSet<String> iteme = new HashSet<String>();
 
@@ -87,6 +88,8 @@ public class Player extends Jucator
         equipBlackHole=false;
         
         toggledInventory=false;
+        toggledPause=false;
+        
         
         WorldData.PAUZA=false;
     }
@@ -132,8 +135,7 @@ public class Player extends Jucator
             worldX -= speed;
             }
         
-        if(apas==false)
-        {
+        if(apas==false ){
             gif="idle";
         }
         
@@ -159,16 +161,13 @@ public class Player extends Jucator
         
         if(!toggledInventory){
             
-            long timpCurent=System.currentTimeMillis(); 
-            if(timpCurent-timpPrec>=20){
                 if(Greenfoot.isKeyDown("E")){
                     toggledInventory=!toggledInventory;
                     getWorld().addObject(new Inventory(),875,430);
                     
                     getWorld().addObject(new ItemSelect(),875,430);
                 }
-                timpPrec=timpCurent;
-            }
+               
         }
     
     }
@@ -198,22 +197,23 @@ public class Player extends Jucator
         
         
         //sabie
-       
-          
-        
+         
         if(equipSword){ 
-            if(Greenfoot.isKeyDown("Q")){
+          if(Greenfoot.mouseClicked(null)){
+            if(Greenfoot.getMouseInfo().getButton()==1){  //right 3 left 1
                 
                 long timpCurent=System.currentTimeMillis(); 
-                if(timpCurent-timpPrec>=30)
+                if(timpCurent-timpPrec>=20)
                 {
                     if(getWorld().getObjects(Sabie.class).isEmpty()){
+                        
                         getWorld().addObject(new Sabie(),getX(),getY());
                     }
                     timpPrec=timpCurent;
                 }
                 Item.itemGif=gif; 
             }
+          }
         }
         //sabie
         
@@ -230,11 +230,24 @@ public class Player extends Jucator
    
     
     protected void checkPauza(){
-            if(Greenfoot.isKeyDown("p")){
-                WorldData.PAUZA=true;
-            }
-       
-           
+          
+        if(!toggledPause){
+            
+                if(Greenfoot.isKeyDown("p")){
+                    toggledPause=!toggledPause;
+                    WorldData.PAUZA=true;
+                
+                    getWorld().addObject(new Pause(), 1024/2, 576/2);
+                   
+                } 
+          
+        }
+        
+        if(Greenfoot.isKeyDown("0")){
+            WorldData.PAUZA=false;
+            toggledPause=false;
+        }
+          
     }
     
     
