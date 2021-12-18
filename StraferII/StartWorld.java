@@ -41,27 +41,29 @@ public class StartWorld extends World{
 
      
      public void addWorldObjects(){ 
-        addObject(new Goblin(scroller),100,200);
-        addObject(new PereteInvizibil("A","mare90"),0,300);//margini
-          addObject(new PereteInvizibil("W","mic"), 690,340);
-         addObject(new PereteInvizibil("W","mic"), 750,340);
-           addObject(new PereteInvizibil("W","mic"), 690,340);
+        addObject(new Goblin(scroller,100,200),100,200);
+        
+        
+        addObject(new PereteInvizibil("A",1,"mare90"),0,300);//margini
+          addObject(new PereteInvizibil("W",1,"mic"), 690,340);
+         addObject(new PereteInvizibil("W",1,"mic"), 750,340);
+           addObject(new PereteInvizibil("W",1,"mic"), 690,340);
 
          
-         addObject(new PereteInvizibil("A","mic90"), 795,300);
-         addObject(new PereteInvizibil("D","mic90"), 585,300);
+         addObject(new PereteInvizibil("A",1,"mic90"), 795,300);
+         addObject(new PereteInvizibil("D",1,"mic90"), 585,300);
 
-         addObject(new PereteInvizibil("S","mic"), 630,255);
-         addObject(new PereteInvizibil("S","mic"), 690,255);
-         addObject(new PereteInvizibil("S","mic"), 750,255);
+         addObject(new PereteInvizibil("S",1,"mic"), 630,255);
+         addObject(new PereteInvizibil("S",1,"mic"), 690,255);
+         addObject(new PereteInvizibil("S",1,"mic"), 750,255);
 
-       addObject(new PereteInvizibil("D","mic90"),1185,0);//margini
-        addObject(new PereteInvizibil("D","mic90"),1185,60);//margini
-        addObject(new PereteInvizibil("D","mic90"),1185,120);//margini
-        addObject(new PereteInvizibil("D","mic90"),1185,180);//margini
+       addObject(new PereteInvizibil("D",1,"mic90"),1185,0);//margini
+        addObject(new PereteInvizibil("D",1,"mic90"),1185,60);//margini
+        addObject(new PereteInvizibil("D",1,"mic90"),1185,120);//margini
+        addObject(new PereteInvizibil("D",1,"mic90"),1185,180);//margini
         addObject(new TestActor(scroller),1000,2000);
        for(int i=1;i<=10500;i+=1024){
-           addObject(new PereteInvizibil("W", "mare"),i,16);
+           addObject(new PereteInvizibil("W",1, "mare"),i,16);
         }
      }
 

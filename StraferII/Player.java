@@ -9,10 +9,14 @@ public class Player extends Jucator{
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage playerImg=directie.get(this.gif);
     
+    public static String gif="D";
+    
     static int direction;
     
     int moveTime = 7;
    
+    
+    public static int floorLevel=1; 
     
     boolean isMoving;
     static int originalX, originalY;
@@ -27,7 +31,7 @@ public class Player extends Jucator{
     
     
     
-    protected String gif="D";
+    
                                                 public static boolean equipSword=false;
                                                 public static boolean equipLaser=false;
                                                 public static boolean equipPortalGun=false;
@@ -80,6 +84,7 @@ public class Player extends Jucator{
     
     private void prepareData(){
     
+        
         equipSword=false;
         equipLaser=false;
         equipPortalGun=false;
@@ -91,7 +96,10 @@ public class Player extends Jucator{
         toggledPause=false;
         
         
-        WorldData.PAUZA=false;
+        WorldData.PAUZA=false; 
+        
+        
+        this.floorLevel=1;
     }
     
     protected void checkMove(){

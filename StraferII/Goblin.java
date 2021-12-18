@@ -24,12 +24,34 @@ public class Goblin extends Npc
     private long timpPrec;
     public  String gifSabie;
     
+    private int pX;//pozitia pe X pe mapa
+    
+    
+    public long getpX() {
+        return pX;
+    }
+
+    public void setpX(int pX) {
+        this.pX = pX;
+    }
+
+    public long getpY() {
+        return pY;
+    }
+
+    public void setpY(int pY) {
+        this.pY = pY;
+    }
+    private int pY;//pozitia pe Y pe mapa
+    
     Vector2d vect;
     
-    public Goblin(Scroller scrl){
+    public Goblin(Scroller scrl,int x,int y){
        super(scrl);
        this.scrolledX=super.scrolledX;
        this.scrolledY=super.scrolledY;
+      pX=x;
+      pY=y;
        
        this.mort=false;
         
@@ -69,13 +91,13 @@ public class Goblin extends Npc
             {
                 playerY++;
             }
-            int gY=(getY()+scrolledY)/super.rez;
-            if((getY()+scrolledY)%super.rez>0)
+            int gY=pY/super.rez;
+            if((pY)%super.rez>0)
             {
                 gY++;
             }
-            int gX=(getX()+scrolledX)/super.rez;
-            if((getX()+scrolledX)%super.rez>0)
+            int gX=pX/super.rez;
+            if(pX%super.rez>0)
             {
                 gX++;
             }
@@ -90,8 +112,8 @@ public class Goblin extends Npc
        
        if(super.gasit==true){
            Actor player = (Actor)players.get(0);
-           if( isTouching(Jucator.class)&& ((player.getY()+scrolledY)<=(getY()+scrolledY)-10||(player.getX()+scrolledX)<=(getX()+scrolledX)-15||
-                                              (player.getY()+scrolledY)>=(getY()+scrolledY)+10||(player.getX()+scrolledX)>=(getX()+scrolledX)+15))
+           if( isTouching(Jucator.class)&& ((player.getY()+scrolledY)<=(pY)-10||(player.getX()+scrolledX)<=(pX)-15||
+                                              (player.getY()+scrolledY)>=(pY)+10||(player.getX()+scrolledX)>=(pX)+15))
            {
                gif="idle";
                
@@ -114,13 +136,13 @@ public class Goblin extends Npc
         if(pasi>0){
             
             String directie=super.ord.get(pasi).toString();
-             int gY=(getY()+scrolledY)/super.rez;
-            if((getY()+scrolledY)%super.rez>0)
+             int gY=(pY)/super.rez;
+            if((pY)%super.rez>0)
             {
                 gY++;
             }
-            int gX=(getX()+scrolledX)/super.rez;
-            if((getX()+scrolledX)%super.rez>0)
+            int gX=(pX)/super.rez;
+            if((pX)%super.rez>0)
             {
                 gX++;
             }
@@ -131,7 +153,8 @@ public class Goblin extends Npc
                     
                         gif="W";
                         dist+=speed;
-                        setLocation((getX()+scrolledX),(getY()+scrolledY)-speed);
+                        pY-=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                        
                     break;
@@ -140,7 +163,8 @@ public class Goblin extends Npc
                 
                         gif="D";
                         dist+=speed;
-                        setLocation((getX()+scrolledX)+speed,(getY()+scrolledY));
+                        pX+=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                    
                     break;
@@ -149,7 +173,8 @@ public class Goblin extends Npc
                
                         gif="S";
                         dist+=speed;
-                        setLocation((getX()+scrolledX),(getY()+scrolledY)+speed);
+                        pY+=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                  
                     break;
@@ -158,7 +183,8 @@ public class Goblin extends Npc
                    
                         gif="A";
                         dist+=speed;
-                        setLocation((getX()+scrolledX)-speed,(getY()+scrolledY));
+                        pX-=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                    
                     break;
@@ -166,7 +192,9 @@ public class Goblin extends Npc
                 case "WD":{
                         gif="D";
                         dist+=speed;
-                        setLocation((getX()+scrolledX)+speed,(getY()+scrolledY)-speed);
+                        pX+=speed;
+                        pY-=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                    
                         break;
@@ -174,7 +202,9 @@ public class Goblin extends Npc
                 case "WA":{
                         gif="A";
                         dist+=speed;
-                        setLocation((getX()+scrolledX)-speed,(getY()+scrolledY)-speed);
+                        pX-=speed;
+                        pY-=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                        
                         break;
@@ -182,7 +212,9 @@ public class Goblin extends Npc
                 case "SD":{
                         gif="D";
                         dist+=speed;
-                        setLocation((getX()+scrolledX)+speed,(getY()+scrolledY)+speed);
+                        pY+=speed;
+                        pX+=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                         
                         break;
@@ -190,7 +222,9 @@ public class Goblin extends Npc
                 case "SA":{
                         gif="A";
                         dist+=speed;
-                        setLocation((getX()+scrolledX)-speed,(getY()+scrolledY)+speed);
+                        pX-=speed;
+                        pY+=speed;
+                        setLocation(pX,pY);
                         gifSabie=gif;
                          
                         break;
@@ -205,36 +239,44 @@ public class Goblin extends Npc
                 dist=0;
                 pasi--;
             }
-            gY=(getY()+scrolledY)/super.rez;
-            if((getY()+scrolledY)%super.rez>0)
+            gY=pY/super.rez;
+            if(pY%super.rez>0)
             {
                 gY++;
             }
-            gX=(getX()+scrolledX)/super.rez;
-            if((getX()+scrolledX)%super.rez>0)
+            gX=pX/super.rez;
+            if(pX%super.rez>0)
             {
                 gX++;
             }
-            if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=-2;}
+          
+            //if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=-2;}
             //
         }
     }
      protected void atins(){
      if(isTouching(Perete.class)&& directie.equals("W"))
      {
-         setLocation((getX()+scrolledX),(getY()+scrolledY)+speed);
+         pY+=speed;
+         setLocation(pX,pY);
      }
      else if(isTouching(Perete.class)&& directie.equals("S"))
      {
-         setLocation((getX()+scrolledX),(getY()+scrolledY)-speed);
+          pY-=speed;
+         setLocation(pX,pY);
+
      }
      else if(isTouching(Perete.class)&& directie.equals("D"))
      {
-         setLocation((getX()+scrolledX)-speed,(getY()+scrolledY));
+          pX-=speed;
+         setLocation(pX,pY);
+        
      }
      else if(isTouching(Perete.class)&& directie.equals("A"))
      {
-         setLocation((getX()+scrolledX)+speed,(getY()+scrolledY));
+          pX+=speed;
+         setLocation(pX,pY);
+
      }
      
     }
@@ -353,7 +395,7 @@ public class Goblin extends Npc
                 //lovitSabie();
                 //lovitLaser();
                 int x=(getX()+scrolledX); /////{
-                int y=(getY()+scrolledY);   //calculeaza un nr in functie de care sa setam o pauza
+               int y=(getY()+scrolledY);   //calculeaza un nr in functie de care sa setam o pauza
                 long a=x*y/2000; //}
           
                 if(isTouching(Jucator.class)){
@@ -381,7 +423,7 @@ public class Goblin extends Npc
                             atingePlayer=false;
                   
                         }
-                    }//////////////////////////////////////////////{
+                    }///////////////////////////////////////////////{
                     else{
                 
                         gaseste();//cauta playerul

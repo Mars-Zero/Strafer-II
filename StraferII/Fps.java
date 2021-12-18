@@ -18,7 +18,7 @@ import greenfoot.*;
  * NOTE: Using the speed slider in the application will result in a false speed display until
  * the actor is clicked on.
  */
-public class Fps extends Actor
+public class Fps extends UI
 {
     int frames, speed = 50; // frame counter and speed setting
     boolean showSpeed, set, go; // controls

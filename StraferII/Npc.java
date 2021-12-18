@@ -2,6 +2,7 @@ import greenfoot.*;
 import java.util.Queue;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
+import java.util.List;
 /**
  * Write a description of class Npc here.
  * 
@@ -53,6 +54,14 @@ public class Npc extends Actor
           scroller=scrl;
         this.scrolledX=scroller.getScrolledX();
         this.scrolledY=scroller.getScrolledY();
+     }
+     
+     protected void checkInChunck(){
+        if( getWorld().getObjects(Player.class)!=null){
+            List <Player> lista =getObjectsInRange(1024,Player.class);
+            
+        }
+     
      }
      
     protected void Lee(int startL, int startC, int x, int y){
@@ -172,6 +181,7 @@ public class Npc extends Actor
    
     public void act() 
     {
+        
        
     }    
 }

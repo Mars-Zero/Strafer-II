@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Perete extends Actor {
+public class Perete extends WorldStructures{
 
     /**
      * Act - do whatever the Perete wants to do. This method is called whenever

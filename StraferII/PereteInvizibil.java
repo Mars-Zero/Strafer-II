@@ -10,14 +10,17 @@ public class PereteInvizibil extends Perete {
     private String pozitie;
     HashMap<String, GreenfootImage> directie = new HashMap<String, GreenfootImage>();
     GreenfootImage pereteImg;
-
-    public PereteInvizibil(String pozitie, String marime) {
+    
+    int floor;
+    
+    public PereteInvizibil(String pozitie, int floor, String marime) {
 
         directie.put("mic90", new GreenfootImage("perete/pereteInviz_mic90.png"));
         directie.put("mic", new GreenfootImage("perete/pereteInviz_mic.png"));
         directie.put("mare90", new GreenfootImage("perete/pereteInviz_mare90.png"));
         directie.put("mare", new GreenfootImage("perete/pereteInviz_mare.png"));
-
+        
+        this.floor=floor;
         this.marime = marime;
         pereteImg = directie.get(marime);
         setImage(pereteImg);
@@ -296,8 +299,8 @@ public class PereteInvizibil extends Perete {
     }
 
     public void act() {
-
-        if (super.isInScreen()) {
+        
+        if (Player.floorLevel==this.floor && super.isInScreen()==true) {
             chestie();
         }
 

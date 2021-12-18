@@ -3,7 +3,7 @@ import greenfoot.*;
 
 
 
-public class Menu extends Actor{
+public class Menu extends UI{
    
     
     
