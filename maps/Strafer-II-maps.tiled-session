@@ -110,11 +110,11 @@
             }
         },
         "map.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 2,
+            "scale": 0.125,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 4282.666666666666,
-                "y": 4644.666666666666
+                "x": 1712,
+                "y": 3172
             }
         },
         "map.tmx#Terrain": {
@@ -267,11 +267,11 @@
     "property.type": "string",
     "recentFiles": [
         "map.tmx",
+        "tilesets/apa1.tsx",
+        "tilesets/decor1.tsx",
         "tilesets/grass3.tsx",
         "tilesets/Terrain.tsx",
         "tilesets/snow1.tsx",
-        "tilesets/decor1.tsx",
-        "tilesets/apa1.tsx",
         "tilesets/grass2.tsx",
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
         "tilesets/snow.tsx",

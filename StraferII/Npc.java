@@ -3,19 +3,15 @@ import java.util.Queue;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Write a description of class Npc here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 
 class Pozitie{
-    int lin, col, prec;
-    Pozitie(int x, int y, int prec){
+    int lin, col, prec,dist;
+    Pozitie(int x, int y, int prec,int dist){
         this.lin=x;
         this.col=y;
         this.prec=prec;
+        this.dist=dist;
     }
 }
 
@@ -25,7 +21,8 @@ public class Npc extends Movers
     int scrolledY;
     Scroller scroller;
     
-    protected static final int rez=64;
+    protected final int rez=64;
+    final int dMax=16;
     
     protected String gif="Idle";
     //protected static String[] ord=new String[121001];
@@ -78,7 +75,7 @@ public class Npc extends Movers
         
         ArrayList<Pozitie> v=new ArrayList<>();
        
-        v.add(new Pozitie(startL,startC,-1));
+        v.add(new Pozitie(startL,startC,-1,1));
         mat[startL][startC]=1;
        
         int st=0,dr=0;
@@ -93,31 +90,32 @@ public class Npc extends Movers
             Pozitie start=v.get(st);
             int l=start.lin;
             int c=start.col;
-            
-            
-            for(int i=0; i<8; i++)
-            {
-                
-                if(mat[l+dx[i]][c+dy[i]]==0 && l+dx[i]>0 && c+dy[i]>0 &&l+dx[i]<1000 && c+dy[i]<1000 )
+            if(start.dist<dMax) {
+                for(int i=0; i<8; i++)
                 {
-                    //nu am mai fost aici
-                    //adaug in coada
-                    dr++;
-                    Pozitie elem=new Pozitie(l+dx[i],c+dy[i],st);
-                    v.add(elem);
-                    mat[elem.lin][elem.col]=mat[l][c]+1;//marchez elementul ca parcurs
-                    if(elem.lin==x && elem.col==y)
+
+                    if(mat[l+dx[i]][c+dy[i]]==0 && l+dx[i]>0 && c+dy[i]>0 &&l+dx[i]<1000 && c+dy[i]<1000 )
                     {
-                        //gasesc playerul
-                        gasit=true;
-                        break;
+                        //nu am mai fost aici
+                        //adaug in coada
+                        dr++;
+                        Pozitie elem=new Pozitie(l+dx[i],c+dy[i],st,start.dist+1);
+                        v.add(elem);
+                        mat[elem.lin][elem.col]=mat[l][c]+1;//marchez elementul ca parcurs
+                        if(elem.lin==x && elem.col==y)
+                        {
+                            //gasesc playerul
+                            gasit=true;
+                            break;
+                        }
                     }
-                }  
+                }
+                if(gasit==true){
+                    break;
+                }
+                st++;
             }
-            if(gasit==true){
-                break;
-            }
-            st++;
+
         }
         
         //gasesc pathul

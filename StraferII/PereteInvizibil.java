@@ -38,7 +38,7 @@ public class PereteInvizibil extends Perete {
 
                     for (int i = 0; i <= a; i += 10) {
 
-                        Actor b = getOneObjectAtOffset(i, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(i, 0, Movers.class);
                         if (b != null) {
                             int dif = b.getY() - getY();
                             int k = getImage().getHeight() / 2 - dif;
@@ -51,7 +51,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 10; j <= a; j += 10) {
-                        Actor b = getOneObjectAtOffset(-j, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(-j, 0, Movers.class);
                         if (b != null) {
                             int dif = b.getY() - getY();
                             int k = getImage().getHeight() / 2 - dif;
@@ -68,7 +68,7 @@ public class PereteInvizibil extends Perete {
 
                     for (int i = 0; i <= a; i += 20) {
 
-                        Actor b = getOneObjectAtOffset(i, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(i, 0, Movers.class);
 
                         if (b != null) {
                             int dif = b.getY() - getY();
@@ -83,7 +83,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 0; j <= a; j += 20) {
-                        Actor b = getOneObjectAtOffset(-j, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(-j, 0, Movers.class);
 
                         if (b != null) {
                             int dif = b.getY() - getY();
@@ -108,7 +108,7 @@ public class PereteInvizibil extends Perete {
 
                     for (int i = 0; i <= a; i += 10) {
 
-                        Actor b = getOneObjectAtOffset(i, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(i, 0, Movers.class);
                         if (b != null) {
                             int dif = getY() - b.getY();
 
@@ -122,7 +122,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 10; j <= a; j += 10) {
-                        Actor b = getOneObjectAtOffset(-j, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(-j, 0, Movers.class);
                         if (b != null) {
                             int dif = getY() - b.getY();
                             int k = getImage().getHeight() / 2 - dif;
@@ -138,7 +138,7 @@ public class PereteInvizibil extends Perete {
                     int a = getImage().getWidth() / 2;
                     for (int i = 0; i <= a; i += 20) {
 
-                        Actor b = getOneObjectAtOffset(i, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(i, 0, Movers.class);
                         if (b != null) {
                             int dif = getY() - b.getY();
                             int k = getImage().getHeight() / 2 - dif;
@@ -151,7 +151,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 0; j <= a; j += 20) {
-                        Actor b = getOneObjectAtOffset(-j, 0, Jucator.class);
+                        Actor b = getOneObjectAtOffset(-j, 0, Movers.class);
                         if (b != null) {
                             int dif = getY() - b.getY();
                             int k = getImage().getHeight() / 2 - dif;
@@ -173,7 +173,7 @@ public class PereteInvizibil extends Perete {
 
                     for (int i = 0; i <= a; i += 10) {
 
-                        Actor b = getOneObjectAtOffset(0, i, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, i, Movers.class);
                         if (b != null) {
                             int dif = getX() - b.getX();
 
@@ -187,7 +187,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 0; j <= a; j += 10) {
-                        Actor b = getOneObjectAtOffset(0, -j, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, -j, Movers.class);
                         if (b != null) {
                             int dif = getX() - b.getX();
                             int k = getImage().getWidth() / 2 - dif;
@@ -203,7 +203,7 @@ public class PereteInvizibil extends Perete {
                     int a = getImage().getHeight() / 2;
                     for (int i = 0; i <= a; i += 20) {
 
-                        Actor b = getOneObjectAtOffset(0, i, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, i, Movers.class);
                         if (b != null) {
                             int dif = getX() - b.getX();
                             int k = getImage().getHeight() / 2 - dif;
@@ -216,7 +216,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 0; j <= a; j += 20) {
-                        Actor b = getOneObjectAtOffset(0, -j, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, -j, Movers.class);
                         if (b != null) {
                             int dif = getX() - b.getX();
                             int k = getImage().getHeight() / 2 - dif;
@@ -238,7 +238,7 @@ public class PereteInvizibil extends Perete {
 
                     for (int i = 0; i <= a; i += 10) {
 
-                        Actor b = getOneObjectAtOffset(0, i, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, i, Movers.class);
                         if (b != null) {
                             int dif = b.getX() - getX();
 
@@ -252,7 +252,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 0; j <= a; j += 10) {
-                        Actor b = getOneObjectAtOffset(0, -j, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, -j, Movers.class);
                         if (b != null) {
                             int dif = b.getX() - getX();
                             int k = getImage().getWidth() / 2 - dif;
@@ -268,7 +268,7 @@ public class PereteInvizibil extends Perete {
                     int a = getImage().getHeight() / 2;
                     for (int i = 0; i <= a; i += 20) {
 
-                        Actor b = getOneObjectAtOffset(0, i, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, i, Movers.class);
                         if (b != null) {
                             int dif = b.getX() - getX();
                             int k = getImage().getHeight() / 2 - dif;
@@ -281,7 +281,7 @@ public class PereteInvizibil extends Perete {
                     }
 
                     for (int j = 0; j <= a; j += 20) {
-                        Actor b = getOneObjectAtOffset(0, -j, Jucator.class);
+                        Actor b = getOneObjectAtOffset(0, -j, Movers.class);
                         if (b != null) {
                             int dif = b.getX() - getX();
                             int k = getImage().getHeight() / 2 - dif;
