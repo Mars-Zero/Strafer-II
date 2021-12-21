@@ -1,16 +1,21 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 public class StartWorld extends World{
 
-    static final int WIDE=1024, HIGH= 576;
-
-   public Scroller scroller;
-    Player player;  static int originalX=30,originalY=200;
+    int WIDE,HIGH;
+    
+    
     Fps fps;
-
+   public Scroller scroller;
+    Player player;  int originalX=30,originalY=200;
+    
    
+
     public StartWorld(){
-        super(WIDE,HIGH, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
+        super(WorldData.WIDTH,WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
+
+        WIDE=WorldData.WIDTH;
+        HIGH=WorldData.HIGHT;
         addPlayer();
         addWorldObjects();
 
@@ -22,17 +27,14 @@ public class StartWorld extends World{
         prepare();
     }
 
-     public void addPlayer()
-    {
+     public void addPlayer(){
         GreenfootImage background=new GreenfootImage("images/test/map.png");//imi pun fundalul
         scroller = new Scroller(this, background, 6400, 6400);
         player = new Player();
         addObject(player, originalX, originalY);
-        Player.originalX = originalX;
-        Player.originalY = originalY;
-        Player.worldX = originalX;
-        Player.worldY = originalY;
-
+        Player.worldX=originalX;
+        Player.worldY=originalY;
+        
         scroll();
 
         fps=new Fps(); 

@@ -19,7 +19,7 @@ class Pozitie{
     }
 }
 
-public class Npc extends Actor
+public class Npc extends Movers
 {
     int scrolledX;
     int scrolledY;
@@ -56,12 +56,11 @@ public class Npc extends Actor
         this.scrolledY=scroller.getScrolledY();
      }
      
-     protected void checkInChunck(){
-        if( getWorld().getObjects(Player.class)!=null){
-            List <Player> lista =getObjectsInRange(1024,Player.class);
-            
+     protected boolean checkPlayerInChunck(){
+        if(getObjectsInRange(1024,Player.class)!=null){
+            return true;
         }
-     
+        return false;
      }
      
     protected void Lee(int startL, int startC, int x, int y){

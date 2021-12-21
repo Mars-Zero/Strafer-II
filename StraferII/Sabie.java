@@ -13,12 +13,12 @@ public class Sabie extends Item
     private long time=0;
     
     public Sabie(){
-        directie.put("right",new GifImage("item/sabie_a_D.gif"));
-        directie.put("up",new GifImage("item/sabie_a_W.gif"));
-        directie.put("left",new GifImage("item/sabie_a_A.gif"));
-        directie.put("down",new GifImage("item/sabie_a_S.gif"));
+        directie.put("D",new GifImage("item/sabie_a_D.gif"));
+        directie.put("W",new GifImage("item/sabie_a_W.gif"));
+        directie.put("A",new GifImage("item/sabie_a_A.gif"));
+        directie.put("S",new GifImage("item/sabie_a_S.gif"));
        
-        sabieImg=directie.get("right");
+        sabieImg=directie.get("D");
         this.time=0;
      
     }
@@ -26,7 +26,7 @@ public class Sabie extends Item
     protected void move(){
         super.move();
        
-        sabieImg=directie.get(super.itemGif);
+        sabieImg=directie.get(Item.itemGif);
     }
     
     

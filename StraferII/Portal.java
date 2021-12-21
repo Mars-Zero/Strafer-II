@@ -37,6 +37,9 @@ public class Portal extends PortalGun{
             Actor player = (Actor)players.get(0);
             if(Greenfoot.isKeyDown("t")){
                 player.setLocation(this.getX(),this.getY());
+                Player.worldX+=(this.getX()+Scroller.scrolledX-player.getX());
+                Player.worldY+=(this.getY()+Scroller.scrolledY-player.getY());
+                
                 getWorld().removeObject(this);
             }
         

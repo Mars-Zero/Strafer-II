@@ -9,19 +9,24 @@ public class Player extends Jucator{
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage playerImg=directie.get(this.gif);
     
-    public static String gif="D";
+    public static String gif="Ds";
     
     static int direction;
     
     int moveTime = 7;
    
     
+    //{
+    //xy pe toata mapa
+                        public static int worldX, worldY;
+    //xy pe toata mapa
+    //{
+   
+   
     public static int floorLevel=1; 
     
     boolean isMoving;
-    static int originalX, originalY;
-    public static int worldX, worldY;
-    static int previousWorldX, previousWorldY;
+   
     
     
     public static boolean inViata=true;
@@ -69,11 +74,13 @@ public class Player extends Jucator{
         directie.put("S",new GifImage("player/player_m_S.gif"));
       
         //se uita
-        directie.put("right",new GifImage("player/vedere_D.gif"));
-        directie.put("up",new GifImage("player/vedere_W.gif"));
-        directie.put("left",new GifImage("player/vedere_A.gif"));
-        directie.put("down",new GifImage("player/vedere_S.gif"));
-      
+        directie.put("Ds",new GifImage("player/vedere_D.gif"));
+        directie.put("Ws",new GifImage("player/vedere_W.gif"));
+        directie.put("As",new GifImage("player/vedere_A.gif"));
+        directie.put("Ss",new GifImage("player/vedere_S.gif"));
+        
+        //gif="idle";
+        
        // HealthBar bara=new HealthBar("Jucator","Viata",this.hp, this.hp);
        // getWorld().addObject(bara,0,0);
         
@@ -104,48 +111,100 @@ public class Player extends Jucator{
     
     protected void checkMove(){
         apas=false;
-        //
-        originalX = getX();
-        originalY = getY();
-        previousWorldX = worldX;
-        previousWorldY = worldY;
-      //
-        
+      
         if(Greenfoot.isKeyDown("w")){
             //merge in nord 
             apas=true;
             gif="W";
+            Item.itemGif="W"; 
             setLocation(getX(), getY() - speed);
-            worldY -= speed;
+            
         }
         
         if(Greenfoot.isKeyDown("s")){
             //merge in sud   
             apas=true;
             gif="S";
+            Item.itemGif="S"; 
             setLocation(getX(), getY() + speed);
-            worldY += speed;
+            
         
         }
         if(Greenfoot.isKeyDown("d")){
             //merg in est
             apas=true;
             gif="D";
+            Item.itemGif="D"; 
             setLocation(getX()+speed,getY());
-            worldX += speed;
+            
         }
         
         if(Greenfoot.isKeyDown("a")){
             //merg in vest
             apas=true;
             gif="A";
+            Item.itemGif="A"; 
             setLocation(getX()-speed,getY());
-            worldX -= speed;
-            }
-        
-        if(apas==false ){
-            gif="idle";
+            
         }
+        if(apas==false ){
+               if(equipSword==false&& equipLaser==false&&equipPortalGun==false&& equipIceLock==false&& equipLantern==false&&equipBlackHole==false){
+                gif="idle";
+                
+            } 
+            
+            switch(gif){
+                    case "W":{
+                        gif="Ws";
+                        Item.itemGif="W"; 
+                        break;
+                    }
+                    
+                    case "A":{
+                        gif="As";
+                        Item.itemGif="A"; 
+                        break;
+                    }
+                    
+                    case "S":{
+                        gif="Ss";
+                        Item.itemGif="S"; 
+                        break;
+                    }
+                    case "D":{
+                        gif="Ds";
+                        Item.itemGif="D"; 
+                        break;
+                    }
+                    
+                    
+                    case "Ws":{
+                        Item.itemGif="W";
+                        break;
+                    }
+                    case "As":{
+                        Item.itemGif="A";
+                        break;
+                    }
+                    case "Ss":{
+                        Item.itemGif="S";
+                        break;
+                    }
+                    case "Ds":{
+                        Item.itemGif="D";
+                        break;
+                    }
+                    default:{
+                        Item.itemGif="S";
+                    }
+                    
+                }
+         
+            
+                
+            
+        }
+       
         
     }
     
@@ -155,7 +214,9 @@ public class Player extends Jucator{
         //if(super.gif!="idle" && super.gif!="right" &&super.gif!="up" &&super.gif!="down" && super.gif!="left"){atingeNpc();}
         checkMove();
        // if(super.gif!="idle" && super.gif!="right" &&super.gif!="up" &&super.gif!="down" && super.gif!="left"){atingeNpc();}
-      
+      worldX=getX()+Scroller.scrolledX;
+      worldY=getY()+Scroller.scrolledY;
+       
         playerImg=directie.get(this.gif);
     }
     
@@ -197,16 +258,26 @@ public class Player extends Jucator{
                  timpPrec=timpCurent;
             }
             Item.itemGif=gif;
-            if(Greenfoot.isKeyDown("t")){
-                equipPortalGun=false;
-            }
+            
+            if(Greenfoot.mouseClicked(null)){
+                if(Greenfoot.getMouseInfo().getButton()==3){
+                    equipPortalGun=false;
+                }
+           }
         }
         //portalGun
+        
+        
         
         
         //sabie
          
         if(equipSword){ 
+            
+          if(getWorld().getObjects(Sabie.class).isEmpty()){
+              getWorld().addObject(new SabieHold(), getX(), getY());
+          }
+          
           if(Greenfoot.mouseClicked(null)){
             if(Greenfoot.getMouseInfo().getButton()==1){  //right 3 left 1
                 
@@ -214,7 +285,7 @@ public class Player extends Jucator{
                 if(timpCurent-timpPrec>=20)
                 {
                     if(getWorld().getObjects(Sabie.class).isEmpty()){
-                        
+                      
                         getWorld().addObject(new Sabie(),getX(),getY());
                     }
                     timpPrec=timpCurent;
@@ -222,6 +293,11 @@ public class Player extends Jucator{
                 Item.itemGif=gif; 
             }
           }
+           if(Greenfoot.mouseClicked(null)){
+            if(Greenfoot.getMouseInfo().getButton()==3){
+                equipSword=false;
+            }
+           }
         }
         //sabie
         
@@ -229,9 +305,74 @@ public class Player extends Jucator{
         
         
         
+        //laser
+        
+        if(equipLaser){
+               
+          if(getWorld().getObjects(Sabie.class).isEmpty()){
+              getWorld().addObject(new LaserHold(), getX(), getY());
+          }
+          
+            long timpCurent=System.currentTimeMillis(); 
+            if(Greenfoot.mouseClicked(null)){
+                if(Greenfoot.getMouseInfo().getButton()==1){  
+                    if(timpCurent-timpPrec>=20) {
+                        
+                        if(getWorld().getObjects(PortalGun.class).isEmpty()){
+                            
+                            
+                                MouseInfo mouseul = Greenfoot.getMouseInfo();
+                                if(mouseul!=null){
+                                    
+                                    double delta_x = Greenfoot.getMouseInfo().getX() - getX();
+                                    double delta_y =  Greenfoot.getMouseInfo().getY()-getY();
+                                    double grade =Math.toDegrees( Math.atan2(delta_y, delta_x));
+                               
+                            
+                                    getWorld().addObject(new Laser(gradLaser(grade)),getX(),getY()); 
+                                }
+                            timpPrec=timpCurent;
+                        }
+                        
+                    }
+                        Item.itemGif=gif;
+                }
+            }
+            if(Greenfoot.mouseClicked(null)){
+                if(Greenfoot.getMouseInfo().getButton()==3){
+                    equipLaser=false;
+            }
+           }
+        }
+        //laser
         
         
         
+        
+        
+        
+    }
+    
+    private double gradLaser(double grade){
+        switch(Item.itemGif){
+            case "W":{
+                
+            }
+            case "A":{
+                
+                
+            }
+            case "S":{
+                
+                
+            }
+            case "D":{
+                
+                
+            }
+        }
+        
+        return grade;
     }
     
     
@@ -265,6 +406,17 @@ public class Player extends Jucator{
         
     
     public void act() {
+        
+        System.out.println("\nwx");
+        
+        System.out.println(worldX);
+        
+        System.out.println("\ngetx");
+        
+        System.out.println(Scroller.scrolledX);
+        
+        
+        
         
        checkPauza();
         

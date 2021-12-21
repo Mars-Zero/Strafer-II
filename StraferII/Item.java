@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.List;
 
 
@@ -15,25 +15,26 @@ public class Item extends Actor
             Actor player = (Actor)players.get(0);
              setLocation(player.getX(),player.getY()+15);
         }
+        /*
         if(Greenfoot.isKeyDown("a")){
-            itemGif="left";
+            itemGif="A";
         }
         else if(Greenfoot.isKeyDown("d")){
-            itemGif="right";
+            itemGif="D";
         }
         else if(Greenfoot.isKeyDown("w")){
-            itemGif="up";
+            itemGif="W";
         }
         else if(Greenfoot.isKeyDown("s")){
-            itemGif="down";
+            itemGif="S";
         }
         else{
-            itemGif="down";
-        }
+            itemGif="S";
+        }*/
     }
     
     public void act() 
     {
-        
+       
     }    
 }

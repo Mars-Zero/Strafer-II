@@ -11,12 +11,12 @@ public class PortalGun extends Item{
    private static Actor player;
     public PortalGun(){
         
-         directie.put("right",new GifImage("images/item/portalGunD.gif"));
-        directie.put("up",new GifImage("images/item/portalGunW.gif"));
-        directie.put("left",new GifImage("images/item/portalGunA.gif"));
-        directie.put("down",new GifImage("images/item/portalGunS.gif"));
+         directie.put("D",new GifImage("images/item/portalGunD.gif"));
+        directie.put("W",new GifImage("images/item/portalGunW.gif"));
+        directie.put("A",new GifImage("images/item/portalGunA.gif"));
+        directie.put("S",new GifImage("images/item/portalGunS.gif"));
        
-        portalGunImg=directie.get("right");
+        portalGunImg=directie.get("D");
         this.time=0;
     
      
@@ -31,7 +31,7 @@ public class PortalGun extends Item{
     
     private void addPortal(){
         if(Greenfoot.mouseClicked(null)){
-            if(Greenfoot.getMouseInfo().getButton()==3){  //right 3 left 1
+            if(Greenfoot.getMouseInfo().getButton()==1){  //right 3 left 1
                 getWorld().addObject(new Portal(),Greenfoot.getMouseInfo().getX(),Greenfoot.getMouseInfo().getY());
             }
         }
@@ -44,12 +44,12 @@ public class PortalGun extends Item{
     }
     
     public void act() {
-       
+        
         if(!WorldData.PAUZA){
             move();
             addPortal();
             removePortalGun(); 
         }
-        setImage(portalGunImg.getCurrentImage());
+       setImage(portalGunImg.getCurrentImage());
     }    
 }

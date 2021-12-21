@@ -36,7 +36,7 @@ public class Inventory extends Menu{
         Player.equipIceLock=false;
         Player.equipLantern=false;
         Player.equipBlackHole=false;
-        }
+    }
     
     public String getItemSelected(){
         switch(this.nrItem){

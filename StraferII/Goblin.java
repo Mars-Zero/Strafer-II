@@ -92,7 +92,7 @@ public class Goblin extends Npc
                 playerY++;
             }
             int gY=pY/super.rez;
-            if((pY)%super.rez>0)
+            if(pY%super.rez>0)
             {
                 gY++;
             }
@@ -153,6 +153,7 @@ public class Goblin extends Npc
                     
                         gif="W";
                         dist+=speed;
+                        
                         pY-=speed;
                         setLocation(pX,pY);
                         gifSabie=gif;
@@ -173,6 +174,7 @@ public class Goblin extends Npc
                
                         gif="S";
                         dist+=speed;
+                        
                         pY+=speed;
                         setLocation(pX,pY);
                         gifSabie=gif;
@@ -183,6 +185,7 @@ public class Goblin extends Npc
                    
                         gif="A";
                         dist+=speed;
+                        
                         pX-=speed;
                         setLocation(pX,pY);
                         gifSabie=gif;
@@ -192,6 +195,7 @@ public class Goblin extends Npc
                 case "WD":{
                         gif="D";
                         dist+=speed;
+                        
                         pX+=speed;
                         pY-=speed;
                         setLocation(pX,pY);
@@ -202,6 +206,7 @@ public class Goblin extends Npc
                 case "WA":{
                         gif="A";
                         dist+=speed;
+                        
                         pX-=speed;
                         pY-=speed;
                         setLocation(pX,pY);
@@ -222,6 +227,7 @@ public class Goblin extends Npc
                 case "SA":{
                         gif="A";
                         dist+=speed;
+                        
                         pX-=speed;
                         pY+=speed;
                         setLocation(pX,pY);
@@ -361,7 +367,8 @@ public class Goblin extends Npc
     public void act() 
     {
         
-     if(!WorldData.PAUZA){
+     if(WorldData.PAUZA==false && super.checkPlayerInChunck()==true){
+         
             updateScroll();
             gif="idle";
             if(mort==true)

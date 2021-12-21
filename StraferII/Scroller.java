@@ -5,7 +5,7 @@ public class Scroller
     private World world; // view window world
     private GreenfootImage scrollImage; // scrolling image
     private boolean limited; // flag to indicate whether scrolling is limited or not
-    private int scrolledX, scrolledY; // current scrolled distances
+    public static int scrolledX, scrolledY; // current scrolled distances
     private int wide, high; // if limited, dimensions of scrolling area else of image to wrap
    
     /**
@@ -17,6 +17,7 @@ public class Scroller
      */
     public Scroller(World viewWorld, GreenfootImage image)
     {
+        scrolledX=0; scrolledY=0;
         world = viewWorld;
         scrollImage = image;
         if (image != null)
@@ -43,6 +44,9 @@ public class Scroller
      */
     public Scroller(World viewWorld, GreenfootImage image, int wide, int high)
     {
+        
+        scrolledX=0; scrolledY=0;
+        
         this.wide = wide;
         this.high = high;
         limited = true;

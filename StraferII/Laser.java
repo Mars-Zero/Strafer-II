@@ -1,19 +1,52 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.HashMap;
+import java.util.ArrayList;
 
-/**
- * Write a description of class Laser here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Laser extends Item
 {
-    /**
-     * Act - do whatever the Laser wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+  
+    public static int damage=15;
+    
+     
+    private long time=0;
+    private int speed=6;
+    private int caz=0;
+    
+    GifImage laserImg=new GifImage("item/laserPlayer.gif");
+    
+    public Laser(double  grade){
+        
+        this.setRotation((int)grade);
+   
+        
+        this.time=0;
+       
+
+        //GreenfootSound sunet=new GreenfootSound("shootshoot.mp3");
+       // sunet.play();
+    }
+    
+    
+     
+    
+    protected void atac(){
+       move(speed);
+    }
+    
     public void act() 
     {
-        // Add your action code here.
+        
+        //super.damage();
+        setImage(laserImg.getCurrentImage());
+         
+        if(!WorldData.PAUZA){
+            if(isAtEdge()|| isTouching(WorldStructures.class)){
+                getWorld().removeObject(this);
+                return;
+            }
+            
+        
+            atac();
+        }
     }    
 }
