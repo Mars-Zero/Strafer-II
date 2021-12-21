@@ -79,7 +79,7 @@ public class Goblin extends Npc
     protected void gaseste(){
         List players = getWorld().getObjects(Player.class);
         if (!players.isEmpty())
-        {
+        {   
             Actor player = (Actor)players.get(0);
             int playerX = ((player.getX()+scrolledX))/super.rez;
             if((player.getX()+scrolledX)%super.rez>0)
