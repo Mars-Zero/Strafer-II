@@ -11,9 +11,13 @@ public class Buton extends UI{
     protected void checkMouse(){
          MouseInfo mouseul = Greenfoot.getMouseInfo();
         if(mouseul!=null){
-            if(mouseul.getX()<=img0.getX()+img0.getHeight()/2){
-                setImage(img1);
-            }
+            if(mouseul.getX()>=img0.getX()-img0.getWidth()/2 && mouseul.getX()<=img0.getX()+img0.getWidth()/2){
+                
+                if(mouseul.getY()>=img0.getY()-img0.getHeight()/2 && mouseul.getY()<=img0.getY()+img0.getHeight()/2){
+                    setImage(img1);
+
+                    
+                }
         }
     }
 
