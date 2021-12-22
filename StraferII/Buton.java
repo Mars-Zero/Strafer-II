@@ -1,19 +1,23 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
+public class Buton extends UI{
+    
+    GreenfootImage img0,img1;
 
-/**
- * Write a description of class Buton here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Buton extends UI
-{
-    /**
-     * Act - do whatever the Buton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
+    public buton(String img){
+        img0=new GreenfootImage(img+"0.png");
+        img1=new GreenfootImage(img+"1.png");
+    }
+
+    protected void checkMouse(){
+         MouseInfo mouseul = Greenfoot.getMouseInfo();
+        if(mouseul!=null){
+            if(mouseul.getX()<=img0.getX()+img0.getHeight()/2){
+                setImage(img1);
+            }
+        }
+    }
+
+    public void act() {
+
     }    
 }
