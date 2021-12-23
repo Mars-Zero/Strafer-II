@@ -382,14 +382,16 @@ public class Player extends Jucator{
           
         if(!toggledPause){
             
-                if(Greenfoot.isKeyDown("p")){
+                if(Greenfoot.isKeyDown("escape")){
                     toggledPause=!toggledPause;
                     WorldData.PAUZA=true;
                 
-                    getWorld().addObject(new Pause(), 1024/2, 576/2);
+                    Pause pause=new Pause();
+                    getWorld().addObject(pause, 1024/2, 576/2);
                    
+    
                 } 
-          
+        
         }
         
         if(Greenfoot.isKeyDown("0")){

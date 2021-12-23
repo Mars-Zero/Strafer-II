@@ -1,27 +1,70 @@
-import greenfoot.*; 
-public class Buton extends UI{
-    
-    GreenfootImage img0,img1;
 
-    public buton(String img){
-        img0=new GreenfootImage(img+"0.png");
-        img1=new GreenfootImage(img+"1.png");
+import greenfoot.*;
+
+public class Buton extends UI {
+
+    GreenfootImage img0, img1;
+    private String img = "";
+    boolean clicked = false;
+    Menu menu;
+
+    public Buton(String imgref, Menu menuref) {
+        img = imgref;
+        menu = menuref;
+        img0 = new GreenfootImage("UI/buton/" + img + "0.png");
+        img1 = new GreenfootImage("UI/buton/" + img + "1.png");
+        setImage(img0);
+
     }
 
-    protected void checkMouse(){
-         MouseInfo mouseul = Greenfoot.getMouseInfo();
-        if(mouseul!=null){
-            if(mouseul.getX()>=img0.getX()-img0.getWidth()/2 && mouseul.getX()<=img0.getX()+img0.getWidth()/2){
-                
-                if(mouseul.getY()>=img0.getY()-img0.getHeight()/2 && mouseul.getY()<=img0.getY()+img0.getHeight()/2){
-                    setImage(img1);
+    protected void checkHover() {
 
-                    
-                }
+        if (Greenfoot.mouseMoved(this)) {
+            setImage(img1);
+
         }
+        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) {
+            setImage(img0);
+        }
+
+    }
+
+    protected void checkClick() {
+
+        if (Greenfoot.mouseClicked(this)) {
+
+            if (Greenfoot.getMouseInfo().getButton() == 1) {
+                switch (img) {
+                    case "Next": {
+
+                    }
+                    case "X": {
+                        getWorld().removeObject(menu);
+                        getWorld().removeObject(this);
+                        break;
+                    }
+                    case "Resume": {
+                        System.out.print(img);
+                        WorldData.PAUZA = false;
+                        Player.toggledPause = false;
+                        getWorld().removeObject(menu);
+                        getWorld().removeObjects(getWorld().getObjects(Buton.class));
+                        break;
+
+                    }
+                    default: {
+
+                    }
+                }
+
+            }
+        }
+
     }
 
     public void act() {
+        checkClick();
+        checkHover();
+    }
 
-    }    
 }
