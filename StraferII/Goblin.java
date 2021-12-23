@@ -24,25 +24,25 @@ public class Goblin extends Npc
     private long timpPrec;
     public  String gifSabie;
     
-    private int pX;//pozitia pe X pe mapa
-    
+    private int worldX;//pozitia pe X pe mapa
+    private int worldY;//pozitia pe Y pe mapa
     
     public long getpX() {
-        return pX;
+        return worldX;
     }
 
-    public void setpX(int pX) {
-        this.pX = pX;
+    public void setWorldX(int worldX) {
+        this.worldX = worldX;
     }
 
     public long getpY() {
-        return pY;
+        return worldY;
     }
 
-    public void setpY(int pY) {
-        this.pY = pY;
+    public void setWorldY(int worldY) {
+        this.worldY = worldY;
     }
-    private int pY;//pozitia pe Y pe mapa
+    
     
     Vector2d vect;
     
@@ -50,8 +50,8 @@ public class Goblin extends Npc
        super(scrl);
        this.scrolledX=super.scrolledX;
        this.scrolledY=super.scrolledY;
-      pX=x;
-      pY=y;
+      worldX=x;
+      worldY=y;
        
        this.mort=false;
         
@@ -81,39 +81,44 @@ public class Goblin extends Npc
         if (!players.isEmpty())
         {   
             Actor player = (Actor)players.get(0);
-            int playerX = ((player.getX()+scrolledX))/super.rez;
-            if((player.getX()+scrolledX)%super.rez>0)
+            int playerX = (Player.worldX)/super.rez;
+            if(Player.worldY%super.rez>0)
             {
                 playerX++;
             }
-            int playerY = (player.getY()+scrolledY)/super.rez;
-            if((player.getY()+scrolledY)%super.rez>0)
+            int playerY = (Player.worldY)/super.rez;
+            if(Player.worldY%super.rez>0)
             {
                 playerY++;
             }
-            int gY=pY/super.rez;
-            if(pY%super.rez>0)
+            int gY=(worldY)/super.rez;
+            if(worldY%super.rez>0)
             {
+                
                 gY++;
             }
-            int gX=pX/super.rez;
-            if(pX%super.rez>0)
+            int gX=(worldX)/super.rez;
+            if(worldX%super.rez>0)
             {
                 gX++;
             }
             
-            System.out.println("GX\n");
-            System.out.println(playerX);
+           // System.out.println("GX\n");
+           // System.out.println(playerX);
  
-            System.out.println("GY\n");
-            System.out.println(playerY);
+            //System.out.println("GY\n");
+          //  System.out.println(playerY);
+          System.out.println("gobX");
+          System.out.println(worldX);//+Scroller.scrolledX);
+          System.out.println("playerX");
+          System.out.println(Player.worldX);
            super.Lee(gY,gX,playerY,playerX);
         }
        
        if(super.gasit==true){
            Actor player = (Actor)players.get(0);
-           if( isTouching(Jucator.class)&& ((player.getY()+scrolledY)<=(pY)-10||(player.getX()+scrolledX)<=(pX)-15||
-                                              (player.getY()+scrolledY)>=(pY)+10||(player.getX()+scrolledX)>=(pX)+15))
+           if( isTouching(Jucator.class)&& ((Player.worldY)<=(worldY)-10||(Player.worldX)<=(worldX)-15||
+                                              (Player.worldY)>=(worldY)+10||(Player.worldX)>=(worldX)+15))
            {
                gif="idle";
                
@@ -132,17 +137,22 @@ public class Goblin extends Npc
     
    
     protected void move(){
+        worldX=getX()+Scroller.scrolledX;
+        
+        worldY=getY()+Scroller.scrolledY;
+        
+        
         pasi=super.ord.size()-1;
         if(pasi>0){
             
             String directie=super.ord.get(pasi).toString();
-             int gY=(pY)/super.rez;
-            if((pY)%super.rez>0)
+             int gY=(worldY)/super.rez;
+            if((worldY)%super.rez>0)
             {
                 gY++;
             }
-            int gX=(pX)/super.rez;
-            if((pX)%super.rez>0)
+            int gX=(worldX)/super.rez;
+            if((worldX)%super.rez>0)
             {
                 gX++;
             }
@@ -154,8 +164,8 @@ public class Goblin extends Npc
                         gif="W";
                         dist+=speed;
                         
-                        pY-=speed;
-                        setLocation(pX,pY);
+                        worldY-=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                        
                     break;
@@ -164,8 +174,8 @@ public class Goblin extends Npc
                 
                         gif="D";
                         dist+=speed;
-                        pX+=speed;
-                        setLocation(pX,pY);
+                        worldX+=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                    
                     break;
@@ -175,8 +185,8 @@ public class Goblin extends Npc
                         gif="S";
                         dist+=speed;
                         
-                        pY+=speed;
-                        setLocation(pX,pY);
+                        worldY+=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                  
                     break;
@@ -186,8 +196,8 @@ public class Goblin extends Npc
                         gif="A";
                         dist+=speed;
                         
-                        pX-=speed;
-                        setLocation(pX,pY);
+                        worldX-=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                    
                     break;
@@ -196,9 +206,9 @@ public class Goblin extends Npc
                         gif="D";
                         dist+=speed;
                         
-                        pX+=speed;
-                        pY-=speed;
-                        setLocation(pX,pY);
+                        worldX+=speed;
+                        worldY-=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                    
                         break;
@@ -207,9 +217,9 @@ public class Goblin extends Npc
                         gif="A";
                         dist+=speed;
                         
-                        pX-=speed;
-                        pY-=speed;
-                        setLocation(pX,pY);
+                        worldX-=speed;
+                        worldY-=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                        
                         break;
@@ -217,9 +227,9 @@ public class Goblin extends Npc
                 case "SD":{
                         gif="D";
                         dist+=speed;
-                        pY+=speed;
-                        pX+=speed;
-                        setLocation(pX,pY);
+                        worldY+=speed;
+                        worldX+=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                         
                         break;
@@ -228,9 +238,9 @@ public class Goblin extends Npc
                         gif="A";
                         dist+=speed;
                         
-                        pX-=speed;
-                        pY+=speed;
-                        setLocation(pX,pY);
+                        worldX-=speed;
+                        worldY+=speed;
+                        setLocation(worldX,worldY);
                         gifSabie=gif;
                          
                         break;
@@ -245,13 +255,13 @@ public class Goblin extends Npc
                 dist=0;
                 pasi--;
             }
-            gY=pY/super.rez;
-            if(pY%super.rez>0)
+            gY=worldY/super.rez;
+            if(worldY%super.rez>0)
             {
                 gY++;
             }
-            gX=pX/super.rez;
-            if(pX%super.rez>0)
+            gX=worldX/super.rez;
+            if(worldX%super.rez>0)
             {
                 gX++;
             }
@@ -263,25 +273,25 @@ public class Goblin extends Npc
      protected void atins(){
      if(isTouching(Perete.class)&& directie.equals("W"))
      {
-         pY+=speed;
-         setLocation(pX,pY);
+         worldY+=speed;
+         setLocation(worldX,worldY);
      }
      else if(isTouching(Perete.class)&& directie.equals("S"))
      {
-          pY-=speed;
-         setLocation(pX,pY);
+          worldY-=speed;
+         setLocation(worldX,worldY);
 
      }
      else if(isTouching(Perete.class)&& directie.equals("D"))
      {
-          pX-=speed;
-         setLocation(pX,pY);
+          worldX-=speed;
+         setLocation(worldX,worldY);
         
      }
      else if(isTouching(Perete.class)&& directie.equals("A"))
      {
-          pX+=speed;
-         setLocation(pX,pY);
+          worldX+=speed;
+         setLocation(worldX,worldY);
 
      }
      

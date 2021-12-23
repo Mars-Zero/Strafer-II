@@ -409,13 +409,11 @@ public class Player extends Jucator{
     
     public void act() {
         
-        System.out.println("\nwx");
+        //System.out.println("\nwx");
         
-        System.out.println(worldX);
+        //System.out.println(worldX);
         
-        System.out.println("\ngetx");
-        
-        System.out.println(Scroller.scrolledX);
+   
         
         
         

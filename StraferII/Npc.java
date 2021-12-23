@@ -79,31 +79,26 @@ public class Npc extends Movers
         mat[startL][startC]=1;
        
         int st=0,dr=0;
-        if(startL==x && startC==y)
-        {
+        if(startL==x && startC==y){
             st=1;
         }
         
         gasit=false;
-        while(st<=dr)
-        {
+        while(st<=dr){
             Pozitie start=v.get(st);
             int l=start.lin;
             int c=start.col;
             if(start.dist<dMax) {
-                for(int i=0; i<8; i++)
-                {
+                for(int i=0; i<8; i++){
 
-                    if(mat[l+dx[i]][c+dy[i]]==0 && l+dx[i]>0 && c+dy[i]>0 &&l+dx[i]<1000 && c+dy[i]<1000 )
-                    {
+                    if(mat[l+dx[i]][c+dy[i]]==0 && l+dx[i]>0 && c+dy[i]>0 &&l+dx[i]<1000 && c+dy[i]<1000 ){
                         //nu am mai fost aici
                         //adaug in coada
                         dr++;
                         Pozitie elem=new Pozitie(l+dx[i],c+dy[i],st,start.dist+1);
                         v.add(elem);
                         mat[elem.lin][elem.col]=mat[l][c]+1;//marchez elementul ca parcurs
-                        if(elem.lin==x && elem.col==y)
-                        {
+                        if(elem.lin==x && elem.col==y){
                             //gasesc playerul
                             gasit=true;
                             break;
@@ -120,8 +115,7 @@ public class Npc extends Movers
         
         //gasesc pathul
         int val=dr;
-        while(v.get(val).prec!=-1 && v.get(val).prec!=-2)
-        {
+        while(gasit && v.get(val).prec!=-1 && v.get(val).prec!=-2){
             ord.add(new StringBuilder());
             if(v.get(val).lin>v.get(v.get(val).prec).lin)
                 {
