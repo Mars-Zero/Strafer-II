@@ -23,10 +23,7 @@ public class Goblin extends Npc {
     private long timpPrec;
     public String gifSabie;
 
-    private int worldX;//pozitia pe X pe mapa
-    private int worldY;//pozitia pe Y pe mapa
-    private int prevsx=Scroller.scrolledX;
-    private int prevsy=Scroller.scrolledY;
+  
     public long getpX() {
         return worldX;
     }
@@ -97,14 +94,6 @@ public class Goblin extends Npc {
                 gX++;
             }
 
-            // System.out.println("GX\n");
-            // System.out.println(playerX);
-            //System.out.println("GY\n");
-            //  System.out.println(playerY);
-            System.out.println("gobX");
-            System.out.println(worldX );
-            System.out.println("playerX");
-            System.out.println(Player.worldX);
             super.Lee(gY, gX, playerY, playerX);
         }
 
@@ -124,9 +113,6 @@ public class Goblin extends Npc {
     }
 
     protected void move() {
-        //worldX=getX()+Scroller.scrolledX;
-
-        //worldY=getY()+Scroller.scrolledY;
         pasi = super.ord.size() - 1;
         if (pasi > 0) {
 
@@ -142,11 +128,7 @@ public class Goblin extends Npc {
             if (super.matElem[gY][gX] != -1) {
                 super.matElem[gY][gX] = 0;
             }
-            //
-            
-            
             int difpx=Scroller.scrolledX-prevsx;
-            
             int difpy=Scroller.scrolledY-prevsy;
             
             worldX-=difpx;

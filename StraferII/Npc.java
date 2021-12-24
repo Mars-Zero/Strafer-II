@@ -27,7 +27,12 @@ public class Npc extends Movers
     protected String gif="Idle";
     //protected static String[] ord=new String[121001];
     protected ArrayList<StringBuilder> ord=new ArrayList<>();
-     protected boolean gasit=false;
+    protected boolean gasit=false;
+    
+    protected int worldX;//pozitia pe X pe mapa
+    protected int worldY;//pozitia pe Y pe mapa
+    protected int prevsx=Scroller.scrolledX;
+    protected int prevsy=Scroller.scrolledY;
      
      public static int[][] matElem=new int[110][110]; //matricea copiata din nivelx
      
@@ -160,12 +165,9 @@ public class Npc extends Movers
             
            val=v.get(val).prec;
         }
-    
-    
-        
-
      
     }
+    
     
     
     
