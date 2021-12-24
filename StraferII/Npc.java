@@ -60,6 +60,12 @@ public class Npc extends Movers
         return false;
      }
      
+    
+     @Override public void setLocation(int x,int y){
+         int a=x,b=y;
+         super.setLocation( a,b);
+     }
+     
     protected void Lee(int startL, int startC, int x, int y){
         int[][] mat=new int[1000][1000];
         for(int i=0; i<1000; i++){

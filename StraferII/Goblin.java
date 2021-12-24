@@ -1,32 +1,32 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+public class Goblin extends Npc {
 
-public class Goblin extends Npc
-{
-    
-    public static int speed=5;
-    private int hp=150;
+    public static int speed = 5;
+    private int hp = 150;
 
     Scroller scroller;
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
-    GifImage playerImg=directie.get(super.gif);
+    GifImage playerImg = directie.get(super.gif);
     private int pasi;
-    private int dist=0;
-    
-    private boolean atingePlayer=false;
-    private long timpSab=0;
-    private long timpBolt=0;
-    private long timpAtins=0;
-    private boolean mort=false;
+    private int dist = 0;
+
+    private boolean atingePlayer = false;
+    private long timpSab = 0;
+    private long timpBolt = 0;
+    private long timpAtins = 0;
+    private boolean mort = false;
     private long timpPrec;
-    public  String gifSabie;
-    
+    public String gifSabie;
+
     private int worldX;//pozitia pe X pe mapa
     private int worldY;//pozitia pe Y pe mapa
-    
+    private int prevsx=Scroller.scrolledX;
+    private int prevsy=Scroller.scrolledY;
     public long getpX() {
         return worldX;
     }
@@ -42,263 +42,233 @@ public class Goblin extends Npc
     public void setWorldY(int worldY) {
         this.worldY = worldY;
     }
-    
-    
+
     Vector2d vect;
-    
-    public Goblin(Scroller scrl,int x,int y){
-       super(scrl);
-       this.scrolledX=super.scrolledX;
-       this.scrolledY=super.scrolledY;
-      worldX=x;
-      worldY=y;
-       
-       this.mort=false;
-        
-        directie.put("D",new GifImage("npc/inamic/goblin/goblin_m_D.gif"));
-        directie.put("W",new GifImage("npc/inamic/goblin/goblin_m_W.gif"));
-        directie.put("A",new GifImage("npc/inamic/goblin/goblin_m_A.gif"));
-        directie.put("S",new GifImage("npc/inamic/goblin/goblin_m_S.gif"));
+
+    public Goblin(Scroller scrl, int x, int y) {
+        super(scrl);
+        prevsx=Scroller.scrolledX;
+        prevsy=Scroller.scrolledY;
+        worldX = x;
+        worldY = y;
+
+        this.mort = false;
+
+        directie.put("D", new GifImage("npc/inamic/goblin/goblin_m_D.gif"));
+        directie.put("W", new GifImage("npc/inamic/goblin/goblin_m_W.gif"));
+        directie.put("A", new GifImage("npc/inamic/goblin/goblin_m_A.gif"));
+        directie.put("S", new GifImage("npc/inamic/goblin/goblin_m_S.gif"));
         directie.put("idle", new GifImage("npc/inamic/goblin/goblin_m_Idle.gif"));
-        
-        directie.put("death",new GifImage("npc/inamic/goblin/goblin_death.gif"));
-        
-        gif="idle";
-       
-        
-        this.timpSab=0;
-        this.timpBolt=0;
-        this.timpAtins=0;
-        
-        this.timpPrec=System.currentTimeMillis();
+
+        directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));
+
+        gif = "idle";
+
+        this.timpSab = 0;
+        this.timpBolt = 0;
+        this.timpAtins = 0;
+
+        this.timpPrec = System.currentTimeMillis();
     }
-    
-   
-    
-    
-    protected void gaseste(){
+
+    protected void gaseste() {
         List players = getWorld().getObjects(Player.class);
-        if (!players.isEmpty())
-        {   
-            Actor player = (Actor)players.get(0);
-            int playerX = (Player.worldX)/super.rez;
-            if(Player.worldY%super.rez>0)
-            {
+        if (!players.isEmpty()) {
+            Actor player = (Actor) players.get(0);
+
+            int playerX = (Player.worldX) / super.rez;
+            if (Player.worldY % super.rez > 0) {
                 playerX++;
             }
-            int playerY = (Player.worldY)/super.rez;
-            if(Player.worldY%super.rez>0)
-            {
+
+            int playerY = (Player.worldY) / super.rez;
+            if (Player.worldY % super.rez > 0) {
                 playerY++;
             }
-            int gY=(worldY)/super.rez;
-            if(worldY%super.rez>0)
-            {
-                
+
+            int gY = (worldY+Scroller.scrolledY) / super.rez;
+            if ((worldY+Scroller.scrolledY) % super.rez > 0) {
+
                 gY++;
             }
-            int gX=(worldX)/super.rez;
-            if(worldX%super.rez>0)
-            {
+
+            int gX = (worldX+Scroller.scrolledX) / super.rez;
+            if ((worldX+Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
-            
-           // System.out.println("GX\n");
-           // System.out.println(playerX);
- 
+
+            // System.out.println("GX\n");
+            // System.out.println(playerX);
             //System.out.println("GY\n");
-          //  System.out.println(playerY);
-          System.out.println("gobX");
-          System.out.println(worldX);//+Scroller.scrolledX);
-          System.out.println("playerX");
-          System.out.println(Player.worldX);
-           super.Lee(gY,gX,playerY,playerX);
+            //  System.out.println(playerY);
+            System.out.println("gobX");
+            System.out.println(worldX );
+            System.out.println("playerX");
+            System.out.println(Player.worldX);
+            super.Lee(gY, gX, playerY, playerX);
         }
-       
-       if(super.gasit==true){
-           Actor player = (Actor)players.get(0);
-           if( isTouching(Jucator.class)&& ((Player.worldY)<=(worldY)-10||(Player.worldX)<=(worldX)-15||
-                                              (Player.worldY)>=(worldY)+10||(Player.worldX)>=(worldX)+15))
-           {
-               gif="idle";
-               
-           }
-           else
-           {
+
+        if (super.gasit == true) {
+            if (isTouching(Jucator.class) && ((Player.worldY) <= (worldY + Scroller.scrolledY) - 10 || (Player.worldX) <= (worldX+Scroller.scrolledX) - 15
+                    || (Player.worldY) >= (worldY+Scroller.scrolledY) + 10 || (Player.worldX) >= (worldX+Scroller.scrolledX) + 15)) {
+                gif = "idle";
+
+            } else {
                 move();
-           }
+            }
+        } else {
+            gif = "idle";
         }
-        else{
-            gif="idle";
-        }
-        playerImg=directie.get(super.gif);
-   
+        playerImg = directie.get(super.gif);
+
     }
-    
-   
-    protected void move(){
-        worldX=getX()+Scroller.scrolledX;
-        
-        worldY=getY()+Scroller.scrolledY;
-        
-        
-        pasi=super.ord.size()-1;
-        if(pasi>0){
-            
-            String directie=super.ord.get(pasi).toString();
-             int gY=(worldY)/super.rez;
-            if((worldY)%super.rez>0)
-            {
+
+    protected void move() {
+        //worldX=getX()+Scroller.scrolledX;
+
+        //worldY=getY()+Scroller.scrolledY;
+        pasi = super.ord.size() - 1;
+        if (pasi > 0) {
+
+            String directie = super.ord.get(pasi).toString();
+            int gY = (worldY+Scroller.scrolledY) / super.rez;
+            if ((worldY+Scroller.scrolledY) % super.rez > 0) {
                 gY++;
             }
-            int gX=(worldX)/super.rez;
-            if((worldX)%super.rez>0)
-            {
+            int gX = (worldX+Scroller.scrolledX) / super.rez;
+            if ((worldX+Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
-            if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=0;}
-            //
-            switch(directie){
-                case "W":{
-                    
-                        gif="W";
-                        dist+=speed;
-                        
-                        worldY-=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                       
-                    break;
-                }
-                case "D":{
-                
-                        gif="D";
-                        dist+=speed;
-                        worldX+=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                   
-                    break;
-                }
-                case "S":{
-               
-                        gif="S";
-                        dist+=speed;
-                        
-                        worldY+=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                 
-                    break;
-                }
-                case "A":{
-                   
-                        gif="A";
-                        dist+=speed;
-                        
-                        worldX-=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                   
-                    break;
-                }
-                case "WD":{
-                        gif="D";
-                        dist+=speed;
-                        
-                        worldX+=speed;
-                        worldY-=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                   
-                        break;
-                }
-                case "WA":{
-                        gif="A";
-                        dist+=speed;
-                        
-                        worldX-=speed;
-                        worldY-=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                       
-                        break;
-                }
-                case "SD":{
-                        gif="D";
-                        dist+=speed;
-                        worldY+=speed;
-                        worldX+=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                        
-                        break;
-                }
-                case "SA":{
-                        gif="A";
-                        dist+=speed;
-                        
-                        worldX-=speed;
-                        worldY+=speed;
-                        setLocation(worldX,worldY);
-                        gifSabie=gif;
-                         
-                        break;
-                }
-  
-                
+            if (super.matElem[gY][gX] != -1) {
+                super.matElem[gY][gX] = 0;
             }
-          // lovitSabie();
-          // lovitLaser();
-            if(dist>=10)
-            {
-                dist=0;
+            //
+            
+            
+            int difpx=Scroller.scrolledX-prevsx;
+            
+            int difpy=Scroller.scrolledY-prevsy;
+            
+            worldX-=difpx;
+            worldY-=difpy;
+            
+            switch (directie) {
+                case "W": {
+
+                    gif = "W";
+                    dist += speed;
+
+                    worldY -= (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "D": {
+
+                    gif = "D";
+                    dist += speed;
+                    
+                    worldX += (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "S": {
+
+                    gif = "S";
+                    dist += speed;
+
+                    worldY += (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "A": {
+
+                    gif = "A";
+                    dist += speed;
+
+                    worldX -= (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "WD": {
+                    gif = "D";
+                    dist += speed;
+
+                    worldX += (speed);
+                    worldY -= (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "WA": {
+                    gif = "A";
+                    dist += speed;
+
+                    worldX -= (speed);
+                    worldY -= (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "SD": {
+                    gif = "D";
+                    dist += speed;
+                    
+                    worldY += (speed);
+                    worldX += (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                case "SA": {
+                    gif = "A";
+                    dist += speed;
+
+                    worldX -= (speed);
+                    worldY += (speed);
+                    super.setLocation(worldX, worldY);
+                    gifSabie = gif;
+
+                    break;
+                }
+                 
+
+            }
+            prevsx=Scroller.scrolledX;
+            prevsy=Scroller.scrolledY;
+            // lovitSabie();
+            // lovitLaser();
+            if (dist >= 10) {
+                dist = 0;
                 pasi--;
             }
-            gY=worldY/super.rez;
-            if(worldY%super.rez>0)
-            {
+            gY = (worldY+Scroller.scrolledY) / super.rez;
+            if ((worldY+Scroller.scrolledY) % super.rez > 0) {
                 gY++;
             }
-            gX=worldX/super.rez;
-            if(worldX%super.rez>0)
-            {
+            gX = (worldX+Scroller.scrolledX) / super.rez;
+            if ((worldX+Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
-          
+
             //if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=-2;}
             //
         }
     }
-     protected void atins(){
-     if(isTouching(Perete.class)&& directie.equals("W"))
-     {
-         worldY+=speed;
-         setLocation(worldX,worldY);
-     }
-     else if(isTouching(Perete.class)&& directie.equals("S"))
-     {
-          worldY-=speed;
-         setLocation(worldX,worldY);
 
-     }
-     else if(isTouching(Perete.class)&& directie.equals("D"))
-     {
-          worldX-=speed;
-         setLocation(worldX,worldY);
-        
-     }
-     else if(isTouching(Perete.class)&& directie.equals("A"))
-     {
-          worldX+=speed;
-         setLocation(worldX,worldY);
+    protected void lovitSabie() {
 
-     }
-     
-    }
-   /*  protected void lovitSabie(){
-        
-         
+        /* 
         if(isTouching(Sabie.class)){
             timpSab++;//cat timp ating ating asteroidul
             if(timpSab>=16)
@@ -342,11 +312,11 @@ public class Goblin extends Npc
         }
         else if(timpBolt>0){
             timpBolt=0;
-        }
+        }*/
     }
-    */
-    protected void atac(){
-        
+
+    protected void atac() {
+
         /*
             long timpCurent=System.currentTimeMillis(); 
             if(timpCurent-timpPrec>=950)
@@ -368,23 +338,20 @@ public class Goblin extends Npc
                 timpPrec=timpCurent;
             }
             
-     */
-        
+         */
     }
-    long timpMort=0;
-    
-    
-    public void act() 
-    {
-        
-     if(WorldData.PAUZA==false && super.checkPlayerInChunck()==true){
-         
-            updateScroll();
-            gif="idle";
-            if(mort==true)
-            {
-                //moare
+    long timpMort = 0;
+
+    public void act() {
+
+        if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
             
+          
+            
+            gif = "idle";
+            if (mort == true) {
+                //moare
+
                 /* 
                 setImage(playerImg.getCurrentImage());
                 if(timpMort>=super.rez+28)
@@ -404,65 +371,62 @@ public class Goblin extends Npc
                     return;
                 }
                 timpMort++;
-                */
-           
-            }
-            else{
-                atins();
+                 */
+            } else {
+
                 //lovitSabie();
                 //lovitLaser();
-                int x=(getX()+scrolledX); /////{
-               int y=(getY()+scrolledY);   //calculeaza un nr in functie de care sa setam o pauza
-                long a=x*y/2000; //}
-          
-                if(isTouching(Jucator.class)){
-                    timpAtins=0;//{
-                    atingePlayer=true;//ataca
+                int x = (worldX); /////{
+                int y = (worldY);   //calculeaza un nr in functie de care sa setam o pauza
+                long a = x * y / 2000; //}
+
+                if (isTouching(Jucator.class)) {
+                    //worldX=getX();
+                    //worldY=getY();
+
+                    timpAtins = 0;//{
+                    atingePlayer = true;//ataca
                     atac();///////{
-            
-                    gif="idle";
+
+                    gif = "idle";
                     //lovitSabie();//{
                     // lovitLaser();//verifica daca e lovit
-                         //{
-                playerImg=directie.get(super.gif); 
-                  
-            }
-            else{
-                // lovitSabie();
-                // lovitLaser();
-            
-                    long pauza=Greenfoot.getRandomNumber(20)+30+a;//{
-                    if(atingePlayer==true)
-                    {
+                    //{
+                    playerImg = directie.get(super.gif);
+
+                } else {
+                    // lovitSabie();
+                    // lovitLaser();
+
+                    long pauza = Greenfoot.getRandomNumber(20) + 30 + a;//{
+                    if (atingePlayer == true) {
                         timpAtins++;
-                        if(timpAtins>=pauza)   ///////////////////////ia o pauza
+                        if (timpAtins >= pauza) ///////////////////////ia o pauza
                         {
-                            atingePlayer=false;
-                  
+                            atingePlayer = false;
+
                         }
                     }///////////////////////////////////////////////{
-                    else{
-                
+                    else {
+
                         gaseste();//cauta playerul
-                 
+
                     }
-            
+
+                }
             }
-            }
-     }
-     
-        playerImg=directie.get(gif);
+        }
+
+        playerImg = directie.get(gif);
         setImage(playerImg.getCurrentImage());
-    }    
-    
-    
-    
-    
-    
-    private void health(int dmg){
-        hp-=dmg;
+        
     }
-    private boolean traiesc(){
-        return hp>0;
+
+    private void health(int dmg) {
+        hp -= dmg;
+    }
+
+    private boolean traiesc() {
+        return hp > 0;
     }
 }
