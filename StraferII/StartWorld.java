@@ -13,7 +13,9 @@ public class StartWorld extends World{
 
     public StartWorld(){
         super(WorldData.WIDTH,WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
-
+        
+        setPaintOrder(Buton.class,Menu.class,Floor.class,Item.class,Player.class,Npc.class);
+        
         WIDE=WorldData.WIDTH;
         HIGH=WorldData.HIGHT;
         addPlayer();
@@ -24,7 +26,7 @@ public class StartWorld extends World{
         Npc.matElem[i][j]=0;
         }
         }*/
-        prepare();
+        
     }
 
      public void addPlayer(){
@@ -84,11 +86,5 @@ public class StartWorld extends World{
 
     }
 
-/**
- * Prepare the world for the start of the program.
- * That is: create the initial objects and add them to the world.
- */
-private void prepare()
-{
-}
+
 }

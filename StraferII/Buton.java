@@ -1,6 +1,7 @@
 
 import greenfoot.*;
 
+
 public class Buton extends UI {
 
     GreenfootImage img0, img1;
@@ -16,7 +17,15 @@ public class Buton extends UI {
         setImage(img0);
 
     }
-
+    
+    public Buton(String imgref,Menu menuref, int countNext){
+        img = imgref;
+        menu = menuref;
+        img0 = new GreenfootImage("UI/buton/" + img + "0.png");
+        img1 = new GreenfootImage("UI/buton/" + img + "1.png");
+        setImage(img0);
+    }
+    
     protected void checkHover() {
 
         if (Greenfoot.mouseMoved(this)) {
@@ -36,7 +45,7 @@ public class Buton extends UI {
             if (Greenfoot.getMouseInfo().getButton() == 1) {
                 switch (img) {
                     case "Next": {
-
+                        
                     }
                     case "X": {
                         getWorld().removeObject(menu);
@@ -51,6 +60,15 @@ public class Buton extends UI {
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
 
+                    }
+                    case "Map":{
+                        
+                    }
+                    case "Main Menu":{
+                    
+                    }
+                    case "Tutorials":{
+                        
                     }
                     default: {
 

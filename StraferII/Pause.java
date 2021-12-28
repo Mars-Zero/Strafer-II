@@ -12,7 +12,9 @@ public class Pause extends Menu{
     
     private void addButoane(){
         this.getWorld().addObject(new Buton("Resume",this),97,173);
-        this.getWorld().addObject(new Buton("X",this),97,200);
+        this.getWorld().addObject(new Buton("Map",this),97,200);
+        this.getWorld().addObject(new Buton("Tutorials",this),97,250);
+        this.getWorld().addObject(new Buton("Main Menu",this),97,300);
     }
     
     public void act() {
