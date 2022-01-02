@@ -32,7 +32,7 @@ public class Player extends Jucator{
     public static boolean inViata=true;
     public static int hp=400;
     public static final int hpMax=400;
-    public  static int speed = 5;
+    public  static int speed = 7;
     
     
     
@@ -330,6 +330,7 @@ public class Player extends Jucator{
                                
                             
                                     getWorld().addObject(new Laser(gradLaser(grade)),getX(),getY()); 
+                                   
                                 }
                             timpPrec=timpCurent;
                         }

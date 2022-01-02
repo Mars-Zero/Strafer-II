@@ -5,9 +5,9 @@
     },
     "activeFile": "map.tmx",
     "expandedProjectPaths": [
-        "tilesets",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
-        "."
+        ".",
+        "tilesets"
     ],
     "fileStates": {
         "": {
@@ -110,11 +110,11 @@
             }
         },
         "map.tmx": {
-            "scale": 0.125,
-            "selectedLayer": 1,
+            "scale": 0.015625,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 1712,
-                "y": 3172
+                "x": 20736,
+                "y": 11744
             }
         },
         "map.tmx#Terrain": {
@@ -206,10 +206,12 @@
             "scaleInEditor": 1
         },
         "tilesets/detoate1.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/detoate2.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/dungeon1.tsx": {
             "scaleInDock": 1
@@ -251,6 +253,7 @@
     "last.worldFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",
     "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
     "loadedWorlds": [
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps/world.world"
     ],
     "map.fixedSize": true,
     "map.height": 100,
@@ -267,17 +270,17 @@
     "property.type": "string",
     "recentFiles": [
         "map.tmx",
-        "tilesets/apa1.tsx",
-        "tilesets/decor1.tsx",
-        "tilesets/grass3.tsx",
         "tilesets/Terrain.tsx",
-        "tilesets/snow1.tsx",
+        "tilesets/detoate1.tsx",
+        "tilesets/apa1.tsx",
+        "tilesets/detoate2.tsx",
+        "tilesets/decor1.tsx",
         "tilesets/grass2.tsx",
+        "tilesets/grass3.tsx",
+        "tilesets/snow1.tsx",
         "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
         "tilesets/snow.tsx",
-        "tilesets/grass_biome.tsx",
-        "green.tsx",
-        "fdsffsg.tsx"
+        "tilesets/grass_biome.tsx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

@@ -32,7 +32,7 @@ public class PortalGun extends Item{
     private void addPortal(){
         if(Greenfoot.mouseClicked(null)){
             if(Greenfoot.getMouseInfo().getButton()==1){  //right 3 left 1
-                getWorld().addObject(new Portal(),Greenfoot.getMouseInfo().getX(),Greenfoot.getMouseInfo().getY());
+                getWorld().addObject(new Portal(),Greenfoot.getMouseInfo().getX(),Greenfoot.getMouseInfo().getY());        
             }
         }
     }

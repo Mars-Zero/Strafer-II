@@ -29,8 +29,8 @@ public class PereteInvizibil extends Perete {
     }
 
     private void chestie() {
-        int procentX = 85;
-        int procentY = 90;
+        int procentX = 80;
+        int procentY = 85;
         switch (pozitie) {
             case ("W"): {
                 if (marime.equals("mic90") || marime.equals("mare90")) {

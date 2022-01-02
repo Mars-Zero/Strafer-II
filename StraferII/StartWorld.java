@@ -31,7 +31,7 @@ public class StartWorld extends World{
 
      public void addPlayer(){
         GreenfootImage background=new GreenfootImage("images/test/map.png");//imi pun fundalul
-        scroller = new Scroller(this, background, 6400, 6400);
+        scroller = new Scroller(this, background, 8192, 8192);
         player = new Player();
         addObject(player, originalX, originalY);
         Player.worldX=originalX;
@@ -45,7 +45,7 @@ public class StartWorld extends World{
 
      
      public void addWorldObjects(){ 
-        addObject(new Goblin(scroller,100,200),100,200);
+        //addObject(new Goblin(scroller,100,200),100,200);
         
         
         addObject(new PereteInvizibil("A",1,"mare90"),0,300);//margini
