@@ -65,10 +65,32 @@ public class Buton extends UI {
                         
                     }
                     case "Main Menu":{
-                    
+                         getWorld().addObject(new MainMenu(),1024/2,576/2);
+                        
+                         Player.toggledPause = false;
+                        getWorld().removeObject(menu);
+                        getWorld().removeObjects(getWorld().getObjects(Buton.class));
+                        
+                        
+                        /////se da save
+                        
+                        
+                        break;
                     }
                     case "Tutorials":{
                         
+                    }
+                    case "New Game":{
+                        
+                    }
+                    case "Continue":{
+                        getWorld().removeObject(menu);
+                        WorldData.PAUZA=false;
+                        
+                        Player.toggledPause = false;
+                         getWorld().removeObject(menu);
+                        getWorld().removeObjects(getWorld().getObjects(Buton.class));
+                        break;
                     }
                     default: {
 

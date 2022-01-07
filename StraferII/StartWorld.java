@@ -20,15 +20,15 @@ public class StartWorld extends World{
         HIGH=WorldData.HIGHT;
         addPlayer();
         addWorldObjects();
-
-        /*for(int i=0; i<110; i++){
-        for(int j=0; j<110; j++){
-        Npc.matElem[i][j]=0;
-        }
-        }*/
+        
+        addMainMenu();
         
     }
 
+    private void addMainMenu(){
+        addObject(new MainMenu(),1024/2,576/2);
+    }
+    
      public void addPlayer(){
         GreenfootImage background=new GreenfootImage("images/test/map.png");//imi pun fundalul
         scroller = new Scroller(this, background, 8192, 8192);
@@ -45,7 +45,7 @@ public class StartWorld extends World{
 
      
      public void addWorldObjects(){ 
-        //addObject(new Goblin(scroller,100,200),100,200);
+        addObject(new Goblin(scroller,100,200),100,200);
         
         
         addObject(new PereteInvizibil("A",1,"mare90"),0,300);//margini

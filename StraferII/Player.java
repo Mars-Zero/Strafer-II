@@ -426,8 +426,9 @@ public class Player extends Jucator{
             lovit();
             move();
             toggleMenu();
+            setImage(playerImg.getCurrentImage());    
         }
-       setImage(playerImg.getCurrentImage());    
+       
     }   
     
     

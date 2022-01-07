@@ -28,7 +28,8 @@ public class Vector2d {
     }
 
     public float distance(float x, float y) {
-        //Finds the x and y distance between both vectors by subtracting their x and y components. Note which vector is subtracted by which other vector is irrelevent,
+        //Finds the x and y distance between both vectors by subtracting their x and y components. 
+        //Note which vector is subtracted by which other vector is irrelevent,
         //since the magnitude of the resulting vector will be the same.
         float distX = this.x - x;
         float distY = this.y - y;

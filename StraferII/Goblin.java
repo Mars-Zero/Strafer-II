@@ -397,10 +397,11 @@ public class Goblin extends Npc {
 
                 }
             }
-        }
-
-        playerImg = directie.get(gif);
+            
+            playerImg = directie.get(gif);
+        
         setImage(playerImg.getCurrentImage());
+        }
         
     }
 

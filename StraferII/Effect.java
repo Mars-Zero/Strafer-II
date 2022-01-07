@@ -22,6 +22,8 @@ public class Effect extends Actor {
         animation.setActiveState(true);
     }
 
+    
+    
     public void act() {
 
         if (!WorldData.PAUZA) {
