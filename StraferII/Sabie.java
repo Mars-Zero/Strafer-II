@@ -6,12 +6,24 @@ import java.util.HashMap;
 public class Sabie extends Item
 {
    
-    public static int damage=25;
+    private final int damage=25;
+    public int getSabieDmg(){
+        return damage;
+    }
     
+    /**
+     * HashMap containing all the GIFs for each direction
+     */
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage sabieImg=directie.get(Item.itemGif);
+    /**
+     * Time variable for each frame
+     */
     private long time=0;
-    
+    /**
+     * The erase time for each "Sabie" instance
+     */
+    private final long constantEraseTime=25;     
     public Sabie(){
         directie.put("D",new GifImage("item/sabie_a_D.gif"));
         directie.put("W",new GifImage("item/sabie_a_W.gif"));
@@ -43,7 +55,7 @@ public class Sabie extends Item
             move();
         
             time++;
-            if(time>25){
+            if(time>constantEraseTime){
                 
                 getWorld().removeObject(this);
             }

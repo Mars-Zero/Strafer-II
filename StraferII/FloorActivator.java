@@ -16,8 +16,8 @@ public class FloorActivator extends Floor{
     
     }
     
-     public void checkPlayer(){
-        Player player = (Player)getWorld().getObjects(Player.class).get(0);
+     public void checkPlayer(Player player){
+        
        
         
         switch(enterDirection){
@@ -26,8 +26,8 @@ public class FloorActivator extends Floor{
             
                 if(isTouching(Player.class)){
                     hasInteracted = true;
-                    if(Player.gif=="W"){
-                          Player.floorLevel=this.floorLevel;
+                    if(player.gif=="W"){
+                          player.floorLevel=this.floorLevel;
                     }
                     if(player.gif=="S"){
                         
@@ -67,14 +67,15 @@ public class FloorActivator extends Floor{
     }
     
     public void act() {
-        checkPlayer();
+        Player player = (Player)getWorld().getObjects(Player.class).get(0);
+        checkPlayer(player);
         if(hasInteracted){
-            if(Player.floorLevel!=this.floorLevel){
-                Player.floorLevel=this.floorLevel;
+            if(player.floorLevel!=this.floorLevel){
+                player.floorLevel=this.floorLevel;
                 hasInteracted=false;
             }
-            if(Player.floorLevel==this.floorLevel){
-                Player.floorLevel=1;
+            if(player.floorLevel==this.floorLevel){
+                player.floorLevel=1;
                 hasInteracted=false;
             }
         }            

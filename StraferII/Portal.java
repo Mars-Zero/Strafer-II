@@ -10,7 +10,6 @@ public class Portal extends PortalGun {
 
     GifImage portalImg;
     private long time = 0;
-
     public Portal() {
 
         directie.put("A", new GifImage("images/item/portalA.gif"));
@@ -30,13 +29,13 @@ public class Portal extends PortalGun {
         List players = getWorld().getObjects(Player.class);
 
         if (!players.isEmpty()) {
-            Actor player = (Actor) players.get(0);
+            Player player = (Player) players.get(0);
             if (Greenfoot.isKeyDown("t")) {
 
-                getWorld().addObject(new Effect("kingcrimson", 62, 1), 0, 0);
-
-                Player.worldX += (this.getX() + Scroller.scrolledX - player.getX());
-                Player.worldY += (this.getY() + Scroller.scrolledY - player.getY());
+                getWorld().addObject(new Effect(ConstantVariables.kingCrimsonEffect, 62, 1), 0, 0);
+                
+                player.setWorldX(player.getWorldX()+(this.getX() + Scroller.scrolledX - player.getX()));
+                player.setWorldY(player.getWorldY()+(this.getY() + Scroller.scrolledY - player.getY()));
                 
                 player.setLocation(this.getX(), this.getY());
                 

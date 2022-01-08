@@ -70,16 +70,17 @@ public class Goblin extends Npc {
 
     protected void gaseste() {
         List players = getWorld().getObjects(Player.class);
+        Player player = (Player) players.get(0);
         if (!players.isEmpty()) {
-            Actor player = (Actor) players.get(0);
+            
 
-            int playerX = (Player.worldX) / super.rez;
-            if (Player.worldY % super.rez > 0) {
+            int playerX = (player.getWorldX()) / super.rez;
+            if (player.getWorldX() % super.rez > 0) {
                 playerX++;
             }
 
-            int playerY = (Player.worldY) / super.rez;
-            if (Player.worldY % super.rez > 0) {
+            int playerY = (player.getWorldY()) / super.rez;
+            if (player.getWorldY() % super.rez > 0) {
                 playerY++;
             }
 
@@ -98,8 +99,9 @@ public class Goblin extends Npc {
         }
 
         if (super.gasit == true) {
-            if (isTouching(Jucator.class) && ((Player.worldY) <= (worldY + Scroller.scrolledY) - 10 || (Player.worldX) <= (worldX+Scroller.scrolledX) - 15
-                    || (Player.worldY) >= (worldY+Scroller.scrolledY) + 10 || (Player.worldX) >= (worldX+Scroller.scrolledX) + 15)) {
+            
+            if (isTouching(Jucator.class) && (player.getWorldY() <= (worldY + Scroller.scrolledY) - 10 || player.getWorldX() <= (worldX+Scroller.scrolledX) - 15
+                    || (player.getWorldY()) >= (worldY+Scroller.scrolledY) + 10 || player.getWorldX() >= (worldX+Scroller.scrolledX) + 15)) {
                 gif = "idle";
 
             } else {

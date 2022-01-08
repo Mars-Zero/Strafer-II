@@ -65,7 +65,7 @@ public class Buton extends UI {
                         
                     }
                     case "Main Menu":{
-                         getWorld().addObject(new MainMenu(),1024/2,576/2);
+                        getWorld().addObject(new MainMenu(),ConstantVariables.MainMenuX,ConstantVariables.MainMenuY);
                         
                          Player.toggledPause = false;
                         getWorld().removeObject(menu);

@@ -5,13 +5,12 @@ import java.util.List;
 
 public class PortalGun extends Item{    
      
-     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
+    HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage portalGunImg=directie.get(super.itemGif);
     private long time=0;
-   private static Actor player;
     public PortalGun(){
         
-         directie.put("D",new GifImage("images/item/portalGunD.gif"));
+        directie.put("D",new GifImage("images/item/portalGunD.gif"));
         directie.put("W",new GifImage("images/item/portalGunW.gif"));
         directie.put("A",new GifImage("images/item/portalGunA.gif"));
         directie.put("S",new GifImage("images/item/portalGunS.gif"));

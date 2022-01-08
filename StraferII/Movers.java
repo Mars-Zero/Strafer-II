@@ -2,6 +2,9 @@ import greenfoot.*;
 
 public class Movers extends Actor{
 
+    /**
+     * TODO: Doctore, pune JavaDoc pe metodele importante
+     */
     protected void knockback(float timp,Actor attacker, double masa_attacker, double masa_this){
         
         Vector2d    vector_this=       new Vector2d(this.getX(),this.getY());

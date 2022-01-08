@@ -5,9 +5,9 @@ public class StartWorld extends World{
     int WIDE,HIGH;
     
     
-    Fps fps;
+   Fps fps;
    public Scroller scroller;
-    Player player;  int originalX=30,originalY=200;
+   Player player;  int originalX=30,originalY=200;
     
    
 
@@ -26,7 +26,7 @@ public class StartWorld extends World{
     }
 
     private void addMainMenu(){
-        addObject(new MainMenu(),1024/2,576/2);
+        addObject(new MainMenu(),ConstantVariables.MainMenuX,ConstantVariables.MainMenuY);
     }
     
      public void addPlayer(){
@@ -34,8 +34,9 @@ public class StartWorld extends World{
         scroller = new Scroller(this, background, 8192, 8192);
         player = new Player();
         addObject(player, originalX, originalY);
-        Player.worldX=originalX;
-        Player.worldY=originalY;
+        
+        player.setWorldX(originalX);
+        player.setWorldY(originalY);
         
         scroll();
 

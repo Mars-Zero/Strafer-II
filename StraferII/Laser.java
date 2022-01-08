@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Laser extends Item
 {
   
-    public static int damage=15;
-    
+    private final int damage=15;
+    public int getLaserDmg(){
+        return damage;
+    }
      
     private long time=0;
-    private int speed=6;
+    private final int speed=6;
     private int caz=0;
     
     GifImage laserImg=new GifImage("item/laserPlayer.gif");
