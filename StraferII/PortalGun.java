@@ -7,7 +7,9 @@ public class PortalGun extends Item{
      
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
     GifImage portalGunImg=directie.get(super.itemGif);
+    
     private long time=0;
+    
     public PortalGun(){
         
         directie.put("D",new GifImage("images/item/portalGunD.gif"));

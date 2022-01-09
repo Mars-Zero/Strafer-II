@@ -170,10 +170,50 @@ public class Npc extends Movers
     
     
     
-    
-     public void knockback(){
+    ///knockback
+    protected double viteza_frame;
+    protected double distance_added;
+    protected double grade_rezultanta;
+    protected int xfinknockback, yfinknockback;
+    protected double timp_knockback;
+    protected int frameuri_trecute = 0; ///de cand incepe knockback
+
+    protected void knockback(double timp, Actor attacker, double masa_attacker, double masa_this) {
+
        
-     }
+        this.timp_knockback = timp;
+
+       // Vector2d vector_this = new Vector2d(this.getX(), this.getY());
+       // Vector2d vector_attacker = new Vector2d(attacker.getX(), attacker.getY());
+
+        double delta_x = this.getX() / 64.0 - attacker.getX() / 64.0;                            // impartit la 64 pt convert  din pixeli in metri
+        double delta_y = this.getY() / 64.0 - attacker.getY() / 64.0;
+
+        double grade_attack = Math.toDegrees(Math.atan2(delta_y, delta_x));                  //alfa
+
+        double forta_attack = masa_attacker;
+        double forta_greutate = masa_this * 9.8;
+
+        double rezultanta = Math.sqrt(forta_attack * forta_attack + forta_greutate * forta_greutate
+                - 2 * forta_attack * forta_greutate * Math.sin(grade_attack));
+
+        double grade_attack_greutate = Math.acos(-1 * Math.sin(grade_attack));                   //beta
+
+        grade_rezultanta = 90 - (grade_attack_greutate - grade_attack);                     //epsilon
+
+        double acceleratie_this = rezultanta / masa_this;
+
+        distance_added = acceleratie_this*64 * timp * timp / 2;              //legea miscarii
+
+        xfinknockback = (int) (getX() + distance_added * Math.cos(grade_rezultanta)); //unde trebe sa ajunga dupa knockback
+        yfinknockback = (int) (getY() + distance_added * Math.sin(grade_rezultanta));
+
+        double fractiune = 60 / (timp*1000);
+
+        viteza_frame = 2* acceleratie_this * distance_added* fractiune ;//*64;           //distanta cu care e miscat pe fiecare frame pana in pozitia de knockback
+
+    }
+
     
     
     

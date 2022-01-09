@@ -23,7 +23,6 @@ public class Goblin extends Npc {
     private long timpPrec;
     public String gifSabie;
 
-  
     public long getpX() {
         return worldX;
     }
@@ -44,8 +43,8 @@ public class Goblin extends Npc {
 
     public Goblin(Scroller scrl, int x, int y) {
         super(scrl);
-        prevsx=Scroller.scrolledX;
-        prevsy=Scroller.scrolledY;
+        prevsx = Scroller.scrolledX;
+        prevsy = Scroller.scrolledY;
         worldX = x;
         worldY = y;
 
@@ -72,7 +71,6 @@ public class Goblin extends Npc {
         List players = getWorld().getObjects(Player.class);
         Player player = (Player) players.get(0);
         if (!players.isEmpty()) {
-            
 
             int playerX = (player.getWorldX()) / super.rez;
             if (player.getWorldX() % super.rez > 0) {
@@ -84,14 +82,14 @@ public class Goblin extends Npc {
                 playerY++;
             }
 
-            int gY = (worldY+Scroller.scrolledY) / super.rez;
-            if ((worldY+Scroller.scrolledY) % super.rez > 0) {
+            int gY = (worldY + Scroller.scrolledY) / super.rez;
+            if ((worldY + Scroller.scrolledY) % super.rez > 0) {
 
                 gY++;
             }
 
-            int gX = (worldX+Scroller.scrolledX) / super.rez;
-            if ((worldX+Scroller.scrolledX) % super.rez > 0) {
+            int gX = (worldX + Scroller.scrolledX) / super.rez;
+            if ((worldX + Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
 
@@ -99,9 +97,9 @@ public class Goblin extends Npc {
         }
 
         if (super.gasit == true) {
-            
-            if (isTouching(Jucator.class) && (player.getWorldY() <= (worldY + Scroller.scrolledY) - 10 || player.getWorldX() <= (worldX+Scroller.scrolledX) - 15
-                    || (player.getWorldY()) >= (worldY+Scroller.scrolledY) + 10 || player.getWorldX() >= (worldX+Scroller.scrolledX) + 15)) {
+
+            if (isTouching(Jucator.class) && (player.getWorldY() <= (worldY + Scroller.scrolledY) - 10 || player.getWorldX() <= (worldX + Scroller.scrolledX) - 15
+                    || (player.getWorldY()) >= (worldY + Scroller.scrolledY) + 10 || player.getWorldX() >= (worldX + Scroller.scrolledX) + 15)) {
                 gif = "idle";
 
             } else {
@@ -119,23 +117,23 @@ public class Goblin extends Npc {
         if (pasi > 0) {
 
             String directie = super.ord.get(pasi).toString();
-            int gY = (worldY+Scroller.scrolledY) / super.rez;
-            if ((worldY+Scroller.scrolledY) % super.rez > 0) {
+            int gY = (worldY + Scroller.scrolledY) / super.rez;
+            if ((worldY + Scroller.scrolledY) % super.rez > 0) {
                 gY++;
             }
-            int gX = (worldX+Scroller.scrolledX) / super.rez;
-            if ((worldX+Scroller.scrolledX) % super.rez > 0) {
+            int gX = (worldX + Scroller.scrolledX) / super.rez;
+            if ((worldX + Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
             if (super.matElem[gY][gX] != -1) {
                 super.matElem[gY][gX] = 0;
             }
-            int difpx=Scroller.scrolledX-prevsx;
-            int difpy=Scroller.scrolledY-prevsy;
-            
-            worldX-=difpx;
-            worldY-=difpy;
-            
+            int difpx = Scroller.scrolledX - prevsx;
+            int difpy = Scroller.scrolledY - prevsy;
+
+            worldX -= difpx;
+            worldY -= difpy;
+
             switch (directie) {
                 case "W": {
 
@@ -152,7 +150,7 @@ public class Goblin extends Npc {
 
                     gif = "D";
                     dist += speed;
-                    
+
                     worldX += (speed);
                     super.setLocation(worldX, worldY);
                     gifSabie = gif;
@@ -206,7 +204,7 @@ public class Goblin extends Npc {
                 case "SD": {
                     gif = "D";
                     dist += speed;
-                    
+
                     worldY += (speed);
                     worldX += (speed);
                     super.setLocation(worldX, worldY);
@@ -225,23 +223,22 @@ public class Goblin extends Npc {
 
                     break;
                 }
-                 
 
             }
-            prevsx=Scroller.scrolledX;
-            prevsy=Scroller.scrolledY;
+            prevsx = Scroller.scrolledX;
+            prevsy = Scroller.scrolledY;
             // lovitSabie();
             // lovitLaser();
             if (dist >= 10) {
                 dist = 0;
                 pasi--;
             }
-            gY = (worldY+Scroller.scrolledY) / super.rez;
-            if ((worldY+Scroller.scrolledY) % super.rez > 0) {
+            gY = (worldY + Scroller.scrolledY) / super.rez;
+            if ((worldY + Scroller.scrolledY) % super.rez > 0) {
                 gY++;
             }
-            gX = (worldX+Scroller.scrolledX) / super.rez;
-            if ((worldX+Scroller.scrolledX) % super.rez > 0) {
+            gX = (worldX + Scroller.scrolledX) / super.rez;
+            if ((worldX + Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
 
@@ -250,7 +247,45 @@ public class Goblin extends Npc {
         }
     }
 
+    protected void knockbackMove() {//boolean knockbacked) {
+
+        if (knockbacked) {
+            this.frameuri_trecute++;
+            setLocation((int) (getX() + viteza_frame * Math.cos(grade_rezultanta)), (int) (getY() + viteza_frame * Math.sin(grade_rezultanta)));
+            worldX += viteza_frame * Math.cos(grade_rezultanta);
+            worldY += viteza_frame * Math.sin(grade_rezultanta);
+            System.out.println(distance_added);
+
+            if (this.frameuri_trecute >= this.timp_knockback * 60) {
+                this.frameuri_trecute = 0;
+                knockbacked = false;
+            }
+        }
+
+    }
+
     protected void lovitSabie() {
+
+        List players = getWorld().getObjects(Player.class);
+        Player player = (Player) players.get(0);
+        List sabii = getWorld().getObjects(Sabie.class);
+        if (!sabii.isEmpty()) {
+            Sabie sabia = (Sabie) sabii.get(0);
+
+            int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
+            if (deltaPGX < 0) {
+                deltaPGX *= (-1);
+            }
+            int deltaPGY = player.getWorldY() - (this.worldY + Scroller.scrolledY);
+            if (deltaPGY < 0) {
+                deltaPGY *= (-1);
+            }
+
+            if (Player.equipSword == true && deltaPGX <= 85 && deltaPGY <= 100) {
+                knockbacked = true;
+                super.knockback(0.1, sabia.getPlayer(), 2, 80);
+            }
+        }
 
         /* 
         if(isTouching(Sabie.class)){
@@ -329,40 +364,16 @@ public class Goblin extends Npc {
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
-            
-          
-            
+
             gif = "idle";
             if (mort == true) {
                 //moare
 
-                /* 
-                setImage(playerImg.getCurrentImage());
-                if(timpMort>=super.rez+28)
-                {
-                
-                    World lume=getWorld();
-                    if(lume instanceof Nivel2_7){
-                        Nivel2_7.inamici--;
-                    }
-                    if(lume instanceof Nivel3_4){
-                        Nivel3_4.inamici--;
-                    }
-                    if(lume instanceof Nivel4_2){
-                        Nivel4_2.inamici--;
-                    }
-                    getWorld().removeObject(this);//dispare
-                    return;
-                }
-                timpMort++;
-                 */
             } else {
 
-                //lovitSabie();
+                lovitSabie();
                 //lovitLaser();
-                int x = (worldX); /////{
-                int y = (worldY);   //calculeaza un nr in functie de care sa setam o pauza
-                long a = x * y / 2000; //}
+                long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
                     //worldX=getX();
@@ -382,10 +393,12 @@ public class Goblin extends Npc {
                     // lovitSabie();
                     // lovitLaser();
 
-                    long pauza = Greenfoot.getRandomNumber(20) + 30 + a;//{
+                    long wait = Greenfoot.getRandomNumber(20) + 30 + waitseed;//{
+                    wait = 0;
+
                     if (atingePlayer == true) {
                         timpAtins++;
-                        if (timpAtins >= pauza) ///////////////////////ia o pauza
+                        if (timpAtins >= wait) ///////////////////////ia o pauza
                         {
                             atingePlayer = false;
 
@@ -393,18 +406,37 @@ public class Goblin extends Npc {
                     }///////////////////////////////////////////////{
                     else {
 
-                        gaseste();//cauta playerul
+                        List players = getWorld().getObjects(Player.class);
+                        Player player = (Player) players.get(0);
+                        int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
+                        if (deltaPGX < 0) {
+                            deltaPGX *= (-1);
+                        }
+                        int deltaPGY = player.getWorldY() - (this.worldY + Scroller.scrolledY);
+                        if (deltaPGY < 0) {
+                            deltaPGY *= (-1);
+                        }
+                        if (deltaPGX <= 600 && deltaPGY <= 400) {
+                            gaseste();//cauta playerul
+                        }
+                        int difpx = Scroller.scrolledX - prevsx;
+                        int difpy = Scroller.scrolledY - prevsy;
 
+                        worldX -= difpx;
+                        worldY -= difpy;
+                        prevsx = Scroller.scrolledX;
+                        prevsy = Scroller.scrolledY;
                     }
 
                 }
+                this.knockbackMove();
             }
-            
+
             playerImg = directie.get(gif);
-        
-        setImage(playerImg.getCurrentImage());
+
+            setImage(playerImg.getCurrentImage());
         }
-        
+
     }
 
     private void health(int dmg) {

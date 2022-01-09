@@ -81,15 +81,16 @@ public class Buton extends UI {
                         
                     }
                     case "New Game":{
-                        
+                        //save file nou
+                        //inceputu jocului
                     }
                     case "Continue":{
-                        getWorld().removeObject(menu);
-                        WorldData.PAUZA=false;
-                        
+                         System.out.print(img);
+                        WorldData.PAUZA = false;
                         Player.toggledPause = false;
-                         getWorld().removeObject(menu);
+                        getWorld().removeObject(menu);
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
+                        //da load
                         break;
                     }
                     default: {

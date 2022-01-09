@@ -104,6 +104,6 @@ public class Fps extends UI
     private void updateImage()
     {
         if (showSpeed) setImage(new GreenfootImage("Speed: "+speed, 30, Color.BLUE, new Color(0, 0, 0, 0)));
-        else setImage(new GreenfootImage("FPS: "+frames, 30, Color.BLACK, new Color(0, 0, 0, 0)));
+        else setImage(new GreenfootImage("FPS: "+frames+"\n sx"+Scroller.scrolledX+"  sy"+Scroller.scrolledY, 30, Color.BLACK, new Color(0, 0, 0, 0)));
     }
 }

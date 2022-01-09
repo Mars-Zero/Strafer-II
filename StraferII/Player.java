@@ -269,7 +269,7 @@ public class Player extends Jucator {
                     if (timpCurent - timpPrec >= 20) {
                         if (getWorld().getObjects(Sabie.class).isEmpty()) {
 
-                            getWorld().addObject(new Sabie(), getX(), getY());
+                            getWorld().addObject(new Sabie(this), getX(), getY());
                         }
                         timpPrec = timpCurent;
                     }
