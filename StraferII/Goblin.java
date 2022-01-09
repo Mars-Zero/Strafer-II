@@ -405,7 +405,7 @@ public class Goblin extends Npc {
                         }
                     }///////////////////////////////////////////////{
                     else {
-
+                                                                                                //daca e in range sa nu l caute in toata lumea
                         List players = getWorld().getObjects(Player.class);
                         Player player = (Player) players.get(0);
                         int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
