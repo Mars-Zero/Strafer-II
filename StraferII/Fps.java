@@ -37,7 +37,7 @@ public class Fps extends UI
      */
     public void act()
     {
-        this.setLocation(150, 100);
+        this.setLocation(900, 100);
         // detect mouse moving onto actor
         if (!showSpeed && Greenfoot.mouseMoved(this))
         {

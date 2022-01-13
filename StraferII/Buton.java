@@ -8,7 +8,7 @@ public class Buton extends UI {
     private String img = "";
     boolean clicked = false;
     Menu menu;
-
+    Dialog dialog;
     public Buton(String imgref, Menu menuref) {
         img = imgref;
         menu = menuref;
@@ -18,9 +18,9 @@ public class Buton extends UI {
 
     }
     
-    public Buton(String imgref,Menu menuref, int countNext){
+    public Buton(String imgref,Dialog dialogref){
         img = imgref;
-        menu = menuref;
+        dialog=dialogref;
         img0 = new GreenfootImage("UI/buton/" + img + "0.png");
         img1 = new GreenfootImage("UI/buton/" + img + "1.png");
         setImage(img0);
@@ -45,15 +45,25 @@ public class Buton extends UI {
             if (Greenfoot.getMouseInfo().getButton() == 1) {
                 switch (img) {
                     case "Next": {
-                        
+                       
+                        dialog.setNrSlide(dialog.getNrSlide()+1);
+                        if(dialog.isLastSlide()){
+                            this.getWorld().addObject(new Buton("X",dialog),this.getX(),this.getY());
+                            this.getWorld().removeObject(this);
+                        }
+                        break;
+                     
                     }
                     case "X": {
+                        WorldData.PAUZA=false;
                         getWorld().removeObject(menu);
+                        getWorld().removeObject(dialog);
+                        WorldData.addedDialogs=false;
                         getWorld().removeObject(this);
                         break;
                     }
                     case "Resume": {
-                        System.out.print(img);
+                        
                         WorldData.PAUZA = false;
                         Player.toggledPause = false;
                         getWorld().removeObject(menu);
@@ -72,6 +82,7 @@ public class Buton extends UI {
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         
                         
+                        
                         /////se da save
                         
                         
@@ -83,6 +94,8 @@ public class Buton extends UI {
                     case "New Game":{
                         //save file nou
                         //inceputu jocului
+                        
+                        break;
                     }
                     case "Continue":{
                          System.out.print(img);

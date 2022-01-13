@@ -39,7 +39,7 @@ public class Goblin extends Npc {
         this.worldY = worldY;
     }
 
-    Vector2d vect;
+ 
 
     public Goblin(Scroller scrl, int x, int y) {
         super(scrl);
@@ -434,7 +434,7 @@ public class Goblin extends Npc {
 
             playerImg = directie.get(gif);
 
-            setImage(playerImg.getCurrentImage());
+                   setImage(playerImg.getCurrentImage());
         }
 
     }
