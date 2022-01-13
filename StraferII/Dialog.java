@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 
 public class Dialog extends Menu{
@@ -28,7 +28,7 @@ public class Dialog extends Menu{
     
     public void addButon(){
         if(!addedButon){
-            getWorld().addObject(new Buton("Next",this),700,300);
+            getWorld().addObject(new Buton("Next",this),730,470);
             addedButon=true;
         }
     }

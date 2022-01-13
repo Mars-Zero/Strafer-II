@@ -14,23 +14,6 @@ public class Friendly extends Npc {
     public void addDialogs() {
     }
 
-    public boolean nearPlayer(int range) {
-        List players = getWorld().getObjects(Player.class);
-        Player player = (Player) players.get(0);
-        int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
-        if (deltaPGX < 0) {
-            deltaPGX *= (-1);
-        }
-        int deltaPGY = player.getWorldY() - (this.worldY + Scroller.scrolledY);
-        if (deltaPGY < 0) {
-            deltaPGY *= (-1);
-        }
-        if (deltaPGX <= range && deltaPGY <= range) {
-            return true;
-        }
-        return false;
-    }
-
     public PlayWorld getPlayWorld(){
         return playWorld;
     }

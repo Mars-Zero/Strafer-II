@@ -24,7 +24,7 @@ public class Keanu extends Friendly
         
         if (!WorldData.PAUZA) {
             timer ++;
-            if (isTouching(Player.class) && !WorldData.addedDialogs&& timer>=90 ){
+            if (isTouching(Player.class) && !WorldData.addedDialogs&& timer>=180 ){
                 timer=0;
                 this.addDialogs();
                 WorldData.addedDialogs=true;

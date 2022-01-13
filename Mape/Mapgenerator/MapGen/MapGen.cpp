@@ -75,6 +75,7 @@ void matrixGen(std::unique_ptr<tson::Map>& map, short int mapMatrix[10001][10001
                 if (tileset->getName() == "perete") {
                     maptrix::mapMatrix[pY / 64][pX / 64] = -1;
                 }
+                
 
             }
         }
