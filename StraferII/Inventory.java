@@ -4,10 +4,9 @@ import java.awt.event.*;
 
 public class Inventory extends Menu{
     
-    
     GreenfootImage wheel0=new GreenfootImage("UI/hud/itemWheelDefault.png");
     GreenfootImage wheel1=new GreenfootImage("UI/hud/itemWheelSelect.png");
-    
+
     
            
             
@@ -23,13 +22,13 @@ public class Inventory extends Menu{
  
      
     public Inventory(){
+        
         prepareData();
         setImage(wheel0);
         Player.toggledInventory=true;
     }
      private void prepareData(){
         WorldData.PAUZA=true;
-         
         Player.equipSword=false;
         Player.equipLaser=false;
         Player.equipPortalGun=false;

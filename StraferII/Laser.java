@@ -11,7 +11,7 @@ public class Laser extends Item
     }
      
     private long time=0;
-    private final int speed=6;
+    private final int speed=10;
     private int caz=0;
     
     GifImage laserImg=new GifImage("item/laserPlayer.gif");

@@ -4,6 +4,7 @@ import greenfoot.*;
 
 public class Buton extends UI {
 
+    
     GreenfootImage img0, img1;
     private String img = "";
     boolean clicked = false;
@@ -69,7 +70,7 @@ public class Buton extends UI {
                     case "Resume": {
                         
                         WorldData.PAUZA = false;
-                        Player.toggledPause = false;
+                        Player.toggledPause=false;
                         getWorld().removeObject(menu);
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
@@ -81,7 +82,7 @@ public class Buton extends UI {
                     case "Main Menu":{
                         getWorld().addObject(new MainMenu(),ConstantVariables.MainMenuX,ConstantVariables.MainMenuY);
                         
-                         Player.toggledPause = false;
+                        Player.toggledPause=false;
                         getWorld().removeObject(menu);
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         
@@ -104,7 +105,7 @@ public class Buton extends UI {
                     case "Continue":{
                          System.out.print(img);
                         WorldData.PAUZA = false;
-                        Player.toggledPause = false;
+                        Player.toggledPause=false;
                         getWorld().removeObject(menu);
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         //da load

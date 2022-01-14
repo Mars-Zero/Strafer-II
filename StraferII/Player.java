@@ -58,6 +58,7 @@ public class Player extends Jucator {
     public static boolean toggledInventory = false;
     public static boolean toggledPause = false;
 
+
     public static HashSet<String> iteme = new HashSet<String>();
 
     protected long timpPrec;
@@ -109,6 +110,8 @@ public class Player extends Jucator {
 
         this.floorLevel = 1;
     }
+
+   
 
     protected void checkMove() {
         apas = false;
@@ -305,7 +308,26 @@ public class Player extends Jucator {
                                 double delta_y = Greenfoot.getMouseInfo().getY() - getY();
                                 double grade = Math.toDegrees(Math.atan2(delta_y, delta_x));
 
-                                getWorld().addObject(new Laser(gradLaser(grade)), getX(), getY());
+                                if (grade >= -45 && grade < 45) {       //se intoarce in dir in care trage
+                                    
+                                    this.gif="D";
+                                }
+                                if (grade >= 45 && grade < 135) {
+                                    
+                                   this.gif="S";
+
+                                }
+                                if (grade >= 135 && grade < 225) {
+                                    
+                                    this.gif="A";
+
+                                }
+                                if (grade >= -180 && grade < -45) {
+                                    
+                                    this.gif="W";
+                                }
+                                vedere();
+                                getWorld().addObject(new Laser(grade), getX(), getY());
 
                             }
                             timpPrec = timpCurent;
@@ -323,26 +345,30 @@ public class Player extends Jucator {
         }
         //laser
 
-    }
-
-    private double gradLaser(double grade) {
-        switch (Item.itemGif) {
-            case "W": {
-
+        
+        
+        //lantern
+         if (equipLantern) {
+            long timpCurent = System.currentTimeMillis();
+            if (timpCurent - timpPrec >= 20) {
+                if (getWorld().getObjects(Lantern.class).isEmpty()) {
+                    getWorld().addObject(new Lantern(), getX()+30, getY());
+                }
+                timpPrec = timpCurent;
             }
-            case "A": {
 
-            }
-            case "S": {
-
-            }
-            case "D": {
-
+            if (Greenfoot.mouseClicked(null)) {
+                if (Greenfoot.getMouseInfo().getButton() == 3) {
+                    equipLantern = false;
+                }
             }
         }
-
-        return grade;
+        //lantern
+        
+        
     }
+
+  
 
     protected void checkPauza() {
 
@@ -381,9 +407,15 @@ public class Player extends Jucator {
             lovit();
             move();
             toggleMenu();
-                  setImage(playerImg.getCurrentImage());  
+            setImage(playerImg.getCurrentImage());
         }
-        
+
     }
+    
+    
+    
+    
+    
+     
 
 }

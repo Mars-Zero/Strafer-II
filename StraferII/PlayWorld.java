@@ -14,7 +14,7 @@ public class PlayWorld extends World {
     public PlayWorld() {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
 
-        setPaintOrder(Buton.class, Menu.class, Floor.class, Item.class, Player.class, Npc.class);
+        setPaintOrder(Buton.class, Menu.class, Floor.class, Item.class,Lantern.class,Light.class,Player.class, Npc.class);
 
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;

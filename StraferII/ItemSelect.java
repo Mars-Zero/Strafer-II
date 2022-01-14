@@ -3,7 +3,6 @@ import greenfoot.*;
 import java.util.HashMap;
 
 public class ItemSelect extends Inventory{
-    
    GreenfootImage overlay=new GreenfootImage("UI/hud/selectOverlay.png");
     
     
@@ -27,19 +26,19 @@ public class ItemSelect extends Inventory{
                           break;
                     }
                     case "blackhole":{
-                         Player.equipBlackHole=!Player.equipBlackHole;
+                        Player.equipBlackHole=!Player.equipBlackHole;
                           break;
                     }
                     case "lantern":{
-                         Player.equipLantern=!Player.equipLantern;
-                          break;
+                        Player.equipLantern=!Player.equipLantern;
+                        break;
                     }
                     case "laser":{
-                         Player.equipLaser=!Player.equipLaser;
-                          break;
+                        Player.equipLaser=!Player.equipLaser;
+                         break;
                     }
                     case "portalgun":{
-                         Player.equipPortalGun=true;
+                         Player.equipPortalGun=!Player.equipPortalGun;
                           break;
                     }
                     default:{

@@ -1,4 +1,3 @@
-
 import greenfoot.*;
 
 public class Dialog extends Menu {
@@ -32,14 +31,14 @@ public class Dialog extends Menu {
 
     public void displayText(String txt) {
         if (!addedText) {
-            getWorld().addObject(new Text(txt, 24), 512, 500);
+            getWorld().addObject(new Text(txt, 24), 522, 500);
             addedText = true;
         }
     }
 
     public void addButon() {
         if (!addedButon) {
-            getWorld().addObject(new Buton("Next", this), 740, 470);
+            getWorld().addObject(new Buton("Next", this), 730, 470);
             addedButon = true;
         }
     }
