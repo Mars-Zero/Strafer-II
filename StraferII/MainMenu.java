@@ -10,7 +10,7 @@ public class MainMenu extends Menu {
     public MainMenu() {
         
         WorldData.PAUZA = true;
-        setImage("fundal/titleScreen.png");
+        setImage("fundal/titleScreen1.png");
     }
 
     private void addButoane() {
