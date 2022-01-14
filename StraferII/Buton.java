@@ -47,6 +47,8 @@ public class Buton extends UI {
                     case "Next": {
                        
                         dialog.setNrSlide(dialog.getNrSlide()+1);
+                        dialog.setAddedText(false);
+                        getWorld().removeObjects(getWorld().getObjects(Text.class));
                         if(dialog.isLastSlide()){
                             this.getWorld().addObject(new Buton("X",dialog),this.getX(),this.getY());
                             this.getWorld().removeObject(this);
@@ -59,6 +61,8 @@ public class Buton extends UI {
                         getWorld().removeObject(menu);
                         getWorld().removeObject(dialog);
                         WorldData.addedDialogs=false;
+                         dialog.setAddedText(false);
+                        getWorld().removeObjects(getWorld().getObjects(Text.class));
                         getWorld().removeObject(this);
                         break;
                     }

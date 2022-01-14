@@ -47,7 +47,7 @@ public class PlayWorld extends World {
         addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 60);//margini
         addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 120);//margini
         addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 180);//margini
-        addObject(new TestActor(scroller), 1000, 2000);
+      
         for (int i = 1; i <= 10500; i += 1024) {
             addObject(new PereteInvizibil("W", 1, "mare"), i, 16);
         }
