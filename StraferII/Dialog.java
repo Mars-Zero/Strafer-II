@@ -1,30 +1,36 @@
 import greenfoot.*;
+import java.util.List;
 
 public class Dialog extends Menu {
 
     protected int nrSlide;
-    protected int maxSlide;
+
+    protected int nrDialog;
     String img;
     Npc npc;
     GreenfootImage text;
     protected boolean addedButon = false;
     protected boolean addedText = false;
-
-    public Dialog(Friendly npcref, String imgref, int maxSlide, String fileref) { ///???? cum incarcam text si de unde idk ne trebuie parser maybe
+    List lines ;
+    
+    
+    public Dialog(Friendly npcref, String imgref,int nrDialog) { ///???? cum incarcam text si de unde idk ne trebuie parser maybe
         WorldData.PAUZA = true;
         img = imgref;
         npc = npcref;
         nrSlide = 0;
+        this.nrDialog=nrDialog;
         addedButon = false;
         addedText = false;
+        lines=DialogLoader.load(img, nrDialog);
         setImage("UI/dialog/dialog" + img + ".png");
-        this.maxSlide = maxSlide;
+    
 
     }
 
     public String getLine(int nr) {//nr slideului
 
-        String line = "test doi zece";
+        String line = (String)lines.get(nr);
         /////parsarea
         return line;
     }
@@ -57,7 +63,7 @@ public class Dialog extends Menu {
     }
 
     public boolean isLastSlide() {
-        return nrSlide == maxSlide ? true : false;
+        return nrSlide == lines.size()-1 ? true : false;
     }
 
     public boolean isAddedText() {

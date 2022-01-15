@@ -70,7 +70,7 @@ public class PlayWorld extends World {
 
     public void addNpcs() {
         
-        addObject(new Keanu(this,scroller,3,""),1000,300);
+        addObject(new Keanu(this,scroller,"Keanu",1),1000,300);
         
         addObject(new Goblin(scroller, 100, 200), 100, 200);
         addObject(new Goblin(scroller, 1000, 2000), 1000, 2000);

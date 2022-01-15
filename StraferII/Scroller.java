@@ -7,6 +7,22 @@ public class Scroller
     private boolean limited; // flag to indicate whether scrolling is limited or not
     public static int scrolledX, scrolledY; // current scrolled distances
     private int wide, high; // if limited, dimensions of scrolling area else of image to wrap
+
+    public int getWide() {
+        return wide;
+    }
+
+    public void setWide(int wide) {
+        this.wide = wide;
+    }
+
+    public int getHigh() {
+        return high;
+    }
+
+    public void setHigh(int high) {
+        this.high = high;
+    }
    
     /**
      * This constructor is for an unlimited scrolling world;
