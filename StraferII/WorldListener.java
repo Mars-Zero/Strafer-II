@@ -7,7 +7,9 @@ public abstract class WorldListener extends Actor {
     Scroller scroller;
     Player player;
     World world;
+
     int worldSection = 11;
+    int playerDirection = 0;
 
     boolean changed = false;
 
@@ -21,6 +23,7 @@ public abstract class WorldListener extends Actor {
         scroller.setScrollImage(new GreenfootImage("map/worldSection/worldSection" + worldSection + ".png"));
         clearWorldObjects();
         addObjects();
+        relocatePlayer();
     }
 
     public void act() {
@@ -47,7 +50,28 @@ public abstract class WorldListener extends Actor {
 
     }
 
-    /**
+    void relocatePlayer() {
+        int x = 60, y = 60;
+        switch (playerDirection) {
+            case 0: {
+                y = scroller.getScrollMaxHigh() - y;
+                x = player.getWorldX();
+            }
+            case 1: {
+                x = scroller.getScrollMaxWide() - x;
+                y = player.getWorldY();
+            }
+            case 2: {
+                x = player.getWorldX();
+            }
+            case 3: {
+                y = player.getWorldY();
+            }
+        }
+        player.setLocation(x, y);
+    }
+
+    /*
      * This method adds all objects that need to be put in the world
      */
     void addObjects() {
@@ -55,6 +79,26 @@ public abstract class WorldListener extends Actor {
         //call different methods based on the world that needs to be changed
         switch (worldSection) {
             case 11: {
+
+                break;
+            }
+            case 12: {
+
+                break;
+            }
+            case 13: {
+
+                break;
+            }
+            case 21: {
+
+                break;
+            }
+            case 22: {
+
+                break;
+            }
+            case 23: {
 
                 break;
             }
@@ -102,37 +146,37 @@ urmatoare:        |____|_________|_______|________|
     int[] sectionNeighbour23 = {13, 22, 0, 0};
 
     private int getNextWorldSection() {
-        int dir = 0;
+
         if (player.getX() >= WorldData.WIDTH) {
-            dir = 3;
+            playerDirection = 3;
         }
         if (player.getX() <= 0) {
-            dir = 1;
+            playerDirection = 1;
         }
         if (player.getY() >= WorldData.HIGHT) {
-            dir = 2;
+            playerDirection = 2;
         }
         if (player.getY() <= 0) {
-            dir = 0;
+            playerDirection = 0;
         }
         switch (this.worldSection) {
             case 11: {
-                return sectionNeighbour11[dir];
+                return sectionNeighbour11[playerDirection];
             }
             case 12: {
-                return sectionNeighbour12[dir];
+                return sectionNeighbour12[playerDirection];
             }
             case 13: {
-                return sectionNeighbour13[dir];
+                return sectionNeighbour13[playerDirection];
             }
             case 21: {
-                return sectionNeighbour21[dir];
+                return sectionNeighbour21[playerDirection];
             }
             case 22: {
-                return sectionNeighbour22[dir];
+                return sectionNeighbour22[playerDirection];
             }
             case 23: {
-                return sectionNeighbour23[dir];
+                return sectionNeighbour23[playerDirection];
             }
             default: {
                 return 11;
@@ -140,11 +184,6 @@ urmatoare:        |____|_________|_______|________|
 
         }
     }
-    
-    
-    
-    
-    
 
     private void worldSection11() {
 
@@ -169,11 +208,9 @@ urmatoare:        |____|_________|_______|________|
     private void worldSection23() {
 
     }
+    
+    
 
-    
-    
-    
-    
     public int getWorldSection() {
         return worldSection;
     }

@@ -8,22 +8,22 @@ public class Scroller
     
     private boolean limited; // flag to indicate whether scrolling is limited or not
     public static int scrolledX, scrolledY; // current scrolled distances
-    private int wide, high; // if limited, dimensions of scrolling area else of image to wrap
+    private int scrollMaxWide, scrollMaxHigh; // if limited, dimensions of scrolling area else of image to wrap
 
-    public int getWide() {
-        return wide;
+    public int getScrollMaxWide() {
+        return scrollMaxWide;
     }
 
-    public void setWide(int wide) {
-        this.wide = wide;
+    public void setScrollMaxWide(int scrollMaxWide) {
+        this.scrollMaxWide = scrollMaxWide;
     }
 
-    public int getHigh() {
-        return high;
+    public int getScrollMaxHigh() {
+        return scrollMaxHigh;
     }
 
-    public void setHigh(int high) {
-        this.high = high;
+    public void setScrollMaxHigh(int scrollMaxHigh) {
+        this.scrollMaxHigh = scrollMaxHigh;
     }
     public GreenfootImage getScrollImage() {
         return scrollImage;
@@ -47,8 +47,8 @@ public class Scroller
         scrollImage = image;
         if (image != null)
         {
-            wide = image.getWidth();
-            high = image.getHeight();
+            scrollMaxWide = image.getWidth();
+            scrollMaxHigh = image.getHeight();
         }
         scroll(0, 0); // sets initial background image
     }
@@ -72,8 +72,8 @@ public class Scroller
         
         scrolledX=0; scrolledY=0;
         
-        this.wide = wide;
-        this.high = high;
+        this.scrollMaxWide = wide;
+        this.scrollMaxHigh = high;
         limited = true;
         world = viewWorld;
         if (image != null)
@@ -102,8 +102,8 @@ public class Scroller
         if (limited)
         {
             // calculate limits of scrolling
-            int maxX = wide-world.getWidth();
-            int maxY = high-world.getHeight();
+            int maxX = scrollMaxWide-world.getWidth();
+            int maxY = scrollMaxHigh-world.getHeight();
             // apply limits to distances to scroll
             if (scrolledX+dsx < 0) dsx = -scrolledX;
             if (scrolledX+dsx >= maxX) dsx = maxX-scrolledX;
@@ -135,18 +135,18 @@ public class Scroller
                 int imageX = scrolledX*world.getCellSize();
                 int imageY = scrolledY*world.getCellSize();
                 // get near-zero starting positions for drawing 'scrollImage'
-                imageX = imageX%wide;
-                imageY = imageY%high;
+                imageX = imageX%scrollMaxWide;
+                imageY = imageY%scrollMaxHigh;
                 // adjust negative values as needed
-                if (imageX < 0) imageX += wide;
-                if (imageY < 0) imageY += high;
+                if (imageX < 0) imageX += scrollMaxWide;
+                if (imageY < 0) imageY += scrollMaxHigh;
                 // create image of appropriate size and tile fill 'scrollImage' onto it
                 GreenfootImage hold = new GreenfootImage(scrollImage);
                 hold.drawImage(scrollImage, -imageX, -imageY);
-                if (imageX > 0) hold.drawImage(scrollImage, wide-imageX, -imageY);
-                if (imageY > 0) hold.drawImage(scrollImage, -imageX, high-imageY);
+                if (imageX > 0) hold.drawImage(scrollImage, scrollMaxWide-imageX, -imageY);
+                if (imageY > 0) hold.drawImage(scrollImage, -imageX, scrollMaxHigh-imageY);
                 if (imageX > 0 && imageY > 0)
-                    hold.drawImage(scrollImage, wide-imageX, high-imageY);
+                    hold.drawImage(scrollImage, scrollMaxWide-imageX, scrollMaxHigh-imageY);
                 // set image to background of 'world'
                 world.setBackground(hold);
             }

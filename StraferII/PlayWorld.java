@@ -24,6 +24,7 @@ public class PlayWorld extends World {
         WorldData.addedDialogs=false;
         addMainMenu();
         prepare();
+        
     }
 
     private void addMainMenu() {
