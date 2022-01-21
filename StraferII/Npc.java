@@ -34,7 +34,7 @@ public class Npc extends Movers
     protected int prevsx=Scroller.scrolledX;
     protected int prevsy=Scroller.scrolledY;
      
-     public static int[][] matElem=new int[110][110]; //matricea copiata din nivelx
+     public static int[][] matElem=new int[128][128]; //matricea copiata din nivelx
      
      
      

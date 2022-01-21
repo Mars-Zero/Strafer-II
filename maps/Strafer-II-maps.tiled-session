@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map21.tmx",
+    "activeFile": "map11.tmx",
     "expandedProjectPaths": [
         "tilesets",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
@@ -190,11 +190,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.0625,
+            "scale": 0.015625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 4096,
-                "y": 4088
+                "x": 576,
+                "y": 672
             }
         },
         "map11.tmx#Terrain": {
@@ -240,19 +240,19 @@
             "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 5488,
-                "y": 2728
+                "x": 4096,
+                "y": 4104
             }
         },
         "map12.tmx#grass3": {
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 0.03125,
+            "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1408,
-                "y": 3600
+                "x": 624,
+                "y": 3224
             }
         },
         "snow.tsx": {
@@ -337,9 +337,9 @@
     "project": "Strafer-II-maps.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "map11.tmx",
-        "map12.tmx",
         "map21.tmx",
+        "map12.tmx",
+        "map11.tmx",
         "tilesets/Terrain.tsx",
         "tilesets/snow1.tsx",
         "tilesets/apa1.tsx",
