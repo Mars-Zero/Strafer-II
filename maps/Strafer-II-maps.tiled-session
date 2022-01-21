@@ -190,11 +190,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.085699462890625,
+            "scale": 0.0625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 2730.4721885905565,
-                "y": 6878.68955202621
+                "x": 4096,
+                "y": 4088
             }
         },
         "map11.tmx#Terrain": {
@@ -240,16 +240,19 @@
             "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2224,
-                "y": 7176
+                "x": 5488,
+                "y": 2728
             }
+        },
+        "map12.tmx#grass3": {
+            "scaleInDock": 1
         },
         "map21.tmx": {
             "scale": 0.03125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 6368,
-                "y": 2512
+                "x": 1408,
+                "y": 3600
             }
         },
         "snow.tsx": {
@@ -329,7 +332,6 @@
     "openFiles": [
         "map11.tmx",
         "map12.tmx",
-        "tilesets/Terrain.tsx",
         "map21.tmx"
     ],
     "project": "Strafer-II-maps.tiled-project",
@@ -337,8 +339,8 @@
     "recentFiles": [
         "map11.tmx",
         "map12.tmx",
-        "tilesets/Terrain.tsx",
         "map21.tmx",
+        "tilesets/Terrain.tsx",
         "tilesets/snow1.tsx",
         "tilesets/apa1.tsx",
         "map.tmx",

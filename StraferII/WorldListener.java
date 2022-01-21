@@ -1,5 +1,6 @@
 
 import greenfoot.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorldListener extends Actor {
@@ -8,18 +9,22 @@ public class WorldListener extends Actor {
     Player player;
     PlayWorld world;
 
-    public static int worldSection = 11;
+    public int worldSection = 11;
     int playerDirection = 0;
 
+    List<GreenfootImage> fundaluri = new ArrayList<>();
+
     public WorldListener(PlayWorld world) {
+
         this.world = world;
+
         scroller = world.getScroller();
         player = world.getObjects(Player.class).get(0);
-
+        loadImages();
     }
 
     void changeWorldSection() {
-        scroller.setScrollImage(new GreenfootImage("map/worldSection/worldSection" + worldSection + ".png"));
+        scroller.setScrollImage(fundaluri.get(getImageIndex()));
         relocatePlayer();
         clearWorldObjects();
 
@@ -58,6 +63,9 @@ public class WorldListener extends Actor {
 
     void relocatePlayer() {
 
+        relocateX = 60;
+        relocateY = 60;
+
         switch (playerDirection) {
             case 0: {
                 relocateY = scroller.getScrollMaxHigh() - relocateY;
@@ -78,6 +86,7 @@ public class WorldListener extends Actor {
                 break;
             }
         }
+
         player.setLocation(relocateX - Scroller.scrolledX, relocateY - Scroller.scrolledY);
 
     }
@@ -158,7 +167,7 @@ urmatoare:        |____|_________|_______|________|
 
     private int getNextWorldSection() {
 
-        playerDirection=player.getDirection();
+        playerDirection = player.getDirection();
         switch (this.worldSection) {
             case 11: {
                 return sectionNeighbour11[playerDirection];
@@ -185,7 +194,7 @@ urmatoare:        |____|_________|_______|________|
         }
     }
 
-    private void initWorldSection11() {
+    public void initWorldSection11() {
         System.out.println("11");
 
         world.initObject(new Fps(), 150, 50);
@@ -216,34 +225,32 @@ urmatoare:        |____|_________|_______|________|
         /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
-      //  world.initObject(new Goblin(scroller, 100, 200), 100, 200);
-      //  world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
-
-      //  world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
-     //   world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
+        //  world.initObject(new Goblin(scroller, 100, 200), 100, 200);
+        // world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
+        //  world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
+        //  world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
         ///Npcs
-
     }
 
-    private void initWorldSection12() {
+    public void initWorldSection12() {
         System.out.println("12");
 
         getWorld().addObject(new Fps(), 150, 50);
     }
 
-    private void initWorldSection13() {
+    public void initWorldSection13() {
 
     }
 
-    private void initWorldSection21() {
+    public void initWorldSection21() {
 
     }
 
-    private void initWorldSection22() {
+    public void initWorldSection22() {
 
     }
 
-    private void initWorldSection23() {
+    public void initWorldSection23() {
 
     }
 
@@ -253,6 +260,45 @@ urmatoare:        |____|_________|_______|________|
 
     public void setWorldSection(int worldSection) {
         this.worldSection = worldSection;
+    }
+
+    void loadImages() {
+        fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 11 + ".png"));
+
+        fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 12 + ".png"));
+
+        fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 13 + ".png"));
+
+        fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 21 + ".png"));
+
+        fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 22 + ".png"));
+
+        fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
+    }
+
+    int getImageIndex() {
+        switch (worldSection) {
+            case 11: {
+                return 0;
+            }
+            case 12: {
+                return 1;
+            }
+            case 13: {
+                return 2;
+            }
+            case 21: {
+                return 3;
+            }
+            case 22: {
+                return 4;
+            }
+            case 23: {
+                return 5;
+            }
+
+        }
+        return 0;
     }
 
 }

@@ -41,6 +41,7 @@ public class PlayWorld extends World {
 
         worldListener = new WorldListener(this);
         addObject(worldListener, 1, 1);
+        
 
         addObject(new Fps(), 150, 50);
     }
