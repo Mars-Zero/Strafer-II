@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map.tmx",
+    "activeFile": "map21.tmx",
     "expandedProjectPaths": [
-        ".",
         "tilesets",
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
+        "."
     ],
     "fileStates": {
         "": {
@@ -110,11 +110,11 @@
             }
         },
         "map.tmx": {
-            "scale": 1,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 798,
-                "y": 417.5
+                "x": 9457.575757575756,
+                "y": 5031.818181818182
             }
         },
         "map.tmx#Terrain": {
@@ -189,6 +189,69 @@
                 "y": -80964
             }
         },
+        "map11.tmx": {
+            "scale": 0.085699462890625,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 2730.4721885905565,
+                "y": 6878.68955202621
+            }
+        },
+        "map11.tmx#Terrain": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#apa1": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#decor1": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#detoate1": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#detoate2": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#dungeon1": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#dungeon2": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#dungeon3": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#grass1": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#grass2": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#perete": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#snow1": {
+            "scaleInDock": 1
+        },
+        "map12.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2224,
+                "y": 7176
+            }
+        },
+        "map21.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6368,
+                "y": 2512
+            }
+        },
         "snow.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 1
@@ -256,31 +319,34 @@
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps/world.world"
     ],
     "map.fixedSize": true,
-    "map.height": 100,
+    "map.height": 128,
     "map.lastUsedExportFilter": "JSON map files (*.json)",
     "map.lastUsedFormat": "tmx",
     "map.renderOrder": null,
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 100,
+    "map.width": 128,
     "openFiles": [
-        "map.tmx"
+        "map11.tmx",
+        "map12.tmx",
+        "tilesets/Terrain.tsx",
+        "map21.tmx"
     ],
     "project": "Strafer-II-maps.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "map.tmx",
+        "map11.tmx",
+        "map12.tmx",
         "tilesets/Terrain.tsx",
-        "tilesets/detoate1.tsx",
+        "map21.tmx",
+        "tilesets/snow1.tsx",
         "tilesets/apa1.tsx",
+        "map.tmx",
+        "tilesets/detoate1.tsx",
         "tilesets/detoate2.tsx",
         "tilesets/decor1.tsx",
         "tilesets/grass2.tsx",
-        "tilesets/grass3.tsx",
-        "tilesets/snow1.tsx",
-        "D:/HACKERMAN/programing/libraries/tileson-master/tileson-master/content/test-maps/ultimate_test.tmx",
-        "tilesets/snow.tsx",
-        "tilesets/grass_biome.tsx"
+        "tilesets/grass3.tsx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

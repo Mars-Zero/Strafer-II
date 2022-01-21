@@ -14,7 +14,7 @@ public class Dialog extends Menu {
     List lines ;
     
     
-    public Dialog(Friendly npcref, String imgref,int nrDialog) { ///???? cum incarcam text si de unde idk ne trebuie parser maybe
+    public Dialog(Friendly npcref, String imgref,int nrDialog) { 
         WorldData.PAUZA = true;
         img = imgref;
         npc = npcref;

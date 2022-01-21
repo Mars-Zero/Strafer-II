@@ -6,6 +6,27 @@
             "width": 8192,
             "x": 2944,
             "y": -576
+        },
+        {
+            "fileName": "map12.tmx",
+            "height": 8192,
+            "width": 8192,
+            "x": 44160,
+            "y": -2112
+        },
+        {
+            "fileName": "map21.tmx",
+            "height": 8192,
+            "width": 8192,
+            "x": 35968,
+            "y": 6080
+        },
+        {
+            "fileName": "map11.tmx",
+            "height": 8192,
+            "width": 8192,
+            "x": 35968,
+            "y": -2112
         }
     ],
     "onlyShowAdjacentMaps": false,

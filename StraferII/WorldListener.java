@@ -2,38 +2,39 @@
 import greenfoot.*;
 import java.util.List;
 
-public abstract class WorldListener extends Actor {
+public class WorldListener extends Actor {
 
     Scroller scroller;
     Player player;
-    World world;
+    PlayWorld world;
 
-    int worldSection = 11;
+    public static int worldSection = 11;
     int playerDirection = 0;
 
-    boolean changed = false;
-
-    public WorldListener(World world) {
-        scroller = world.getObjects(Scroller.class).get(0);
-        player = world.getObjects(Player.class).get(0);
+    public WorldListener(PlayWorld world) {
         this.world = world;
+        scroller = world.getScroller();
+        player = world.getObjects(Player.class).get(0);
+
     }
 
     void changeWorldSection() {
         scroller.setScrollImage(new GreenfootImage("map/worldSection/worldSection" + worldSection + ".png"));
-        clearWorldObjects();
-        addObjects();
         relocatePlayer();
+        clearWorldObjects();
+
+        addObjects();
+
     }
 
     public void act() {
-        if (!changed) {
-            if (player.isAtEdge()) {
-                this.worldSection = getNextWorldSection();
-                changed = true;
-                changeWorldSection();
-            }
+
+        if (player.isAtEdge()) {
+            this.worldSection = getNextWorldSection();
+
+            changeWorldSection();
         }
+
     }
 
     /**
@@ -42,7 +43,7 @@ public abstract class WorldListener extends Actor {
     void clearWorldObjects() {
         List<Actor> list = world.getObjects(Actor.class);
         for (Actor actor : list) {
-            if (actor instanceof Player) {
+            if (actor instanceof Player || actor instanceof WorldListener) {
             } else {
                 world.removeObject(actor);
             }
@@ -50,25 +51,35 @@ public abstract class WorldListener extends Actor {
 
     }
 
+    /*
+    *pune playerul in functie de directie acolo unde trebuie ca sa fie in continuarea sectiunii din care pleaca
+     */
+    int relocateX = 60, relocateY = 60;
+
     void relocatePlayer() {
-        int x = 60, y = 60;
+
         switch (playerDirection) {
             case 0: {
-                y = scroller.getScrollMaxHigh() - y;
-                x = player.getWorldX();
+                relocateY = scroller.getScrollMaxHigh() - relocateY;
+                relocateX = player.getWorldX();
+                break;
             }
             case 1: {
-                x = scroller.getScrollMaxWide() - x;
-                y = player.getWorldY();
+                relocateX = scroller.getScrollMaxWide() - relocateX;
+                relocateY = player.getWorldY();
+                break;
             }
             case 2: {
-                x = player.getWorldX();
+                relocateX = player.getWorldX();
+                break;
             }
             case 3: {
-                y = player.getWorldY();
+                relocateY = player.getWorldY();
+                break;
             }
         }
-        player.setLocation(x, y);
+        player.setLocation(relocateX - Scroller.scrolledX, relocateY - Scroller.scrolledY);
+
     }
 
     /*
@@ -79,11 +90,11 @@ public abstract class WorldListener extends Actor {
         //call different methods based on the world that needs to be changed
         switch (worldSection) {
             case 11: {
-
+                initWorldSection11();
                 break;
             }
             case 12: {
-
+                initWorldSection12();
                 break;
             }
             case 13: {
@@ -147,18 +158,7 @@ urmatoare:        |____|_________|_______|________|
 
     private int getNextWorldSection() {
 
-        if (player.getX() >= WorldData.WIDTH) {
-            playerDirection = 3;
-        }
-        if (player.getX() <= 0) {
-            playerDirection = 1;
-        }
-        if (player.getY() >= WorldData.HIGHT) {
-            playerDirection = 2;
-        }
-        if (player.getY() <= 0) {
-            playerDirection = 0;
-        }
+        playerDirection=player.getDirection();
         switch (this.worldSection) {
             case 11: {
                 return sectionNeighbour11[playerDirection];
@@ -185,31 +185,67 @@ urmatoare:        |____|_________|_______|________|
         }
     }
 
-    private void worldSection11() {
+    private void initWorldSection11() {
+        System.out.println("11");
+
+        world.initObject(new Fps(), 150, 50);
+
+        ///WorldStructures
+        // getWorld().addObject(new PereteInvizibil("A", 1, "mare90"), 0-Scroller.scrolledX, 300-Scroller.scrolledY);//margini
+        /* getWorld().addObject(new PereteInvizibil("W", 1, "mic"), 690, 340);
+        getWorld().addObject(new PereteInvizibil("W", 1, "mic"), 750, 340);
+        getWorld().addObject(new PereteInvizibil("W", 1, "mic"), 690, 340);
+
+        getWorld().addObject(new PereteInvizibil("A", 1, "mic90"), 795, 300);
+        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 585, 300);
+
+        getWorld().addObject(new PereteInvizibil("S", 1, "mic"), 630, 255);
+        getWorld().addObject(new PereteInvizibil("S", 1, "mic"), 690, 255);
+        getWorld().addObject(new PereteInvizibil("S", 1, "mic"), 750, 255);
+
+        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 0);//margini
+        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 60);//margini
+        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 120);//margini
+        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 180);//margini
+         */
+        for (int i = 1; i <= 10500; i += 1024) {
+            world.initObject(new PereteInvizibil("W", 1, "mare"), i, 16);
+        }
+
+        ///WorldStructures
+        /// Npcs
+        world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
+
+      //  world.initObject(new Goblin(scroller, 100, 200), 100, 200);
+      //  world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
+
+      //  world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
+     //   world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
+        ///Npcs
 
     }
 
-    private void worldSection12() {
+    private void initWorldSection12() {
+        System.out.println("12");
+
+        getWorld().addObject(new Fps(), 150, 50);
+    }
+
+    private void initWorldSection13() {
 
     }
 
-    private void worldSection13() {
+    private void initWorldSection21() {
 
     }
 
-    private void worldSection21() {
+    private void initWorldSection22() {
 
     }
 
-    private void worldSection22() {
+    private void initWorldSection23() {
 
     }
-
-    private void worldSection23() {
-
-    }
-    
-    
 
     public int getWorldSection() {
         return worldSection;

@@ -45,8 +45,8 @@ public class Goblin extends Npc {
         super(scrl);
         prevsx = Scroller.scrolledX;
         prevsy = Scroller.scrolledY;
-        worldX = x;
-        worldY = y;
+        worldX = x-Scroller.scrolledX;
+        worldY = y-Scroller.scrolledY;
 
         this.mort = false;
 

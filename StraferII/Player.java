@@ -23,22 +23,6 @@ public class Player extends Jucator {
     //{
     private int worldX, worldY;
 
-    public int getWorldX() {
-        return worldX;
-    }
-
-    public int getWorldY() {
-        return worldY;
-    }
-
-    public void setWorldX(int val) {
-        worldX = val;
-    }
-
-    public void setWorldY(int val) {
-        worldY = val;
-    }
-
     public static int floorLevel = 1;
 
     boolean isMoving;
@@ -57,7 +41,6 @@ public class Player extends Jucator {
 
     public static boolean toggledInventory = false;
     public static boolean toggledPause = false;
-
 
     public static HashSet<String> iteme = new HashSet<String>();
 
@@ -110,8 +93,6 @@ public class Player extends Jucator {
 
         this.floorLevel = 1;
     }
-
-   
 
     protected void checkMove() {
         apas = false;
@@ -309,22 +290,22 @@ public class Player extends Jucator {
                                 double grade = Math.toDegrees(Math.atan2(delta_y, delta_x));
 
                                 if (grade >= -45 && grade < 45) {       //se intoarce in dir in care trage
-                                    
-                                    this.gif="D";
+
+                                    this.gif = "D";
                                 }
                                 if (grade >= 45 && grade < 135) {
-                                    
-                                   this.gif="S";
+
+                                    this.gif = "S";
 
                                 }
                                 if (grade >= 135 && grade < 225) {
-                                    
-                                    this.gif="A";
+
+                                    this.gif = "A";
 
                                 }
                                 if (grade >= -180 && grade < -45) {
-                                    
-                                    this.gif="W";
+
+                                    this.gif = "W";
                                 }
                                 vedere();
                                 getWorld().addObject(new Laser(grade), getX(), getY());
@@ -345,14 +326,12 @@ public class Player extends Jucator {
         }
         //laser
 
-        
-        
         //lantern
-         if (equipLantern) {
+        if (equipLantern) {
             long timpCurent = System.currentTimeMillis();
             if (timpCurent - timpPrec >= 20) {
                 if (getWorld().getObjects(Lantern.class).isEmpty()) {
-                    getWorld().addObject(new Lantern(), getX()+30, getY());
+                    getWorld().addObject(new Lantern(), getX() + 30, getY());
                 }
                 timpPrec = timpCurent;
             }
@@ -364,11 +343,8 @@ public class Player extends Jucator {
             }
         }
         //lantern
-        
-        
-    }
 
-  
+    }
 
     protected void checkPauza() {
 
@@ -411,11 +387,48 @@ public class Player extends Jucator {
         }
 
     }
-    
-    
-    
-    
-    
-     
+
+    public int getDirection() {
+        switch (this.gif) {
+            case "W": {
+                direction=0;
+                break;
+            }
+            case "A": {
+                direction=1;
+                break;
+            }
+            case "S": {
+                direction=2;
+                break;
+            }
+            case "D": {
+                direction=3;
+                break;
+            }
+            default: {
+                direction=3;
+                break;
+            }
+        }
+
+        return direction;
+    }
+
+    public int getWorldX() {
+        return worldX;
+    }
+
+    public int getWorldY() {
+        return worldY;
+    }
+
+    public void setWorldX(int val) {
+        worldX = val;
+    }
+
+    public void setWorldY(int val) {
+        worldY = val;
+    }
 
 }
