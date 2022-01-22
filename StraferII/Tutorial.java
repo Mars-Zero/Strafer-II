@@ -2,29 +2,13 @@ import greenfoot.*;
 import java.util.List;
 
 
-public class Tutorial extends Menu
+public class Tutorial extends Dialog
 {
-    protected int nrSlide;
-
-    protected int nrDialog;
-    String img;
-    Npc npc;
-    GreenfootImage text;
-    protected boolean addedButon = false;
-    protected boolean addedText = false;
-    List lines ;
+    
     
     
     public Tutorial(Friendly npcref, String imgref,int nrDialog) { 
-        WorldData.PAUZA = true;
-        img = imgref;
-        npc = npcref;
-        nrSlide = 0;
-        this.nrDialog=nrDialog;
-        addedButon = false;
-        addedText = false;
-        lines=DialogLoader.load(img, nrDialog);
-        setImage("UI/dialog/dialog" + img + ".png");
+       super(npcref,imgref,nrDialog);
     
 
     }

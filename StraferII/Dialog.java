@@ -6,12 +6,12 @@ public class Dialog extends Menu {
     protected int nrSlide;
 
     protected int nrDialog;
-    String img;
-    Npc npc;
-    GreenfootImage text;
+    protected String img;
+    protected Npc npc;
+    protected GreenfootImage text;
     protected boolean addedButon = false;
     protected boolean addedText = false;
-    List lines ;
+    protected List lines ;
     
     
     public Dialog(Friendly npcref, String imgref,int nrDialog) { 
