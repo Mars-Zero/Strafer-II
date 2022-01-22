@@ -28,7 +28,7 @@ public class PlayWorld extends World {
     }
 
     public void addPlayer() {
-        GreenfootImage background = new GreenfootImage("images/test/map.png");//imi pun fundalul
+        GreenfootImage background = new GreenfootImage("map/worldSection/worldSection" + 11 + ".png");//imi pun fundalul
         scroller = new Scroller(this, background, 8192, 8192);
         player = new Player();
 

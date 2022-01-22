@@ -57,6 +57,10 @@ public class Buton extends UI {
                         break;
                      
                     }
+                    case "Back":{
+                        
+                        break;
+                    }
                     case "X": {
                         WorldData.PAUZA=false;
                         getWorld().removeObject(menu);
@@ -65,6 +69,10 @@ public class Buton extends UI {
                          dialog.setAddedText(false);
                         getWorld().removeObjects(getWorld().getObjects(Text.class));
                         getWorld().removeObject(this);
+                        break;
+                    }
+                    case "Open":{
+                        
                         break;
                     }
                     case "Resume": {
@@ -95,6 +103,7 @@ public class Buton extends UI {
                     }
                     case "Tutorials":{
                         
+                        break;
                     }
                     case "New Game":{
                         //save file nou

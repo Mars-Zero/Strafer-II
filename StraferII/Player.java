@@ -288,7 +288,13 @@ public class Player extends Jucator {
                                 double delta_x = Greenfoot.getMouseInfo().getX() - getX();
                                 double delta_y = Greenfoot.getMouseInfo().getY() - getY();
                                 double grade = Math.toDegrees(Math.atan2(delta_y, delta_x));
-
+                                
+                                
+                                int gr = (int) grade;
+                                gr -= gr % 10;gr += (Greenfoot.getRandomNumber(2)-1 )*5;  //reduce din precizie
+                                grade=gr;
+                                
+                                
                                 if (grade >= -45 && grade < 45) {       //se intoarce in dir in care trage
 
                                     this.gif = "D";
@@ -308,6 +314,7 @@ public class Player extends Jucator {
                                     this.gif = "W";
                                 }
                                 vedere();
+                                
                                 getWorld().addObject(new Laser(grade), getX(), getY());
 
                             }
@@ -391,23 +398,23 @@ public class Player extends Jucator {
     public int getDirection() {
         switch (this.gif) {
             case "W": {
-                direction=0;
+                direction = 0;
                 break;
             }
             case "A": {
-                direction=1;
+                direction = 1;
                 break;
             }
             case "S": {
-                direction=2;
+                direction = 2;
                 break;
             }
             case "D": {
-                direction=3;
+                direction = 3;
                 break;
             }
             default: {
-                direction=3;
+                direction = 3;
                 break;
             }
         }
