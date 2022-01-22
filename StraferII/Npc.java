@@ -197,7 +197,7 @@ public class Npc extends Movers
         double rezultanta = Math.sqrt(forta_attack * forta_attack + forta_greutate * forta_greutate
                 - 2 * forta_attack * forta_greutate * Math.sin(grade_attack));
 
-        double grade_attack_greutate = Math.acos(-1 * Math.sin(grade_attack));                   //beta
+        double grade_attack_greutate = 3.14159/2- Math.asin(-1 * Math.sin(grade_attack));                   //beta
 
         grade_rezultanta = 90 - (grade_attack_greutate - grade_attack);                     //epsilon
 
