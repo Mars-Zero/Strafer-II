@@ -51,72 +51,96 @@ abstract class SaveSystem {
 		}
 	}
 
-	/**
-	 * The load method It will be given the player and it will load the list of all
-	 * the items and other proccesses
-	 */
-	public static void load(int saveNumber,Jucator juc) {
-		File director = new File(SaveSystem.directoryName);
-		File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
+    /**
+     * The load method It will be given the player and it will load the list of all
+     * the items and other proccesses
+     */
+    public static void load(int saveNumber) {
+        File director = new File(SaveSystem.directoryName);
+        File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
 
-		List<Item> iteme = new ArrayList<>();
-		List<Tutorial> tutor = new ArrayList<>();
+        List<Item> iteme = new ArrayList<>();
+        List<Tutorial> tutor = new ArrayList<>();
+        Player juc=new Player();
+        int ScrolledX,ScrolledY;
+        int WorldSection;
+        try {
+            file.createNewFile();
+            Scanner fin = new Scanner(file, "UTF-8");
+            while (fin.hasNext()) {
+                String str = fin.nextLine();
+                String tip = getTipString(str);
+                if (tip.equalsIgnoreCase("Item")) {
+                    //Item itm = new Item(getContentString(str));
+                    //iteme.add(itm);
+                } else if (tip.equalsIgnoreCase("Tutorial")) {
+                    //Tutorial tut = new Tutorial(getContentString(str));
+                    //tutor.add(tut);
+                }
+                else if(tip.equalsIgnoreCase("PlayerX")) {
+                	juc.setWorldX(Integer.parseInt(getContentString(str)));
+                }
+                else if(tip.equalsIgnoreCase("PlayerY")) {
+                	juc.setWorldY(Integer.parseInt(getContentString(str)));
+                }
+                else if(tip.equalsIgnoreCase("ScrollX")) {
+                	ScrolledX=Integer.parseInt(getContentString(str));
+                }
+                else if(tip.equalsIgnoreCase("ScrollY")) {
+                	ScrolledY=Integer.parseInt(getContentString(str));
+                }
+                else if(tip.equalsIgnoreCase("WorldSection")) {
+                	WorldSection=Integer.parseInt(getContentString(str));
+                }
 
-		try {
-			file.createNewFile();
-			Scanner fin = new Scanner(file, "UTF-8");
-			while (fin.hasNext()) {
-				String str = fin.nextLine();
-				String tip = getTipString(str);
-				if (tip.equalsIgnoreCase("Item")) {
-					//Item itm = new Item(getContentString(str));
-					//iteme.add(itm);
-				} else if (tip.equalsIgnoreCase("Tutorial")) {
-					//Tutorial tut = new Tutorial(getContentString(str));
-					//tutor.add(tut);
-				}
-
-			}
+            }
                         fin.close();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
-	/**
-	 * The save method; It will be given all the items and other proccesses that must be saved
-	 */
-	public static void save(int saveNumber, List<Item> iteme, List<Tutorial> tutor) {
-		File director = new File(SaveSystem.directoryName);
-		if (!director.isDirectory()) {
-			director.mkdir();
-		}
-		File file = new File(director.getAbsolutePath(), "save" + saveNumber + ".txt");
-		try {
-			if (file.exists()) {
-				// sterg continutul save-ului trecut
-				PrintWriter writer = new PrintWriter(file);
-				writer.print("");
-				writer.close();
-			} else {
-				file.createNewFile();
-			}
+    /**
+     * The save method; It will be given all the items and other proccesses that must be saved
+     */
+    public static void save(int saveNumber, List<Item> iteme, List<Tutorial> tutor
+    		,Player juc,int ScrolledY,int ScrolledX,
+    		int WorldSection) {
+    	File director = new File(SaveSystem.directoryName);
+    	if (!director.isDirectory()) {
+    		director.mkdir();
+    	}
+    	File file = new File(director.getAbsolutePath(), "save" + saveNumber + ".txt");
+    	try {
+    		if (file.exists()) {
+    			// sterg continutul save-ului trecut
+    			PrintWriter writer = new PrintWriter(file);
+    			writer.print("");
+    			writer.close();
+    		} else {
+    			file.createNewFile();
+    		}
 
-			PrintStream fout = new PrintStream(new FileOutputStream(file, true), true, Charset.forName("UTF-8"));
-			fout.flush();
+    		PrintStream fout = new PrintStream(new FileOutputStream(file, true), true, Charset.forName("UTF-8"));
+    		fout.flush();
 
-			for (Item it : iteme) {
-				fout.println("Item:" + it.toString());
-			}
-			for (Tutorial tut : tutor) {
-				fout.println("Tutorial:" + tut.toString());
-			}
-			fout.close();
+    		for (Item it : iteme) {
+    			fout.println("Item:" + it.toString());
+    		}
+    		for (Tutorial tut : tutor) {
+    			fout.println("Tutorial:" + tut.toString());
+    		}
+    		fout.println("PlayerX:" + new Integer(juc.getWorldX()).toString());
+    		fout.println("PlayerY:" + new Integer(juc.getWorldY()).toString());
+    		fout.println("ScrollX:" + new Integer(ScrolledX).toString());
+    		fout.println("ScrollY:" + new Integer(ScrolledY).toString());
+    		fout.println("WorldSection:" + new Integer(WorldSection).toString());
+    		fout.close();
 
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
+    	} catch (Exception e) {
+    		System.out.println(e);
+    	}
+    }
 
 	/**
 	 * 
