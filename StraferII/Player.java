@@ -396,28 +396,6 @@ public class Player extends Jucator {
     }
 
     public int getDirection() {
-      /*  switch (this.gif) {
-            case "W": {
-                direction = 0;
-                break;
-            }
-            case "A": {
-                direction = 1;
-                break;
-            }
-            case "S": {
-                direction = 2;
-                break;
-            }
-            case "D": {
-                direction = 3;
-                break;
-            }
-            default: {
-                direction = 3;
-                break;
-            }
-        }*/
       
       if(getX()>=1020){
           direction= 3;
