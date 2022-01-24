@@ -127,7 +127,10 @@ public class Player extends Jucator {
     private boolean toggledInventory = false;
     public static boolean toggledPause = false;
 
-    public static HashSet<String> iteme = new HashSet<String>();
+    private  HashSet<String> iteme = new HashSet<String>();
+    public HashSet<String> getIteme() {
+        return iteme;
+    }
 
     protected long timpPrec;
     private long timp = 0;

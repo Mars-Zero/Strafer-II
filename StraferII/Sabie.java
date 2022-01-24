@@ -66,7 +66,8 @@ public class Sabie extends Item {
 
                 getWorld().removeObject(this);
             }
+            setImage(sabieImg.getCurrentImage());
         }
-        setImage(sabieImg.getCurrentImage());
+        
     }
 }

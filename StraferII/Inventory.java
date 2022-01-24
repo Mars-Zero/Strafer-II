@@ -22,11 +22,11 @@ public class Inventory extends Menu{
     protected Player player;
      
     public Inventory(Player player){
-        
+        this.player=player;
         prepareData();
         setImage(wheel0);
-        this.player=player;
-        player.setToggledInventory(true);
+        
+        //player.setToggledInventory(true);
     }
      private void prepareData(){
         WorldData.PAUZA=true;
