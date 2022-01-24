@@ -8,7 +8,13 @@ public class Lantern extends Item {
     boolean isLight = false;
 
     int timer = 0;
-
+    
+    private Player player;
+    public Lantern(Player player)
+    {
+        this.player=player;
+    }
+    
     public void checkMove() {
         timer++;
         if (Greenfoot.isKeyDown("right")) {
@@ -41,7 +47,9 @@ public class Lantern extends Item {
                 if (Greenfoot.getMouseInfo().getButton() == 3) {
                     getWorld().removeObjects(getWorld().getObjects(Light.class));
                     getWorld().removeObject(this);
-                    Player.equipLantern = false;
+                    
+                    
+                    player.setEquipLantern (false);
                     return;
                 }
             }
@@ -49,7 +57,7 @@ public class Lantern extends Item {
         }
 
     }
-
+    
     public void act() {
         if (!WorldData.PAUZA) {
 
@@ -58,7 +66,9 @@ public class Lantern extends Item {
             if (isAtEdge()) {
                 getWorld().removeObjects(getWorld().getObjects(Light.class));
                 getWorld().removeObject(this);
-                Player.equipLantern = false;
+                
+                
+                player.setEquipLantern ( false);
                 return;
             }
             checkMove();
@@ -66,8 +76,8 @@ public class Lantern extends Item {
         }
 
     }
-
-    public boolean isIsLight() {
+    
+     public boolean isIsLight() {
         return isLight;
     }
 

@@ -5,6 +5,7 @@ public class Light extends Lantern
 {
     Lantern lantern;
     public Light(Lantern l){
+        super(null);
         setImage("effects/light.png");
         lantern=l;
         

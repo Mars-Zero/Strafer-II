@@ -2,49 +2,73 @@
 import greenfoot.*; 
 import java.util.HashMap;
 
-public class ItemSelect extends Inventory{
+public class ItemSelect extends Menu{
    GreenfootImage overlay=new GreenfootImage("UI/hud/selectOverlay.png");
     
-    
-   public ItemSelect(){
+   private Player player; 
+   public ItemSelect(Player player){
+       this.player=player;
        setImage(overlay);
    }
    
+   public String getItemSelected(){
+        switch(Inventory.nrItem){
+            case 1:{
+                return "sword";
+            }
+            case 2:{
+                return "icelock";
+            }
+            case 3:{
+                return "blackhole";
+            }
+            case 4:{
+                return "lantern";
+            }
+            case 5:{
+                return "laser";
+            }
+            case 6:{
+                return "portalgun";
+            }
+        }
+        return "";
+   }
    
    private void select(){
          if(Greenfoot.mouseClicked(this)){
             if(Greenfoot.getMouseInfo().getButton()==1){
                 
                 //System.out.println(super.getItemSelected());
-                switch(super.getItemSelected()){
+                switch(getItemSelected()){
                     case "sword":{
-                         Player.equipSword=!Player.equipSword;
+                         player.setEquipSword(!player.isEquipSword());
                          break;
                     }
                     case "icelock":{
-                         Player.equipIceLock=!Player.equipIceLock;
+                         player.setEquipIceLock(!player.isEquipIceLock());
                           break;
                     }
                     case "blackhole":{
-                        Player.equipBlackHole=!Player.equipBlackHole;
+                        player.setEquipBlackHole(!player.isEquipBlackHole());
                           break;
                     }
                     case "lantern":{
-                        Player.equipLantern=!Player.equipLantern;
+                        player.setEquipLantern(!player.isEquipLantern());
                         break;
                     }
                     case "laser":{
-                        Player.equipLaser=!Player.equipLaser;
+                        player.setEquipLaser(!player.isEquipLaser());
                          break;
                     }
                     case "portalgun":{
-                         Player.equipPortalGun=!Player.equipPortalGun;
+                         player.setEquipPortalGun(!player.isEquipPortalGun());
                           break;
                     }
                     default:{
                     }
                 }
-               Player.toggledInventory=false;
+               player.setToggledInventory(false);
                
             }
         }
@@ -54,7 +78,7 @@ public class ItemSelect extends Inventory{
     public void act(){
         select();
         setLocation(875,430);
-        if(!Player.toggledInventory){
+        if(!player.isToggledInventory()){
             getWorld().removeObject(this);
         }
         

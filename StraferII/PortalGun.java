@@ -40,7 +40,9 @@ public class PortalGun extends Item {
     }
 
     private void removePortalGun() {
-        if (!Player.equipPortalGun) {
+        List players = getWorld().getObjects(Player.class);
+        Player player = (Player) players.get(0);
+        if (!player.isEquipPortalGun()) {
             getWorld().removeObject(this);
         }
     }

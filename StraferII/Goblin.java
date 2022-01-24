@@ -281,7 +281,7 @@ public class Goblin extends Npc {
                 deltaPGY *= (-1);
             }
 
-            if (Player.equipSword == true && deltaPGX <= 85 && deltaPGY <= 100) {
+            if (player.isEquipSword() == true && deltaPGX <= 85 && deltaPGY <= 100) {
                 knockbacked = true;
                 super.knockback(0.1, sabia.getPlayer(), 2, 80);
             }

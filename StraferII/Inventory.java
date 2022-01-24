@@ -19,22 +19,23 @@ public class Inventory extends Menu{
                                     //6 portal gun
      public int raza=275/2;                           
     
- 
+    protected Player player;
      
-    public Inventory(){
+    public Inventory(Player player){
         
         prepareData();
         setImage(wheel0);
-        Player.toggledInventory=true;
+        this.player=player;
+        player.setToggledInventory(true);
     }
      private void prepareData(){
         WorldData.PAUZA=true;
-        Player.equipSword=false;
-        Player.equipLaser=false;
-        Player.equipPortalGun=false;
-        Player.equipIceLock=false;
-        Player.equipLantern=false;
-        Player.equipBlackHole=false;
+        player.setEquipSword(false);
+        player.setEquipLaser(false);
+        player.setEquipPortalGun(false);
+        player.setEquipIceLock(false);
+        player.setEquipLantern(false);
+        player.setEquipBlackHole(false);
     }
     
     public String getItemSelected(){
@@ -139,7 +140,7 @@ public class Inventory extends Menu{
     public void act(){
         checkMouse();
         this.setLocation(875,430);
-        if(!Player.toggledInventory){
+        if(!player.isToggledInventory()){
             WorldData.PAUZA=false;
             getWorld().removeObject(this);
         }

@@ -26,20 +26,105 @@ public class Player extends Jucator {
     public static int floorLevel = 1;
 
     boolean isMoving;
+    
+   private boolean inViata = true;
 
-    public static boolean inViata = true;
-    public static int hp = 400;
-    public static final int hpMax = 400;
-    public static int speed = 7;
+    public boolean isInViata() {
+        return inViata;
+    }
 
-    public static boolean equipSword = false;
-    public static boolean equipLaser = false;
-    public static boolean equipPortalGun = false;
-    public static boolean equipIceLock = false;
-    public static boolean equipLantern = false;
-    public static boolean equipBlackHole = false;
+    public void setInViata(boolean inViata) {
+        this.inViata = inViata;
+    }
 
-    public static boolean toggledInventory = false;
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean isEquipSword() {
+        return equipSword;
+    }
+
+    public void setEquipSword(boolean equipSword) {
+        this.equipSword = equipSword;
+    }
+
+    public boolean isEquipLaser() {
+        return equipLaser;
+    }
+
+    public void setEquipLaser(boolean equipLaser) {
+        this.equipLaser = equipLaser;
+    }
+
+    public boolean isEquipPortalGun() {
+        return equipPortalGun;
+    }
+
+    public void setEquipPortalGun(boolean equipPortalGun) {
+        this.equipPortalGun = equipPortalGun;
+    }
+
+    public boolean isEquipIceLock() {
+        return equipIceLock;
+    }
+
+    public void setEquipIceLock(boolean equipIceLock) {
+        this.equipIceLock = equipIceLock;
+    }
+
+    public boolean isEquipLantern() {
+        return equipLantern;
+    }
+
+    public void setEquipLantern(boolean equipLantern) {
+        this.equipLantern = equipLantern;
+    }
+
+    public boolean isEquipBlackHole() {
+        return equipBlackHole;
+    }
+
+    public void setEquipBlackHole(boolean equipBlackHole) {
+        this.equipBlackHole = equipBlackHole;
+    }
+
+    public boolean isToggledInventory() {
+        return toggledInventory;
+    }
+
+    public void setToggledInventory(boolean toggledInventory) {
+        this.toggledInventory = toggledInventory;
+    }
+
+    public int getHpMax() {
+        return hpMax;
+    }
+
+    private int hp = 400;
+    private final int hpMax = 400;
+    private int speed = 7;
+
+    private boolean equipSword = false;
+    private boolean equipLaser = false;
+    private boolean equipPortalGun = false;
+    private boolean equipIceLock = false;
+    private boolean equipLantern = false;
+    private boolean equipBlackHole = false;
+
+    private boolean toggledInventory = false;
     public static boolean toggledPause = false;
 
     public static HashSet<String> iteme = new HashSet<String>();
@@ -209,9 +294,9 @@ public class Player extends Jucator {
 
             if (Greenfoot.isKeyDown("E")) {
                 toggledInventory = !toggledInventory;
-                getWorld().addObject(new Inventory(), 875, 430);
+                getWorld().addObject(new Inventory(this), 875, 430);
 
-                getWorld().addObject(new ItemSelect(), 875, 430);
+                getWorld().addObject(new ItemSelect(this), 875, 430);
             }
 
         }
@@ -338,7 +423,7 @@ public class Player extends Jucator {
             long timpCurent = System.currentTimeMillis();
             if (timpCurent - timpPrec >= 20) {
                 if (getWorld().getObjects(Lantern.class).isEmpty()) {
-                    getWorld().addObject(new Lantern(), getX() + 30, getY());
+                    getWorld().addObject(new Lantern(this), getX() + 30, getY());
                 }
                 timpPrec = timpCurent;
             }
