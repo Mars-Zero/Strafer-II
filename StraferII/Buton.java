@@ -1,14 +1,13 @@
 
 import greenfoot.*;
 
-
 public class Buton extends UI {
 
-    
     GreenfootImage img0, img1;
     private String img = "";
     boolean clicked = false;
     Object obj;
+
     public Buton(String imgref, Object menuref) {
         img = imgref;
         obj = menuref;
@@ -17,8 +16,7 @@ public class Buton extends UI {
         setImage(img0);
 
     }
-    
-    
+
     protected void checkHover() {
 
         if (Greenfoot.mouseMoved(this)) {
@@ -38,88 +36,124 @@ public class Buton extends UI {
             if (Greenfoot.getMouseInfo().getButton() == 1) {
                 switch (img) {
                     case "Next": {
-                        if(obj instanceof Dialog){
-                            Dialog dialog=(Dialog)obj;
-                            dialog.setNrSlide(dialog.getNrSlide()+1);
+                        if (obj instanceof Dialog) {
+                            Dialog dialog = (Dialog) obj;
+                            dialog.setNrSlide(dialog.getNrSlide() + 1);
                             dialog.setAddedText(false);
                             getWorld().removeObjects(getWorld().getObjects(Text.class));
-                            if(dialog.isLastSlide()){
-                                this.getWorld().addObject(new Buton("X",dialog),this.getX(),this.getY());
+                            if (dialog.isLastSlide()) {
+                                this.getWorld().addObject(new Buton("X", dialog), this.getX(), this.getY());
                                 this.getWorld().removeObject(this);
                             }
                         }
-                        
+
+                        if (obj instanceof Tutorial) {
+                            Tutorial tutorial = (Tutorial) obj;
+                            tutorial.setNrSlide(tutorial.getNrSlide() + 1);
+                            tutorial.setAddedPicture(false);
+                            getWorld().removeObject(tutorial.getPicture());
+                            if (tutorial.getNrSlide() > 0) {
+                                if (!tutorial.isAddedButonBack()) {
+                                    this.getWorld().addObject(new Buton("Back", tutorial), 100, this.getY());
+                                }
+                            }
+                            if (tutorial.isLastSlide()) {
+                                this.getWorld().addObject(new Buton("X", tutorial), this.getX(), this.getY());
+                                this.getWorld().removeObject(this);
+                            }
+                        }
+
                         break;
-                     
+
                     }
-                    case "Back":{
+                    case "Back": {
+
+                        if (obj instanceof Tutorial) {
+                            Tutorial tutorial = (Tutorial) obj;
+                            tutorial.setNrSlide(tutorial.getNrSlide() - 1);
+                            tutorial.setAddedPicture(false);
+                            getWorld().removeObject(tutorial.getPicture());
+                            if (tutorial.isFirstSlide()) {
+                                this.getWorld().removeObject(this);
+                            }
+                        }
+
                         break;
                     }
                     case "X": {
-                        
-                        WorldData.PAUZA=false;
-                        getWorld().removeObject((Actor)obj);
-                        WorldData.addedDialogs=false;
-                         
-                        if(obj instanceof Dialog){
-                            Dialog dialog=(Dialog)obj;
+                        if (obj instanceof Dialog) {
+                            WorldData.PAUZA = false;
+                            getWorld().removeObject((Actor) obj);
+                            WorldData.addedDialogs = false;
+
+                            Dialog dialog = (Dialog) obj;
                             dialog.setAddedText(false);
+
+                            getWorld().removeObjects(getWorld().getObjects(Text.class));
                         }
-                        getWorld().removeObjects(getWorld().getObjects(Text.class));
+                        if (obj instanceof Tutorial) {
+                            Tutorial tutorial = (Tutorial) obj;
+                            if (!tutorial.isInPause()) {        //daca e direct in lume 
+                                WorldData.PAUZA = false;
+                            }
+                            getWorld().removeObject((Actor) obj);
+                            WorldData.addedDialogs = false;
+
+                            tutorial.setAddedPicture(false);
+
+                            getWorld().removeObject(tutorial.getPicture());
+                        }
+
                         getWorld().removeObject(this);
                         break;
                     }
-                    case "Open":{
-                        
+                    case "Open": {
+
                         break;
                     }
                     case "Resume": {
-                        
+
                         WorldData.PAUZA = false;
-                        Player.toggledPause=false;
-                        if(obj instanceof Menu){
-                            getWorld().removeObject((Menu)obj);
+                        Player.toggledPause = false;
+                        if (obj instanceof Menu) {
+                            getWorld().removeObject((Menu) obj);
                         }
-                       
+
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
 
                     }
-                    case "Map":{
-                        
+                    case "Map": {
+
                     }
-                    case "Main Menu":{
-                        getWorld().addObject(new MainMenu(),ConstantVariables.MainMenuX,ConstantVariables.MainMenuY);
-                        
-                        Player.toggledPause=false;
-                        if(obj instanceof Menu){
-                            getWorld().removeObject((Menu)obj);
+                    case "Main Menu": {
+                        getWorld().addObject(new MainMenu(), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+
+                        Player.toggledPause = false;
+                        if (obj instanceof Menu) {
+                            getWorld().removeObject((Menu) obj);
                         }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
-                        
-                        
-                        
+
                         /////se da save
-                        
-                        
                         break;
                     }
-                    case "Tutorials":{
-                        
+                    case "Tutorials": {
+
                         break;
                     }
-                    case "New Game":{
+                    case "New Game": {
                         //save file nou
                         //inceputu jocului
-                        
+
                         break;
                     }
-                    case "Continue":{
-                         System.out.print(img);
+                    case "Continue": {
+                        System.out.print(img);
                         WorldData.PAUZA = false;
-                        Player.toggledPause=false;
-                        if(obj instanceof Menu){
-                            getWorld().removeObject((Menu)obj);
+                        Player.toggledPause = false;
+                        if (obj instanceof Menu) {
+                            getWorld().removeObject((Menu) obj);
                         }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         //da load

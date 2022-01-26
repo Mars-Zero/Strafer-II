@@ -22,7 +22,7 @@ public class Dialog extends Menu {
         this.nrDialog=nrDialog;
         addedButon = false;
         addedText = false;
-        lines=DialogLoader.load(img, nrDialog);
+        lines=DialogLoader.loadPhrases(img, nrDialog);
         setImage("UI/dialog/dialog" + img + ".png");
     
 

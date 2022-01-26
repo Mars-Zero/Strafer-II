@@ -1,30 +1,42 @@
-import greenfoot.*;  
+
+import greenfoot.*;
 import java.util.List;
 
+public class Tutorial extends Menu {
 
-public class Tutorial extends Dialog
-{
-    
-    
-    
-    public Tutorial(Friendly npcref, String imgref,int nrDialog) { 
-       super(npcref,imgref,nrDialog);
-    
+    protected int nrSlide;
 
+    protected String img;
+    protected Picture picture;
+
+    protected boolean addedButon = false;
+    protected boolean addedButonBack=false;
+    protected boolean inPause;
+
+    
+    
+    protected boolean addedPicture = false;
+    
+    protected List pics;
+
+    public Tutorial(String imgref,boolean inPauseref) {
+        
+        img = imgref;
+        addedButon = false;
+        addedPicture = false;
+        this.inPause=inPauseref;
+        
+        setImage("UI/tutorial/tutorial.png");
     }
 
-    public String getLine(int nr) {//nr slideului
+    public void displayPicture() {
 
-        String line = (String)lines.get(nr);
-        /////parsarea
-        return line;
-    }
-
-    public void displayText(String txt) {
-        if (!addedText) {
-            getWorld().addObject(new Text(txt, 24), 522, 500);
-            addedText = true;
+        if (!addedPicture) {
+            updateImage();
+            getWorld().addObject(picture, 522, 500);
+            addedPicture = true;
         }
+
     }
 
     public void addButon() {
@@ -36,7 +48,11 @@ public class Tutorial extends Dialog
 
     public void act() {
         addButon();
-        displayText(getLine(getNrSlide()));
+        displayPicture();
+    }
+
+    public void updateImage() {
+        picture.setImageName("UI/tutorial/tutorialSlides/" + img + "/tutorial" + img + nrSlide + ".png");
     }
 
     public int getNrSlide() {
@@ -48,6 +64,28 @@ public class Tutorial extends Dialog
     }
 
     public boolean isLastSlide() {
-        return nrSlide == lines.size()-1 ? true : false;
-    }  
+        return nrSlide == pics.size() - 1 ? true : false;
+    }
+
+    public boolean isFirstSlide() {
+        return nrSlide == 0 ? true : false;
+    }
+
+    public boolean isAddedPicture() {
+        return addedPicture;
+    }
+
+    public void setAddedPicture(boolean addedPicture) {
+        this.addedPicture = addedPicture;
+    }
+    public boolean isAddedButonBack() {
+        return addedButonBack;
+    }
+    public boolean isInPause() {
+        return inPause;
+    }
+    
+    public Picture getPicture() {
+        return picture;
+    }
 }

@@ -36,7 +36,7 @@ abstract class DialogLoader {
      * @param dialogNumber the number of the encounter
      * @return a list of strings with all the phrases spoken by this character
      */
-    public static List<String> load(String NPCName, int dialogNumber) {
+    public static List<String> loadPhrases(String NPCName, int dialogNumber) {
         File director = new File(DialogLoader.directoryName, NPCName);
         File file = new File(director.getAbsoluteFile(), NPCName + dialogNumber + ".txt");
 

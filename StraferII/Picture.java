@@ -7,7 +7,7 @@ public class Picture extends Menu {
     String imageName;
 
     public Picture(String imgref) {
-        imageName=imgref;
+        imageName = imgref;
         img = new GreenfootImage(imgref);
         setImage(img);
     }
@@ -21,7 +21,9 @@ public class Picture extends Menu {
     }
 
     public void setImageName(String imageName) {
+
         this.imageName = imageName;
+        this.setImage(imageName);
     }
 
 }
