@@ -10,9 +10,9 @@ public class TutorialGallery extends Pause{
     /**
     * This method loads all the image tutorials and puts them in a hashmap
     */
-    public static  HashMap<String,List<GreenfootImage>> imageTutorials;
+    public HashMap<String,List<GreenfootImage>> imageTutorials;
    
-    public static void loadImages() {
+    public void loadImages() {
         File director = new File("tutorials");
         File[] allFiles=director.listFiles();
         imageTutorials=new HashMap<>();
@@ -34,6 +34,18 @@ public class TutorialGallery extends Pause{
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    /**
+     * This method retrieves which tutorials are unlocked by the player
+     */
+    public HashMap<String,List<GreenfootImage>> retrieveTutorials(ArrayList<String> types)
+    {
+        HashMap<String,List<GreenfootImage>> tutor=new HashMap<>();
+        for(int i=0; i<types.size(); i++){
+            tutor.put(types.get(i),imageTutorials.get(types.get(i)));
+        }
+        return tutor;
     }
     public void act(){
         
