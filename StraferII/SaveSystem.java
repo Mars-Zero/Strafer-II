@@ -17,22 +17,22 @@ abstract class SaveSystem {
 	 */
 	private static String directoryName = "assets";
 
-	/**
-	 * This method processes the string and returns it's type
-	 * 
-	 * @param String that needs to be processed
-	 * @return the type of the item
-	 * @throws Exception
-	 */
-	private static String getTipString(String str) throws Exception {
-		Pattern patt = Pattern.compile("^(.+?):");
-		Matcher matcher = patt.matcher(str);
-		if (matcher.find()) {
-			return matcher.group(); // you can get it from desired index as well
-		} else {
-			return null;
-		}
-	}
+    /**
+     * This method processes the string and returns it's type
+     * 
+     * @param String that needs to be processed
+     * @return the type of the item
+     * @throws Exception
+     */
+    public static String getTipString(String str) throws Exception {
+        Pattern patt = Pattern.compile("^(.+?):");
+        Matcher matcher = patt.matcher(str);
+        if (matcher.find()) {
+            return matcher.group(); // you can get it from desired index as well
+        } else {
+            return null;
+        }
+    }
 
 	/**
 	 * This method processes the string and returns it's content
