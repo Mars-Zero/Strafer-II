@@ -48,7 +48,7 @@ public class WorldListener extends Actor {
     void clearWorldObjects() {
         List<Actor> list = world.getObjects(Actor.class);
         for (Actor actor : list) {
-            if (actor instanceof Player || actor instanceof WorldListener) {
+            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBar || actor instanceof Picture) {
             } else {
                 world.removeObject(actor);
             }

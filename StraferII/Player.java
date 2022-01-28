@@ -14,105 +14,11 @@ public class Player extends Jucator {
 
     int direction;
 
-    int moveTime = 7;
-
-    //{
-    //xy pe toata mapa
-    //public static int worldX, worldY;
-    //xy pe toata mapa
-    //{
     private int worldX, worldY;
-
+    boolean isMoving;
     public static int floorLevel = 1;
 
-    boolean isMoving;
-    
-   private boolean inViata = true;
-
-    public boolean isInViata() {
-        return inViata;
-    }
-
-    public void setInViata(boolean inViata) {
-        this.inViata = inViata;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public boolean isEquipSword() {
-        return equipSword;
-    }
-
-    public void setEquipSword(boolean equipSword) {
-        this.equipSword = equipSword;
-    }
-
-    public boolean isEquipLaser() {
-        return equipLaser;
-    }
-
-    public void setEquipLaser(boolean equipLaser) {
-        this.equipLaser = equipLaser;
-    }
-
-    public boolean isEquipPortalGun() {
-        return equipPortalGun;
-    }
-
-    public void setEquipPortalGun(boolean equipPortalGun) {
-        this.equipPortalGun = equipPortalGun;
-    }
-
-    public boolean isEquipIceLock() {
-        return equipIceLock;
-    }
-
-    public void setEquipIceLock(boolean equipIceLock) {
-        this.equipIceLock = equipIceLock;
-    }
-
-    public boolean isEquipLantern() {
-        return equipLantern;
-    }
-
-    public void setEquipLantern(boolean equipLantern) {
-        this.equipLantern = equipLantern;
-    }
-
-    public boolean isEquipBlackHole() {
-        return equipBlackHole;
-    }
-
-    public void setEquipBlackHole(boolean equipBlackHole) {
-        this.equipBlackHole = equipBlackHole;
-    }
-
-    public boolean isToggledInventory() {
-        return toggledInventory;
-    }
-
-    public void setToggledInventory(boolean toggledInventory) {
-        this.toggledInventory = toggledInventory;
-    }
-
-    public int getHpMax() {
-        return hpMax;
-    }
-
+    private boolean inViata = true;
     private int hp = 400;
     private final int hpMax = 400;
     private int speed = 7;
@@ -126,8 +32,10 @@ public class Player extends Jucator {
 
     private boolean toggledInventory = false;
     public static boolean toggledPause = false;
+    
 
-    private  HashSet<String> iteme = new HashSet<String>();
+    private HashSet<String> iteme = new HashSet<String>();
+
     public HashSet<String> getIteme() {
         return iteme;
     }
@@ -376,13 +284,12 @@ public class Player extends Jucator {
                                 double delta_x = Greenfoot.getMouseInfo().getX() - getX();
                                 double delta_y = Greenfoot.getMouseInfo().getY() - getY();
                                 double grade = Math.toDegrees(Math.atan2(delta_y, delta_x));
-                                
-                                
+
                                 int gr = (int) grade;
-                                gr -= gr % 10;gr += (Greenfoot.getRandomNumber(2)-1 )*5;  //reduce din precizie
-                                grade=gr;
-                                
-                                
+                                gr -= gr % 10;
+                                gr += (Greenfoot.getRandomNumber(2) - 1) * 5;  //reduce din precizie
+                                grade = gr;
+
                                 if (grade >= -45 && grade < 45) {       //se intoarce in dir in care trage
 
                                     this.gif = "D";
@@ -397,12 +304,12 @@ public class Player extends Jucator {
                                     this.gif = "A";
 
                                 }
-                                if (grade >= -180 && grade < -45) {
+                                if (grade >= -135 && grade < -45) {
 
                                     this.gif = "W";
                                 }
                                 vedere();
-                                
+
                                 getWorld().addObject(new Laser(grade), getX(), getY());
 
                             }
@@ -484,20 +391,19 @@ public class Player extends Jucator {
     }
 
     public int getDirection() {
-      
-      if(getX()>=1020){
-          direction= 3;
-      }
-      if(getX()<=5){
-          direction=1;
-      }
-      if(getY()>=570){
-          direction=2;
-      }
-      if(getY()<=5){
-          direction=0;
-      }
-      
+
+        if (getX() >= 1020) {
+            direction = 3;
+        }
+        if (getX() <= 5) {
+            direction = 1;
+        }
+        if (getY() >= 570) {
+            direction = 2;
+        }
+        if (getY() <= 5) {
+            direction = 0;
+        }
 
         return direction;
     }
@@ -516,6 +422,90 @@ public class Player extends Jucator {
 
     public void setWorldY(int val) {
         worldY = val;
+    }
+
+    public boolean isInViata() {
+        return inViata;
+    }
+
+    public void setInViata(boolean inViata) {
+        this.inViata = inViata;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean isEquipSword() {
+        return equipSword;
+    }
+
+    public void setEquipSword(boolean equipSword) {
+        this.equipSword = equipSword;
+    }
+
+    public boolean isEquipLaser() {
+        return equipLaser;
+    }
+
+    public void setEquipLaser(boolean equipLaser) {
+        this.equipLaser = equipLaser;
+    }
+
+    public boolean isEquipPortalGun() {
+        return equipPortalGun;
+    }
+
+    public void setEquipPortalGun(boolean equipPortalGun) {
+        this.equipPortalGun = equipPortalGun;
+    }
+
+    public boolean isEquipIceLock() {
+        return equipIceLock;
+    }
+
+    public void setEquipIceLock(boolean equipIceLock) {
+        this.equipIceLock = equipIceLock;
+    }
+
+    public boolean isEquipLantern() {
+        return equipLantern;
+    }
+
+    public void setEquipLantern(boolean equipLantern) {
+        this.equipLantern = equipLantern;
+    }
+
+    public boolean isEquipBlackHole() {
+        return equipBlackHole;
+    }
+
+    public void setEquipBlackHole(boolean equipBlackHole) {
+        this.equipBlackHole = equipBlackHole;
+    }
+
+    public boolean isToggledInventory() {
+        return toggledInventory;
+    }
+
+    public void setToggledInventory(boolean toggledInventory) {
+        this.toggledInventory = toggledInventory;
+    }
+
+    public int getHpMax() {
+        return hpMax;
     }
 
 }
