@@ -287,7 +287,7 @@ public class Goblin extends Npc {
             }
         }
 
-        /* 
+        
         if(isTouching(Sabie.class)){
             timpSab++;//cat timp ating ating asteroidul
             if(timpSab>=16)
@@ -331,7 +331,7 @@ public class Goblin extends Npc {
         }
         else if(timpBolt>0){
             timpBolt=0;
-        }*/
+        }
     }
 
     protected void atac() {
@@ -366,13 +366,15 @@ public class Goblin extends Npc {
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
 
             gif = "idle";
+            System.out.println(mort);
+            System.out.println(hp);
             if (mort == true) {
                 //moare
 
             } else {
 
                 lovitSabie();
-                //lovitLaser();
+                lovitLaser();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
@@ -390,8 +392,8 @@ public class Goblin extends Npc {
                     playerImg = directie.get(super.gif);
 
                 } else {
-                    // lovitSabie();
-                    // lovitLaser();
+                     //lovitSabie();
+                     //lovitLaser();
 
                     long wait = Greenfoot.getRandomNumber(20) + 30 + waitseed;//{
                     wait = 0;

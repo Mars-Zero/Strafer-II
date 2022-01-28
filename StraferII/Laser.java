@@ -5,10 +5,8 @@ import java.util.ArrayList;
 public class Laser extends Item
 {
   
-    private final int damage=15;
-    public int getLaserDmg(){
-        return damage;
-    }
+    public static final int damage=15;
+    
      
     private long time=0;
     private final int speed=10;
