@@ -1,33 +1,26 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-public class Goblin extends Inamic {
-
-    public static int speed = 5;
-    
-    
-
-   
-
- 
-
-    public Goblin(Scroller scrl, int x, int y) {
-        super(scrl,x,y);
-
-        directie.put("D", new GifImage("npc/inamic/goblin/goblin_m_D.gif"));
+/**
+ * Write a description of class Dolpatian here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Dolpatian extends Goblin
+{
+    public Dolpatian(Scroller scrl, int x, int y) {
+          super(scrl,x,y);
+          
+          
+          //am gif-urile schimbate
+        /*directie.put("D", new GifImage("npc/inamic/goblin/goblin_m_D.gif"));
         directie.put("W", new GifImage("npc/inamic/goblin/goblin_m_W.gif"));
         directie.put("A", new GifImage("npc/inamic/goblin/goblin_m_A.gif"));
         directie.put("S", new GifImage("npc/inamic/goblin/goblin_m_S.gif"));
         directie.put("idle", new GifImage("npc/inamic/goblin/goblin_m_Idle.gif"));
 
-        directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));
-
-        
+        directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));*/
     }
-
     
     public void act() {
 
@@ -108,6 +101,4 @@ public class Goblin extends Inamic {
         }
 
     }
-
-   
 }
