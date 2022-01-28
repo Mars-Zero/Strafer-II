@@ -139,7 +139,7 @@ public class Buton extends UI {
                         break;
                     }
                     case "Tutorials": {
-
+                        //tutorialGallery
                         break;
                     }
                     case "New Game": {
@@ -149,7 +149,6 @@ public class Buton extends UI {
                         break;
                     }
                     case "Continue": {
-                        System.out.print(img);
                         WorldData.PAUZA = false;
                         Player.toggledPause = false;
                         if (obj instanceof Menu) {

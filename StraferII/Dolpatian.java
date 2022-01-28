@@ -8,18 +8,48 @@ import java.util.List;
  */
 public class Dolpatian extends Goblin
 {
+    boolean eVizibil=false;
+    
+    
     public Dolpatian(Scroller scrl, int x, int y) {
           super(scrl,x,y);
           
-          
+          eVizibil=false;
           //am gif-urile schimbate
-        /*directie.put("D", new GifImage("npc/inamic/goblin/goblin_m_D.gif"));
-        directie.put("W", new GifImage("npc/inamic/goblin/goblin_m_W.gif"));
-        directie.put("A", new GifImage("npc/inamic/goblin/goblin_m_A.gif"));
-        directie.put("S", new GifImage("npc/inamic/goblin/goblin_m_S.gif"));
-        directie.put("idle", new GifImage("npc/inamic/goblin/goblin_m_Idle.gif"));
+        directie.put("D", new GifImage("npc/inamic/dolpatian/dolpatian_m_D.gif"));
+        directie.put("W", new GifImage("npc/inamic/dolpatian/dolpatian_m_W.gif"));
+        directie.put("A", new GifImage("npc/inamic/dolpatian/dolpatian_m_A.gif"));
+        directie.put("S", new GifImage("npc/inamic/dolpatian/dolpatian_m_S.gif"));
+        directie.put("idle", new GifImage("npc/inamic/dolpatian/dolpatian_m_S.gif"));
+        directie.put("inviz", new GifImage("npc/inamic/dolpatian/dolpatian_m_Idle.gif"));
 
-        directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));*/
+      //  directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));
+    }
+    
+    long timpVizibilPrec=0;
+    void atinsLight(){
+        if(isTouching(Light.class)){
+            eVizibil=true;
+            timpVizibilPrec=System.currentTimeMillis();
+        }
+        else{
+            if(eVizibil){
+                long timpCurent = System.currentTimeMillis();
+                if (timpCurent - timpPrec >= 9950) {
+                      eVizibil=false;
+                }
+            }
+        }
+    }
+    
+    void atingPlayer()
+    {
+        List l = getObjectsInRange(40, Player.class);
+        if(l.size()>0)
+        {
+            timpVizibilPrec = System.currentTimeMillis();
+             playerImg = directie.get(super.gif);
+        }
     }
     
     public void act() {
@@ -36,25 +66,21 @@ public class Dolpatian extends Goblin
 
                 lovitSabie();
                 lovitLaser();
+                atinsLight();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
-                    //worldX=getX();
-                    //worldY=getY();
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
                     atac();///////{
 
                     gif = "idle";
-                    //lovitSabie();//{
-                    // lovitLaser();//verifica daca e lovit
-                    //{
-                    playerImg = directie.get(super.gif);
+                    eVizibil = true;
 
+                    atingPlayer();
                 } else {
-                     //lovitSabie();
-                     //lovitLaser();
+                    
 
                     long wait = Greenfoot.getRandomNumber(20) + 30 + waitseed;//{
                     wait = 0;
@@ -80,8 +106,14 @@ public class Dolpatian extends Goblin
                             deltaPGY *= (-1);
                         }
                         if (deltaPGX <= 600 && deltaPGY <= 400) {
+
                             gaseste();//cauta playerul
+
+                            if (!eVizibil) {
+                                gif = "inviz";
+                            }
                         }
+                        atingPlayer();
                         int difpx = Scroller.scrolledX - prevsx;
                         int difpy = Scroller.scrolledY - prevsy;
 
@@ -96,7 +128,8 @@ public class Dolpatian extends Goblin
             }
 
             playerImg = directie.get(gif);
-
+            System.out.println(gif);
+            System.out.println(playerImg);
                    setImage(playerImg.getCurrentImage());
         }
 

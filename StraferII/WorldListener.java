@@ -228,7 +228,8 @@ urmatoare:        |____|_________|_______|________|
         /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
-          world.initObject(new Goblin(scroller, 100, 200), 100, 200);
+            world.initObject(new Dolpatian(scroller, 100, 200), 100, 200);
+          //world.initObject(new Goblin(scroller, 100, 200), 100, 200);
           world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
           world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
           world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
