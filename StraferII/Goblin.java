@@ -28,7 +28,9 @@ public class Goblin extends Inamic {
         
     }
 
-    
+    protected void atac(){
+        //attackMelee();
+    }
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {

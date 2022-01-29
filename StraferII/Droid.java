@@ -61,6 +61,10 @@ public class Droid extends Inamic {
         
         
     }  
+    protected void atac(){
+        //attackRange();
+    }
+    
      public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
@@ -76,14 +80,14 @@ public class Droid extends Inamic {
                 lovitSabie();
                 lovitLaser();
                 long waitseed = Greenfoot.getRandomNumber(2500);
-
+                atac();
                 if (isTouching(Jucator.class)) {
                     //worldX=getX();
                     //worldY=getY();
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
-                    atac();///////{trebuie dat overload la atac
+                    
 
                     gif = "idle";
                     //lovitSabie();//{
@@ -119,7 +123,8 @@ public class Droid extends Inamic {
                             deltaPGY *= (-1);
                         }
                         if (deltaPGX <= 600 && deltaPGY <= 400) {
-                            gaseste();//cauta playerul
+                            //aici intra functia de move
+                            move();
                         }
                         int difpx = Scroller.scrolledX - prevsx;
                         int difpy = Scroller.scrolledY - prevsy;
