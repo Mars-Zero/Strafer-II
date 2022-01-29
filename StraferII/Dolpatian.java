@@ -73,7 +73,7 @@ public class Dolpatian extends Goblin
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
-                    atac();///////{
+                    atac();///////{trebuie dat overload la atac
 
                     gif = "idle";
                     eVizibil = true;

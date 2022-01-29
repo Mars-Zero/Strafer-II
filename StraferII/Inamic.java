@@ -26,6 +26,12 @@ public class Inamic extends Npc
     protected boolean mort = false;
     protected long timpPrec;
     
+    
+    protected long timpPauzaRange;
+    protected long timpPauzaMelee;
+    protected long nextRangeAttack;
+    protected long nextMeleeAttack;
+    
     public String gifSabie;
     
     public long getpX() {
@@ -62,6 +68,9 @@ public class Inamic extends Npc
 
         this.timpPrec = System.currentTimeMillis();
     }
+    
+    
+    
     protected void gaseste() {
         List players = getWorld().getObjects(Player.class);
         Player player = (Player) players.get(0);
@@ -330,29 +339,43 @@ public class Inamic extends Npc
     }
 
     protected void atac() {
-
-        /*
-            long timpCurent=System.currentTimeMillis(); 
-            if(timpCurent-timpPrec>=950)
-            {
-                
-               
-                if(gifSabie=="D"){
-                getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)+36,(getY()+scrolledY));
-                }
-                else if(gifSabie=="A"){
-                    getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)-36,(getY()+scrolledY));
-                }
-                else if(gifSabie=="S"){
-                    getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)+20);
-                }
-                else if(gifSabie=="W"){
-                    getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)-20);
-                }
-                timpPrec=timpCurent;
-            }
+        //attackRange();
+        //attackMelee();
+    }
+    protected void attackRange(){
+        
+        //aici ar fi bine sa se verifice cu o metoda daca e in range
+         if(nextRangeAttack>timpPauzaRange){
             
-         */
+            //getWorld().addObject(new Laser(),getX(),getY());
+            nextRangeAttack=System.currentTimeMillis();
+        
+        }
+        nextRangeAttack=System.currentTimeMillis();
+    }
+    protected void attackMelee(){
+        
+        //aici ar fi bine sa se verifice cu o metoda daca e in range
+       
+        if(nextMeleeAttack>timpPauzaMelee){
+            
+            //getWorld().addObject(new Laser(),getX(),getY());
+            nextMeleeAttack=System.currentTimeMillis();
+            if(gifSabie=="D"){
+               //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)+36,(getY()+scrolledY));
+             }
+             else if(gifSabie=="A"){
+                //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)-36,(getY()+scrolledY));
+             }
+            else if(gifSabie=="S"){
+                //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)+20);
+            }
+            else if(gifSabie=="W"){
+                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)-20);
+            }
+        
+        }
+        nextMeleeAttack=System.currentTimeMillis();
     }
     long timpMort = 0;
     

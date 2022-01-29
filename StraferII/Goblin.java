@@ -51,7 +51,7 @@ public class Goblin extends Inamic {
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
-                    atac();///////{
+                    atac();///////{trebuie dat overload la atac
 
                     gif = "idle";
                     //lovitSabie();//{
