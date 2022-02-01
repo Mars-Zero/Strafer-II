@@ -1,10 +1,12 @@
 
 import greenfoot.*;
+import java.util.List;
 
 public class Buton extends UI {
 
     GreenfootImage img0, img1;
     private String img = "";
+
     boolean clicked = false;
     Object obj;
 
@@ -76,6 +78,18 @@ public class Buton extends UI {
                             if (tutorial.isFirstSlide()) {
                                 this.getWorld().removeObject(this);
                             }
+
+                            /*List butoaneGasite=null;
+                                 butoaneGasite = getWorld().getObjects(Buton.class);
+                                for (Object but : butoaneGasite) {System.out.println("A");
+                                    if (but instanceof Buton) {
+                                        Buton butt = (Buton) but;
+                                        if (butt.getImg() == "X") {
+                                            getWorld().addObject(new Buton("Next", obj), this.getX(), this.getY());
+                                            getWorld().removeObject(butt);
+                                        }
+                                    }
+                                }*/
                         }
 
                         break;
@@ -92,19 +106,26 @@ public class Buton extends UI {
                             getWorld().removeObjects(getWorld().getObjects(Text.class));
                         }
                         if (obj instanceof Tutorial) {
+                            
                             Tutorial tutorial = (Tutorial) obj;
                             if (!tutorial.isInPause()) {        //daca e direct in lume 
                                 WorldData.PAUZA = false;
                             }
+                            
                             getWorld().removeObject((Actor) obj);
                             WorldData.addedDialogs = false;
 
                             tutorial.setAddedPicture(false);
-
+                            
+                            if (!tutorial.isLastSlide()) {
+                                getWorld().addObject(new Buton("Next", obj), this.getX(), this.getY());
+                                getWorld().removeObject(this);
+                            }
+                            
                             getWorld().removeObject(tutorial.getPicture());
                         }
 
-                        getWorld().removeObject(this);
+                        getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
                     }
                     case "Open": {
@@ -171,6 +192,10 @@ public class Buton extends UI {
     public void act() {
         checkClick();
         checkHover();
+    }
+
+    public String getImg() {
+        return img;
     }
 
 }
