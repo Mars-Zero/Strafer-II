@@ -20,6 +20,7 @@ public class Tutorial extends Menu {
 
 
     public Tutorial(String imgref, int slideref,boolean inPauseref) {
+        WorldData.PAUZA=true;
         nrSlideMax=slideref;
         nrSlide=0;
         img = imgref;

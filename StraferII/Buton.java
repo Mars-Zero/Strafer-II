@@ -7,12 +7,21 @@ public class Buton extends UI {
     GreenfootImage img0, img1;
     private String img = "";
 
+    Tutorial tutorial;
+    Dialog dialog;
+
     boolean clicked = false;
     Object obj;
 
     public Buton(String imgref, Object menuref) {
         img = imgref;
         obj = menuref;
+        if (obj instanceof Dialog) {
+            dialog = (Dialog) obj;
+        }
+        if (obj instanceof Tutorial) {
+            tutorial = (Tutorial) obj;
+        }
         img0 = new GreenfootImage("UI/buton/" + img + "0.png");
         img1 = new GreenfootImage("UI/buton/" + img + "1.png");
         setImage(img0);
@@ -39,59 +48,25 @@ public class Buton extends UI {
                 switch (img) {
                     case "Next": {
                         if (obj instanceof Dialog) {
-                            Dialog dialog = (Dialog) obj;
                             dialog.setNrSlide(dialog.getNrSlide() + 1);
                             dialog.setAddedText(false);
                             getWorld().removeObjects(getWorld().getObjects(Text.class));
-                            if (dialog.isLastSlide()) {
-                                this.getWorld().addObject(new Buton("X", dialog), this.getX(), this.getY());
-                                this.getWorld().removeObject(this);
-                            }
                         }
 
                         if (obj instanceof Tutorial) {
-                            Tutorial tutorial = (Tutorial) obj;
                             tutorial.setNrSlide(tutorial.getNrSlide() + 1);
                             tutorial.setAddedPicture(false);
                             getWorld().removeObject(tutorial.getPicture());
-                            if (tutorial.getNrSlide() > 0) {
-                                if (!tutorial.isAddedButonBack()) {
-                                    this.getWorld().addObject(new Buton("Back", tutorial), 100, this.getY());
-                                }
-                            }
-                            if (tutorial.isLastSlide()) {
-                                this.getWorld().addObject(new Buton("X", tutorial), this.getX(), this.getY());
-                                this.getWorld().removeObject(this);
-                            }
                         }
-
                         break;
-
                     }
                     case "Back": {
 
                         if (obj instanceof Tutorial) {
-                            Tutorial tutorial = (Tutorial) obj;
                             tutorial.setNrSlide(tutorial.getNrSlide() - 1);
                             tutorial.setAddedPicture(false);
                             getWorld().removeObject(tutorial.getPicture());
-                            if (tutorial.isFirstSlide()) {
-                                this.getWorld().removeObject(this);
-                            }
-
-                            /*List butoaneGasite=null;
-                                 butoaneGasite = getWorld().getObjects(Buton.class);
-                                for (Object but : butoaneGasite) {System.out.println("A");
-                                    if (but instanceof Buton) {
-                                        Buton butt = (Buton) but;
-                                        if (butt.getImg() == "X") {
-                                            getWorld().addObject(new Buton("Next", obj), this.getX(), this.getY());
-                                            getWorld().removeObject(butt);
-                                        }
-                                    }
-                                }*/
                         }
-
                         break;
                     }
                     case "X": {
@@ -100,28 +75,21 @@ public class Buton extends UI {
                             getWorld().removeObject((Actor) obj);
                             WorldData.addedDialogs = false;
 
-                            Dialog dialog = (Dialog) obj;
                             dialog.setAddedText(false);
 
                             getWorld().removeObjects(getWorld().getObjects(Text.class));
                         }
                         if (obj instanceof Tutorial) {
-                            
-                            Tutorial tutorial = (Tutorial) obj;
+
                             if (!tutorial.isInPause()) {        //daca e direct in lume 
                                 WorldData.PAUZA = false;
                             }
-                            
+
                             getWorld().removeObject((Actor) obj);
                             WorldData.addedDialogs = false;
 
                             tutorial.setAddedPicture(false);
-                            
-                            if (!tutorial.isLastSlide()) {
-                                getWorld().addObject(new Buton("Next", obj), this.getX(), this.getY());
-                                getWorld().removeObject(this);
-                            }
-                            
+
                             getWorld().removeObject(tutorial.getPicture());
                         }
 
@@ -189,9 +157,52 @@ public class Buton extends UI {
 
     }
 
+    public void checkExistance() {
+        switch (img) {
+            case "Next": {
+                if (obj instanceof Dialog) {
+                    if (dialog.isLastSlide()) {
+                        this.getWorld().addObject(new Buton("X", dialog), this.getX(), this.getY());
+                        this.getWorld().removeObject(this);
+                    }
+                }
+                if (obj instanceof Tutorial) {
+                    if (tutorial.getNrSlide() > 0) {
+                        if (!tutorial.isAddedButonBack()) {
+                            this.getWorld().addObject(new Buton("Back", tutorial), 100, this.getY());
+                        }
+                    }
+                    if (tutorial.isLastSlide()) {
+                        this.getWorld().addObject(new Buton("X", tutorial), this.getX(), this.getY());
+                        this.getWorld().removeObject(this);
+                    }
+                }
+                break;
+            }
+            case "Back": {
+                if (obj instanceof Tutorial) {
+                    if (tutorial.isFirstSlide()) {
+                        this.getWorld().removeObject(this);
+                    }
+                }
+                break;
+            }
+            case "X": {
+                if (obj instanceof Tutorial) {
+                    if (!tutorial.isLastSlide()) {
+                        getWorld().addObject(new Buton("Next", obj), this.getX(), this.getY());
+                        getWorld().removeObject(this);
+                    }
+                }
+                break;
+            }
+        }
+    }
+
     public void act() {
-        checkClick();
         checkHover();
+        checkExistance();
+        checkClick();
     }
 
     public String getImg() {

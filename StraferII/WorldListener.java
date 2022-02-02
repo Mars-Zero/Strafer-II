@@ -196,7 +196,7 @@ urmatoare:        |____|_________|_______|________|
 
     public void initWorldSection11() {
         
-        world.initObject(new Tutorial("Test",3,false),512,576/2);
+        world.initObject(new Tutorial("Test",4,false),512,576/2);
         
         world.initObject(new Fps(), 150, 50);
 
