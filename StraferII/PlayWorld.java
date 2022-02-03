@@ -30,6 +30,8 @@ public class PlayWorld extends World {
         WorldData.addedDialogs = false;
         addedHealthBar=false;
         addMainMenu();
+        
+        //AssetsCache.storeAssets();
 
     }
 
