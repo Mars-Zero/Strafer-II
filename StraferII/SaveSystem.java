@@ -15,7 +15,7 @@ abstract class SaveSystem {
 	/**
 	 * The name of the directory where all files are saved
 	 */
-	private static String directoryName = "assets";
+	private static String directoryName = "saves";
 
     /**
      * This method processes the string and returns it's type

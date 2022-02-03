@@ -145,6 +145,7 @@ public class Buton extends UI {
                         }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         //da load
+                        SaveSystem.load(0);
                         break;
                     }
                     default: {
@@ -157,7 +158,7 @@ public class Buton extends UI {
 
     }
 
-    public void checkExistance() {
+    public void exists() {
         switch (img) {
             case "Next": {
                 if (obj instanceof Dialog) {
@@ -201,7 +202,7 @@ public class Buton extends UI {
 
     public void act() {
         checkHover();
-        checkExistance();
+        exists();
         checkClick();
     }
 

@@ -8,7 +8,7 @@ abstract class DialogLoader {
     /*
      * The name of the directory where all dialogs are saved
      */
-    private static String directoryName = "dialog";
+    private static String directoryName = "dialogs";
 
     /*
      * This method processes the string and returns it's content
