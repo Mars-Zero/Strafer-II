@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-abstract class DialogLoader {
+abstract class DialogLoader extends Loader{
 
     /*
      * The name of the directory where all dialogs are saved
