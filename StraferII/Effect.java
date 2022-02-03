@@ -1,7 +1,7 @@
 
 import greenfoot.*;
 
-public class Effect extends Actor {
+public class Effect extends Menu {
 
     private Animation animation;
 

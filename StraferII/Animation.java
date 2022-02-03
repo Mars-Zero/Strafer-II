@@ -2,17 +2,8 @@ import greenfoot.*;
 import java.util.Arrays;
 import java.util.Collections;
 
-/**
- * CLASS: Animation (subclass of Object)
- * AUTHOR: danpost (greenfoot.org username)
- * DATE: June 22, 2015
- * 
- * DESCRIPTION: this class creates an object that is used to control the animation of a World or Actor object;
- * it is intended that each object that is to be animated create its own Animation object and also run it;
- * it is also intended that each object that is to be animated have only one Animation object assigned to it 
- */
-public class Animation
-{
+
+public class Animation{
     private Object animated; // the World or Actor object that to be animated
     private GreenfootImage[] frames; // the image set currently being used for this animated object
     private int cycleActs; // number of acts to complete a cycle of images
@@ -27,8 +18,7 @@ public class Animation
      * @param object the object to be animated
      * @param imgSet the images to be used in the animation; a 'null' value or an empty array will invalidate the animation
      */ 
-    public Animation(Object object, GreenfootImage[] imgSet)
-    {
+    public Animation(Object object, GreenfootImage[] imgSet){
         animated = object;
         frames = imgSet;
         if (frames != null && frames.length != 0) setFrame(0);

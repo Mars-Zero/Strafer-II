@@ -15,7 +15,7 @@ public class Inamic extends Npc
     
     Scroller scroller;
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
-    GifImage playerImg = directie.get(super.gif);
+    GifImage catImg = directie.get(super.gif);
     protected int pasi;
     protected int dist = 0;
 
@@ -112,7 +112,7 @@ public class Inamic extends Npc
         } else {
             gif = "idle";
         }
-        playerImg = directie.get(super.gif);
+        catImg = directie.get(super.gif);
 
     }
 
@@ -300,7 +300,7 @@ public class Inamic extends Npc
                if(!(traiesc()))
                {
                    super.gif="death"; 
-                   playerImg=directie.get(super.gif);
+                   catImg=directie.get(super.gif);
                    mort=true;
                 }
                timpSab=0;
@@ -327,7 +327,7 @@ public class Inamic extends Npc
                if(!(traiesc()))
                {
                    super.gif="death"; 
-                playerImg=directie.get(super.gif);
+                catImg=directie.get(super.gif);
                    mort=true;
                 }
                timpBolt=0;
