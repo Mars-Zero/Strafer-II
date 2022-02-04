@@ -19,37 +19,37 @@ import java.util.stream.Stream;
  *
  */
 public class MainStoryline extends Storyline{
-	/**
-	 * The event queue represents all the quests that need to be completed to
-	 * finalize this storyline
-	 */
-	Queue<Quest> questQueue = new LinkedList<>();
+    /**
+     * The event queue represents all the quests that need to be completed to
+     * finalize this storyline
+     */
+    Queue<Quest> questQueue = new LinkedList<>();
 
-	/*public MainStoryline() {
-		try (Stream<Path> walk = Files.walk(Paths.get("quests/mainQuest"))) {
-			// We want to find only regular files
-			List<String> result = walk.filter(Files::isRegularFile).map(x -> x.toString()).collect(Collectors.toList());
+    public MainStoryline() {
+        try (Stream<Path> walk = Files.walk(Paths.get("quests/mainQuest"))) {
+            // We want to find only regular files
+            List<String> result = walk.filter(Files::isRegularFile).map(x -> x.toString()).collect(Collectors.toList());
 
-			for (String string : result) {
-				Quest toAdd = new Quest();
-				toAdd.load(new File(string));
-				questQueue.add(toAdd);
-			}
-			result.forEach(System.out::println);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+            for (String string : result) {
+                Quest toAdd = new Quest();
+                toAdd.load(new File(string));
+                questQueue.add(toAdd);
+            }
+            result.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void isRelevantEvent(Event event) {
-		if (questQueue.peek().isRelevantEvent(event)) {
-			if (questQueue.peek().isFinished()) {
-				questQueue.poll();
-			}
-		}
-	}
+    public void isRelevantEvent(Event event) {
+        if (questQueue.peek().isRelevantEvent(event)) {
+            if (questQueue.peek().isFinished()) {
+                questQueue.poll();
+            }
+        }
+    }
 
-	public void act() {
-		// Add your action code here.
-	}*/
+    public void act() {
+        // Add your action code here.
+    }
 }
