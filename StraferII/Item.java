@@ -10,9 +10,9 @@ public class Item extends Actor
          return this.getClass().getSimpleName();
      }
     
-    public static String itemGif="D";
+    public static String itemGif="D";//the state of the item
     
-      protected void move()
+    protected void move()
     {
         List players = getWorld().getObjects(Player.class);
        

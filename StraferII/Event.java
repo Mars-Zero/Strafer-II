@@ -1,5 +1,5 @@
 
-public class Event {
+public class Event extends EventSystem{
 	 
      /**
       * A code that identifies this event 
@@ -22,5 +22,20 @@ public class Event {
      {
     	 int type=tip;
     	 this.eventCode=tip+objectCode;
+     }
+     
+     /**
+      * A constructor used to load an event by using directly it's code
+      * @param eventCode
+      */
+     public Event(String eventCode)
+     {
+    	 this.eventCode=eventCode;
+     }
+     
+     
+     public boolean isEqual(Event event)
+     {
+    	 return eventCode.equalsIgnoreCase(event.getEventCode());
      }
 }
