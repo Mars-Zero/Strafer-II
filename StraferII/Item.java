@@ -5,6 +5,11 @@ import java.util.List;
 public class Item extends Actor
 {
   
+    @Override public String toString(){
+         //the name of the class
+         return this.getClass().getSimpleName();
+     }
+    
     public static String itemGif="D";
     
       protected void move()
