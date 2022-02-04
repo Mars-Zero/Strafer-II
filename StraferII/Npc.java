@@ -71,6 +71,11 @@ public class Npc extends Movers
          super.setLocation( a,b);
      }
      
+     @Override public String toString(){
+         //the name of the class
+         return this.getClass().getSimpleName();
+     }
+     
     protected void Lee(int startL, int startC, int x, int y){
         int[][] mat=new int[1000][1000];
         for(int i=0; i<1000; i++){
