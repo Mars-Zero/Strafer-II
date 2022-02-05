@@ -16,7 +16,7 @@ public class PlayWorld extends World {
     private boolean addedHealthBar = false;
 
     
-    public GreenfootSound sound=new GreenfootSound("TitleScreen.mp3");
+    public GreenfootSound sound=new GreenfootSound("sounds/music/TitleScreen.mp3");
     
     
     public PlayWorld() {
