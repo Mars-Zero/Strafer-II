@@ -57,8 +57,7 @@ public class Dolpatian extends Goblin
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
 
             gif = "idle";
-            System.out.println(mort);
-            System.out.println(hp);
+        
             if (mort == true) {
                 //moare
 

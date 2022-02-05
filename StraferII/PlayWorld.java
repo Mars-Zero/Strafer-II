@@ -16,6 +16,7 @@ public class PlayWorld extends World {
     private boolean addedHealthBar = false;
 
     
+    public GreenfootSound sound=new GreenfootSound("TitleScreen.mp3");
     
     
     public PlayWorld() {
@@ -30,6 +31,8 @@ public class PlayWorld extends World {
         WorldData.addedDialogs = false;
         addedHealthBar=false;
         addMainMenu();
+        
+        sound.play();
         
         //AssetsCache.storeAssets();
 

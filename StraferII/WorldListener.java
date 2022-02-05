@@ -8,6 +8,7 @@ public class WorldListener extends Actor {
     Scroller scroller;
     Player player;
     PlayWorld world;
+    
 
     public int worldSection = 11;
     int playerDirection = 0;
@@ -193,10 +194,12 @@ urmatoare:        |____|_________|_______|________|
 
         }
     }
-
+    
     public void initWorldSection11() {
         
-        world.initObject(new Tutorial("Test",4,false),512,576/2);
+        
+        
+        //world.initObject(new Tutorial("Test",4,false),512,576/2);
         
         world.initObject(new Fps(), 150, 50);
 

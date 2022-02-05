@@ -11,7 +11,7 @@ public class Vector2d {
         this.y = 0.0f;
     }
 
-    public Vector2d(float x, float y) {
+    public Vector2d(float x, float y)  {
         this.x = x;
         this.y = y;
     }

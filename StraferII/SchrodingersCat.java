@@ -7,35 +7,63 @@ public class SchrodingersCat extends Goblin {
     Animation animation;  ///enter // exit // explode
     boolean changedAnimation;
     String animationName;
-    
+
+    boolean isExploding;
+
     public SchrodingersCat(Scroller scrl, int x, int y) {
         super(scrl, x, y);
-        
+
         directie.put("D", new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_m.gif"));
         directie.put("W", new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_m.gif"));
         directie.put("A", new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_m.gif"));
         directie.put("S", new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_m.gif"));
         directie.put("idle", new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_m_idle.gif"));
-        
-        changeAnimation("Exit",12);
+
+        changeAnimation("Exit", 10, 60);
         animation.setActiveState(false);
-        changedAnimation=false;
-        
+        changedAnimation = false;
+
     }
-    
-    
-    private void openBox(){
-        
+
+    private void closeBox() {
+
     }
-    
+
+    private void openBox() {
+        int seed = Greenfoot.getRandomNumber(1);
+
+        switch (seed) {
+            case 0: {
+                explode();
+                break;
+            }
+            case 1: {
+                changeAnimation("Exit", 10, 5);
+                break;
+            }
+        }
+
+    }
+
+    private void explode() {
+        changeAnimation("Explode", 16, 6);
+
+    }
+
+    private void checkExplode() {
+        if (animationName == "Explode") {
+            if (!animation.isActive()) {
+                getWorld().removeObject(this);
+            }
+        }
+    }
 
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
 
             gif = "idle";
-            System.out.println(mort);
-            System.out.println(hp);
+
             if (mort == true) {
                 //moare
 
@@ -43,17 +71,18 @@ public class SchrodingersCat extends Goblin {
 
                 lovitSabie();
                 lovitLaser();
-                //atinsLight();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
-                    super.atac();///////{
+                    if (!changedAnimation) {
 
+                        openBox();
+                        changedAnimation = true;
+                    }
                     gif = "idle";
-                    //eVizibil = true;
 
                     //atingPlayer();
                 } else {
@@ -64,9 +93,8 @@ public class SchrodingersCat extends Goblin {
                         timpAtins++;
                         if (timpAtins >= wait) ///////////////////////ia o pauza
                         {
-                            
-                            atingePlayer = false;
 
+                            atingePlayer = false;
                         }
                     }///////////////////////////////////////////////{
                     else {
@@ -85,14 +113,11 @@ public class SchrodingersCat extends Goblin {
 
                             gaseste();//cauta playerul
 
-                            if(!changedAnimation){
-                            changeAnimation("Explode",20);
-                            
-                            }
                             //if (!eVizibil) {
                             //gif = "inviz";
                             //}
                         }
+
                         //atingPlayer();
                         int difpx = Scroller.scrolledX - prevsx;
                         int difpy = Scroller.scrolledY - prevsy;
@@ -104,35 +129,34 @@ public class SchrodingersCat extends Goblin {
                     }
 
                 }
+
                 this.knockbackMove();
             }
-
-            if (!animation.isActive()) {
-                catImg = directie.get(gif);
-                System.out.println(gif);
-                System.out.println(catImg);
-                setImage(catImg.getCurrentImage());
-            }
-            else{
+            checkExplode();
+            if (animation.isActive()) {
                 animation.run();
+
+            } else {
+                catImg = directie.get(gif);
+                setImage(catImg.getCurrentImage());
             }
         }
     }
 
-    private void changeAnimation(String anim, int nrframeuri) {
-        changedAnimation=true;
-        
-        animationName=anim;
-        java.util.List<GreenfootImage> imgs = new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_"+anim+".gif").getImages();
+    private void changeAnimation(String anim, int nrframeuri, int scalar) {
+
+        animationName = anim;
+        java.util.List<GreenfootImage> imgs = new GifImage("npc/inamic/schrodinger's cat/schrodinger'sCat_" + anim + ".gif").getImages();
         GreenfootImage[] images = new GreenfootImage[imgs.size()];
         for (int i = 0; i < imgs.size(); i++) {
             images[i] = (GreenfootImage) imgs.get(i);
         }
         animation = new Animation(this, images);
         animation.setCycleActs(nrframeuri);
+        animation.setCycleCount(1);
+        animation.setScalar(scalar);
         animation.run();
         animation.setActiveState(true);
     }
 
-   
 }
