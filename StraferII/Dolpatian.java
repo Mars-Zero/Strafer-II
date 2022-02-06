@@ -48,7 +48,7 @@ public class Dolpatian extends Goblin
         if(l.size()>0)
         {
             timpVizibilPrec = System.currentTimeMillis();
-             catImg = directie.get(super.gif);
+             npcImg = directie.get(super.gif);
         }
     }
     
@@ -126,10 +126,10 @@ public class Dolpatian extends Goblin
                 this.knockbackMove();
             }
 
-            catImg = directie.get(gif);
+            npcImg = directie.get(gif);
             System.out.println(gif);
-            System.out.println(catImg);
-                   setImage(catImg.getCurrentImage());
+            System.out.println(npcImg);
+                   setImage(npcImg.getCurrentImage());
         }
 
     }

@@ -14,6 +14,8 @@ public class Player extends Jucator {
 
     int direction;
 
+    PlayWorld playWorld;
+
     private int worldX, worldY;
     boolean isMoving;
     public static int floorLevel = 1;
@@ -32,13 +34,11 @@ public class Player extends Jucator {
 
     private boolean toggledInventory = false;
     public static boolean toggledPause = false;
-    
+    private boolean toggledGameOver=false;
 
     private HashSet<String> iteme = new HashSet<String>();
 
-    public HashSet<String> getIteme() {
-        return iteme;
-    }
+    
 
     protected long timpPrec;
     private long timp = 0;
@@ -49,7 +49,9 @@ public class Player extends Jucator {
     public Player() {
 
         prepareData();
-
+        
+        playWorld=(PlayWorld)getWorld();
+        
         //sta
         directie.put("idle", new GifImage("player/player_m_Idle.gif"));
         //moarte
@@ -67,14 +69,12 @@ public class Player extends Jucator {
         directie.put("As", new GifImage("player/vedere_A.gif"));
         directie.put("Ss", new GifImage("player/vedere_S.gif"));
 
-        //gif="idle";
-        // HealthBar bara=new HealthBar("Jucator","Viata",this.hp, this.hp);
-        // getWorld().addObject(bara,0,0);
+       
         this.timpPrec = System.currentTimeMillis();
     }
 
     private void prepareData() {
-
+        
         equipSword = false;
         equipLaser = false;
         equipPortalGun = false;
@@ -84,6 +84,7 @@ public class Player extends Jucator {
 
         toggledInventory = false;
         toggledPause = false;
+        toggledGameOver=false;
 
         WorldData.PAUZA = false;
 
@@ -363,29 +364,48 @@ public class Player extends Jucator {
 
         }
 
-        if (Greenfoot.isKeyDown("0")) {
-            WorldData.PAUZA = false;
-            toggledPause = false;
+        if (Greenfoot.isKeyDown("0")) {///teste
+            hp=0;
+            die();
         }
 
     }
 
     protected void lovit() {
-
+        
     }
+    
+    public void die(){
+        if(hp<=0){
+            getHealthBar().setValue(getHealthBar().getMinimumValue());
+            inViata=false;
+        }
+    }
+    
+    public void revive(){
+        this.toggledGameOver=false;
+        getHealthBar().setValue(getHealthBar().getMaximumValue());
+        this.inViata=true;
+        hp=hpMax;
+    } 
 
     public void act() {
 
-        //System.out.println("\nwx");
-        //System.out.println(worldX);
         checkPauza();
-
-        if (!WorldData.PAUZA) {
-            useItem();
-            lovit();
-            move();
-            toggleMenu();
-            setImage(playerImg.getCurrentImage());
+        if (inViata) {
+            if (!WorldData.PAUZA) {
+                useItem();
+                lovit();
+                move();
+                toggleMenu();
+                setImage(playerImg.getCurrentImage());
+            }
+        }
+        else{
+            if(!toggledGameOver){
+                getWorld().addObject(new GameOver(playWorld), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+                toggledGameOver=true;
+            }
         }
 
     }
@@ -407,6 +427,10 @@ public class Player extends Jucator {
 
         return direction;
     }
+    
+    public PlayWorld getPlayWorld() {
+        return playWorld;
+    }
 
     public int getWorldX() {
         return worldX;
@@ -424,6 +448,10 @@ public class Player extends Jucator {
         worldY = val;
     }
 
+    public HealthBar getHealthBar(){
+        return (HealthBar)(getWorld().getObjects(HealthBar.class).get(0));
+    }
+    
     public boolean isInViata() {
         return inViata;
     }
@@ -448,6 +476,10 @@ public class Player extends Jucator {
         this.speed = speed;
     }
 
+    public HashSet<String> getIteme() {
+        return iteme;
+    }
+    
     public boolean isEquipSword() {
         return equipSword;
     }

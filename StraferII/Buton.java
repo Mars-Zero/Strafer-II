@@ -132,9 +132,15 @@ public class Buton extends UI {
                         break;
                     }
                     case "New Game": {
+                        
                         //save file nou
                         //inceputu jocului
 
+                        
+                        if(obj instanceof MainMenu){
+                            MainMenu mm=(MainMenu)obj;
+                            mm.getSound().stop();
+                        }
                         break;
                     }
                     case "Continue": {
@@ -143,9 +149,14 @@ public class Buton extends UI {
                         if (obj instanceof Menu) {
                             getWorld().removeObject((Menu) obj);
                         }
+                        if(obj instanceof MainMenu){
+                            MainMenu mm=(MainMenu)obj;
+                            mm.getSound().stop();
+                        }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
+                        
                         //da load
-                        SaveSystem.load(0);
+                        SaveSystem.load(0, ((PlayWorld)getWorld()).getPlayer() );
                         break;
                     }
                     default: {

@@ -15,32 +15,22 @@ public class PlayWorld extends World {
     public HealthBar healthBar;
     private boolean addedHealthBar = false;
 
-    
-    public GreenfootSound sound=new GreenfootSound("sounds/music/TitleScreen.mp3");
-    
-    
     public PlayWorld() {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
 
-        setPaintOrder(Buton.class, Menu.class,HealthBar.class,Text.class,Picture.class,Tutorial.class,Dialog.class,
-                      Floor.class, Item.class, Lantern.class, Light.class, Player.class, Npc.class);
+        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class, Tutorial.class, Dialog.class,
+                Floor.class, Item.class, Lantern.class, Light.class, Player.class, Npc.class);
 
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;
         addPlayer();
         WorldData.addedDialogs = false;
-        addedHealthBar=false;
+        addedHealthBar = false;
         addMainMenu();
-        
-        sound.play();
-        
-        //AssetsCache.storeAssets();
 
+        //AssetsCache.storeAssets();
     }
 
-    
-    
-    
     private void addMainMenu() {
         addObject(new MainMenu(), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
     }
@@ -63,9 +53,8 @@ public class PlayWorld extends World {
         addObject(new Fps(), 150, 50);
     }
 
-    
-    
     private Color colorSafeHealth = new Color(95, 205, 228), colorDangerHealth = new Color(222, 93, 18);
+
     private void addHealthBar() {
         //health
         healthBar = new HealthBar("", "", player.getHp(), player.getHpMax());
@@ -74,8 +63,8 @@ public class PlayWorld extends World {
         healthBar.setBarWidth(181);
         healthBar.setBarHeight(14);
         healthBar.setReferenceText("");
-        healthBar.setTextColor(new Color(4,69,85,214));
-        addObject(new Picture("UI/hud/healthBar.png",true), 148, 40);
+        healthBar.setTextColor(new Color(4, 69, 85, 214));
+        addObject(new Picture("UI/hud/healthBar.png", true), 148, 40);
         addObject(healthBar, 172, 32);
         //showText(Astroneer.hp+" ",600,400);
         //health
@@ -102,11 +91,19 @@ public class PlayWorld extends World {
 
     public void act() {
         scroll();
-        if(!addedHealthBar){
+        if (!addedHealthBar) {
             addHealthBar();
-            addedHealthBar=true;
+            addedHealthBar = true;
         }
 
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public HealthBar getHealthBar() {
+        return healthBar;
     }
 
 }

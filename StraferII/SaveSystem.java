@@ -55,13 +55,13 @@ abstract class SaveSystem {
      * The load method It will be given the player and it will load the list of all
      * the items and other proccesses
      */
-    public static void load(int saveNumber) {
+    public static void load(int saveNumber, Player player) {
         File director = new File(SaveSystem.directoryName);
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
 
         List<Item> iteme = new ArrayList<>();
         List<Tutorial> tutor = new ArrayList<>();
-        Player juc=new Player();
+        Player juc= player;
         int ScrolledX,ScrolledY;
         int WorldSection;
         try {

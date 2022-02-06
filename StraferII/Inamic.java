@@ -1,21 +1,23 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 /**
  * Write a description of class Inamic here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class Inamic extends Npc
-{
+public class Inamic extends Npc {
+
     public static int speed = 5;
     protected int hp = 150;
-    
+
     Scroller scroller;
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
-    GifImage catImg = directie.get(super.gif);
+    GifImage npcImg = directie.get(super.gif);
     protected int pasi;
     protected int dist = 0;
 
@@ -25,15 +27,14 @@ public class Inamic extends Npc
     protected long timpAtins = 0;
     protected boolean mort = false;
     protected long timpPrec;
-    
-    
+
     protected long timpPauzaRange;
     protected long timpPauzaMelee;
     protected long nextRangeAttack;
     protected long nextMeleeAttack;
-    
+
     public String gifSabie;
-    
+
     public long getpX() {
         return worldX;
     }
@@ -50,16 +51,15 @@ public class Inamic extends Npc
         this.worldY = worldY;
     }
 
-    
-    public Inamic(Scroller scrl,  int x, int y){
+    public Inamic(Scroller scrl, int x, int y) {
         super(scrl);
         prevsx = Scroller.scrolledX;
         prevsy = Scroller.scrolledY;
-        worldX = x-Scroller.scrolledX;
-        worldY = y-Scroller.scrolledY;
+        worldX = x - Scroller.scrolledX;
+        worldY = y - Scroller.scrolledY;
 
         this.mort = false;
-        
+
         gif = "idle";
 
         this.timpSab = 0;
@@ -68,9 +68,7 @@ public class Inamic extends Npc
 
         this.timpPrec = System.currentTimeMillis();
     }
-    
-    
-    
+
     protected void gaseste() {
         List players = getWorld().getObjects(Player.class);
         Player player = (Player) players.get(0);
@@ -112,7 +110,7 @@ public class Inamic extends Npc
         } else {
             gif = "idle";
         }
-        catImg = directie.get(super.gif);
+        npcImg = directie.get(super.gif);
 
     }
 
@@ -291,50 +289,42 @@ public class Inamic extends Npc
             }
         }
 
-        
-        if(isTouching(Sabie.class)){
+        if (isTouching(Sabie.class)) {
             timpSab++;//cat timp ating ating asteroidul
-            if(timpSab>=16)
-            {
-               health(Sabie.damage);
-               if(!(traiesc()))
-               {
-                   super.gif="death"; 
-                   catImg=directie.get(super.gif);
-                   mort=true;
+            if (timpSab >= 16) {
+                health(Sabie.damage);
+                if (!(traiesc())) {
+                    super.gif = "death";
+                    npcImg = directie.get(super.gif);
+                    mort = true;
                 }
-               timpSab=0;
+                timpSab = 0;
             }
-            
-        }
-        else if(timpSab>0)
-        {
+
+        } else if (timpSab > 0) {
             timpSab--;//modific timpul daca nu 
         }
-    
-    
+
     }
-    protected void lovitLaser(){
-        
-        Actor a=(Laser)getOneIntersectingObject(Laser.class);
-        if(a!=null){
+
+    protected void lovitLaser() {
+
+        Actor a = (Laser) getOneIntersectingObject(Laser.class);
+        if (a != null) {
             timpBolt++;//cat timp ating ating laserul
-            if(timpBolt>=8)
-            {
+            if (timpBolt >= 8) {
                 removeTouching(Laser.class);
-               
-               health(Laser.damage);
-               if(!(traiesc()))
-               {
-                   super.gif="death"; 
-                catImg=directie.get(super.gif);
-                   mort=true;
+
+                health(Laser.damage);
+                if (!(traiesc())) {
+                    super.gif = "death";
+                    npcImg = directie.get(super.gif);
+                    mort = true;
                 }
-               timpBolt=0;
+                timpBolt = 0;
             }
-        }
-        else if(timpBolt>0){
-            timpBolt=0;
+        } else if (timpBolt > 0) {
+            timpBolt = 0;
         }
     }
 
@@ -342,45 +332,42 @@ public class Inamic extends Npc
         //attackRange();
         //attackMelee();
     }
-    protected void attackRange(){
-        
+
+    protected void attackRange() {
+
         //aici ar fi bine sa se verifice cu o metoda daca e in range
-         if(nextRangeAttack>timpPauzaRange){
-            
+        if (nextRangeAttack > timpPauzaRange) {
+
             //getWorld().addObject(new Laser(),getX(),getY());
-            nextRangeAttack=System.currentTimeMillis();
-        
+            nextRangeAttack = System.currentTimeMillis();
+
         }
-        nextRangeAttack=System.currentTimeMillis();
+        nextRangeAttack = System.currentTimeMillis();
     }
-    protected void attackMelee(){
-        
+
+    protected void attackMelee() {
+
         //aici ar fi bine sa se verifice cu o metoda daca e in range
-       
-        if(nextMeleeAttack>timpPauzaMelee){
-            
+        if (nextMeleeAttack > timpPauzaMelee) {
+
             //getWorld().addObject(new Laser(),getX(),getY());
-            nextMeleeAttack=System.currentTimeMillis();
-            if(gifSabie=="D"){
-               //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)+36,(getY()+scrolledY));
-             }
-             else if(gifSabie=="A"){
+            nextMeleeAttack = System.currentTimeMillis();
+            if (gifSabie == "D") {
+                //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)+36,(getY()+scrolledY));
+            } else if (gifSabie == "A") {
                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)-36,(getY()+scrolledY));
-             }
-            else if(gifSabie=="S"){
+            } else if (gifSabie == "S") {
                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)+20);
+            } else if (gifSabie == "W") {
+                //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)-20);
             }
-            else if(gifSabie=="W"){
-                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)-20);
-            }
-        
+
         }
-        nextMeleeAttack=System.currentTimeMillis();
+        nextMeleeAttack = System.currentTimeMillis();
     }
     long timpMort = 0;
-    
-    
-     protected void health(int dmg) {
+
+    protected void health(int dmg) {
         hp -= dmg;
     }
 

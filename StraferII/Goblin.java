@@ -58,7 +58,7 @@ public class Goblin extends Inamic {
                     //lovitSabie();//{
                     // lovitLaser();//verifica daca e lovit
                     //{
-                    catImg = directie.get(super.gif);
+                    npcImg = directie.get(super.gif);
 
                 } else {
                      //lovitSabie();
@@ -103,9 +103,9 @@ public class Goblin extends Inamic {
                 this.knockbackMove();
             }
 
-            catImg = directie.get(gif);
+            npcImg = directie.get(gif);
 
-                   setImage(catImg.getCurrentImage());
+                   setImage(npcImg.getCurrentImage());
         }
 
     }
