@@ -5,6 +5,7 @@ public class MainMenu extends Menu {
 
     GifImage background = new GifImage("fundal/title.gif");
 
+    
     boolean butoanead = false;
 
     public GreenfootSound sound = new GreenfootSound("sounds/music/Rename.mp3");
@@ -13,7 +14,8 @@ public class MainMenu extends Menu {
 
         WorldData.PAUZA = true;
         setImage("fundal/titleScreen1.png");
-
+       
+            
     }
 
     private void addButoane() {

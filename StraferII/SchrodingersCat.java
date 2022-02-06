@@ -26,6 +26,7 @@ public class SchrodingersCat extends Goblin {
         changedAnimation = false;
 
         inBox = false;
+        mort=false;
 
     }
 
@@ -103,8 +104,8 @@ public class SchrodingersCat extends Goblin {
 
             } else {
 
-                lovitSabie();
-                lovitLaser();
+                //lovitSabie();
+                //lovitLaser();
                 int waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {

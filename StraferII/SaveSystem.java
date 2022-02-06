@@ -55,7 +55,7 @@ abstract class SaveSystem {
      * The load method It will be given the player and it will load the list of all
      * the items and other proccesses
      */
-    public static void load(int saveNumber, Player player) {
+    public static void load(int saveNumber,Player player) {
         File director = new File(SaveSystem.directoryName);
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
 

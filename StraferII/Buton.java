@@ -12,7 +12,7 @@ public class Buton extends UI {
 
     boolean clicked = false;
     Object obj;
-
+    
     public Buton(String imgref, Object menuref) {
         img = imgref;
         obj = menuref;
@@ -153,10 +153,15 @@ public class Buton extends UI {
                             MainMenu mm=(MainMenu)obj;
                             mm.getSound().stop();
                         }
+                        if(obj instanceof GameOver){
+                            GameOver go=(GameOver)obj;
+                            go.getSound().stop();
+                            getWorld().getObjects(Player.class).get(0).load();
+                        }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         
-                        //da load
-                        SaveSystem.load(0, ((PlayWorld)getWorld()).getPlayer() );
+                        
+                        
                         break;
                     }
                     default: {
