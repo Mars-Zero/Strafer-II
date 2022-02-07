@@ -386,25 +386,20 @@ public class Player extends Jucator {
 
     }
 
+    boolean firstCycle = false;
+
     public void die() {
         if (hp <= 0) {
-            if(!playedAnimation){
-                animation.run();
-            }
             getHealthBar().setValue(getHealthBar().getMinimumValue());
-            
-            if (!animation.isActive()) {
-                inViata = false;
-                playedAnimation=true;
-            } else {
-                animation.run();
-            }
-
+            inViata = false;
         }
+
     }
 
     public void revive() {
         this.toggledGameOver = false;
+         playedAnimation = false;
+         prepareAnimation();
         getHealthBar().setValue(getHealthBar().getMaximumValue());
         this.inViata = true;
         hp = hpMax;
@@ -415,29 +410,37 @@ public class Player extends Jucator {
         if (!loaded) {
             SaveSystem.load(0, this);
             loaded = true;
-            System.out.println("pussy");
         }
 
         checkPauza();
         if (inViata) {
             if (!WorldData.PAUZA) {
+
                 useItem();
                 lovit();
                 move();
                 die();
+
                 toggleMenu();
-                if (!animation.isActive()) {
-                    setImage(playerImg.getCurrentImage());
-                } else {
-                    //animation.run();
-                }
-                
+
+                setImage(playerImg.getCurrentImage());
 
             }
         } else {
-            if (!toggledGameOver) {
-                getWorld().addObject(new GameOver(playWorld), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
-                toggledGameOver = true;
+
+            if (!playedAnimation) {
+                if (animation.isActive()) {
+                    animation.run();
+                }
+            }
+            if (!animation.isActive()) {
+                playedAnimation = true;
+                if (!toggledGameOver && playedAnimation) {
+                    getWorld().addObject(new GameOver(playWorld), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+                    playedAnimation = false;
+                    toggledGameOver = true;
+
+                }
             }
         }
 
@@ -579,7 +582,7 @@ public class Player extends Jucator {
         for (int i = 0; i < imgs.size(); i++) {
             images[i] = (GreenfootImage) imgs.get(i);
         }
-        playedAnimation=false;
+        playedAnimation = false;
         animation = new Animation(this, images);
         animation.setCycleActs(15);
         animation.setCycleCount(1);
