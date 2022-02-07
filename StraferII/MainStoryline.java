@@ -50,6 +50,8 @@ public class MainStoryline extends Storyline{
     }
 
     public void act() {
-        // Add your action code here.
+        //aici vor venii diferite eventuri
+        Quest questCurent=questQueue.peek();
+        String currentToDo=questCurent.nextToDo();
     }
 }
