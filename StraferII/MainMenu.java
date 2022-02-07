@@ -8,7 +8,7 @@ public class MainMenu extends Menu {
     
     boolean butoanead = false;
 
-    public GreenfootSound sound = new GreenfootSound("sounds/music/Rename.mp3");
+    public GreenfootSound music = new GreenfootSound("sounds/music/Rename.mp3");
 
     public MainMenu() {
 
@@ -30,16 +30,16 @@ public class MainMenu extends Menu {
         if (!butoanead) {
             addButoane();
             butoanead = true;
-            sound.playLoop();
-            sound.setVolume(60);
+            music.playLoop();
+            music.setVolume(60);
         }
     }
 
-    public GreenfootSound getSound() {
-        return sound;
+    public GreenfootSound getMusic() {
+        return music;
     }
 
-    public void setSound(GreenfootSound sound) {
-        this.sound = sound;
+    public void setMusic(GreenfootSound music) {
+        this.music = music;
     }
 }

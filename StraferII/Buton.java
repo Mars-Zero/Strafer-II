@@ -122,6 +122,10 @@ public class Buton extends UI {
                         if (obj instanceof Menu) {
                             getWorld().removeObject((Menu) obj);
                         }
+                        if(obj instanceof GameOver){
+                            GameOver go=(GameOver)obj;
+                            go.getMusic().stop();
+                        }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
 
                         /////se da save
@@ -139,7 +143,7 @@ public class Buton extends UI {
                         
                         if(obj instanceof MainMenu){
                             MainMenu mm=(MainMenu)obj;
-                            mm.getSound().stop();
+                            mm.getMusic().stop();
                         }
                         break;
                     }
@@ -151,11 +155,12 @@ public class Buton extends UI {
                         }
                         if(obj instanceof MainMenu){
                             MainMenu mm=(MainMenu)obj;
-                            mm.getSound().stop();
+                            mm.getMusic().stop();
+                            getWorld().getObjects(Player.class).get(0).load();
                         }
                         if(obj instanceof GameOver){
                             GameOver go=(GameOver)obj;
-                            go.getSound().stop();
+                            go.getMusic().stop();
                             getWorld().getObjects(Player.class).get(0).load();
                         }
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
