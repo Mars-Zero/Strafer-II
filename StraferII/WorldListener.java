@@ -195,41 +195,12 @@ urmatoare:        |____|_________|_______|________|
         }
     }
     
+    
+    
+    
+    
     public void initWorldSection11() {
-        
-        
-        
-        //world.initObject(new Tutorial("Test",4,false),512,576/2);
-        
-        world.initObject(new Fps(), 150, 50);
-
-        ///WorldStructures
-        // getWorld().addObject(new PereteInvizibil("A", 1, "mare90"), 0-Scroller.scrolledX, 300-Scroller.scrolledY);//margini
-        /* getWorld().addObject(new PereteInvizibil("W", 1, "mic"), 690, 340);
-        getWorld().addObject(new PereteInvizibil("W", 1, "mic"), 750, 340);
-        getWorld().addObject(new PereteInvizibil("W", 1, "mic"), 690, 340);
-
-        getWorld().addObject(new PereteInvizibil("A", 1, "mic90"), 795, 300);
-        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 585, 300);
-
-        getWorld().addObject(new PereteInvizibil("S", 1, "mic"), 630, 255);
-        getWorld().addObject(new PereteInvizibil("S", 1, "mic"), 690, 255);
-        getWorld().addObject(new PereteInvizibil("S", 1, "mic"), 750, 255);
-
-        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 0);//margini
-        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 60);//margini
-        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 120);//margini
-        getWorld().addObject(new PereteInvizibil("D", 1, "mic90"), 1185, 180);//margini
-         */
-        for (int i = 1; i <= 10500; i += 1024) {
-            world.initObject(new PereteInvizibil("W", 1, "mare"), i, 16);
-        }
-
-        ///WorldStructures
-        
-        
-        
-        /// Npcs
+         /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
             world.initObject(new SchrodingersCat(scroller, 100, 200), 100, 200);
@@ -239,7 +210,81 @@ urmatoare:        |____|_________|_______|________|
           world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
           world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
         ///Npcs
+        
+        
+        //world.initObject(new Tutorial("Test",4,false),512,576/2);
+        
+        world.initObject(new Fps(), 150, 50);
+
+        ///WorldStructures
+        
+world.initObject(new PereteInvizibil("D", 1,"mic90"), 2136, 1728);
+world.initObject(new PereteInvizibil("D", 1,"mic90"), 2136, 1792);
+world.initObject(new PereteInvizibil("D", 1,"mic90"), 2136, 1856);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2176, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2176, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2240, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2240, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2304, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2304, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2368, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2368, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2432, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2432, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2496, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2496, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2560, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2560, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2624, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2624, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2688, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2688, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2752, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2752, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2816, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2816, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2880, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2880, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2944, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2944, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 3008, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 3008, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 3072, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 3072, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 3136, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 3136, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 3200, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 3200, 1896);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 3264, 1688);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 3264, 1896);
+world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1728);
+world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1792);
+world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1856);
+
+
+
+
+
+
+
+
+
+        for (int i = 1; i <= 10500; i += 1024) {
+            world.initObject(new PereteInvizibil("W", 1, "mare"), i, 16);
+        }
+
+        ///WorldStructures
+        
+        
+        
+       
     }
+    
+    
+    
+    
+    
+    
 
     public void initWorldSection12() {
         System.out.println("12");
@@ -270,6 +315,12 @@ urmatoare:        |____|_________|_______|________|
     public void setWorldSection(int worldSection) {
         this.worldSection = worldSection;
     }
+    
+    
+    
+    
+    
+    
 
     void loadImages() {
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 11 + ".png"));
@@ -284,6 +335,10 @@ urmatoare:        |____|_________|_______|________|
 
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
     }
+    
+    
+    
+    
 
     int getImageIndex() {
         switch (worldSection) {

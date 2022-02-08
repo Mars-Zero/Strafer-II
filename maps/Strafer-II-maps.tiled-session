@@ -5,11 +5,12 @@
     },
     "activeFile": "map11.tmx",
     "expandedProjectPaths": [
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
+        "tilesets",
         ".",
-        "tilesets"
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
     "exportAsImage.useCurrentScale": true,
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
             "scaleInDock": 1
@@ -230,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.03125,
+            "scale": 0.03,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -32,
-                "y": 4304
+                "x": 12033.333333333332,
+                "y": 5583.333333333335
             }
         },
         "map11.tmx#Terrain": {
@@ -274,15 +275,27 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "map11.tmx#pereteA": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#pereteD": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#pereteS": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#pereteW": {
+            "scaleInDock": 1
+        },
         "map11.tmx#snow1": {
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.03,
+            "scale": 0.03125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4100,
-                "y": 4116.666666666666
+                "x": -1504,
+                "y": 3664
             }
         },
         "map12.tmx#Terrain": {
@@ -321,16 +334,256 @@
         "map12.tmx#perete": {
             "scaleInDock": 1
         },
+        "map12.tmx#pereteA": {
+            "scaleInDock": 1
+        },
+        "map12.tmx#pereteD": {
+            "scaleInDock": 1
+        },
+        "map12.tmx#pereteS": {
+            "scaleInDock": 1
+        },
+        "map12.tmx#pereteW": {
+            "scaleInDock": 1
+        },
         "map12.tmx#snow1": {
+            "scaleInDock": 1
+        },
+        "map13.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 592,
+                "y": 11432
+            }
+        },
+        "map13.tmx#Terrain": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#apa1": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#decor1": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#detoate1": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#detoate2": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#dungeon1": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#dungeon2": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#dungeon3": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#grass1": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#grass2": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#perete": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#pereteA": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#pereteD": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#pereteS": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#pereteW": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#snow1": {
             "scaleInDock": 1
         },
         "map21.tmx": {
             "scale": 0.0625,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 4096,
-                "y": 4104
+                "x": 16992,
+                "y": 3256
             }
+        },
+        "map21.tmx#Terrain": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#apa1": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#decor1": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#detoate1": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#detoate2": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#dungeon1": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#dungeon2": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#dungeon3": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#grass1": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#grass2": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#perete": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#pereteA": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#pereteD": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#pereteS": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#pereteW": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#snow1": {
+            "scaleInDock": 1
+        },
+        "map22.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 8800,
+                "y": 3256
+            }
+        },
+        "map22.tmx#Terrain": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#apa1": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#decor1": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#detoate1": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#detoate2": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#dungeon1": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#dungeon2": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#dungeon3": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#grass1": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#grass2": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#perete": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#pereteA": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#pereteD": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#pereteS": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#pereteW": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#snow1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 608,
+                "y": 3256
+            }
+        },
+        "map23.tmx#Terrain": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#apa1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#decor1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#detoate1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#detoate2": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#dungeon1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#dungeon2": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#dungeon3": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#grass1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#grass2": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#grass3": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#perete": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#pereteA": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#pereteD": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#pereteS": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#pereteW": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#snow1": {
+            "scaleInDock": 1
         },
         "snow.tsx": {
             "dynamicWrapping": true,
@@ -387,6 +640,18 @@
         "tilesets/perete.tsx": {
             "scaleInDock": 1
         },
+        "tilesets/pereteA.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/pereteD.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/pereteS.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/pereteW.tsx": {
+            "scaleInDock": 1
+        },
         "tilesets/snow.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -415,29 +680,32 @@
     "openFiles": [
         "map11.tmx",
         "map12.tmx",
-        "map21.tmx"
+        "map13.tmx",
+        "map21.tmx",
+        "map22.tmx",
+        "map23.tmx"
     ],
     "project": "Strafer-II-maps.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "map23.tmx",
+        "map22.tmx",
         "map21.tmx",
+        "map13.tmx",
         "map12.tmx",
         "map11.tmx",
-        "map.json",
         "tilesets/Terrain.tsx",
+        "map.json",
         "tilesets/snow1.tsx",
         "tilesets/apa1.tsx",
         "map.tmx",
-        "tilesets/detoate1.tsx",
-        "tilesets/detoate2.tsx",
-        "tilesets/decor1.tsx",
-        "tilesets/grass2.tsx"
+        "tilesets/detoate1.tsx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 64,
-        "width": 64
+        "width": 16
     }
 }

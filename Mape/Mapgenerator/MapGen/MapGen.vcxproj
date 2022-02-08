@@ -158,7 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\maps\maps\map.json" />
-    <None Include="matrix.txt" />
+    <None Include="Matrix.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Walls.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

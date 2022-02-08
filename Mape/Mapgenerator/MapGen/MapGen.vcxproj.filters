@@ -28,8 +28,13 @@
     <None Include="..\..\..\maps\maps\map.json">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="matrix.txt">
+    <None Include="Matrix.txt">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Walls.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
