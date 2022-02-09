@@ -5,29 +5,28 @@ public class Tutorial extends Menu {
 
     protected int nrSlide;
     protected int nrSlideMax;
-    
+
     protected String img;
-    protected Picture picture=new Picture("UI/tutorial/tutorialSlides/Test/tutorialTest0.png");
+    protected String tip;
+
+    protected Picture picture = new Picture("UI/tutorial/tutorial.png");
 
     protected boolean addedButon = false;
-    protected boolean addedButonBack=false;
+    protected boolean addedButonBack = false;
     protected boolean inPause;
 
-    
-    
     protected boolean addedPicture = false;
-    
 
-
-    public Tutorial(String imgref, int slideref,boolean inPauseref) {
-        WorldData.PAUZA=true;
-        nrSlideMax=slideref;
-        nrSlide=0;
+    public Tutorial(String tipref, String imgref, int slideref, boolean inPauseref) {
+        WorldData.PAUZA = true;
+        nrSlideMax = slideref;
+        tip = tipref;
+        nrSlide = 0;
         img = imgref;
         addedButon = false;
         addedPicture = false;
-        this.inPause=inPauseref;
-        
+        this.inPause = inPauseref;
+
         setImage("UI/tutorial/tutorial.png");
     }
 
@@ -36,7 +35,7 @@ public class Tutorial extends Menu {
         if (!addedPicture) {
             getWorld().addObject(picture, 522, 500);
             updateImage();
-            
+
             addedPicture = true;
         }
 
@@ -55,11 +54,13 @@ public class Tutorial extends Menu {
     }
 
     public void updateImage() {
-        picture.setImageName("UI/tutorial/tutorialSlides/" + img + "/tutorial" + img + nrSlide + ".png");
-   
+        picture.setImageName("UI/tutorial/tutorialSlides/" + tip + "/" + img + "/" + tip + "#" + "tutorial" + img + nrSlide + ".png");
+
     }
 
-    
+       public int getNrSlideMax() {
+        return nrSlideMax;
+    }
     
     public int getNrSlide() {
         return nrSlide;
@@ -67,6 +68,14 @@ public class Tutorial extends Menu {
 
     public void setNrSlide(int nrSlide) {
         this.nrSlide = nrSlide;
+    }
+
+    public String getImgName() {
+        return img;
+    }
+
+    public String getTip() {
+        return tip;
     }
 
     public boolean isLastSlide() {
@@ -84,13 +93,15 @@ public class Tutorial extends Menu {
     public void setAddedPicture(boolean addedPicture) {
         this.addedPicture = addedPicture;
     }
+
     public boolean isAddedButonBack() {
         return addedButonBack;
     }
+
     public boolean isInPause() {
         return inPause;
     }
-    
+
     public Picture getPicture() {
         return picture;
     }

@@ -1,21 +1,65 @@
 
 import greenfoot.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Buton extends UI {
 
     GreenfootImage img0, img1;
     private String img = "";
-
+    
+    private String tipTutorial;
     Tutorial tutorial;
+    ArrayList<Tutorial> tutorials;
+    Tutorial tutorialToOpen;
+     HashMap<String,List<GreenfootImage>> tutorialsImages;
+    
     Dialog dialog;
-
+    
     boolean clicked = false;
     Object obj;
     
     public Buton(String imgref, Object menuref) {
         img = imgref;
         obj = menuref;
+        if (obj instanceof Dialog) {
+            dialog = (Dialog) obj;
+        }
+        if (obj instanceof Tutorial) {
+            tutorial = (Tutorial) obj;
+        }
+        img0 = new GreenfootImage("UI/buton/" + img + "0.png");
+        img1 = new GreenfootImage("UI/buton/" + img + "1.png");
+        setImage(img0);
+
+    }
+    
+    public Buton(String imgref, Object menuref,String tipref, ArrayList<Tutorial> tutorials) {      ///for opening a tutorial category
+        img = imgref;
+        obj = menuref;
+        tipTutorial=tipref;
+        this.tutorials=tutorials;
+        
+        if (obj instanceof Dialog) {
+            dialog = (Dialog) obj;
+        }
+        if (obj instanceof Tutorial) {
+            tutorial = (Tutorial) obj;
+        }
+        img0 = new GreenfootImage("UI/buton/" + img + "0.png");
+        img1 = new GreenfootImage("UI/buton/" + img + "1.png");
+        setImage(img0);
+
+    }
+    
+    public Buton(String imgref, Object menuref,String tipref, Tutorial tutorial) {                  ///for opening a tutorial tutorial from a category
+        img = imgref;
+        obj = menuref;
+        tipTutorial=tipref;
+        tutorialToOpen=tutorial;
+        this.tutorials=tutorials;
+        
         if (obj instanceof Dialog) {
             dialog = (Dialog) obj;
         }
@@ -69,6 +113,7 @@ public class Buton extends UI {
                         }
                         break;
                     }
+                    
                     case "X": {
                         if (obj instanceof Dialog) {
                             WorldData.PAUZA = false;
@@ -81,25 +126,58 @@ public class Buton extends UI {
                         }
                         if (obj instanceof Tutorial) {
 
-                            if (!tutorial.isInPause()) {        //daca e direct in lume 
-                                WorldData.PAUZA = false;
-                            }
-
                             getWorld().removeObject((Actor) obj);
                             WorldData.addedDialogs = false;
 
                             tutorial.setAddedPicture(false);
 
-                            getWorld().removeObject(tutorial.getPicture());
+                            getWorld().removeObject(tutorial.getPicture()); 
+                            
+                            
+                            if (!tutorial.isInPause()) {        //daca e direct in lume 
+                                WorldData.PAUZA = false;
+                            }
+                            if(tutorial.isInPause()){           //daca a fost deschis din tutorial gallery
+                               // getWorld().addObject(new TutorialFolder(tutorials), WorldData.WIDTH/2, WorldData.HIGHT/2);
+                            }
+                        }
+                      
+                        if(obj instanceof TutorialGallery){
+                        
+                        }
+                        if(obj instanceof TutorialFolder){
+                            
+                        }  
+                        if(obj instanceof MapMenu){
+                            
                         }
 
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
                     }
+                    
                     case "Open": {
-
+                        
+                        
+                        if(obj instanceof TutorialGallery){             ///da open la o categorie adica un folder de tutoriale
+                            
+                            TutorialGallery tg=(TutorialGallery)obj;
+                            
+                            getWorld().addObject(new TutorialFolder(tutorials,tg.retrieveTutorials()), WorldData.WIDTH/2, WorldData.HIGHT/2);
+                        }
+                        
+                        
+                        if(obj instanceof TutorialFolder){              ///da open la un tutorial
+                           /* getWorld().addObject(new Tutorial(tutorialToOpen.getTip(),
+                                                               tutorialToOpen.getImgName(),
+                                                               tutorials.get(tutorialToOpen.getNrSlideMax()).size() 
+                                                                ));*/
+                        }
+                        
+                        
                         break;
                     }
+                    
                     case "Resume": {
 
                         WorldData.PAUZA = false;
@@ -179,6 +257,7 @@ public class Buton extends UI {
 
     }
 
+    
     public void exists() {
         switch (img) {
             case "Next": {

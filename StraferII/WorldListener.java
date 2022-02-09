@@ -212,7 +212,7 @@ urmatoare:        |____|_________|_______|________|
         ///Npcs
         
         
-        //world.initObject(new Tutorial("Test",4,false),512,576/2);
+        
         
         world.initObject(new Fps(), 150, 50);
 

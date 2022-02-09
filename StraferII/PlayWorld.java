@@ -6,11 +6,11 @@ public class PlayWorld extends World {
     int WIDE, HIGH;
     int originalX = 30, originalY = 200;
 
-    private Scroller scroller;
+    public WorldListener worldListener;
+
+    public Scroller scroller;
 
     Player player;
-
-    private WorldListener worldListener;
 
     public HealthBar healthBar;
     private boolean addedHealthBar = false;
@@ -53,21 +53,21 @@ public class PlayWorld extends World {
         addObject(new Fps(), 150, 50);
     }
 
-    private Color colorSafeHealth = new Color(95, 205, 228), colorDangerHealth = new Color(222, 93, 18);
-
+    
     private void addHealthBar() {
-        //health
+        
         healthBar = new HealthBar("", "", player.getHp(), player.getHpMax());
+        
+        Color colorSafeHealth = new Color(95, 205, 228), colorDangerHealth = new Color(222, 93, 18);
         healthBar.setSafeColor(colorSafeHealth);
         healthBar.setDangerColor(colorDangerHealth);
         healthBar.setBarWidth(181);
         healthBar.setBarHeight(14);
         healthBar.setReferenceText("");
         healthBar.setTextColor(new Color(4, 69, 85, 214));
+        
         addObject(new Picture("UI/hud/healthBar.png", true), 148, 40);
         addObject(healthBar, 172, 32);
-        //showText(Astroneer.hp+" ",600,400);
-        //health
     }
 
     //adauga obiectele pe toata mapa, nu doar pe suprafata de display
