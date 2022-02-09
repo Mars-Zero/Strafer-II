@@ -21,7 +21,7 @@ public class TutorialGallery extends Pause{
             for(int i=0; i<allFiles.length; i++)
             {
                 GreenfootImage image =new GreenfootImage(allFiles[i].getPath());
-                String type=SaveSystem.getTipString(allFiles[i].getName());
+                String type=SaveSystem.getTipStringFiles(allFiles[i].getName());
                 if(imageTutorials.containsKey(type)) {
                     imageTutorials.get(type).add(image);
                 }

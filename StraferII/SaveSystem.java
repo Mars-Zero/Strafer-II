@@ -12,10 +12,10 @@ import java.util.regex.Pattern;
 
 abstract class SaveSystem {
 
-	/**
-	 * The name of the directory where all files are saved
-	 */
-	private static String directoryName = "saves";
+    /**
+     * The name of the directory where all files are saved
+     */
+    private static String directoryName = "saves";
 
     /**
      * This method processes the string and returns it's type
@@ -33,23 +33,40 @@ abstract class SaveSystem {
             return null;
         }
     }
-
-	/**
-	 * This method processes the string and returns it's content
-	 * 
-	 * @param String that needs to be processed
-	 * @return the content of the item
-	 * @throws Exception
-	 */
-	private static String getContentString(String str) throws Exception {
-		Pattern patt = Pattern.compile("[^;]*$");
-		Matcher matcher = patt.matcher(str);
-		if (matcher.find()) {
-			return matcher.group(); // you can get it from desired index as well
-		} else {
-			return null;
-		}
-	}
+    
+    /**
+     * This method processes the string and returns it's type
+     * Only for files
+     * @param String that needs to be processed
+     * @return the type of the item
+     * @throws Exception
+     */
+    public static String getTipStringFiles(String str) throws Exception {
+        Pattern patt = Pattern.compile("^(.+?)#");
+        Matcher matcher = patt.matcher(str);
+        if (matcher.find()) {
+            return matcher.group(); // you can get it from desired index as well
+        } else {
+            return null;
+        }
+    }
+    
+    /**
+     * This method processes the string and returns it's content
+     * 
+     * @param String that needs to be processed
+     * @return the content of the item
+     * @throws Exception
+     */
+    private static String getContentString(String str) throws Exception {
+        Pattern patt = Pattern.compile("[^;]*$");
+        Matcher matcher = patt.matcher(str);
+        if (matcher.find()) {
+            return matcher.group(); // you can get it from desired index as well
+        } else {
+            return null;
+        }
+    }
 
     /**
      * The load method It will be given the player and it will load the list of all
@@ -78,19 +95,19 @@ abstract class SaveSystem {
                     //tutor.add(tut);
                 }
                 else if(tip.equalsIgnoreCase("PlayerX")) {
-                	juc.setWorldX(Integer.parseInt(getContentString(str)));
+                    juc.setWorldX(Integer.parseInt(getContentString(str)));
                 }
                 else if(tip.equalsIgnoreCase("PlayerY")) {
-                	juc.setWorldY(Integer.parseInt(getContentString(str)));
+                    juc.setWorldY(Integer.parseInt(getContentString(str)));
                 }
                 else if(tip.equalsIgnoreCase("ScrollX")) {
-                	ScrolledX=Integer.parseInt(getContentString(str));
+                    ScrolledX=Integer.parseInt(getContentString(str));
                 }
                 else if(tip.equalsIgnoreCase("ScrollY")) {
-                	ScrolledY=Integer.parseInt(getContentString(str));
+                    ScrolledY=Integer.parseInt(getContentString(str));
                 }
                 else if(tip.equalsIgnoreCase("WorldSection")) {
-                	WorldSection=Integer.parseInt(getContentString(str));
+                    WorldSection=Integer.parseInt(getContentString(str));
                 }
 
             }
@@ -104,61 +121,61 @@ abstract class SaveSystem {
      * The save method; It will be given all the items and other proccesses that must be saved
      */
     public static void save(int saveNumber, List<Item> iteme, List<Tutorial> tutor
-    		,Player juc,int ScrolledY,int ScrolledX,
-    		int WorldSection) {
-    	File director = new File(SaveSystem.directoryName);
-    	if (!director.isDirectory()) {
-    		director.mkdir();
-    	}
-    	File file = new File(director.getAbsolutePath(), "save" + saveNumber + ".txt");
-    	try {
-    		if (file.exists()) {
-    			// sterg continutul save-ului trecut
-    			PrintWriter writer = new PrintWriter(file);
-    			writer.print("");
-    			writer.close();
-    		} else {
-    			file.createNewFile();
-    		}
+            ,Player juc,int ScrolledY,int ScrolledX,
+            int WorldSection) {
+        File director = new File(SaveSystem.directoryName);
+        if (!director.isDirectory()) {
+            director.mkdir();
+        }
+        File file = new File(director.getAbsolutePath(), "save" + saveNumber + ".txt");
+        try {
+            if (file.exists()) {
+                // sterg continutul save-ului trecut
+                PrintWriter writer = new PrintWriter(file);
+                writer.print("");
+                writer.close();
+            } else {
+                file.createNewFile();
+            }
 
-    		PrintStream fout = new PrintStream(new FileOutputStream(file, true), true, Charset.forName("UTF-8"));
-    		fout.flush();
+            PrintStream fout = new PrintStream(new FileOutputStream(file, true), true, Charset.forName("UTF-8"));
+            fout.flush();
 
-    		for (Item it : iteme) {
-    			fout.println("Item:" + it.toString());
-    		}
-    		for (Tutorial tut : tutor) {
-    			fout.println("Tutorial:" + tut.toString());
-    		}
-    		fout.println("PlayerX:" + new Integer(juc.getWorldX()).toString());
-    		fout.println("PlayerY:" + new Integer(juc.getWorldY()).toString());
-    		fout.println("ScrollX:" + new Integer(ScrolledX).toString());
-    		fout.println("ScrollY:" + new Integer(ScrolledY).toString());
-    		fout.println("WorldSection:" + new Integer(WorldSection).toString());
-    		fout.close();
+            for (Item it : iteme) {
+                fout.println("Item:" + it.toString());
+            }
+            for (Tutorial tut : tutor) {
+                fout.println("Tutorial:" + tut.toString());
+            }
+            fout.println("PlayerX:" + new Integer(juc.getWorldX()).toString());
+            fout.println("PlayerY:" + new Integer(juc.getWorldY()).toString());
+            fout.println("ScrollX:" + new Integer(ScrolledX).toString());
+            fout.println("ScrollY:" + new Integer(ScrolledY).toString());
+            fout.println("WorldSection:" + new Integer(WorldSection).toString());
+            fout.close();
 
-    	} catch (Exception e) {
-    		System.out.println(e);
-    	}
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
-	/**
-	 * 
-	 * @return The list of all saveFiles
-	 */
-	public static List<File> getNumberOfSaveFiles() {
-		List<File> fisiere = new ArrayList<>();
-		File f = new File(SaveSystem.directoryName);
-		File[] matchingFiles = f.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.startsWith("save") && name.endsWith("txt");
-			}
-		});
+    /**
+     * 
+     * @return The list of all saveFiles
+     */
+    public static List<File> getNumberOfSaveFiles() {
+        List<File> fisiere = new ArrayList<>();
+        File f = new File(SaveSystem.directoryName);
+        File[] matchingFiles = f.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.startsWith("save") && name.endsWith("txt");
+            }
+        });
 
-		for (File fis : matchingFiles) {
-			fisiere.add(fis);
-		}
+        for (File fis : matchingFiles) {
+            fisiere.add(fis);
+        }
 
-		return fisiere;
-	}
+        return fisiere;
+    }
 }
