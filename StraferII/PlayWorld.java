@@ -8,6 +8,7 @@ public class PlayWorld extends World {
 
     public WorldListener worldListener;
 
+    
     public Scroller scroller;
 
     Player player;
@@ -107,6 +108,13 @@ public class PlayWorld extends World {
         relocBar();
         
 
+    }
+
+    
+    
+    
+    public WorldListener getWorldListener() {
+        return worldListener;
     }
 
     public Player getPlayer() {

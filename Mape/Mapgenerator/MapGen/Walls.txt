@@ -9,6 +9,7 @@ world.initObject(new PereteInvizibil("S", 1,"mic"), 2816, 1496);
 world.initObject(new PereteInvizibil("W", 1,"mic"), 2816, 1704);
 world.initObject(new PereteInvizibil("S", 1,"mic"), 2880, 1496);
 world.initObject(new PereteInvizibil("W", 1,"mic"), 2880, 1704);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2944, 1496);
 world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1536);
 world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1600);
 world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1664);
