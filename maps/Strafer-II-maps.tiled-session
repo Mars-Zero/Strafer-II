@@ -5,9 +5,9 @@
     },
     "activeFile": "map11.tmx",
     "expandedProjectPaths": [
-        "tilesets",
         ".",
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
+        "tilesets"
     ],
     "exportAsImage.useCurrentScale": true,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.03,
+            "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 12033.333333333332,
-                "y": 5583.333333333335
+                "x": 2852,
+                "y": 1696.6666666666665
             }
         },
         "map11.tmx#Terrain": {
@@ -276,7 +276,8 @@
             "scaleInEditor": 1
         },
         "map11.tmx#pereteA": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map11.tmx#pereteD": {
             "scaleInDock": 1
@@ -291,11 +292,11 @@
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.03125,
+            "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -1504,
-                "y": 3664
+                "x": -8544,
+                "y": 6344
             }
         },
         "map12.tmx#Terrain": {
@@ -350,11 +351,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.0625,
+            "scale": 0.03,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 592,
-                "y": 11432
+                "x": 4066.6666666666642,
+                "y": 4116.666666666666
             }
         },
         "map13.tmx#Terrain": {
@@ -409,11 +410,11 @@
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 0.0625,
+            "scale": 0.03,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 16992,
-                "y": 3256
+                "x": 4066.6666666666642,
+                "y": 4116.666666666666
             }
         },
         "map21.tmx#Terrain": {
@@ -468,11 +469,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 0.0625,
+            "scale": 0.03,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 8800,
-                "y": 3256
+                "x": 4066.6666666666642,
+                "y": 4116.666666666666
             }
         },
         "map22.tmx#Terrain": {
@@ -530,8 +531,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 608,
-                "y": 3256
+                "x": 2512,
+                "y": 3352
             }
         },
         "map23.tmx#Terrain": {
@@ -706,6 +707,6 @@
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 64,
-        "width": 16
+        "width": 64
     }
 }

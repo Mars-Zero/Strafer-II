@@ -108,19 +108,19 @@ public class WorldListener extends Actor {
                 break;
             }
             case 13: {
-
+                initWorldSection13();
                 break;
             }
             case 21: {
-
+                initWorldSection21();
                 break;
             }
             case 22: {
-
+                initWorldSection22();
                 break;
             }
             case 23: {
-
+                initWorldSection23();
                 break;
             }
         };
@@ -200,6 +200,8 @@ urmatoare:        |____|_________|_______|________|
     
     
     public void initWorldSection11() {
+        WorldData.visitedWorldSections[1][1]=true;
+        
          /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
@@ -218,48 +220,21 @@ urmatoare:        |____|_________|_______|________|
 
         ///WorldStructures
         
-world.initObject(new PereteInvizibil("D", 1,"mic90"), 2136, 1728);
-world.initObject(new PereteInvizibil("D", 1,"mic90"), 2136, 1792);
-world.initObject(new PereteInvizibil("D", 1,"mic90"), 2136, 1856);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2176, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2176, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2240, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2240, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2304, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2304, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2368, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2368, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2432, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2432, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2496, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2496, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2560, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2560, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2624, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2624, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2688, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2688, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2752, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2752, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2816, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2816, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2880, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2880, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2944, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2944, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 3008, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 3008, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 3072, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 3072, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 3136, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 3136, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 3200, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 3200, 1896);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 3264, 1688);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 3264, 1896);
-world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1728);
-world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1792);
-world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1856);
+world.initObject(new PereteInvizibil("D", 1,"mic90"), 2648, 1536);
+world.initObject(new PereteInvizibil("D", 1,"mic90"), 2648, 1600);
+world.initObject(new PereteInvizibil("D", 1,"mic90"), 2648, 1664);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2688, 1496);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2688, 1704);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2752, 1496);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2752, 1704);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2816, 1496);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2816, 1704);
+world.initObject(new PereteInvizibil("S", 1,"mic"), 2880, 1496);
+world.initObject(new PereteInvizibil("W", 1,"mic"), 2880, 1704);
+world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1536);
+world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1600);
+world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1664);
+
 
 
 
@@ -287,25 +262,25 @@ world.initObject(new PereteInvizibil("A", 1,"mic90"), 3304, 1856);
     
 
     public void initWorldSection12() {
-        System.out.println("12");
+       WorldData.visitedWorldSections[1][2]=true;
 
         getWorld().addObject(new Fps(), 150, 50);
     }
 
     public void initWorldSection13() {
-
+        WorldData.visitedWorldSections[1][3]=true;
     }
 
     public void initWorldSection21() {
-
+        WorldData.visitedWorldSections[2][1]=true;
     }
 
     public void initWorldSection22() {
-
+        WorldData.visitedWorldSections[2][2]=true;
     }
 
     public void initWorldSection23() {
-
+        WorldData.visitedWorldSections[2][3]=true;
     }
 
     public int getWorldSection() {

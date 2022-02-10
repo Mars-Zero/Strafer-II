@@ -37,6 +37,7 @@ public class Player extends Jucator {
     private boolean toggledGameOver = false;
 
     private boolean loaded = false;
+    public boolean hasObjective = false;
 
     Animation animation;
     boolean playedAnimation;
@@ -86,6 +87,8 @@ public class Player extends Jucator {
         toggledPause = false;
         toggledGameOver = false;
 
+     
+        
         loaded = false;
 
         prepareAnimation();
@@ -398,8 +401,8 @@ public class Player extends Jucator {
 
     public void revive() {
         this.toggledGameOver = false;
-         playedAnimation = false;
-         prepareAnimation();
+        playedAnimation = false;
+        prepareAnimation();
         getHealthBar().setValue(getHealthBar().getMaximumValue());
         this.inViata = true;
         hp = hpMax;
@@ -482,6 +485,10 @@ public class Player extends Jucator {
 
     public void setWorldY(int val) {
         worldY = val;
+    }
+
+    public boolean hasObjective() {
+        return hasObjective;
     }
 
     public HealthBar getHealthBar() {

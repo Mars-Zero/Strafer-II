@@ -32,9 +32,9 @@ public class HealthBar extends UI {
     private String unitOfMeasure = ""; // the unit of measure of the bar (any quantitative standard of measurement) 
     private boolean showTextualUnits = true; // determines whether or not the textual quantity of the bar is to show
 
-    int x,y;
-    boolean moved=false;
-    
+    int x, y;
+    boolean moved = false;
+
     /**
      * Bar Constructor: saves the initial values that are brought in and creates
      * the bar image through the 'add(int)' call, which sets the initial value
@@ -49,7 +49,7 @@ public class HealthBar extends UI {
      * @param 'maxValue': the highest value the bar is allowed to hold
      */
     public HealthBar(String refText, String unitType, int initValue, int maxValue) {
-        moved=false;
+        moved = false;
         referenceText = refText;
         unitOfMeasure = unitType;
         maximumValue = maxValue;
@@ -62,18 +62,18 @@ public class HealthBar extends UI {
      */
     private void newImage() {
         int barValue = (int) (barWidth * (value - minimumValue) / (maximumValue - minimumValue));
-        
-        GreenfootImage leftImg = new GreenfootImage(referenceText +value+ "  ", (int) fontSize*3, textColor, backgroundColor);
-        
-        GreenfootImage rightImg = (showTextualUnits) ? new GreenfootImage(" "  + " " + unitOfMeasure, (int) fontSize, textColor, backgroundColor) : new GreenfootImage(1, 1);
+
+        GreenfootImage leftImg = new GreenfootImage(referenceText + value + "  ", (int) fontSize * 3, textColor, backgroundColor);
+
+        GreenfootImage rightImg = (showTextualUnits) ? new GreenfootImage(" " + " " + unitOfMeasure, (int) fontSize, textColor, backgroundColor) : new GreenfootImage(1, 1);
         int maxX = (leftImg.getWidth() > rightImg.getWidth()) ? leftImg.getWidth() : rightImg.getWidth();
-        
+
         GreenfootImage barImg = new GreenfootImage(barWidth + 4, barHeight + 4);
         barImg.setColor(backgroundColor);
         barImg.fill();
         barImg.setColor(textColor);
         barImg.drawRect(0, 0, barImg.getWidth() - 1, barImg.getHeight() - 1);
-        
+
         if (value > minimumValue) {
             if (breakLow) {
                 if (value > (usingBreakValue ? breakValue : (int) (breakPercent * (maximumValue - minimumValue) / 100 + minimumValue))) {
@@ -96,10 +96,10 @@ public class HealthBar extends UI {
             }
             barImg.fillRect(2, 2, barValue, barHeight);
         }
-        
+
         int sumX = 2 * maxX + barImg.getWidth();
         int maxY = 0;
-        
+
         if (leftImg.getHeight() > maxY) {
             maxY = leftImg.getHeight();
         }
@@ -109,23 +109,22 @@ public class HealthBar extends UI {
         if (rightImg.getHeight() > maxY) {
             maxY = rightImg.getHeight();
         }
-        
+
         //pixelare text
-        leftImg.scale(leftImg.getWidth()/4,leftImg.getHeight()/4);
-        GreenfootImage leftImgPixelated=leftImg;
-        leftImg=leftImgPixelated;
-        leftImg.scale(leftImgPixelated.getWidth()*2,leftImgPixelated.getHeight()*2);
+        leftImg.scale(leftImg.getWidth() / 4, leftImg.getHeight() / 4);
+        GreenfootImage leftImgPixelated = leftImg;
+        leftImg = leftImgPixelated;
+        leftImg.scale(leftImgPixelated.getWidth() * 2, leftImgPixelated.getHeight() * 2);
         //pixelare text
-        
-        
+
         GreenfootImage image = new GreenfootImage(sumX, maxY);
         image.setColor(backgroundColor);
         image.fill();
-        
-        image.drawImage(leftImg, maxX +2- leftImg.getWidth(), (image.getHeight() - leftImg.getHeight()) / 2);
-        
+
+        image.drawImage(leftImg, maxX + 2 - leftImg.getWidth(), (image.getHeight() - leftImg.getHeight()) / 2);
+
         image.drawImage(barImg, maxX, (image.getHeight() - barImg.getHeight()) / 2);
-        image.drawImage(rightImg, maxX+ barImg.getWidth(), (image.getHeight() - rightImg.getHeight()) / 2);
+        image.drawImage(rightImg, maxX + barImg.getWidth(), (image.getHeight() - rightImg.getHeight()) / 2);
         setImage(image);
     }
 
@@ -156,13 +155,19 @@ public class HealthBar extends UI {
         checkValue();
         newImage();
     }
-    
-    public void act(){
-        if(!moved){
-            x=getX(); y=getY();
-            moved=true;
+
+    public void act() {
+        if (!moved) {
+            x = getX();
+            y = getY();
+            moved = true;
         }
-        setLocation(x,y);
+        if (!WorldData.PAUZA) {
+            setLocation(x, y);
+        }
+        else{
+            setLocation(-300,-100);
+        }
     }
 
     /**

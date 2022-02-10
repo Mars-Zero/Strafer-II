@@ -18,7 +18,7 @@ public class PlayWorld extends World {
     public PlayWorld() {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
 
-        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class, Tutorial.class, Dialog.class,
+        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class,MapMenu.class, Tutorial.class, Dialog.class,
                 Floor.class, Item.class, Lantern.class, Light.class, Player.class, Npc.class);
 
         WIDE = WorldData.WIDTH;
@@ -53,7 +53,7 @@ public class PlayWorld extends World {
         addObject(new Fps(), 150, 50);
     }
 
-    
+    Picture barBack=new Picture("UI/hud/healthBar.png");
     private void addHealthBar() {
         
         healthBar = new HealthBar("", "", player.getHp(), player.getHpMax());
@@ -66,8 +66,17 @@ public class PlayWorld extends World {
         healthBar.setReferenceText("");
         healthBar.setTextColor(new Color(4, 69, 85, 214));
         
-        addObject(new Picture("UI/hud/healthBar.png", true), 148, 40);
+        
+        addObject(barBack, 148, 40);
         addObject(healthBar, 172, 32);
+    }
+    void relocBar(){
+        if(WorldData.PAUZA){
+            barBack.setLocation(-300,-100); 
+        }
+        else{
+            barBack.setLocation(148,40); 
+        }
     }
 
     //adauga obiectele pe toata mapa, nu doar pe suprafata de display
@@ -95,6 +104,8 @@ public class PlayWorld extends World {
             addHealthBar();
             addedHealthBar = true;
         }
+        relocBar();
+        
 
     }
 

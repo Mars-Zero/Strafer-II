@@ -53,11 +53,11 @@ public class Buton extends UI {
 
     }
     
-    public Buton(String imgref, Object menuref,String tipref, Tutorial tutorial) {                  ///for opening a tutorial tutorial from a category
+    public Buton(String imgref, Object menuref,String tipref, Tutorial tutorialToOp) {                  ///for opening a tutorial tutorial from a category
         img = imgref;
         obj = menuref;
         tipTutorial=tipref;
-        tutorialToOpen=tutorial;
+        tutorialToOpen=tutorialToOp;
         this.tutorials=tutorials;
         
         if (obj instanceof Dialog) {
@@ -149,7 +149,10 @@ public class Buton extends UI {
                             
                         }  
                         if(obj instanceof MapMenu){
-                            
+                            MapMenu mm=(MapMenu)obj;
+                            mm.clear();
+                            getWorld().removeObject(mm);
+                            getWorld().addObject(new Pause(), WorldData.menuX,WorldData.menuY);
                         }
 
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
@@ -163,15 +166,12 @@ public class Buton extends UI {
                             
                             TutorialGallery tg=(TutorialGallery)obj;
                             
-                            getWorld().addObject(new TutorialFolder(tutorials,tg.retrieveTutorials()), WorldData.WIDTH/2, WorldData.HIGHT/2);
+                            getWorld().addObject(new TutorialFolder(tutorials,tg.retrieveTutorials()),  WorldData.menuX,WorldData.menuY);
                         }
                         
                         
                         if(obj instanceof TutorialFolder){              ///da open la un tutorial
-                           /* getWorld().addObject(new Tutorial(tutorialToOpen.getTip(),
-                                                               tutorialToOpen.getImgName(),
-                                                               tutorials.get(tutorialToOpen.getNrSlideMax()).size() 
-                                                                ));*/
+                            getWorld().addObject(tutorialToOpen, WorldData.menuX,WorldData.menuY);
                         }
                         
                         
@@ -190,11 +190,16 @@ public class Buton extends UI {
                         break;
 
                     }
-                    case "Map": {
-
+                    case "Map": {  
+                         
+                        getWorld().addObject(new MapMenu((PlayWorld)getWorld()), WorldData.menuX,WorldData.menuY);
+                        getWorld().removeObject((Menu)obj);
+                        getWorld().removeObjects(getWorld().getObjects(Buton.class));
+                        
+                        break;
                     }
                     case "Main Menu": {
-                        getWorld().addObject(new MainMenu(), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+                        getWorld().addObject(new MainMenu(), WorldData.menuX,WorldData.menuY);
 
                         Player.toggledPause = false;
                         if (obj instanceof Menu) {
