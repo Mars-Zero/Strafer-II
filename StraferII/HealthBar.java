@@ -164,9 +164,10 @@ public class HealthBar extends UI {
         }
         if (!WorldData.PAUZA) {
             setLocation(x, y);
-        }
-        else{
-            setLocation(-300,-100);
+        } else {
+            if (getWorld().getObjects(Inventory.class).isEmpty()) {
+                setLocation(-300, -100);
+            }
         }
     }
 

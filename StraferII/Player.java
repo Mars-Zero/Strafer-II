@@ -16,7 +16,7 @@ public class Player extends Jucator {
 
     PlayWorld playWorld;
 
-    private int worldX, worldY;
+    public static int worldX, worldY;
     boolean isMoving;
     public static int floorLevel = 1;
 
@@ -87,8 +87,6 @@ public class Player extends Jucator {
         toggledPause = false;
         toggledGameOver = false;
 
-     
-        
         loaded = false;
 
         prepareAnimation();
@@ -99,10 +97,12 @@ public class Player extends Jucator {
     }
 
     public void load() {
-        revive();
-        SaveSystem.load(0, this);
-        loaded = true;
-        System.out.println("penis");
+
+        if (!loaded) {
+            SaveSystem.load(0, this);
+            loaded = true;
+        }
+
     }
 
     protected void checkMove() {
@@ -371,8 +371,12 @@ public class Player extends Jucator {
                 toggledPause = !toggledPause;
                 WorldData.PAUZA = true;
 
+                getWorld().removeObjects(getWorld().getObjects(Inventory.class));
+                getWorld().removeObjects(getWorld().getObjects(ItemSelect.class));
+                toggledInventory = false;
+
                 Pause pause = new Pause();
-                getWorld().addObject(pause, ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+                getWorld().addObject(pause, WorldData.menuX, WorldData.menuY);
 
             }
 
@@ -406,16 +410,17 @@ public class Player extends Jucator {
         getHealthBar().setValue(getHealthBar().getMaximumValue());
         this.inViata = true;
         hp = hpMax;
+
     }
 
     public void act() {
 
-        if (!loaded) {
-            SaveSystem.load(0, this);
-            loaded = true;
+        checkPauza();
+
+        if (!WorldData.PAUZA) {
+            load();
         }
 
-        checkPauza();
         if (inViata) {
             if (!WorldData.PAUZA) {
 
@@ -439,7 +444,7 @@ public class Player extends Jucator {
             if (!animation.isActive()) {
                 playedAnimation = true;
                 if (!toggledGameOver && playedAnimation) {
-                    getWorld().addObject(new GameOver(playWorld), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+                    getWorld().addObject(new GameOver(playWorld), WorldData.menuX, WorldData.menuY);
                     playedAnimation = false;
                     toggledGameOver = true;
 
@@ -577,6 +582,14 @@ public class Player extends Jucator {
 
     public void setToggledInventory(boolean toggledInventory) {
         this.toggledInventory = toggledInventory;
+    }
+
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
     }
 
     public int getHpMax() {

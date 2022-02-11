@@ -4,9 +4,10 @@ public class WorldData {
     public static boolean PAUZA;
     public static final int WIDTH = 1024, HIGHT = 576;
     public static final int FPS = 60;
+    
     public static boolean addedDialogs = false;
 
-    public static int menuX = 512;
+    public static int menuX = 512; //  pt adaugat meniuri in mijlocu ecranului
     public static int menuY = 288;
 
     

@@ -1,0 +1,7 @@
+Item: Chestie
+Tutorial: 
+PlayerX: 300
+PlayerY:50
+ScrolledX: 1000
+ScrolledY: 0
+WorldSection:12

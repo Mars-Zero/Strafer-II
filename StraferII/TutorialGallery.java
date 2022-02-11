@@ -8,15 +8,15 @@ public class TutorialGallery extends Pause{
     
     
     /**
-    * This method loads all the image tutorials and puts them in a hashmap
+    * This method loads all the names tutorials and puts them in a hashmap
     */
-    public HashMap<String,List<GreenfootImage>> tutorialsImages;
-    ArrayList<String> types=new ArrayList<String>();
+    public HashMap<String,List<String>> tutorialsInFolder;
+ 
     
            
            
             public TutorialGallery(){
-                types.add("Items");types.add("Combat");types.add("Mechanics");
+               // types.add("Items");types.add("Combat");types.add("Mechanics");
                 
             }
             
@@ -24,20 +24,20 @@ public class TutorialGallery extends Pause{
     public void loadImages() {
         File director = new File("UI/tutorial/tutorialSlides");
         File[] allFiles=director.listFiles();
-        tutorialsImages=new HashMap<>();
+        tutorialsInFolder=new HashMap<>();
         try {
             director.createNewFile();
             for(int i=0; i<allFiles.length; i++)
             {
                 GreenfootImage image =new GreenfootImage(allFiles[i].getPath());
                 String type=SaveSystem.getTipStringFiles(allFiles[i].getName());
-                if(tutorialsImages.containsKey(type)) {
-                    tutorialsImages.get(type).add(image);
+                if(tutorialsInFolder.containsKey(type)) {
+                    //tutorialsInFolder.get(type).add(image);
                 }
                 else{
                    List<GreenfootImage> l=new ArrayList<>();
                    l.add(image);
-                   tutorialsImages.put(type, l);    
+                   //tutorialsInFolder.put(type, l);    
                 }
             }
         } catch (Exception e) {
@@ -48,13 +48,10 @@ public class TutorialGallery extends Pause{
     /**
      * This method retrieves which tutorials are unlocked by the player
      */
-    public HashMap<String,List<GreenfootImage>> retrieveTutorials()
+    public List<String> retrieveTutorials(String key)
     {
-        HashMap<String,List<GreenfootImage>> tutor=new HashMap<>();
-        for(int i=0; i<types.size(); i++){
-            tutor.put(types.get(i),tutorialsImages.get(types.get(i)));
-        }
-        return tutor;
+        
+        return tutorialsInFolder.get(key);
     }
     public void act(){
         

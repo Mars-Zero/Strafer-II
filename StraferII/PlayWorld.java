@@ -8,7 +8,7 @@ public class PlayWorld extends World {
 
     public WorldListener worldListener;
 
-    
+   
     public Scroller scroller;
 
     Player player;
@@ -33,12 +33,14 @@ public class PlayWorld extends World {
     }
 
     private void addMainMenu() {
-        addObject(new MainMenu(), ConstantVariables.MainMenuX, ConstantVariables.MainMenuY);
+        addObject(new MainMenu(), WorldData.menuX, WorldData.menuY);
     }
 
     public void addPlayer() {
         GreenfootImage background = new GreenfootImage("map/worldSection/worldSection" + 11 + ".png");//imi pun fundalul
         scroller = new Scroller(this, background, 8192, 8192);
+        
+        
         player = new Player();
 
         addObject(player, originalX, originalY);
@@ -73,7 +75,9 @@ public class PlayWorld extends World {
     }
     void relocBar(){
         if(WorldData.PAUZA){
+            if(getObjects(Inventory.class).isEmpty()){
             barBack.setLocation(-300,-100); 
+            }
         }
         else{
             barBack.setLocation(148,40); 
@@ -111,7 +115,7 @@ public class PlayWorld extends World {
     }
 
     
-    
+
     
     public WorldListener getWorldListener() {
         return worldListener;

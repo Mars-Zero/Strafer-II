@@ -8,10 +8,10 @@ public class WorldListener extends Actor {
     Scroller scroller;
     Player player;
     PlayWorld world;
-    
 
-    public int worldSection = 11;
+    public static int worldSection = 11;
     int playerDirection = 0;
+    boolean loaded = false;
 
     List<GreenfootImage> fundaluri = new ArrayList<>();
 
@@ -24,24 +24,43 @@ public class WorldListener extends Actor {
         loadImages();
     }
 
-    void changeWorldSection() {
+    void changeWorldSection(boolean atLoad) {     //daca e schimbata pt load sau pt miscare
         scroller.setScrollImage(fundaluri.get(getImageIndex()));
-        relocatePlayer();
+        if (!atLoad) {
+            relocatePlayer();
+        }
         clearWorldObjects();
 
         addObjects();
 
     }
 
+    int cnt = 0;
+
     public void act() {
 
         if (player.isAtEdge()) {
             this.worldSection = getNextWorldSection();
 
-            changeWorldSection();
+            changeWorldSection(false);
         }
+        load();
 
     }
+
+    public void load() {
+        if (!WorldData.PAUZA) {
+            cnt++;
+        }
+        if (cnt > 2) {
+            if (!loaded) {
+            changeWorldSection(true);
+            loaded = true;
+        }
+        }
+        
+    }
+    
 
     /**
      * This method deletes all objects in the world
@@ -194,93 +213,65 @@ urmatoare:        |____|_________|_______|________|
 
         }
     }
-    
-    
-    
-    
-    
+
     public void initWorldSection11() {
-        WorldData.visitedWorldSections[1][1]=true;
-        
-         /// Npcs
+        WorldData.visitedWorldSections[1][1] = true;
+
+        /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
-            world.initObject(new SchrodingersCat(scroller, 100, 200), 100, 200);
-        
-          
-          world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
-          world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
-          world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
+        world.initObject(new SchrodingersCat(scroller, 100, 200), 100, 200);
+
+        world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
+        world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
+        world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
         ///Npcs
-        
-        
-        
-        
+
         world.initObject(new Fps(), 150, 50);
 
         ///WorldStructures
-        
-world.initObject(new PereteInvizibil("D", 1,"mic90"), 2648, 1536);
-world.initObject(new PereteInvizibil("D", 1,"mic90"), 2648, 1600);
-world.initObject(new PereteInvizibil("D", 1,"mic90"), 2648, 1664);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2688, 1496);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2688, 1704);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2752, 1496);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2752, 1704);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2816, 1496);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2816, 1704);
-world.initObject(new PereteInvizibil("S", 1,"mic"), 2880, 1496);
-world.initObject(new PereteInvizibil("W", 1,"mic"), 2880, 1704);
-world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1536);
-world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1600);
-world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1664);
-
-
-
-
-
-
-
-
-
+        world.initObject(new PereteInvizibil("D", 1, "mic90"), 2648, 1536);
+        world.initObject(new PereteInvizibil("D", 1, "mic90"), 2648, 1600);
+        world.initObject(new PereteInvizibil("D", 1, "mic90"), 2648, 1664);
+        world.initObject(new PereteInvizibil("S", 1, "mic"), 2688, 1496);
+        world.initObject(new PereteInvizibil("W", 1, "mic"), 2688, 1704);
+        world.initObject(new PereteInvizibil("S", 1, "mic"), 2752, 1496);
+        world.initObject(new PereteInvizibil("W", 1, "mic"), 2752, 1704);
+        world.initObject(new PereteInvizibil("S", 1, "mic"), 2816, 1496);
+        world.initObject(new PereteInvizibil("W", 1, "mic"), 2816, 1704);
+        world.initObject(new PereteInvizibil("S", 1, "mic"), 2880, 1496);
+        world.initObject(new PereteInvizibil("W", 1, "mic"), 2880, 1704);
+        world.initObject(new PereteInvizibil("A", 1, "mic90"), 2920, 1536);
+        world.initObject(new PereteInvizibil("A", 1, "mic90"), 2920, 1600);
+        world.initObject(new PereteInvizibil("A", 1, "mic90"), 2920, 1664);
 
         for (int i = 1; i <= 10500; i += 1024) {
             world.initObject(new PereteInvizibil("W", 1, "mare"), i, 16);
         }
 
         ///WorldStructures
-        
-        
-        
-       
     }
-    
-    
-    
-    
-    
-    
 
     public void initWorldSection12() {
-       WorldData.visitedWorldSections[1][2]=true;
+        WorldData.visitedWorldSections[1][2] = true;
 
         getWorld().addObject(new Fps(), 150, 50);
     }
 
     public void initWorldSection13() {
-        WorldData.visitedWorldSections[1][3]=true;
+        WorldData.visitedWorldSections[1][3] = true;
     }
 
     public void initWorldSection21() {
-        WorldData.visitedWorldSections[2][1]=true;
+        WorldData.visitedWorldSections[2][1] = true;
     }
 
     public void initWorldSection22() {
-        WorldData.visitedWorldSections[2][2]=true;
+        WorldData.visitedWorldSections[2][2] = true;
     }
 
     public void initWorldSection23() {
-        WorldData.visitedWorldSections[2][3]=true;
+        WorldData.visitedWorldSections[2][3] = true;
     }
 
     public int getWorldSection() {
@@ -290,12 +281,6 @@ world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1664);
     public void setWorldSection(int worldSection) {
         this.worldSection = worldSection;
     }
-    
-    
-    
-    
-    
-    
 
     void loadImages() {
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 11 + ".png"));
@@ -310,10 +295,6 @@ world.initObject(new PereteInvizibil("A", 1,"mic90"), 2920, 1664);
 
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
     }
-    
-    
-    
-    
 
     int getImageIndex() {
         switch (worldSection) {

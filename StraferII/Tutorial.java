@@ -6,7 +6,7 @@ public class Tutorial extends Menu {
     protected int nrSlide;
     protected int nrSlideMax;
 
-    protected String img;
+    protected String img;       ///numele folderului in care sunt slideurile unui tutorial aferent adica numele tutorialului
     protected String tip;
 
     protected Picture picture = new Picture("UI/tutorial/tutorial.png");
@@ -53,6 +53,11 @@ public class Tutorial extends Menu {
         displayPicture();
     }
 
+    public String toString(){
+        String str=tip+" "+img+" "+nrSlideMax;
+        return str;
+    }
+    
     public void updateImage() {
         picture.setImageName("UI/tutorial/tutorialSlides/" + tip + "/" + img + "/" + tip + "#" + "tutorial" + img + nrSlide + ".png");
 

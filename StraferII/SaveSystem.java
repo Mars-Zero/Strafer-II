@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
@@ -5,6 +6,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -12,6 +14,11 @@ import java.util.regex.Pattern;
 
 abstract class SaveSystem {
 
+    PlayWorld playWorld;
+    WorldListener worldListener;
+    
+    
+    
     /**
      * The name of the directory where all files are saved
      */
@@ -19,7 +26,7 @@ abstract class SaveSystem {
 
     /**
      * This method processes the string and returns it's type
-     * 
+     *
      * @param String that needs to be processed
      * @return the type of the item
      * @throws Exception
@@ -33,10 +40,10 @@ abstract class SaveSystem {
             return null;
         }
     }
-    
+
     /**
-     * This method processes the string and returns it's type
-     * Only for files
+     * This method processes the string and returns it's type Only for files
+     *
      * @param String that needs to be processed
      * @return the type of the item
      * @throws Exception
@@ -50,16 +57,16 @@ abstract class SaveSystem {
             return null;
         }
     }
-    
+
     /**
      * This method processes the string and returns it's content
-     * 
+     *
      * @param String that needs to be processed
      * @return the content of the item
      * @throws Exception
      */
     private static String getContentString(String str) throws Exception {
-        Pattern patt = Pattern.compile("[^;]*$");
+        Pattern patt = Pattern.compile("[^:]*$");
         Matcher matcher = patt.matcher(str);
         if (matcher.find()) {
             return matcher.group(); // you can get it from desired index as well
@@ -69,17 +76,19 @@ abstract class SaveSystem {
     }
 
     /**
-     * The load method It will be given the player and it will load the list of all
-     * the items and other proccesses
+     * The load method It will be given the player and it will load the list of
+     * all the items and other proccesses
      */
-    public static void load(int saveNumber,Player player) {
+    public static void load(int saveNumber, Player playerref) {
         File director = new File(SaveSystem.directoryName);
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
 
         List<Item> iteme = new ArrayList<>();
-        List<Tutorial> tutor = new ArrayList<>();
-        Player juc= player;
-        int ScrolledX,ScrolledY;
+        //List<Tutorial> tutor = new ArrayList<>();
+        HashMap<String,List<String>> tutorialArguments=new HashMap<String,List<String>>();
+        
+        Player player = playerref;
+        int ScrolledX, ScrolledY;
         int WorldSection;
         try {
             file.createNewFile();
@@ -91,37 +100,38 @@ abstract class SaveSystem {
                     //Item itm = new Item(getContentString(str));
                     //iteme.add(itm);
                 } else if (tip.equalsIgnoreCase("Tutorial")) {
-                    //Tutorial tut = new Tutorial(getContentString(str));
-                    //tutor.add(tut);
-                }
-                else if(tip.equalsIgnoreCase("PlayerX")) {
-                    juc.setWorldX(Integer.parseInt(getContentString(str)));
-                }
-                else if(tip.equalsIgnoreCase("PlayerY")) {
-                    juc.setWorldY(Integer.parseInt(getContentString(str)));
-                }
-                else if(tip.equalsIgnoreCase("ScrollX")) {
-                    ScrolledX=Integer.parseInt(getContentString(str));
-                }
-                else if(tip.equalsIgnoreCase("ScrollY")) {
-                    ScrolledY=Integer.parseInt(getContentString(str));
-                }
-                else if(tip.equalsIgnoreCase("WorldSection")) {
-                    WorldSection=Integer.parseInt(getContentString(str));
+
+                    String[] arr = getContentString(str).split(" ");
+                    Tutorial tut = new Tutorial(arr[0],arr[1],Integer.parseInt(arr[2]),false);
+                   tutorialArguments.get(arr[0]);
+                   
+                   
+                   
+                } else if (tip.equalsIgnoreCase("PlayerX")) {
+                    player.setWorldX(Integer.parseInt(getContentString(str)));
+                } else if (tip.equalsIgnoreCase("PlayerY")) {
+                    player.setWorldY(Integer.parseInt(getContentString(str)));
+                } else if (tip.equalsIgnoreCase("ScrollX")) {
+                    ScrolledX = Integer.parseInt(getContentString(str));
+                } else if (tip.equalsIgnoreCase("ScrollY")) {
+                    ScrolledY = Integer.parseInt(getContentString(str));
+                } else if (tip.equalsIgnoreCase("WorldSection")) {
+                    WorldSection = Integer.parseInt(getContentString(str));
                 }
 
             }
-                        fin.close();
+            fin.close();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     /**
-     * The save method; It will be given all the items and other proccesses that must be saved
+     * The save method; It will be given all the items and other proccesses that
+     * must be saved
      */
-    public static void save(int saveNumber, List<Item> iteme, List<Tutorial> tutor
-            ,Player juc,int ScrolledY,int ScrolledX,
+    public static void save(int saveNumber, List<Item> iteme, List<Tutorial> tutor,
+             Player juc, int ScrolledY, int ScrolledX,
             int WorldSection) {
         File director = new File(SaveSystem.directoryName);
         if (!director.isDirectory()) {
@@ -160,7 +170,7 @@ abstract class SaveSystem {
     }
 
     /**
-     * 
+     *
      * @return The list of all saveFiles
      */
     public static List<File> getNumberOfSaveFiles() {
