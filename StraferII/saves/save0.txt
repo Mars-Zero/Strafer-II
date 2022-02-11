@@ -1,7 +1,7 @@
 Item: Chestie
 Tutorial: 
-PlayerX: 300
-PlayerY:50
-ScrolledX: 1000
-ScrolledY: 0
+PlayerX:100
+PlayerY:100
+ScrolledX:1000
+ScrolledY:1000
 WorldSection:12

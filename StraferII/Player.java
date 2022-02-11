@@ -16,7 +16,7 @@ public class Player extends Jucator {
 
     PlayWorld playWorld;
 
-    public static int worldX, worldY;
+    private int worldX, worldY;
     boolean isMoving;
     public static int floorLevel = 1;
 
@@ -48,7 +48,7 @@ public class Player extends Jucator {
     private long timp = 0;
     private long timpSab = 0, timpLaser = 0, timpBoaba = 0, timpPumni = 0;
 
-    public static boolean apas;
+    private boolean apas;
 
     public Player() {
 
@@ -97,8 +97,10 @@ public class Player extends Jucator {
     }
 
     public void load() {
-
+        
+        //System.out.println(loaded);
         if (!loaded) {
+            System.out.println("Aici");
             SaveSystem.load(0, this);
             loaded = true;
         }

@@ -243,12 +243,14 @@ public class Buton extends UI {
                         if(obj instanceof MainMenu){
                             MainMenu mm=(MainMenu)obj;
                             mm.getMusic().stop();
+                            System.out.println("MainMenu");
                             getWorld().getObjects(Player.class).get(0).load();
                             getWorld().getObjects(Player.class).get(0).revive();
                         }
                         if(obj instanceof GameOver){
                             GameOver go=(GameOver)obj;
                             go.getMusic().stop();
+                            System.out.println("GameOver");
                             getWorld().getObjects(Player.class).get(0).load();
                             getWorld().getObjects(Player.class).get(0).revive();
                         }

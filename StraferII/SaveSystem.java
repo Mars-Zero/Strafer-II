@@ -82,44 +82,49 @@ abstract class SaveSystem {
     public static void load(int saveNumber, Player playerref) {
         File director = new File(SaveSystem.directoryName);
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
-
         List<Item> iteme = new ArrayList<>();
         //List<Tutorial> tutor = new ArrayList<>();
         HashMap<String,List<String>> tutorialArguments=new HashMap<String,List<String>>();
         
         Player player = playerref;
-        int ScrolledX, ScrolledY;
-        int WorldSection;
+        int ScrolledX=0, ScrolledY=0;
+        int WorldSection=0;
         try {
             file.createNewFile();
             Scanner fin = new Scanner(file, "UTF-8");
             while (fin.hasNext()) {
                 String str = fin.nextLine();
                 String tip = getTipString(str);
-                if (tip.equalsIgnoreCase("Item")) {
+                if (tip.equalsIgnoreCase("Item:")) {
                     //Item itm = new Item(getContentString(str));
                     //iteme.add(itm);
-                } else if (tip.equalsIgnoreCase("Tutorial")) {
+                } else if (tip.equalsIgnoreCase("Tutorial:")) {
 
                     String[] arr = getContentString(str).split(" ");
-                    Tutorial tut = new Tutorial(arr[0],arr[1],Integer.parseInt(arr[2]),false);
-                   tutorialArguments.get(arr[0]);
-                   
-                   
-                   
-                } else if (tip.equalsIgnoreCase("PlayerX")) {
+                    if(arr.length>0){
+                        Tutorial tut = new Tutorial(arr[0],arr[1],Integer.parseInt(arr[2]),false);
+                        tutorialArguments.get(arr[0]);
+                    }
+      
+                } else if (tip.equalsIgnoreCase("PlayerX:")) {
                     player.setWorldX(Integer.parseInt(getContentString(str)));
-                } else if (tip.equalsIgnoreCase("PlayerY")) {
+                } else if (tip.equalsIgnoreCase("PlayerY:")) {
                     player.setWorldY(Integer.parseInt(getContentString(str)));
-                } else if (tip.equalsIgnoreCase("ScrollX")) {
+                } else if (tip.equalsIgnoreCase("ScrolledX:")) {
                     ScrolledX = Integer.parseInt(getContentString(str));
-                } else if (tip.equalsIgnoreCase("ScrollY")) {
+                } else if (tip.equalsIgnoreCase("ScrolledY:")) {
                     ScrolledY = Integer.parseInt(getContentString(str));
-                } else if (tip.equalsIgnoreCase("WorldSection")) {
+                } else if (tip.equalsIgnoreCase("WorldSection:")) {
                     WorldSection = Integer.parseInt(getContentString(str));
                 }
-
+                
             }
+         
+            Scroller.scrolledX=ScrolledX;
+            Scroller.scrolledY=ScrolledY;
+            WorldListener.worldSection=WorldSection;
+         
+            player.setLocation(player.getWorldX(),player.getWorldY());
             fin.close();
         } catch (Exception e) {
             System.out.println(e);
