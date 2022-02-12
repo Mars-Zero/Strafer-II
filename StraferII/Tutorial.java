@@ -3,19 +3,41 @@ import greenfoot.*;
 
 public class Tutorial extends Menu {
 
-    protected int nrSlide;
-    protected int nrSlideMax;
+    private int nrSlide;
+    private int nrSlideMax;
+    
+    /**
+     * Numele folderului in care sunt slideurile unui tutorial aferent adica numele tutorialului
+     */
+    private String img;       
+    
+    /**
+     * Tipul tutorialului
+     */
+    private String tip;       
 
-    protected String img;       ///numele folderului in care sunt slideurile unui tutorial aferent adica numele tutorialului
-    protected String tip;
+    /**
+     * Aici scrii comentariul@Stoic
+     */
+    private Picture picture = new Picture("UI/tutorial/tutorial.png");
 
-    protected Picture picture = new Picture("UI/tutorial/tutorial.png");
+    /**
+     * Aici scrii comentariul@Stoic
+     */
+    private boolean addedButon = false;
+    /**
+     * Aici scrii comentariul@Stoic
+     */
+    private boolean addedButonBack = false;
+    /**
+     * Aici scrii comentariul@Stoic
+     */
+    private boolean inPause;
 
-    protected boolean addedButon = false;
-    protected boolean addedButonBack = false;
-    protected boolean inPause;
-
-    protected boolean addedPicture = false;
+    /**
+     * Aici scrii comentariul@Stoic
+     */
+    private boolean addedPicture = false;
 
     public Tutorial(String tipref, String imgref, int slideref, boolean inPauseref) {
         WorldData.PAUZA = true;

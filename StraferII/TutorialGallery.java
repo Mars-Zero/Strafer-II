@@ -8,49 +8,28 @@ public class TutorialGallery extends Pause{
     
     
     /**
-    * This method loads all the names tutorials and puts them in a hashmap
-    */
-    public HashMap<String,List<String>> tutorialsInFolder;
+     * A map that contains all the tutorials unlocked by the player
+     * Key- the category of the tutorial
+     * Value- a list of all the tutorials mapped at the key
+     */
+    public static HashMap<String,List<Tutorial>> tutorialsInFolder=new HashMap<>();
  
     
            
            
-            public TutorialGallery(){
-               // types.add("Items");types.add("Combat");types.add("Mechanics");
+    public TutorialGallery(){
+       // types.add("Items");types.add("Combat");types.add("Mechanics");
                 
-            }
-            
-            
-    public void loadImages() {
-        File director = new File("UI/tutorial/tutorialSlides");
-        File[] allFiles=director.listFiles();
-        tutorialsInFolder=new HashMap<>();
-        try {
-            director.createNewFile();
-            for(int i=0; i<allFiles.length; i++)
-            {
-                GreenfootImage image =new GreenfootImage(allFiles[i].getPath());
-                String type=SaveSystem.getTipStringFiles(allFiles[i].getName());
-                if(tutorialsInFolder.containsKey(type)) {
-                    //tutorialsInFolder.get(type).add(image);
-                }
-                else{
-                   List<GreenfootImage> l=new ArrayList<>();
-                   l.add(image);
-                   //tutorialsInFolder.put(type, l);    
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
+            
+            
+    
     
     /**
-     * This method retrieves which tutorials are unlocked by the player
+     * This method retrieves which tutorials are unlocked by the player at the given key
      */
-    public List<String> retrieveTutorials(String key)
+    public static List<Tutorial> retrieveTutorials(String key)
     {
-        
         return tutorialsInFolder.get(key);
     }
     public void act(){

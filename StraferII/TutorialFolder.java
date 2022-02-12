@@ -4,10 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TutorialFolder extends TutorialGallery{
-   
     
-    public TutorialFolder(ArrayList<Tutorial> tutorials, HashMap<String,List<GreenfootImage>> tutorialsImages){
-        
+    /**
+     * The tutorials in this folder
+     */
+    private List<Tutorial> tutorials;
+    
+    public TutorialFolder(List<Tutorial> mappedTutorials){
+        tutorials=mappedTutorials;
     }
     
     

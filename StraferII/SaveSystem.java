@@ -79,7 +79,6 @@ abstract class SaveSystem {
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
         List<Item> iteme = new ArrayList<>();
         //List<Tutorial> tutor = new ArrayList<>();
-        HashMap<String, List<String>> tutorialArguments = new HashMap<String, List<String>>();
 
         Player player = playerref;
         boolean position = false;
@@ -99,7 +98,16 @@ abstract class SaveSystem {
                     String[] arr = getContentString(str).split(" ");
                     if (arr.length > 0) {
                         Tutorial tut = new Tutorial(arr[0], arr[1], Integer.parseInt(arr[2]), false);
-                        tutorialArguments.get(arr[0]);
+                        if(TutorialGallery.tutorialsInFolder.containsKey(arr[0]))
+                        {
+                            TutorialGallery.tutorialsInFolder.get(arr[0]).add(tut);
+                        }
+                        else{
+                            List<Tutorial>startTutorials=new ArrayList<>();
+                            startTutorials.add(tut);
+                            TutorialGallery.tutorialsInFolder.put(arr[0],startTutorials);
+                        }
+                        
                     }
 
                 } else if (tip.equalsIgnoreCase("PlayerX:")) {
