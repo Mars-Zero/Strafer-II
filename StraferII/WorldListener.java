@@ -13,8 +13,6 @@ public class WorldListener extends Actor {
     int playerDirection = 0;
     boolean loaded = false;
 
-    
-
     List<GreenfootImage> fundaluri = new ArrayList<>();
 
     public WorldListener(PlayWorld world) {
@@ -24,15 +22,16 @@ public class WorldListener extends Actor {
         scroller = world.getScroller();
         player = world.getObjects(Player.class).get(0);
         loadImages();
-        
+
     }
 
     void changeWorldSection(boolean atLoad) {     //daca e schimbata pt load sau pt miscare
         scroller.setScrollImage(fundaluri.get(getImageIndex()));
         if (!atLoad) {
-            relocatePlayer();   
+            relocatePlayer();
+        } else {
+            System.out.println("schimb");
         }
-        else System.out.println("schimb");
         clearWorldObjects();
 
         addObjects();
@@ -58,14 +57,13 @@ public class WorldListener extends Actor {
         }
         if (cnt > 1) {
             if (!loaded) {
-            changeWorldSection(true);
-            System.out.println("schimb");
-            loaded = true;
+                changeWorldSection(true);
+                System.out.println("schimb");
+                loaded = true;
+            }
         }
-        }
-        
+
     }
-    
 
     /**
      * This method deletes all objects in the world
@@ -73,7 +71,7 @@ public class WorldListener extends Actor {
     void clearWorldObjects() {
         List<Actor> list = world.getObjects(Actor.class);
         for (Actor actor : list) {
-            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBar || actor instanceof Picture||actor instanceof Buton) {
+            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBar || actor instanceof Picture || actor instanceof Buton) {
             } else {
                 world.removeObject(actor);
             }
@@ -221,7 +219,7 @@ urmatoare:        |____|_________|_______|________|
 
     public void initWorldSection11() {
         WorldData.visitedWorldSections[1][1] = true;
-
+        world.initObject(new Fps(), 150, 50);
         /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
@@ -230,10 +228,16 @@ urmatoare:        |____|_________|_______|________|
         world.initObject(new Goblin(scroller, 1000, 2000), 1000, 2000);
         world.initObject(new Goblin(scroller, 3000, 200), 3000, 200);
         world.initObject(new Goblin(scroller, 4000, 2000), 4000, 2000);
-        ///Npcs
-
-        world.initObject(new Fps(), 150, 50);
-
+       
+        world.initObject(new Droid(scroller,2000,1000,"ox",600),2000,1000);
+         world.initObject(new Droid(scroller,2000,1000,"oy",400),1000,1000);
+///Npcs
+            
+       
+        
+        
+        
+        
         ///WorldStructures
         world.initObject(new PereteInvizibil("D", 1, "mic90"), 2648, 1536);
         world.initObject(new PereteInvizibil("D", 1, "mic90"), 2648, 1600);
@@ -325,6 +329,7 @@ urmatoare:        |____|_________|_______|________|
         }
         return 0;
     }
+
     public boolean isLoaded() {
         return loaded;
     }

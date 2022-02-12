@@ -21,7 +21,7 @@ public class PlayWorld extends World {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
 
         setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class,MapMenu.class, Tutorial.class, Dialog.class,
-                Floor.class, Item.class, Lantern.class, Light.class, Player.class, Npc.class);
+                Floor.class, Item.class,NpcItem.class, Lantern.class, Light.class, Droid.class,Player.class, Npc.class);
 
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;
@@ -40,7 +40,7 @@ public class PlayWorld extends World {
     }
 
     public void addPlayer() {
-        GreenfootImage background = new GreenfootImage("map/worldSection/worldSection" + 11 + ".png");//imi pun fundalul
+        GreenfootImage background = new GreenfootImage("map/worldSection/worldSection11.png");//imi pun fundalul
         scroller = new Scroller(this, background, 8192, 8192);
         
         player = new Player();

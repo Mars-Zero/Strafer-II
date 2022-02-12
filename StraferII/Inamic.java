@@ -1,15 +1,10 @@
 
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Write a description of class Inamic here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+
 public class Inamic extends Npc {
 
     public static int speed = 5;
@@ -35,21 +30,7 @@ public class Inamic extends Npc {
 
     public String gifSabie;
 
-    public long getpX() {
-        return worldX;
-    }
-
-    public void setWorldX(int worldX) {
-        this.worldX = worldX;
-    }
-
-    public long getpY() {
-        return worldY;
-    }
-
-    public void setWorldY(int worldY) {
-        this.worldY = worldY;
-    }
+  
 
     public Inamic(Scroller scrl, int x, int y) {
         super(scrl);
@@ -373,5 +354,20 @@ public class Inamic extends Npc {
 
     protected boolean traiesc() {
         return hp > 0;
+    }
+      public long getpX() {
+        return worldX;
+    }
+
+    public void setWorldX(int worldX) {
+        this.worldX = worldX;
+    }
+
+    public long getpY() {
+        return worldY;
+    }
+
+    public void setWorldY(int worldY) {
+        this.worldY = worldY;
     }
 }

@@ -6,9 +6,7 @@ public class Movers extends Actor{
     
     
     protected void knockback(float timp,Actor attacker, double masa_attacker, double masa_this){
-        
-        Vector2d    vector_this=       new Vector2d(this.getX(),this.getY());
-        Vector2d    vector_attacker=   new Vector2d(attacker.getX(),attacker.getY());
+   
         
         double delta_x = this.getX()/64.0 - attacker.getX()/64.0;                            // impartit la 64 pt convert  din pixeli in metri
         double delta_y = this.getY()/64.0 - attacker.getY()/64.0;

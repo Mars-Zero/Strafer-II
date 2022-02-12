@@ -81,7 +81,6 @@ abstract class SaveSystem {
         //List<Tutorial> tutor = new ArrayList<>();
 
         Player player = playerref;
-        boolean position = false;
 
         try {
 
@@ -110,22 +109,6 @@ abstract class SaveSystem {
                         
                     }
 
-                } else if (tip.equalsIgnoreCase("PlayerX:")) {
-                    player.setWorldX(Integer.parseInt(getContentString(str)));
-                    player.setLocation(player.getWorldX() - Scroller.scrolledX, player.getWorldY() - Scroller.scrolledY);
-                    position = true;
-
-                } else if (tip.equalsIgnoreCase("PlayerY:")) {
-                    player.setWorldY(Integer.parseInt(getContentString(str)));
-                    player.setLocation(player.getWorldX() - Scroller.scrolledX, player.getWorldY() - Scroller.scrolledY);
-                    position = true;
-
-                } else if (tip.equalsIgnoreCase("ScrolledX:")) {
-                    //ScrolledX = Integer.parseInt(getContentString(str));
-
-                } else if (tip.equalsIgnoreCase("ScrolledY:")) {
-                    //ScrolledY = Integer.parseInt(getContentString(str));
-
                 } else if (tip.equalsIgnoreCase("WorldSection:")) {
                     WorldListener worldListener = player.getWorld().getObjects(WorldListener.class).get(0);
                     System.out.println("gws");
@@ -134,10 +117,45 @@ abstract class SaveSystem {
                     worldListener.setLoaded(false);
                     worldListener.load();
 
-                }
-            }
+                } else if (tip.equalsIgnoreCase("PlayerX:")) {
+                    player.setWorldX(Integer.parseInt(getContentString(str)));
+                    player.setLocation(player.getWorldX() - Scroller.scrolledX, player.getWorldY() - Scroller.scrolledY);
 
-            if (position) {
+                } else if (tip.equalsIgnoreCase("PlayerY:")) {
+                    player.setWorldY(Integer.parseInt(getContentString(str)));
+                    player.setLocation(player.getWorldX() - Scroller.scrolledX, player.getWorldY() - Scroller.scrolledY);
+
+                } else if (tip.equalsIgnoreCase("WS11:")) {
+                    if (Integer.parseInt(getContentString(str)) == 1) {
+                        WorldData.visitedWorldSections[1][1] = true;
+                    }
+
+                } else if (tip.equalsIgnoreCase("WS12:")) {
+                    if (Integer.parseInt(getContentString(str)) == 1) {
+                        WorldData.visitedWorldSections[1][2] = true;
+                    }
+
+                } else if (tip.equalsIgnoreCase("WS13:")) {
+                    if (Integer.parseInt(getContentString(str)) == 1) {
+                        WorldData.visitedWorldSections[1][3] = true;
+                    }
+
+                } else if (tip.equalsIgnoreCase("WS21:")) {
+                    if (Integer.parseInt(getContentString(str)) == 1) {
+                        WorldData.visitedWorldSections[2][1] = true;
+                    }
+
+                } else if (tip.equalsIgnoreCase("WS22:")) {
+                    if (Integer.parseInt(getContentString(str)) == 1) {
+                        WorldData.visitedWorldSections[2][2] = true;
+                    }
+
+                } else if (tip.equalsIgnoreCase("WS23:")) {
+                    if (Integer.parseInt(getContentString(str)) == 1) {
+                        WorldData.visitedWorldSections[2][3] = true;
+                    }
+
+                }
 
             }
 

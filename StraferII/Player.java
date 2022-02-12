@@ -98,7 +98,6 @@ public class Player extends Jucator {
 
     public void load() {
         
-        //System.out.println(loaded);
         if (!loaded) {
             SaveSystem.load(0, this);
             loaded = true;
@@ -390,12 +389,16 @@ public class Player extends Jucator {
 
     }
 
-    protected void lovit() {
+    protected void hit() {
 
     }
 
+    protected void takeDamage(int dmg){
+        hp-=dmg;
+        getHealthBar().subtract(dmg);
+    }
+    
     boolean firstCycle = false;
-
     public void die() {
         if (hp <= 0) {
             getHealthBar().setValue(getHealthBar().getMinimumValue());
@@ -426,7 +429,7 @@ public class Player extends Jucator {
             if (!WorldData.PAUZA) {
 
                 useItem();
-                lovit();
+                hit();
                 move();
                 die();
 

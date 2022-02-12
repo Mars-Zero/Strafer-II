@@ -1,5 +1,9 @@
 PlayerX:100
 PlayerY:600
-WorldSection:21
+WorldSection:11
 WS11:1
 WS12:0
+WS13:0
+WS21:1
+WS22:0
+WS23:0
