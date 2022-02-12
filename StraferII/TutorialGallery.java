@@ -19,10 +19,21 @@ public class TutorialGallery extends Pause{
            
     public TutorialGallery(){
        // types.add("Items");types.add("Combat");types.add("Mechanics");
-                
+        displayTypes();       
     }
             
-            
+    private void displayTypes(){
+        //aici ar trebui sa dea display la pozele de type
+        //trebuie sa se afle distantate
+        //te las pe tine sa alegi distanta de spatiere
+        long dist=200;//ar trebui sa fie pixeli
+        final long deltaPix=200;
+        for(int i=0; i<tutorialsInFolder.size(); i++){
+            //pui imaginea in lume
+            //imagine.setLocation(200,dist);
+            dist+=deltaPix;
+        }
+    }
     
     
     /**
