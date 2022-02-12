@@ -4,7 +4,8 @@ import greenfoot.*;
 public class PlayWorld extends World {
 
     int WIDE, HIGH;
-    int originalX = 30, originalY = 200;
+    
+    int originalX = 100, originalY=100;
 
     public WorldListener worldListener;
 
@@ -24,6 +25,8 @@ public class PlayWorld extends World {
 
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;
+
+
         addPlayer();
         WorldData.addedDialogs = false;
         addedHealthBar = false;
@@ -40,13 +43,9 @@ public class PlayWorld extends World {
         GreenfootImage background = new GreenfootImage("map/worldSection/worldSection" + 11 + ".png");//imi pun fundalul
         scroller = new Scroller(this, background, 8192, 8192);
         
-        
         player = new Player();
 
-        addObject(player, originalX, originalY);
-
-        player.setWorldX(originalX);
-        player.setWorldY(originalY);
+        addObject(player, 1, 1);
 
         scroll();
 
@@ -104,6 +103,7 @@ public class PlayWorld extends World {
     }
 
     public void act() {
+        
         scroll();
         if (!addedHealthBar) {
             addHealthBar();

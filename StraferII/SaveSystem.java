@@ -14,11 +14,6 @@ import java.util.regex.Pattern;
 
 abstract class SaveSystem {
 
-    PlayWorld playWorld;
-    WorldListener worldListener;
-    
-    
-    
     /**
      * The name of the directory where all files are saved
      */
@@ -84,12 +79,13 @@ abstract class SaveSystem {
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
         List<Item> iteme = new ArrayList<>();
         //List<Tutorial> tutor = new ArrayList<>();
-        HashMap<String,List<String>> tutorialArguments=new HashMap<String,List<String>>();
-        
+        HashMap<String, List<String>> tutorialArguments = new HashMap<String, List<String>>();
+
         Player player = playerref;
-        int ScrolledX=0, ScrolledY=0;
-        int WorldSection=0;
+        boolean position = false;
+
         try {
+
             file.createNewFile();
             Scanner fin = new Scanner(file, "UTF-8");
             while (fin.hasNext()) {
@@ -101,30 +97,42 @@ abstract class SaveSystem {
                 } else if (tip.equalsIgnoreCase("Tutorial:")) {
 
                     String[] arr = getContentString(str).split(" ");
-                    if(arr.length>0){
-                        Tutorial tut = new Tutorial(arr[0],arr[1],Integer.parseInt(arr[2]),false);
+                    if (arr.length > 0) {
+                        Tutorial tut = new Tutorial(arr[0], arr[1], Integer.parseInt(arr[2]), false);
                         tutorialArguments.get(arr[0]);
                     }
-      
+
                 } else if (tip.equalsIgnoreCase("PlayerX:")) {
                     player.setWorldX(Integer.parseInt(getContentString(str)));
+                    player.setLocation(player.getWorldX() - Scroller.scrolledX, player.getWorldY() - Scroller.scrolledY);
+                    position = true;
+
                 } else if (tip.equalsIgnoreCase("PlayerY:")) {
                     player.setWorldY(Integer.parseInt(getContentString(str)));
+                    player.setLocation(player.getWorldX() - Scroller.scrolledX, player.getWorldY() - Scroller.scrolledY);
+                    position = true;
+
                 } else if (tip.equalsIgnoreCase("ScrolledX:")) {
-                    ScrolledX = Integer.parseInt(getContentString(str));
+                    //ScrolledX = Integer.parseInt(getContentString(str));
+
                 } else if (tip.equalsIgnoreCase("ScrolledY:")) {
-                    ScrolledY = Integer.parseInt(getContentString(str));
+                    //ScrolledY = Integer.parseInt(getContentString(str));
+
                 } else if (tip.equalsIgnoreCase("WorldSection:")) {
-                    WorldSection = Integer.parseInt(getContentString(str));
+                    WorldListener worldListener = player.getWorld().getObjects(WorldListener.class).get(0);
+                    System.out.println("gws");
+                    worldListener.setWorldSection(Integer.parseInt(getContentString(str)));
+
+                    worldListener.setLoaded(false);
+                    worldListener.load();
+
                 }
-                
             }
-         
-            Scroller.scrolledX=ScrolledX;
-            Scroller.scrolledY=ScrolledY;
-            WorldListener.worldSection=WorldSection;
-         
-            player.setLocation(player.getWorldX(),player.getWorldY());
+
+            if (position) {
+
+            }
+
             fin.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -136,7 +144,7 @@ abstract class SaveSystem {
      * must be saved
      */
     public static void save(int saveNumber, List<Item> iteme, List<Tutorial> tutor,
-             Player juc, int ScrolledY, int ScrolledX,
+            Player juc, int ScrolledY, int ScrolledX,
             int WorldSection) {
         File director = new File(SaveSystem.directoryName);
         if (!director.isDirectory()) {
@@ -193,4 +201,5 @@ abstract class SaveSystem {
 
         return fisiere;
     }
+
 }

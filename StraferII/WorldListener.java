@@ -9,26 +9,30 @@ public class WorldListener extends Actor {
     Player player;
     PlayWorld world;
 
-    public static int worldSection = 11;
+    public int worldSection = 11;
     int playerDirection = 0;
     boolean loaded = false;
+
+    
 
     List<GreenfootImage> fundaluri = new ArrayList<>();
 
     public WorldListener(PlayWorld world) {
-
+        this.loaded = false;
         this.world = world;
 
         scroller = world.getScroller();
         player = world.getObjects(Player.class).get(0);
         loadImages();
+        
     }
 
     void changeWorldSection(boolean atLoad) {     //daca e schimbata pt load sau pt miscare
         scroller.setScrollImage(fundaluri.get(getImageIndex()));
         if (!atLoad) {
-            relocatePlayer();
+            relocatePlayer();   
         }
+        else System.out.println("schimb");
         clearWorldObjects();
 
         addObjects();
@@ -52,9 +56,10 @@ public class WorldListener extends Actor {
         if (!WorldData.PAUZA) {
             cnt++;
         }
-        if (cnt > 2) {
+        if (cnt > 1) {
             if (!loaded) {
             changeWorldSection(true);
+            System.out.println("schimb");
             loaded = true;
         }
         }
@@ -68,7 +73,7 @@ public class WorldListener extends Actor {
     void clearWorldObjects() {
         List<Actor> list = world.getObjects(Actor.class);
         for (Actor actor : list) {
-            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBar || actor instanceof Picture) {
+            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBar || actor instanceof Picture||actor instanceof Buton) {
             } else {
                 world.removeObject(actor);
             }
@@ -319,6 +324,13 @@ urmatoare:        |____|_________|_______|________|
 
         }
         return 0;
+    }
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
     }
 
 }

@@ -100,7 +100,6 @@ public class Player extends Jucator {
         
         //System.out.println(loaded);
         if (!loaded) {
-            System.out.println("Aici");
             SaveSystem.load(0, this);
             loaded = true;
         }
