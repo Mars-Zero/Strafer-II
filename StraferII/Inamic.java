@@ -22,14 +22,17 @@ public class Inamic extends Npc {
     protected long timpAtins = 0;
     protected boolean mort = false;
     protected long timpPrec;
+    public boolean usedItem;
+
 
     protected long timpPauzaRange;
     protected long timpPauzaMelee;
     protected long nextRangeAttack;
     protected long nextMeleeAttack;
 
-    public String gifSabie;
+    public String gifItem;
 
+    
   
 
     public Inamic(Scroller scrl, int x, int y) {
@@ -125,7 +128,7 @@ public class Inamic extends Npc {
 
                     worldY -= (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -136,7 +139,7 @@ public class Inamic extends Npc {
 
                     worldX += (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -147,7 +150,7 @@ public class Inamic extends Npc {
 
                     worldY += (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -158,7 +161,7 @@ public class Inamic extends Npc {
 
                     worldX -= (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -169,7 +172,7 @@ public class Inamic extends Npc {
                     worldX += (speed);
                     worldY -= (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -180,7 +183,7 @@ public class Inamic extends Npc {
                     worldX -= (speed);
                     worldY -= (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -191,7 +194,7 @@ public class Inamic extends Npc {
                     worldY += (speed);
                     worldX += (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -202,7 +205,7 @@ public class Inamic extends Npc {
                     worldX -= (speed);
                     worldY += (speed);
                     super.setLocation(worldX, worldY);
-                    gifSabie = gif;
+                    gifItem = gif;
 
                     break;
                 }
@@ -230,14 +233,15 @@ public class Inamic extends Npc {
         }
     }
 
+   
     protected void knockbackMove() {//boolean knockbacked) {
 
         if (knockbacked) {
             this.frameuri_trecute++;
-            setLocation((int) (getX() + viteza_frame * Math.cos(grade_rezultanta)), (int) (getY() + viteza_frame * Math.sin(grade_rezultanta)));
-            worldX += viteza_frame * Math.cos(grade_rezultanta);
-            worldY += viteza_frame * Math.sin(grade_rezultanta);
-            System.out.println(distance_added);
+            setLocation((int) (getX() + viteza_frame_x * Math.cos(grade_rezultanta)), (int) (getY() + viteza_frame_y * Math.sin(grade_rezultanta)));
+            worldX += viteza_frame_x * Math.cos(grade_rezultanta);
+            worldY += viteza_frame_y * Math.sin(grade_rezultanta);
+            
 
             if (this.frameuri_trecute >= this.timp_knockback * 60) {
                 this.frameuri_trecute = 0;
@@ -247,7 +251,7 @@ public class Inamic extends Npc {
 
     }
 
-    protected void lovitSabie() {
+    protected void lovitSabie(int masa) {
 
         List players = getWorld().getObjects(Player.class);
         Player player = (Player) players.get(0);
@@ -266,7 +270,7 @@ public class Inamic extends Npc {
 
             if (player.isEquipSword() == true && deltaPGX <= 85 && deltaPGY <= 100) {
                 knockbacked = true;
-                super.knockback(0.1, sabia.getPlayer(), 2, 80);
+                super.knockback(0.1, sabia.getPlayer(), Sabie.mass, masa);
             }
         }
 
@@ -310,8 +314,7 @@ public class Inamic extends Npc {
     }
 
     protected void atac() {
-        //attackRange();
-        //attackMelee();
+        usedItem=true;
     }
 
     protected void attackRange() {
@@ -333,13 +336,13 @@ public class Inamic extends Npc {
 
             //getWorld().addObject(new Laser(),getX(),getY());
             nextMeleeAttack = System.currentTimeMillis();
-            if (gifSabie == "D") {
+            if (gifItem == "D") {
                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)+36,(getY()+scrolledY));
-            } else if (gifSabie == "A") {
+            } else if (gifItem == "A") {
                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX)-36,(getY()+scrolledY));
-            } else if (gifSabie == "S") {
+            } else if (gifItem == "S") {
                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)+20);
-            } else if (gifSabie == "W") {
+            } else if (gifItem == "W") {
                 //getWorld().addObject(new SabieGoblin(this),(getX()+scrolledX),(getY()+scrolledY)-20);
             }
 
@@ -370,4 +373,16 @@ public class Inamic extends Npc {
     public void setWorldY(int worldY) {
         this.worldY = worldY;
     }
+    public String getGifItem() {
+        return gifItem;
+    }
+    
+    public boolean isUsedItem() {
+        return usedItem;
+    }
+
+    public void setUsedItem(boolean usedItem) {
+        this.usedItem = usedItem;
+    }
+
 }

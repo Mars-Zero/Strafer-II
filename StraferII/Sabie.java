@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Sabie extends Item {
 
     public static final int damage = 25;
-
+    public static final int mass = 2;
 
     /**
      * HashMap containing all the GIFs for each direction

@@ -7,15 +7,10 @@ import java.util.List;
 public class Goblin extends Inamic {
 
     public static int speed = 5;
-    
-    
-
-   
-
- 
+    public static int mass = 80;
 
     public Goblin(Scroller scrl, int x, int y) {
-        super(scrl,x,y);
+        super(scrl, x, y);
 
         directie.put("D", new GifImage("npc/inamic/goblin/goblin_m_D.gif"));
         directie.put("W", new GifImage("npc/inamic/goblin/goblin_m_W.gif"));
@@ -25,44 +20,44 @@ public class Goblin extends Inamic {
 
         directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));
 
-        
     }
 
-    protected void atac(){
-        //attackMelee();
+    protected void atac() {
+        if (!usedItem) {
+            getWorld().addObject(new SabieGoblin(this), getX(), getY());
+        }
+        super.atac();
     }
+
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
 
             gif = "idle";
-         
+
             if (mort == true) {
                 //moare
 
             } else {
 
-                lovitSabie();
+                lovitSabie(this.mass);
                 lovitLaser();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
-                    //worldX=getX();
-                    //worldY=getY();
+                 
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
                     atac();///////{trebuie dat overload la atac
 
                     gif = "idle";
-                    //lovitSabie();//{
-                    // lovitLaser();//verifica daca e lovit
-                    //{
+                    
                     npcImg = directie.get(super.gif);
 
                 } else {
-                     //lovitSabie();
-                     //lovitLaser();
+                    //lovitSabie();
+                    //lovitLaser();
 
                     long wait = Greenfoot.getRandomNumber(20) + 30 + waitseed;//{
                     wait = 0;
@@ -72,11 +67,12 @@ public class Goblin extends Inamic {
                         if (timpAtins >= wait) ///////////////////////ia o pauza
                         {
                             atingePlayer = false;
+                            usedItem=false;
 
                         }
                     }///////////////////////////////////////////////{
                     else {
-                                                                                                //daca e in range sa nu l caute in toata lumea
+                        //daca e in range sa nu l caute in toata lumea
                         List players = getWorld().getObjects(Player.class);
                         Player player = (Player) players.get(0);
                         int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
@@ -105,10 +101,9 @@ public class Goblin extends Inamic {
 
             npcImg = directie.get(gif);
 
-                   setImage(npcImg.getCurrentImage());
+            setImage(npcImg.getCurrentImage());
         }
 
     }
 
-   
 }

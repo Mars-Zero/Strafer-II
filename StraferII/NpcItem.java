@@ -1,19 +1,18 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class NpcItem here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class NpcItem extends Movers
-{
-    /**
-     * Act - do whatever the NpcItem wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+import greenfoot.*;
+import java.util.List;
+
+public class NpcItem extends Movers {
+
+    protected void move(Actor npc) {
+        setLocation(npc.getX(), npc.getY() );
+    }
+    
+    protected void moveOffset(Actor npc, int offsetx, int offsety) {        //arunca un obiect
+        setLocation(npc.getX() + offsetx, npc.getY() + offsety);
+    }
+
+    public void act() {
+
+    }
 }

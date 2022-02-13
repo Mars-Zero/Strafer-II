@@ -6,8 +6,11 @@ import java.util.List;
 
 public class Spiker extends Inamic
 {
+     public static int speed = 4;
+    
     public Spiker(Scroller scrl, int x, int y) {
         super(scrl,x,y);
+        setImage("npc/inamic/spiker/spiker.png");
     }
     public void act() {
 
@@ -20,7 +23,7 @@ public class Spiker extends Inamic
 
             } else {
 
-                lovitSabie();
+                //nu ia damage de la sabie
                 lovitLaser();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 

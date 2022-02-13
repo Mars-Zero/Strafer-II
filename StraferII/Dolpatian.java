@@ -9,6 +9,7 @@ import java.util.List;
 public class Dolpatian extends Goblin
 {
     boolean eVizibil=false;
+     public static int mass = 100;
     
     
     public Dolpatian(Scroller scrl, int x, int y) {
@@ -63,7 +64,7 @@ public class Dolpatian extends Goblin
 
             } else {
 
-                lovitSabie();
+                lovitSabie(this.mass);
                 lovitLaser();
                 atinsLight();
                 long waitseed = Greenfoot.getRandomNumber(2500);

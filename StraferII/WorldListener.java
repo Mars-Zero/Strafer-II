@@ -190,7 +190,7 @@ urmatoare:        |____|_________|_______|________|
 
     private int getNextWorldSection() {
 
-        playerDirection = player.getDirection();
+        playerDirection = player.getExitDirection();
         switch (this.worldSection) {
             case 11: {
                 return sectionNeighbour11[playerDirection];

@@ -15,6 +15,7 @@ public class Droid extends Inamic {
 
     public static int speed = 3;
     private int hp = 75;
+    private int mass=60;
     private final int pauza = 50;
 
     private long timpLaser = 0;
@@ -106,7 +107,7 @@ public class Droid extends Inamic {
     }
 
     protected void lovitSabie() {
-        super.lovitSabie();
+        super.lovitSabie(this.mass);
         if (isTouching(Sabie.class)) {
             timpSab++;
             if (timpSab >= 16) {
@@ -125,7 +126,7 @@ public class Droid extends Inamic {
     }
 
     protected void lovitLaser() {
-
+        super.lovitLaser();
         Actor a = (Laser) getOneIntersectingObject(Laser.class);
         if (a != null) {
             timpBolt++;//cat timp ating ating laserul
@@ -148,8 +149,12 @@ public class Droid extends Inamic {
         hp -= dmg;
     }
 
-    public void atac() {
+    private void die(){
+        if(hp<=0){
+            mort=true;
+        }
     }
+    
     long timpMort = 0;
 
     public void act() {
@@ -169,11 +174,8 @@ public class Droid extends Inamic {
 
                 lovitSabie();
                 lovitLaser();
-                long waitseed = Greenfoot.getRandomNumber(2500);
-                atac();
-                //worldX=getX();
-                //worldY=getY();
-
+                die();
+                
                 timpAtins = 0;//{
                 atingePlayer = true;//ataca
 
@@ -190,10 +192,8 @@ public class Droid extends Inamic {
                 }
                 if (deltaPGX <= 600 && deltaPGY <= 400) {
                     //aici intra functia de move 
-
                     gaseste();
                     move();
-
                 }
                 int difpx = Scroller.scrolledX - prevsx;
                 int difpy = Scroller.scrolledY - prevsy;

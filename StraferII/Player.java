@@ -97,7 +97,7 @@ public class Player extends Jucator {
     }
 
     public void load() {
-        
+
         if (!loaded) {
             SaveSystem.load(0, this);
             loaded = true;
@@ -200,9 +200,10 @@ public class Player extends Jucator {
 
     public void move() {
 
-        //if(super.gif!="idle" && super.gif!="right" &&super.gif!="up" &&super.gif!="down" && super.gif!="left"){atingeNpc();}
+        if (gif != "idle") {
+            super.atingeNpc();
+        }
         checkMove();
-        // if(super.gif!="idle" && super.gif!="right" &&super.gif!="up" &&super.gif!="down" && super.gif!="left"){atingeNpc();}
         worldX = getX() + Scroller.scrolledX;
         worldY = getY() + Scroller.scrolledY;
 
@@ -390,15 +391,16 @@ public class Player extends Jucator {
     }
 
     protected void hit() {
-
+        
     }
 
-    protected void takeDamage(int dmg){
-        hp-=dmg;
+    protected void takeDamage(int dmg) {
+        hp -= dmg;
         getHealthBar().subtract(dmg);
     }
-    
+
     boolean firstCycle = false;
+
     public void die() {
         if (hp <= 0) {
             getHealthBar().setValue(getHealthBar().getMinimumValue());
@@ -431,6 +433,7 @@ public class Player extends Jucator {
                 useItem();
                 hit();
                 move();
+                super.knockbackMove();
                 die();
 
                 toggleMenu();
@@ -458,7 +461,7 @@ public class Player extends Jucator {
 
     }
 
-    public int getDirection() {
+    public int getExitDirection() {
 
         if (getX() >= 1020) {
             direction = 3;
