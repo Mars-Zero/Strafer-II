@@ -26,7 +26,7 @@ public class WorldListener extends Actor {
     }
 
     void changeWorldSection(boolean atLoad) {     //daca e schimbata pt load sau pt miscare
-        scroller.setScrollImage(fundaluri.get(getImageIndex()));
+        scroller.setScrollImage(fundaluri.get(WorldData.getWorldsection(worldSection)-1));
         if (!atLoad) {
             relocatePlayer();
         } else {
@@ -305,30 +305,7 @@ urmatoare:        |____|_________|_______|________|
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
     }
 
-    int getImageIndex() {
-        switch (worldSection) {
-            case 11: {
-                return 0;
-            }
-            case 12: {
-                return 1;
-            }
-            case 13: {
-                return 2;
-            }
-            case 21: {
-                return 3;
-            }
-            case 22: {
-                return 4;
-            }
-            case 23: {
-                return 5;
-            }
-
-        }
-        return 0;
-    }
+    
 
     public boolean isLoaded() {
         return loaded;

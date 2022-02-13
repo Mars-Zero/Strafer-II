@@ -14,4 +14,18 @@ public class WorldData {
     
     public static boolean[][] visitedWorldSections={{false,false,false,false},{false,false,false,false},{false,false,false,false}};
     
+    /**
+     * Numarul maxim de sectiuni de pe o linie
+     */
+    public static final int numberOfCollumns=3;
+    public static int getWorldsection(int world)
+    {
+        int col=world%10;
+        int lin=world/10;
+        int sol=(lin-1)*numberOfCollumns+col;
+        if(sol<0){
+            sol=1;
+        }
+        return sol;
+    }
 }

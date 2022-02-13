@@ -12,6 +12,7 @@ public class TutorialFolder extends TutorialGallery{
     
     public TutorialFolder(List<Tutorial> mappedTutorials){
         tutorials=mappedTutorials;
+        displayTutorials();
     }
     
     private void displayTutorials(){

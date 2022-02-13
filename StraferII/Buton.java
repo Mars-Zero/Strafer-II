@@ -13,6 +13,7 @@ public class Buton extends UI {
     Tutorial tutorial;
     ArrayList<Tutorial> tutorials;
     Tutorial tutorialToOpen;
+    TutorialFolder tutorialFolderToOpen;
      HashMap<String,List<GreenfootImage>> tutorialsImages;
     
     Dialog dialog;
@@ -53,11 +54,16 @@ public class Buton extends UI {
 
     }
     
-    public Buton(String imgref, Object menuref,String tipref, Tutorial tutorialToOp) {                  ///for opening a tutorial tutorial from a category
+    public Buton(String imgref, Object menuref,String tipref, Menu menuObject) {                  ///for opening a tutorial tutorial from a category
         img = imgref;
         obj = menuref;
         tipTutorial=tipref;
-        tutorialToOpen=tutorialToOp;
+        if(menuObject instanceof Tutorial){
+            tutorialToOpen=(Tutorial)menuObject;
+        }
+        if(menuObject instanceof TutorialFolder){
+          tutorialFolderToOpen=(TutorialFolder)menuObject;
+        }
         this.tutorials=tutorials;
         
         if (obj instanceof Dialog) {
