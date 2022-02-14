@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class WorldData {
 
@@ -14,10 +16,19 @@ public class WorldData {
     
     public static boolean[][] visitedWorldSections={{false,false,false,false},{false,false,false,false},{false,false,false,false}};
     
+    public static final int worldSectionNumber=6;
+    public static final int maxWidthWorld=128;
+    public static final int maxLengthWorld=128;
+    
+    public static int[][][] worldSectionMatrix=new int[worldSectionNumber+1][maxLengthWorld+1][maxWidthWorld+1];
+    
     /**
      * Numarul maxim de sectiuni de pe o linie
      */
     public static final int numberOfCollumns=3;
+    /**
+     * This method returns the specific code for the world you need
+     */
     public static int getWorldsection(int world)
     {
         int col=world%10;
@@ -27,5 +38,15 @@ public class WorldData {
             sol=1;
         }
         return sol;
+    }
+    
+    /**
+     * This method loads the matrixes of the worlds
+     */
+    public static void loadWorldMatrixes(){
+        String director=new String("maps/");
+        for(int i=1; i<=worldSectionNumber; i++){
+            worldSectionMatrix[i]=Loader.load(new File(director+i));
+        }
     }
 }

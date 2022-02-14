@@ -35,9 +35,11 @@ public class Npc extends Movers {
     protected int worldY;//pozitia pe Y pe mapa
     protected int prevsx = Scroller.scrolledX;
     protected int prevsy = Scroller.scrolledY;
-
-    public static int[][] matElem = new int[128][128]; //matricea copiata din nivelx
-
+  
+    protected int[][] matElem = new int[WorldData.maxLengthWorld+1][WorldData.maxWidthWorld+1]; //matricea copiata din nivelx
+    
+    protected int sectiune=-1;
+    
     protected int getScrollX() {
         int nx = this.getX();
         return nx;
@@ -57,7 +59,8 @@ public class Npc extends Movers {
         scroller = scrl;
         this.scrolledX = scroller.getScrolledX();
         this.scrolledY = scroller.getScrolledY();
-    }
+        
+       }
 
     protected boolean checkPlayerInChunck() {
         if (getObjectsInRange(1024, Player.class) != null) {
@@ -79,12 +82,16 @@ public class Npc extends Movers {
     }
 
     protected void Lee(int startL, int startC, int x, int y) {
-        int[][] mat = new int[1000][1000];
-        for (int i = 0; i < 1000; i++) {
-            for (int j = 0; j < 1000; j++) {
-                mat[i][j] = 0;
-            }
+        //aici trebuie pusa matricea din WorldData
+        if(sectiune==-1){
+            sectiune=WorldData.getWorldsection((~((PlayWorld)getWorld()).getWorldListener().getWorldSection()));
         }
+        int[][] mat = new int[WorldData.maxLengthWorld+1][WorldData.maxWidthWorld+1];
+        /*for (int i = 0; i < WorldData.maxLengthWorld; i++) {
+            for (int j = 0; j < WorldData.maxWidthWorld; j++) {
+                mat[i][j] = WorldData.worldSectionMatrix[sectiune][i][j];
+            }
+        }*/
         ord.clear();
 
         final int[] dy = {1, -1, 0, 0, -1, 1, 1, -1};
