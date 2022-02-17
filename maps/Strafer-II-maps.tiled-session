@@ -5,9 +5,9 @@
     },
     "activeFile": "map11.tmx",
     "expandedProjectPaths": [
-        ".",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
-        "tilesets"
+        "tilesets",
+        "."
     ],
     "exportAsImage.useCurrentScale": true,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.75,
+            "scale": 0.2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 7393.333333333332,
-                "y": 58
+                "x": 4095,
+                "y": 4092.5
             }
         },
         "map11.tmx#Terrain": {
@@ -648,7 +648,8 @@
             "scaleInDock": 1
         },
         "tilesets/pereteS.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/pereteW.tsx": {
             "scaleInDock": 1
@@ -695,12 +696,12 @@
         "map13.tmx",
         "map12.tmx",
         "map11.tmx",
+        "tilesets/pereteS.tsx",
         "tilesets/Terrain.tsx",
         "map.json",
         "tilesets/snow1.tsx",
         "tilesets/apa1.tsx",
-        "map.tmx",
-        "tilesets/detoate1.tsx"
+        "map.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

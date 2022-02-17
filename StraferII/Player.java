@@ -366,7 +366,7 @@ public class Player extends Jucator {
 
     protected void checkPauza() {
 
-        if (!toggledPause) {
+        if (!toggledPause && !WorldData.PAUZA) {
 
             if (Greenfoot.isKeyDown("escape")) {
                 toggledPause = !toggledPause;

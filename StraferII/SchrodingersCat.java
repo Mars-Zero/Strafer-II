@@ -58,7 +58,7 @@ public class SchrodingersCat extends Goblin {
 
     private void explode() {
         changeAnimation("Explode", 16, 6);
-
+        getWorld().addObject(new ExplozieSchrodingersCat(),this.getX(),this.getY());
     }
 
     int cntAs = 0;//engings in animation
@@ -69,6 +69,10 @@ public class SchrodingersCat extends Goblin {
             switch (animationName) {
                 case "Explode": {
                     mort = true;
+                    ExplozieSchrodingersCat exp=getWorld().getObjects(ExplozieSchrodingersCat.class).get(0);
+                    if(exp!=null){
+                        getWorld().removeObject(exp);
+                    }
                     getWorld().removeObject(this);
                     break;
                 }

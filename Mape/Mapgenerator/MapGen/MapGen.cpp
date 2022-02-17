@@ -88,27 +88,27 @@ void matrixGen(std::unique_ptr<tson::Map>& map, short int mapMatrix[10001][10001
 
     fout << "{\n";
     for (int i = 0; i < height; i++) {
-        fout << "{";
+        //fout << "{";
         int j;
         for ( j= 0; j < width; j++) {
             fout << mapMatrix[i][j];
-            if (mapMatrix[i][j] == 0) {
-                fout << " ";
-            }
+          //  if (mapMatrix[i][j] == 0) {
+           //     fout << " ";
+          //  }
             fout<<" ";
-            if (j < width - 1) {
-                fout << ",";
-            }
+          //  if (j < width - 1) {
+           //     fout << ",";
+           // }
         }
-        if (j == width - 1 && i == height - 1) {
-            fout << "}";
-        }
-        else if (j == width - 1) {
-           fout << "}";
-        }
-        else {
-           fout << "},";
-        }
+      //  if (j == width - 1 && i == height - 1) {
+       //     fout << "}";
+      //  }
+      //  else if (j == width - 1) {
+       //    fout << "}";
+     //   }
+      //  else {
+        //   fout << "},";
+      //  }
         
         fout << "\n";
 

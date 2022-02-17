@@ -45,6 +45,7 @@ public class SabieGoblin extends NpcItem{
            Player player= getWorld().getObjects(Player.class).get(0);
            if(player!=null){
                player.knockbacked=true;
+                   player.knockback(0.1, goblin, this.mass, 80);
                if(!gaveDamage){
                    player.takeDamage(this.damage);
                    gaveDamage=true;

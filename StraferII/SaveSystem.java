@@ -81,6 +81,7 @@ abstract class SaveSystem {
         //List<Tutorial> tutor = new ArrayList<>();
 
         Player player = playerref;
+       
 
         try {
 
@@ -97,21 +98,18 @@ abstract class SaveSystem {
                     String[] arr = getContentString(str).split(" ");
                     if (arr.length > 0) {
                         Tutorial tut = new Tutorial(arr[0], arr[1], Integer.parseInt(arr[2]), false);
-                        if(TutorialGallery.tutorialsInFolder.containsKey(arr[0]))
-                        {
+                        if (TutorialGallery.tutorialsInFolder.containsKey(arr[0])) {
                             TutorialGallery.tutorialsInFolder.get(arr[0]).add(tut);
-                        }
-                        else{
-                            List<Tutorial>startTutorials=new ArrayList<>();
+                        } else {
+                            List<Tutorial> startTutorials = new ArrayList<>();
                             startTutorials.add(tut);
-                            TutorialGallery.tutorialsInFolder.put(arr[0],startTutorials);
+                            TutorialGallery.tutorialsInFolder.put(arr[0], startTutorials);
                         }
-                        
+
                     }
 
                 } else if (tip.equalsIgnoreCase("WorldSection:")) {
                     WorldListener worldListener = player.getWorld().getObjects(WorldListener.class).get(0);
-                    System.out.println("gws");
                     worldListener.setWorldSection(Integer.parseInt(getContentString(str)));
 
                     worldListener.setLoaded(false);

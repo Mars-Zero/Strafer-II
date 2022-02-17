@@ -33,6 +33,7 @@ public class MainStoryline extends Storyline{
             for (String string : result) {
                 Quest toAdd = new Quest();
                 toAdd.load(new File(string));
+                //System.out.println(toAdd.questName);
                 questQueue.add(toAdd);
             }
             result.forEach(System.out::println);
@@ -52,6 +53,7 @@ public class MainStoryline extends Storyline{
     public void act() {
         //aici vor venii diferite eventuri
         Quest questCurent=questQueue.peek();
+        
         String currentToDo=questCurent.nextToDo();
     }
 }

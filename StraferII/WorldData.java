@@ -29,7 +29,7 @@ public class WorldData {
     /**
      * This method returns the specific code for the world you need
      */
-    public static int getWorldsection(int world)
+    public static int getWorldSectionShort(int world)
     {
         int col=world%10;
         int lin=world/10;
@@ -43,10 +43,13 @@ public class WorldData {
     /**
      * This method loads the matrixes of the worlds
      */
-    public static void loadWorldMatrixes(){
+    public static void loadWorldMatrices(){
+        
+       
         String director=new String("maps/");
-        for(int i=1; i<=worldSectionNumber; i++){
-            worldSectionMatrix[i]=Loader.load(new File(director+i));
+        for(int i=1; i<=1; i++){
+             
+            worldSectionMatrix[i]=Loader.loadMatrix(new File(director+i+".txt"));
         }
     }
 }

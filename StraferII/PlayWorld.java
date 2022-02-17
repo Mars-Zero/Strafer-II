@@ -8,6 +8,7 @@ public class PlayWorld extends World {
     int originalX = 100, originalY=100;
 
     public WorldListener worldListener;
+public MainStoryline mainStoryline;
 
    
     public Scroller scroller;
@@ -26,7 +27,8 @@ public class PlayWorld extends World {
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;
 
-
+         WorldData.loadWorldMatrices();
+        
         addPlayer();
         WorldData.addedDialogs = false;
         addedHealthBar = false;
@@ -50,8 +52,12 @@ public class PlayWorld extends World {
         scroll();
 
         worldListener = new WorldListener(this);
+        mainStoryline=new MainStoryline();
+        
         addObject(worldListener, 1, 1);
-
+        addObject(mainStoryline,1,1);
+        
+        
         addObject(new Fps(), 150, 50);
     }
 

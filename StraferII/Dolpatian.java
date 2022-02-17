@@ -53,6 +53,12 @@ public class Dolpatian extends Goblin
         }
     }
     
+    protected void atac() {
+        if (!usedItem) {
+            getWorld().addObject(new TaserDolpatian(this), getX(), getY());
+        }
+    }
+    
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
@@ -73,7 +79,7 @@ public class Dolpatian extends Goblin
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
-                    super.atac();///////{
+                    atac();///////{
 
                     gif = "idle";
                     eVizibil = true;
@@ -90,6 +96,7 @@ public class Dolpatian extends Goblin
                         if (timpAtins >= wait) ///////////////////////ia o pauza
                         {
                             atingePlayer = false;
+                            usedItem=false;
 
                         }
                     }///////////////////////////////////////////////{

@@ -1,19 +1,31 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class ExplozieSchrodingersCat here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class ExplozieSchrodingersCat extends NpcItem
-{
-    /**
-     * Act - do whatever the ExplozieSchrodingersCat wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+public class ExplozieSchrodingersCat extends NpcItem {
+
+    
+    public static final int mass = 2;
+
+    boolean gaveDamage=false;
+    public ExplozieSchrodingersCat(){
+        setImage("npc/inamic/schrodinger's cat/explosion.png");
+    }
+    protected void atac() {
+        if (isTouching(Player.class)) {
+            Player player = getWorld().getObjects(Player.class).get(0);
+            if (player != null) {
+                player.knockbacked = true;
+                player.knockback(0.1, this, this.mass, 80);
+                if (!gaveDamage) {
+                    player.takeDamage(player.getHp()/2);
+                    gaveDamage = true;
+                }
+            }
+        }
+    }
+
+    public void act() {
+        if(!WorldData.PAUZA){
+            atac();
+        }
+    }
 }

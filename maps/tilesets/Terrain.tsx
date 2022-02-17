@@ -434,6 +434,7 @@
   <wangset name="Unnamed Set" type="corner" tile="-1">
    <wangcolor name="" color="#ff0000" tile="-1" probability="1"/>
    <wangcolor name="" color="#00ff00" tile="-1" probability="1"/>
+   <wangcolor name="" color="#0000ff" tile="-1" probability="1"/>
    <wangtile tileid="1" wangid="0,1,0,0,0,1,0,1"/>
    <wangtile tileid="2" wangid="0,1,0,1,0,0,0,1"/>
    <wangtile tileid="4" wangid="0,2,0,0,0,2,0,2"/>
@@ -466,6 +467,22 @@
    <wangtile tileid="163" wangid="0,2,0,2,0,2,0,2"/>
    <wangtile tileid="164" wangid="0,2,0,2,0,2,0,2"/>
    <wangtile tileid="165" wangid="0,2,0,2,0,2,0,2"/>
+   <wangtile tileid="388" wangid="0,3,0,0,0,3,0,3"/>
+   <wangtile tileid="389" wangid="0,3,0,3,0,0,0,3"/>
+   <wangtile tileid="420" wangid="0,0,0,3,0,3,0,3"/>
+   <wangtile tileid="421" wangid="0,3,0,3,0,3,0,0"/>
+   <wangtile tileid="451" wangid="0,0,0,3,0,0,0,0"/>
+   <wangtile tileid="452" wangid="0,0,0,3,0,3,0,0"/>
+   <wangtile tileid="453" wangid="0,0,0,0,0,3,0,0"/>
+   <wangtile tileid="483" wangid="0,3,0,3,0,0,0,0"/>
+   <wangtile tileid="484" wangid="0,3,0,3,0,3,0,3"/>
+   <wangtile tileid="485" wangid="0,0,0,0,0,3,0,3"/>
+   <wangtile tileid="515" wangid="0,3,0,0,0,0,0,0"/>
+   <wangtile tileid="516" wangid="0,3,0,0,0,0,0,3"/>
+   <wangtile tileid="517" wangid="0,0,0,0,0,0,0,3"/>
+   <wangtile tileid="547" wangid="0,3,0,3,0,3,0,3"/>
+   <wangtile tileid="548" wangid="0,3,0,3,0,3,0,3"/>
+   <wangtile tileid="549" wangid="0,3,0,3,0,3,0,3"/>
   </wangset>
  </wangsets>
 </tileset>

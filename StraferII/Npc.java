@@ -84,14 +84,17 @@ public class Npc extends Movers {
     protected void Lee(int startL, int startC, int x, int y) {
         //aici trebuie pusa matricea din WorldData
         if(sectiune==-1){
-            sectiune=WorldData.getWorldsection((~((PlayWorld)getWorld()).getWorldListener().getWorldSection()));
+            sectiune=WorldData.getWorldSectionShort((~((PlayWorld)getWorld()).getWorldListener().getWorldSection()));
         }
         int[][] mat = new int[WorldData.maxLengthWorld+1][WorldData.maxWidthWorld+1];
-        /*for (int i = 0; i < WorldData.maxLengthWorld; i++) {
+        for (int i = 0; i < WorldData.maxLengthWorld; i++) {
             for (int j = 0; j < WorldData.maxWidthWorld; j++) {
-                mat[i][j] = WorldData.worldSectionMatrix[sectiune][i][j];
+                mat[i][j] = WorldData.worldSectionMatrix[WorldData.getWorldSectionShort(sectiune)][i][j];
+                //System.out.println(WorldData.getWorldSectionShort(sectiune));
+               
             }
-        }*/
+         
+        }
         ord.clear();
 
         final int[] dy = {1, -1, 0, 0, -1, 1, 1, -1};
