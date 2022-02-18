@@ -86,7 +86,7 @@ void matrixGen(std::unique_ptr<tson::Map>& map, short int mapMatrix[10001][10001
     }
 
 
-    fout << "{\n";
+    //fout << "{\n";
     for (int i = 0; i < height; i++) {
         //fout << "{";
         int j;
@@ -113,7 +113,7 @@ void matrixGen(std::unique_ptr<tson::Map>& map, short int mapMatrix[10001][10001
         fout << "\n";
 
     }
-    fout << "}";
+    //fout << "}";
 }
 
 

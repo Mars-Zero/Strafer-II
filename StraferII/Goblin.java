@@ -8,6 +8,14 @@ public class Goblin extends Inamic {
 
     public static int speed = 5;
     public static int mass = 80;
+    int hp = 75;
+
+    private long timpSab = 0;
+    private long timpBolt = 0;
+
+    Animation animation;
+    boolean startedAnimation = false;
+    int cntDeath = 0;
 
     public Goblin(Scroller scrl, int x, int y) {
         super(scrl, x, y);
@@ -18,8 +26,8 @@ public class Goblin extends Inamic {
         directie.put("S", new GifImage("npc/inamic/goblin/goblin_m_S.gif"));
         directie.put("idle", new GifImage("npc/inamic/goblin/goblin_m_Idle.gif"));
 
-        directie.put("death", new GifImage("npc/inamic/goblin/goblin_death.gif"));
-
+        changeAnimation();
+        animation.setActiveState(false);
     }
 
     protected void atac() {
@@ -29,6 +37,42 @@ public class Goblin extends Inamic {
         super.atac();
     }
 
+    protected void lovitSabie() {
+        super.lovitSabie(this.mass);
+        if (isTouching(Sabie.class)) {
+            timpSab++;
+            if (timpSab >= 6) {
+                takeDamage(Sabie.damage);
+                timpSab = 0;
+            }
+
+        }
+
+    }
+
+    protected void lovitLaser() {
+        super.lovitLaser();
+        Actor a = (Laser) getOneIntersectingObject(Laser.class);
+        if (a != null) {
+            timpBolt++;//cat timp ating ating laserul
+            if (timpBolt >= 5) {
+                removeTouching(Laser.class);
+                takeDamage(Laser.damage);
+                timpBolt = 0;
+            }
+        }
+    }
+
+    private void takeDamage(int dmg) {
+        hp -= dmg;
+    }
+
+    private void die() {
+        if (hp <= 0) {
+            mort = true;
+        }
+    }
+
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
@@ -36,28 +80,36 @@ public class Goblin extends Inamic {
             gif = "idle";
 
             if (mort == true) {
-                //moare
-
+                cntDeath++;
+                if (cntDeath > 2) {
+                    if (!startedAnimation) {
+                        animation.setActiveState(true);
+                        startedAnimation = true;
+                    }
+                }
+                if (animation.isActive()) {
+                    animation.run();
+                }
+                if (startedAnimation && !animation.isActive()) {
+                    getWorld().removeObject(this);
+                }
             } else {
 
-                lovitSabie(this.mass);
+                lovitSabie();
                 lovitLaser();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
-                 
 
                     timpAtins = 0;//{
                     atingePlayer = true;//ataca
                     atac();///////{trebuie dat overload la atac
 
                     gif = "idle";
-                    
+
                     npcImg = directie.get(super.gif);
 
                 } else {
-                    //lovitSabie();
-                    //lovitLaser();
 
                     long wait = Greenfoot.getRandomNumber(20) + 30 + waitseed;//{
                     wait = 0;
@@ -67,7 +119,7 @@ public class Goblin extends Inamic {
                         if (timpAtins >= wait) ///////////////////////ia o pauza
                         {
                             atingePlayer = false;
-                            usedItem=false;
+                            usedItem = false;
 
                         }
                     }///////////////////////////////////////////////{
@@ -95,15 +147,32 @@ public class Goblin extends Inamic {
                         prevsy = Scroller.scrolledY;
                     }
 
+                    this.knockbackMove();
+                    die();
                 }
-                this.knockbackMove();
             }
-
-            npcImg = directie.get(gif);
-
-            setImage(npcImg.getCurrentImage());
+            if (animation.isActive()) {
+                animation.run();
+            } else {
+                npcImg = directie.get(gif);
+                setImage(npcImg.getCurrentImage());
+            }
         }
 
+    }
+
+    private void changeAnimation() {
+        java.util.List<GreenfootImage> imgs = new GifImage("npc/inamic/goblin/goblin_death.gif").getImages();
+        GreenfootImage[] images = new GreenfootImage[imgs.size()];
+        for (int i = 0; i < imgs.size(); i++) {
+            images[i] = (GreenfootImage) imgs.get(i);
+        }
+        animation = new Animation(this, images);
+        animation.setCycleActs(22);
+        animation.setCycleCount(1);
+        animation.setScalar(5);
+        animation.run();
+        animation.setActiveState(true);
     }
 
 }

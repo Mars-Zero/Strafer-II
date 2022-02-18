@@ -15,12 +15,14 @@ public class Droid extends Inamic {
 
     public static int speed = 3;
     private int hp = 75;
-    private int mass=60;
+    private int mass = 60;
     private final int pauza = 50;
 
     private long timpLaser = 0;
     private boolean mort = false;
-    private long timpPrec;
+    Animation animation;
+    boolean startedAnimation = false;
+    int cntDeath = 0;
 
     private long timpSab = 0;
     private long timpBolt = 0;
@@ -36,6 +38,8 @@ public class Droid extends Inamic {
         gY = y;
         sensPoz = true;
 
+        changeAnimation();
+        animation.setActiveState(false);
     }
 
     protected void gaseste() {
@@ -110,17 +114,11 @@ public class Droid extends Inamic {
         super.lovitSabie(this.mass);
         if (isTouching(Sabie.class)) {
             timpSab++;
-            if (timpSab >= 16) {
+            if (timpSab >= 6) {
                 takeDamage(Sabie.damage);
-                
-                if (!(traiesc())) {
-                    mort = true;
-                }
                 timpSab = 0;
             }
 
-        } else if (timpSab > 0) {
-            timpSab--;//modific timpul daca nu 
         }
 
     }
@@ -130,18 +128,11 @@ public class Droid extends Inamic {
         Actor a = (Laser) getOneIntersectingObject(Laser.class);
         if (a != null) {
             timpBolt++;//cat timp ating ating laserul
-            if (timpBolt >= 8) {
+            if (timpBolt >= 5) {
                 removeTouching(Laser.class);
-
                 takeDamage(Laser.damage);
-                if (!(traiesc())) {
-                    //playerImg = new GifImage("droid_death.gif");
-                    mort = true;
-                }
                 timpBolt = 0;
             }
-        } else if (timpBolt > 0) {
-            timpBolt = 0;
         }
     }
 
@@ -149,39 +140,45 @@ public class Droid extends Inamic {
         hp -= dmg;
     }
 
-    private void die(){
-        if(hp<=0){
-            mort=true;
+    private void die() {
+        if (hp <= 0) {
+            mort = true;
         }
     }
-    
-    long timpMort = 0;
 
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
 
             if (mort == true) {
-                //moare
-                //playAnimation
-                if (timpMort >= super.rez + 45) {
-
-                    getWorld().removeObject(this);//dispare
-                    return;
+                cntDeath++;
+                if (cntDeath > 2) {
+                    if (!startedAnimation) {
+                        animation.setActiveState(true);
+                        startedAnimation = true;
+                    }
                 }
-                timpMort++;
+                if (animation.isActive()) {
+                    animation.run();
+                }
+                if (startedAnimation && !animation.isActive()) {
+                    getWorld().removeObject(this);
+                }
             } else {
 
                 lovitSabie();
                 lovitLaser();
                 die();
-                
+
                 timpAtins = 0;//{
                 atingePlayer = true;//ataca
 
                 //daca e in range sa nu l caute in toata lumea
                 List players = getWorld().getObjects(Player.class);
                 Player player = (Player) players.get(0);
+                
+                move();
+                
                 int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
                 if (deltaPGX < 0) {
                     deltaPGX *= (-1);
@@ -193,7 +190,7 @@ public class Droid extends Inamic {
                 if (deltaPGX <= 600 && deltaPGY <= 400) {
                     //aici intra functia de move 
                     gaseste();
-                    move();
+                    
                 }
                 int difpx = Scroller.scrolledX - prevsx;
                 int difpy = Scroller.scrolledY - prevsy;
@@ -205,10 +202,26 @@ public class Droid extends Inamic {
 
                 this.knockbackMove();
             }
-
-            setImage(img.getCurrentImage());
+            if (animation.isActive()) {
+                animation.run();
+            } else {
+                setImage(img.getCurrentImage());
+            }
         }
 
     }
-}
 
+    private void changeAnimation() {
+        java.util.List<GreenfootImage> imgs = new GifImage("npc/inamic/droid/droid_death.gif").getImages();
+        GreenfootImage[] images = new GreenfootImage[imgs.size()];
+        for (int i = 0; i < imgs.size(); i++) {
+            images[i] = (GreenfootImage) imgs.get(i);
+        }
+        animation = new Animation(this, images);
+        animation.setCycleActs(20);
+        animation.setCycleCount(1);
+        animation.setScalar(5);
+        animation.run();
+        animation.setActiveState(true);
+    }
+}

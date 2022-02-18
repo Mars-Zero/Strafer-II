@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.HashMap;
 
 public class SabieGoblin extends NpcItem{
-       public static final int damage = 25;
+       public static final int damage = 5;
     public static final int mass = 2;
 
    
@@ -62,7 +62,7 @@ public class SabieGoblin extends NpcItem{
 
             time++;
             if (time > constantEraseTime) {
-                
+                ((Inamic)goblin).setUsedItem(false);
                 getWorld().removeObject(this);
                 
             }

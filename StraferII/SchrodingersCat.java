@@ -108,8 +108,8 @@ public class SchrodingersCat extends Goblin {
 
             } else {
 
-                //lovitSabie();
-                //lovitLaser();
+                lovitSabie();
+                lovitLaser();
                 int waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {
@@ -204,6 +204,25 @@ public class SchrodingersCat extends Goblin {
         }
     }
 
+    
+    protected void lovitSabie() {
+        super.lovitSabie(this.mass);
+        if (isTouching(Sabie.class)) {
+            explode();
+
+        }
+
+    }
+
+    protected void lovitLaser() {
+        super.lovitLaser();
+        Actor a = (Laser) getOneIntersectingObject(Laser.class);
+        if (a != null) {
+            explode();
+        }
+    }
+    
+    
     private void changeAnimation(String anim, int nrframeuri, int scalar) {
 
         animationName = anim;

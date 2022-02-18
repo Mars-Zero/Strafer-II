@@ -4,12 +4,12 @@ import java.util.HashMap;
 
 public class TaserDolpatian extends NpcItem{
    
-       public static final int damage = 30;
+       public static final int damage = 15;
     public static final int mass = 1;
 
    
     HashMap<String, GifImage> directie = new HashMap<String, GifImage>();
-    GifImage sabieImg = directie.get(Item.itemGif);
+    GifImage itemImg = directie.get(Item.itemGif);
  
     
     private long time = 0;
@@ -26,7 +26,7 @@ public class TaserDolpatian extends NpcItem{
         directie.put("A", new GifImage("npc/inamic/dolpatian/taserDolpatian_A.gif"));
         directie.put("S", new GifImage("npc/inamic/dolpatian/taserDolpatian_S.gif"));
 
-        sabieImg = directie.get("D");
+        itemImg = directie.get("D");
         this.time = 0;
 
     }
@@ -36,13 +36,13 @@ public class TaserDolpatian extends NpcItem{
     }
 
     protected void move() {
-        super.move(this);
+        setLocation(dolpatian.getX(), dolpatian.getY() );
 
-        sabieImg = directie.get(((Inamic)dolpatian).getGifItem());
+        itemImg = directie.get(((Inamic)dolpatian).getGifItem());
     }
 
     protected void atac() {
-        sabieImg = directie.get(((Inamic)dolpatian).getGifItem());
+        itemImg = directie.get(((Inamic)dolpatian).getGifItem());
         if(isTouching(Player.class)){
            Player player= getWorld().getObjects(Player.class).get(0);
            if(player!=null){
@@ -64,11 +64,11 @@ public class TaserDolpatian extends NpcItem{
 
             time++;
             if (time > constantEraseTime) {
-                
+                ((Inamic)dolpatian).setUsedItem(false);
                 getWorld().removeObject(this);
                 
             }
-            setImage(sabieImg.getCurrentImage());
+            setImage(itemImg.getCurrentImage());
         }
         
     }

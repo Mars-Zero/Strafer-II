@@ -78,7 +78,8 @@ public class Inamic extends Npc {
             if ((worldX + Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
-
+            
+            
             super.Lee(gY, gX, playerY, playerX);
         }
 
@@ -213,12 +214,12 @@ public class Inamic extends Npc {
             }
             prevsx = Scroller.scrolledX;
             prevsy = Scroller.scrolledY;
-            // lovitSabie();
-            // lovitLaser();
+            
             if (dist >= 10) {
                 dist = 0;
                 pasi--;
             }
+            
             gY = (worldY + Scroller.scrolledY) / super.rez;
             if ((worldY + Scroller.scrolledY) % super.rez > 0) {
                 gY++;
@@ -228,7 +229,7 @@ public class Inamic extends Npc {
                 gX++;
             }
 
-            //if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=-2;}
+            if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=-2;}
             //
         }
     }
@@ -274,22 +275,7 @@ public class Inamic extends Npc {
             }
         }
 
-        if (isTouching(Sabie.class)) {
-            timpSab++;//cat timp ating ating asteroidul
-            if (timpSab >= 16) {
-                health(Sabie.damage);
-                if (!(traiesc())) {
-                    super.gif = "death";
-                    npcImg = directie.get(super.gif);
-                    mort = true;
-                }
-                timpSab = 0;
-            }
-
-        } else if (timpSab > 0) {
-            timpSab--;//modific timpul daca nu 
-        }
-
+  
     }
 
     protected void lovitLaser() {
@@ -358,6 +344,11 @@ public class Inamic extends Npc {
     protected boolean traiesc() {
         return hp > 0;
     }
+    
+    
+    
+    
+    
       public long getpX() {
         return worldX;
     }

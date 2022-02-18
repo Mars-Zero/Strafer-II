@@ -23,8 +23,8 @@ public class Npc extends Movers {
     int scrolledY;
     Scroller scroller;
 
-    protected final int rez = 64;
-    final int dMax = 16;
+    protected final int rez = 64;           //pixeli intr o celula
+    final int searchDistanceMax = 32;       //la cate celule distanta sa caute maxim
 
     protected String gif = "Idle";
     //protected static String[] ord=new String[121001];
@@ -35,11 +35,11 @@ public class Npc extends Movers {
     protected int worldY;//pozitia pe Y pe mapa
     protected int prevsx = Scroller.scrolledX;
     protected int prevsy = Scroller.scrolledY;
-  
-    protected int[][] matElem = new int[WorldData.maxLengthWorld+1][WorldData.maxWidthWorld+1]; //matricea copiata din nivelx
-    
-    protected int sectiune=-1;
-    
+
+    protected int[][] matElem = new int[WorldData.maxLengthWorld + 1][WorldData.maxWidthWorld + 1]; //matricea copiata din nivelx
+
+    protected int sectiune = -1;
+
     protected int getScrollX() {
         int nx = this.getX();
         return nx;
@@ -59,8 +59,8 @@ public class Npc extends Movers {
         scroller = scrl;
         this.scrolledX = scroller.getScrolledX();
         this.scrolledY = scroller.getScrolledY();
-        
-       }
+
+    }
 
     protected boolean checkPlayerInChunck() {
         if (getObjectsInRange(1024, Player.class) != null) {
@@ -83,18 +83,22 @@ public class Npc extends Movers {
 
     protected void Lee(int startL, int startC, int x, int y) {
         //aici trebuie pusa matricea din WorldData
-        if(sectiune==-1){
-            sectiune=WorldData.getWorldSectionShort((~((PlayWorld)getWorld()).getWorldListener().getWorldSection()));
+        if (sectiune == -1) {
+            sectiune = WorldData.getWorldSectionShort((~((PlayWorld) getWorld()).getWorldListener().getWorldSection()));
         }
-        int[][] mat = new int[WorldData.maxLengthWorld+1][WorldData.maxWidthWorld+1];
+        if (WorldData.worldSectionMatrix[WorldData.getWorldSectionShort(sectiune)][x][y] == -1) {
+            gasit = false;
+            return;
+        }
+
+        int[][] mat = new int[WorldData.maxLengthWorld + 1][WorldData.maxWidthWorld + 1];
         for (int i = 0; i < WorldData.maxLengthWorld; i++) {
             for (int j = 0; j < WorldData.maxWidthWorld; j++) {
                 mat[i][j] = WorldData.worldSectionMatrix[WorldData.getWorldSectionShort(sectiune)][i][j];
-                //System.out.println(WorldData.getWorldSectionShort(sectiune));
-               
             }
-         
+
         }
+
         ord.clear();
 
         final int[] dy = {1, -1, 0, 0, -1, 1, 1, -1};
@@ -111,11 +115,12 @@ public class Npc extends Movers {
         }
 
         gasit = false;
+        int d;
         while (st <= dr) {
             Pozitie start = v.get(st);
             int l = start.lin;
             int c = start.col;
-            if (start.dist < dMax) {
+            if (start.dist < searchDistanceMax) {
                 for (int i = 0; i < 8; i++) {
 
                     if (mat[l + dx[i]][c + dy[i]] == 0 && l + dx[i] > 0 && c + dy[i] > 0 && l + dx[i] < 1000 && c + dy[i] < 1000) {
@@ -136,6 +141,9 @@ public class Npc extends Movers {
                     break;
                 }
                 st++;
+            } else {
+                gasit = false;
+                return;
             }
 
         }
@@ -176,18 +184,12 @@ public class Npc extends Movers {
         }
 
     }
-    
-    
-    //
-    
-    //
-    
-    //
-    
-    //
-    
-    //
 
+    //
+    //
+    //
+    //
+    //
     ///knockback
     protected double viteza_frame_x;
     protected double viteza_frame_y;
@@ -206,9 +208,14 @@ public class Npc extends Movers {
         double delta_x = this.getX() / 64.0 - attacker.getX() / 64.0;                            // impartit la 64 pt convert  din pixeli in metri
         double delta_y = this.getY() / 64.0 - attacker.getY() / 64.0;
 
-        sens_x=1;sens_y=1;
-        if(delta_x<0)sens_x=-1;
-        if(delta_y<0)sens_y=-1;
+        sens_x = 1;
+        sens_y = 1;
+        if (delta_x < 0) {
+            sens_x = -1;
+        }
+        if (delta_y < 0) {
+            sens_y = -1;
+        }
 
         double grade_attack = Math.toDegrees(Math.atan2(delta_y, delta_x));                  //alfa
 
@@ -231,8 +238,8 @@ public class Npc extends Movers {
 
         double fractiune = 60 / (timp * 1000);
 
-        viteza_frame_x = sens_x*2 * acceleratie_this * distance_added * fractiune;//*64;           //distanta cu care e miscat pe fiecare frame pana in pozitia de knockback
-        viteza_frame_y = sens_y*2 * acceleratie_this * distance_added * fractiune;
+        viteza_frame_x = sens_x * 2 * acceleratie_this * distance_added * fractiune;//*64;           //distanta cu care e miscat pe fiecare frame pana in pozitia de knockback
+        viteza_frame_y = sens_y * 2 * acceleratie_this * distance_added * fractiune;
     }
 
     public void act() {

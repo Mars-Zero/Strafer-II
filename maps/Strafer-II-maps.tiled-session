@@ -5,9 +5,9 @@
     },
     "activeFile": "map11.tmx",
     "expandedProjectPaths": [
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
+        ".",
         "tilesets",
-        "."
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
     "exportAsImage.useCurrentScale": true,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.2,
+            "scale": 0.125,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 4095,
-                "y": 4092.5
+                "x": 1216,
+                "y": 2016
             }
         },
         "map11.tmx#Terrain": {
@@ -292,11 +292,11 @@
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.0625,
+            "scale": 0.03125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4096,
-                "y": 4104
+                "x": -4992,
+                "y": 3120
             }
         },
         "map12.tmx#Terrain": {
@@ -351,11 +351,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.03,
+            "scale": 0.03125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4066.6666666666642,
-                "y": 4116.666666666666
+                "x": -13184,
+                "y": 3120
             }
         },
         "map13.tmx#Terrain": {
@@ -410,11 +410,11 @@
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 0.03,
+            "scale": 0.03125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4066.6666666666642,
-                "y": 4116.666666666666
+                "x": 3200,
+                "y": -5072
             }
         },
         "map21.tmx#Terrain": {
@@ -469,11 +469,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 0.03,
+            "scale": 0.03125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4066.6666666666642,
-                "y": 4116.666666666666
+                "x": -4992,
+                "y": -5072
             }
         },
         "map22.tmx#Terrain": {
@@ -528,11 +528,11 @@
             "scaleInDock": 1
         },
         "map23.tmx": {
-            "scale": 0.0625,
+            "scale": 0.03125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4064,
-                "y": 4104
+                "x": -13184,
+                "y": -5072
             }
         },
         "map23.tmx#Terrain": {

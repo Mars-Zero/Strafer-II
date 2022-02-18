@@ -11,16 +11,20 @@ abstract class Loader {
         int[][] mat = new int[WorldData.maxLengthWorld][WorldData.maxWidthWorld];
         try {
             Scanner scan = new Scanner(fin);
+
             for (int i = 0; i < WorldData.maxLengthWorld; i++) {
 
                 for (int j = 0; j < WorldData.maxWidthWorld; j++) {
-                    int x = scan.nextInt();
+                    System.out.format("%d ", mat[i][j]=scan.nextInt());
 
                 }
 
-//&& scan.hasNextInt()
             }
-            System.out.println();
+
+            /*while(scan.hasNext()){
+                String x=scan.next();
+                System.out.println(x);
+            }*/
             scan.close();
 
         } catch (InputMismatchException e) {
