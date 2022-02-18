@@ -25,6 +25,14 @@ public class Picture extends Menu {
         
     }
 
+     public Picture(GreenfootImage image) {
+        added=false;
+        
+        img = image;
+        setImage(img);
+        moveable=false;
+    }
+    
     public void act() {
         if(!added){
             added=true;

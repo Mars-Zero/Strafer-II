@@ -15,16 +15,13 @@ abstract class Loader {
             for (int i = 0; i < WorldData.maxLengthWorld; i++) {
 
                 for (int j = 0; j < WorldData.maxWidthWorld; j++) {
-                    System.out.format("%d ", mat[i][j]=scan.nextInt());
-
+                    //System.out.format("%d ", mat[i][j]=scan.nextInt());
+                     mat[i][j]=scan.nextInt();
                 }
 
             }
 
-            /*while(scan.hasNext()){
-                String x=scan.next();
-                System.out.println(x);
-            }*/
+           
             scan.close();
 
         } catch (InputMismatchException e) {

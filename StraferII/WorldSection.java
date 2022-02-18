@@ -9,12 +9,14 @@ public class WorldSection extends Actor
    
     public void initWorldSection11() {
         WorldData.visitedWorldSections[1][1] = true;
+        
+        
         world.initObject(new Fps(), 150, 50);
-        
-        
-        
-        
-        
+       
+        Stroke stroke=new Stroke(scroller,500,200,player);
+         world.initObject(stroke,500,200);
+         
+         
         /// Npcs
         world.initObject(new Keanu(world, scroller, "Keanu", 1), 1000, 300);
 
