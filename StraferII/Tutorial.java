@@ -1,20 +1,23 @@
 
 import greenfoot.*;
-
+ /**
+     * O clasa pentru meniurile de tutorial, folosita si pentru cutsceneuri
+     */
 public class Tutorial extends Menu {
 
     private int nrSlide;
     private int nrSlideMax;
-    
+
     /**
-     * Numele folderului in care sunt slideurile unui tutorial aferent adica numele tutorialului
+     * Numele folderului in care sunt slideurile unui tutorial aferent adica
+     * numele tutorialului
      */
-    private String img;       
-    
+    private String img;
+
     /**
      * Tipul tutorialului
      */
-    private String tip;       
+    private String tip;
 
     /**
      * Aici scrii comentariul@Stoic
@@ -75,20 +78,23 @@ public class Tutorial extends Menu {
         displayPicture();
     }
 
-    public String toString(){
-        String str=tip+" "+img+" "+nrSlideMax;
+    public String toString() {
+        String str = tip + " " + img + " " + nrSlideMax;
         return str;
     }
-    
-    public void updateImage() {
-        picture.setImageName("UI/tutorial/tutorialSlides/" + tip + "/" + img + "/" + tip + "#" + "tutorial" + img + nrSlide + ".png");
 
+    public void updateImage() {
+        if (tip == "Cutscene") {
+             picture.setImageName("cutscene/"+img+".png");
+        } else {
+            picture.setImageName("UI/tutorial/tutorialSlides/" + tip + "/" + img + "/" + tip + "#" + "tutorial" + img + nrSlide + ".png");
+        }
     }
 
-       public int getNrSlideMax() {
+    public int getNrSlideMax() {
         return nrSlideMax;
     }
-    
+
     public int getNrSlide() {
         return nrSlide;
     }

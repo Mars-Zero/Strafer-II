@@ -1,6 +1,7 @@
-Numele questului
-1Keanu
+Numele questului 
+1Keanu 
 Vorbeste cu Keanu
 2Combat
 Distruge goblinii
 3Sabie
+Ia sabia

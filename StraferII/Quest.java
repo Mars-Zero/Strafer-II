@@ -44,7 +44,7 @@ public class Quest extends EventSystem{
                        eventQueue.add(new Event(cod,str));
                        System.out.println(cod);
                         System.out.println(str);
-                       val=0;
+                       val=-1;
                     }
                     val++;
                 }

@@ -402,6 +402,10 @@ public class Player extends Jucator {
     boolean firstCycle = false;
 
     public void die() {
+        if(hp>=hpMax){//sa nu aiba mai multa
+            hp=hpMax;
+             getHealthBar().setValue(getHealthBar().getMaximumValue());
+        }
         if (hp <= 0) {
             getHealthBar().setValue(getHealthBar().getMinimumValue());
             inViata = false;
