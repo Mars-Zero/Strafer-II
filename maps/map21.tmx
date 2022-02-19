@@ -3,19 +3,19 @@
  <tileset firstgid="1" name="dungeon3" tilewidth="64" tileheight="64" tilecount="1024" columns="32">
   <image source="../../Assets/tiles/w68P0b.png" width="2048" height="2048"/>
  </tileset>
- <tileset firstgid="1025" name="detoate1" tilewidth="64" tileheight="64" tilecount="1197" columns="9">
+ <tileset firstgid="1025" name="detoate1" tilewidth="64" tileheight="64" tilecount="1729" columns="9">
   <image source="../../Assets/tiles/[Base]BaseChip_pipo.png" width="576" height="8512"/>
  </tileset>
- <tileset firstgid="2222" name="detoate2" tilewidth="64" tileheight="64" tilecount="2016" columns="32">
+ <tileset firstgid="2754" name="detoate2" tilewidth="64" tileheight="64" tilecount="2016" columns="32">
   <image source="../../Assets/tiles/d2mslkf-666c1dfd-c157-4f6a-8645-577e28769977.png" width="2048" height="4032"/>
  </tileset>
- <tileset firstgid="4238" name="dungeon1" tilewidth="64" tileheight="64" tilecount="640" columns="32">
+ <tileset firstgid="4770" name="dungeon1" tilewidth="64" tileheight="64" tilecount="640" columns="32">
   <image source="../../Assets/tiles/mainlevbuild.png" width="2048" height="1280"/>
  </tileset>
- <tileset firstgid="4878" name="dungeon2" tilewidth="64" tileheight="64" tilecount="1280" columns="32">
+ <tileset firstgid="5410" name="dungeon2" tilewidth="64" tileheight="64" tilecount="1280" columns="32">
   <image source="../../Assets/tiles/Dungeon_Tileset.png" width="2048" height="2560"/>
  </tileset>
- <tileset firstgid="6158" name="grass1" tilewidth="64" tileheight="64" tilecount="588" columns="28">
+ <tileset firstgid="6690" name="grass1" tilewidth="64" tileheight="64" tilecount="588" columns="28">
   <image source="../../Assets/tiles/9dcYZt.png" width="1800" height="1400"/>
   <tile id="150">
    <objectgroup draworder="index" id="2">
@@ -28,10 +28,10 @@
    </objectgroup>
   </tile>
  </tileset>
- <tileset firstgid="6746" name="grass2" tilewidth="64" tileheight="64" tilecount="64" columns="8">
+ <tileset firstgid="7278" name="grass2" tilewidth="64" tileheight="64" tilecount="64" columns="8">
   <image source="../../Assets/tiles/TX Tileset Grass.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="6810" name="grass3" tilewidth="64" tileheight="64" tilecount="252" columns="12">
+ <tileset firstgid="7342" name="grass3" tilewidth="64" tileheight="64" tilecount="252" columns="12">
   <image source="../../Assets/tiles/TilesetGrass/overworld_tileset_grass.png" width="768" height="1344"/>
   <wangsets>
    <wangset name="Unnamed Set" type="corner" tile="-1">
@@ -52,13 +52,13 @@
    </wangset>
   </wangsets>
  </tileset>
- <tileset firstgid="7062" name="perete" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="7594" name="perete" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../../Assets/tiles/perete.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="7063" name="snow1" tilewidth="64" tileheight="64" tilecount="600" columns="24">
+ <tileset firstgid="7595" name="snow1" tilewidth="64" tileheight="64" tilecount="600" columns="24">
   <image source="../../Assets/tiles/H7T6Z3.png" width="1536" height="1600"/>
  </tileset>
- <tileset firstgid="7663" name="Terrain" tilewidth="64" tileheight="64" tilecount="1024" columns="32">
+ <tileset firstgid="8195" name="Terrain" tilewidth="64" tileheight="64" tilecount="1024" columns="32">
   <image source="../../Assets/tiles/LPC_Terrain/terrain.png" width="2048" height="2048"/>
   <wangsets>
    <wangset name="Terrains" type="corner" tile="-1">
@@ -528,7 +528,7 @@
    </wangset>
   </wangsets>
  </tileset>
- <tileset firstgid="8687" name="apa1" tilewidth="64" tileheight="64" tilecount="256" columns="16">
+ <tileset firstgid="9219" name="apa1" tilewidth="64" tileheight="64" tilecount="256" columns="16">
   <image source="../../Assets/tiles/xyubPB.png" width="1024" height="1024"/>
   <wangsets>
    <wangset name="apa" type="corner" tile="17">
@@ -581,19 +581,19 @@
    </wangset>
   </wangsets>
  </tileset>
- <tileset firstgid="8943" name="decor1" tilewidth="64" tileheight="64" tilecount="256" columns="16">
+ <tileset firstgid="9475" name="decor1" tilewidth="64" tileheight="64" tilecount="256" columns="16">
   <image source="../../Assets/tiles/TX Props.png" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="9199" name="pereteS" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="9731" name="pereteS" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../../Assets/tiles/pereteS.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="9200" name="pereteW" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="9732" name="pereteW" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../../Assets/tiles/pereteW.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="9201" name="pereteA" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="9733" name="pereteA" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../../Assets/tiles/pereteA.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="9202" name="pereteD" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="9734" name="pereteD" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../../Assets/tiles/pereteD.png" width="64" height="64"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="128" height="128" offsetx="-7.08525" offsety="2.0913">

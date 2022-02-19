@@ -82,6 +82,35 @@ void matrixGen(std::unique_ptr<tson::Map>& map, short int mapMatrix[10001][10001
 
             }
         }
+        layer = map->getLayer("WallLayer2");
+
+        if (layer->getType() == tson::LayerType::TileLayer) {
+            width = map->getSize().x;
+            height = map->getSize().y;
+
+            //pos = position in tile units
+            for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
+            {
+                tson::Tileset* tileset = tileObject.getTile()->getTileset();
+                //std::cout << tileset->getName() << " ";
+
+                tson::Vector2f position = tileObject.getPosition();
+                int pX = position.x;
+                int pY = position.y;
+                //std::cout << position.x << " " << position.y << '\n';
+
+                if (tileset->getName() == "perete" ||
+                    tileset->getName() == "pereteW" ||
+                    tileset->getName() == "pereteA" ||
+                    tileset->getName() == "pereteS" ||
+                    tileset->getName() == "pereteD"
+                    ) {
+                    maptrix::mapMatrix[pY / 64][pX / 64] = -1;
+                }
+
+
+            }
+        }
 
     }
 
@@ -134,16 +163,16 @@ void wallsGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout) {
                 int pY = position.y;
 
                 if (tileset->getName() == "pereteW") {
-                    wout << R"(world.initObject(new PereteInvizibil("W", 1,"mic"), )" << pX << ", " << pY-24 << ");\n";
+                    wout << R"(world.initObject(new PereteInvizibil("W", 1,"mic"), )" << pX + 32 << ", " << pY + 8 << ");\n";
                 }
                 if (tileset->getName() == "pereteA") {
-                    wout << R"(world.initObject(new PereteInvizibil("A", 1,"mic90"), )" << pX-24 << ", " << pY << ");\n";
+                    wout << R"(world.initObject(new PereteInvizibil("A", 1,"mic90"), )" << pX + 8 << ", " << pY + 32 << ");\n";
                 }
                 if (tileset->getName() == "pereteS") {
-                    wout << R"(world.initObject(new PereteInvizibil("S", 1,"mic"), )" << pX << ", " << pY+24 << ");\n";
+                    wout << R"(world.initObject(new PereteInvizibil("S", 1,"mic"), )" << pX + 32 << ", " << pY + 56 << ");\n";
                 }
                 if (tileset->getName() == "pereteD") {
-                    wout << R"(world.initObject(new PereteInvizibil("D", 1,"mic90"), )" << pX+24 << ", " << pY << ");\n";
+                    wout << R"(world.initObject(new PereteInvizibil("D", 1,"mic90"), )" << pX + 56 << ", " << pY + 32 << ");\n";
                 }
 
 
@@ -152,6 +181,39 @@ void wallsGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout) {
 
             }
         }
+        layer = map->getLayer("WallLayer2"); ///walls on floor 1
+
+        if (layer->getType() == tson::LayerType::TileLayer) {
+
+            //pos = position in tile units
+            for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
+            {
+                tson::Tileset* tileset = tileObject.getTile()->getTileset();
+
+                tson::Vector2f position = tileObject.getPosition();
+                int pX = position.x;
+                int pY = position.y;
+
+                if (tileset->getName() == "pereteW") {
+                    wout << R"(world.initObject(new PereteInvizibil("W", 1,"mic"), )" << pX+32 << ", " << pY +8 << ");\n";
+                }
+                if (tileset->getName() == "pereteA") {
+                    wout << R"(world.initObject(new PereteInvizibil("A", 1,"mic90"), )" << pX +8 << ", " << pY+32 << ");\n";
+                }
+                if (tileset->getName() == "pereteS") {
+                    wout << R"(world.initObject(new PereteInvizibil("S", 1,"mic"), )" << pX+32 << ", " << pY + 56 << ");\n";
+                }
+                if (tileset->getName() == "pereteD") {
+                    wout << R"(world.initObject(new PereteInvizibil("D", 1,"mic90"), )" << pX + 56 << ", " << pY+32 << ");\n";
+                }
+
+
+                /// world.initObject(new PereteInvizibil("W", 1, "mic"), i, 16);
+                /// world.initObject(new PereteInvizibil("A", 1, "mic90"), i, 16);
+
+            }
+        }
+
 
     }
 }
