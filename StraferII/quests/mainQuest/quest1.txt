@@ -1,7 +1,12 @@
 Numele questului 
+1 Cutscene imagine 3
+*
 1Keanu 
 Vorbeste cu Keanu
+1 120 120
 2Combat
 Distruge goblinii
+1 120 120
 3Sabie
 Ia sabia
+1 120 120

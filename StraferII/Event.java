@@ -14,7 +14,33 @@ public class Event extends EventSystem{
      public String getEventCode() {
         return eventCode;
     }
+    
+    /**
+     * The coordinates of this event
+     */
+    private int worldSection,positionX,positionY;
+    public int getWorldSection() {
+		return worldSection;
+	}
+    public void setWorldSection(int worldSection) {
+		this.worldSection = worldSection;
+    }
 
+	public int getPositionX() {
+		return positionX;
+	}
+
+	public void setPositionX(int positionX) {
+		this.positionX = positionX;
+	}
+
+	public int getPositionY() {
+		return positionY;
+	}
+
+	public void setPositionY(int positionY) {
+		this.positionY = positionY;
+	}
     /**
       * The type of event
       * 1- event thrown by a dialogue with some npc
@@ -31,10 +57,13 @@ public class Event extends EventSystem{
       * A constructor used to load an event by using directly it's code
       * @param eventCode
       */
-     public Event(String eventCode,String toDo)
+     public Event(String eventCode,String toDo,int worldSec,int pX,int pY)
      {
          this.action=toDo;
          this.eventCode=eventCode;
+         this.worldSection=worldSec;
+         this.positionX=pX;
+         this.positionY=pY;
      }
      
      public String toDo(){

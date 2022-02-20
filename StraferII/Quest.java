@@ -13,9 +13,20 @@ public class Quest extends EventSystem{
     Queue<Event> eventQueue= new LinkedList<>();
     
     /**
+     * The action queue represents what actions need to be taken
+     * based on the event present
+     */
+    Queue<EventForcedAction> actionsQueue= new LinkedList<>();
+    
+    /**
      * The name of the quest
      */
     String questName;
+    
+    /**
+     * The number of the current event in the original queue
+     */
+    private int currentEventNumber=1;
     
      /**
      * This method loads the whole quest from a file
@@ -29,26 +40,52 @@ public class Quest extends EventSystem{
             int val=0;
             String action;
             String cod=null;
+            String displayString=null;
+            boolean eventsNeedToBeProccessed=false;
             while (fin.hasNext()) {
                 String str = fin.nextLine();
-                if(n==0)
+                if(str.equalsIgnoreCase("*"))
                 {
-                    this.questName=str;
-                    n++;
+                    eventsNeedToBeProccessed=true;
                 }
                 else{
-                    if(val==0){
-                        cod=str;
+                    if(!eventsNeedToBeProccessed)
+                    {
+                        if(n==0)
+                        {
+                            this.questName=str;
+                            n++;
+                        }
+                        else{
+                           String[] arr=str.split(" ");  
+                           int numberEvent=Integer.parseInt(arr[0]);
+                           int numberSlides=Integer.parseInt(arr[3]);
+                           EventForcedAction actioin=new EventForcedAction(numberEvent,new Tutorial(arr[1],
+                           arr[2],numberSlides,false));
+                        }
                     }
                     else{
-                       eventQueue.add(new Event(cod,str));
+                        if(val==0){
+                        cod=str;
+                        }
+                         else if(val==1){
+                           displayString=str;
+                      
+                        }
+                        else{
+                       String[] arr=str.split(" ");
+                       int ws=Integer.parseInt(arr[0]);
+                       int pX=Integer.parseInt(arr[1]);
+                       int pY=Integer.parseInt(arr[2]);
+                       eventQueue.add(new Event(cod,displayString,ws,pX,pY));
                        System.out.println(cod);
-                        System.out.println(str);
+                       System.out.println(str);
                        val=-1;
+                        }
+                        val++;
                     }
-                    val++;
-                }
               
+                }
             }
            fin.close();
         } catch (Exception e) {
@@ -61,6 +98,7 @@ public class Quest extends EventSystem{
         if(eventQueue.peek().isEqual(event))
         {
             eventQueue.poll();
+            currentEventNumber++;
             return true;
         }
         return false;
