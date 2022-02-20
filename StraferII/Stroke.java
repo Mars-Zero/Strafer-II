@@ -9,10 +9,15 @@ public class Stroke extends Inamic {
 
     public static int speed = 6;
 
-    int hp = 10000;
+    int hp = 1000;
+    int hpMax = 1000;
 
-    private long timpSab = 0;
-    private long timpBolt = 0;
+    public HealthBar healthBar;
+    Picture healthBarImg;
+    private Color cSQ = new Color(41, 77, 66);
+    private boolean addedHealthBar = false;
+
+    private long timpLaser = 0;
 
     Animation animation;
     boolean startedAnimation = false;
@@ -28,13 +33,11 @@ public class Stroke extends Inamic {
         directie.put("S", new GifImage("npc/inamic/stroke/stroke_m.gif"));
         directie.put("idle", new GifImage("npc/inamic/stroke/stroke_idle.gif"));
 
+        prepareHealthBar();
+
         changeAnimation();
         animation.setActiveState(false);
 
-    }
-
-    protected void atac() {
-        super.atac();
     }
 
     protected void addLasers() {
@@ -45,18 +48,18 @@ public class Stroke extends Inamic {
     }
 
     protected void atacLaser() {
-        if (!usedItem) {
+       
             addLasers();
-        }
+     
 
     }
-    
-    protected void atacMelee(){
+
+    protected void atacMelee() {
         //quierres
         super.atac();
     }
 
-     protected void lovitSabie() {
+    protected void lovitSabie() {
         if (isTouching(Sabie.class)) {
             timpSab++;
             if (timpSab >= 6) {
@@ -83,6 +86,7 @@ public class Stroke extends Inamic {
 
     private void takeDamage(int dmg) {
         hp -= dmg;
+        healthBar.setValue(this.hp);
     }
 
     private void die() {
@@ -109,6 +113,8 @@ public class Stroke extends Inamic {
                     animation.run();
                 }
                 if (startedAnimation && !animation.isActive()) {
+                    getWorld().removeObject(healthBar);
+                    getWorld().removeObject(healthBarImg);
                     getWorld().removeObject(this);
                 }
             } else {
@@ -144,8 +150,7 @@ public class Stroke extends Inamic {
                     }///////////////////////////////////////////////{
                     else {
                         //daca e in range sa nu l caute in toata lumea
-                        List players = getWorld().getObjects(Player.class);
-                        Player player = (Player) players.get(0);
+
                         int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
                         if (deltaPGX < 0) {
                             deltaPGX *= (-1);
@@ -154,8 +159,21 @@ public class Stroke extends Inamic {
                         if (deltaPGY < 0) {
                             deltaPGY *= (-1);
                         }
-                        if (deltaPGX <= 600 && deltaPGY <= 400) {
-                            gaseste();//cauta playerul
+                        if (deltaPGX <= 800 && deltaPGY <= 600) {//e in range
+
+                            atac();//cauta playerul
+                            if (!addedHealthBar) {
+                                getWorld().addObject(healthBar, WorldData.menuX + 40, 544);
+                                healthBar.setValue(this.hp);
+                                getWorld().addObject(healthBarImg, WorldData.menuX, 540);
+                                addedHealthBar = true;
+                            }
+                        } else {
+                            if (addedHealthBar) {
+                                addedHealthBar = false;
+                                getWorld().removeObject(healthBar);
+                                getWorld().removeObject(healthBarImg);
+                            }
                         }
                         int difpx = Scroller.scrolledX - prevsx;
                         int difpy = Scroller.scrolledY - prevsy;
@@ -168,6 +186,7 @@ public class Stroke extends Inamic {
 
                     die();
                 }
+
             }
             if (animation.isActive()) {
                 animation.run();
@@ -177,6 +196,25 @@ public class Stroke extends Inamic {
             }
         }
 
+    }
+
+    protected void atac() {
+      
+        if (hp%3==0) {
+            //atac cu lee
+            gaseste();
+        } else {
+
+            if (timpLaser > 20) {
+                super.gif = "idle";
+                npcImg = directie.get(super.gif);
+                getWorld().removeObjects(getWorld().getObjects(LaserStroke.class));
+                atacLaser();
+                timpLaser = 0;
+
+            }
+            timpLaser++;
+        } 
     }
 
     public Player getPlayer() {
@@ -189,6 +227,18 @@ public class Stroke extends Inamic {
 
     public int getOchiy() {
         return ochiy;
+    }
+
+    private void prepareHealthBar() {
+        addedHealthBar = false;
+        healthBar = new HealthBar("", "", this.hpMax, this.hpMax);
+        healthBar.setSafeColor(cSQ);
+        healthBar.setDangerColor(new Color(41, 77, 66));
+        healthBar.setBarWidth(567);
+        healthBar.setBarHeight(8);
+        healthBar.setTextColor(new Color(155,173,183));
+        healthBarImg = new Picture("npc/inamic/stroke/healthBar.png", true);
+
     }
 
     private void changeAnimation() {

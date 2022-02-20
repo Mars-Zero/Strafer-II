@@ -507,8 +507,8 @@ public class Player extends Jucator {
         return hasObjective;
     }
 
-    public HealthBar getHealthBar() {
-        return (HealthBar) (getWorld().getObjects(HealthBar.class).get(0));
+    public HealthBarPlayer getHealthBar() {
+        return (HealthBarPlayer) (getWorld().getObjects(HealthBarPlayer.class).get(0));
     }
 
     public boolean isInViata() {

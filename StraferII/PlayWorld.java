@@ -15,7 +15,7 @@ public MainStoryline mainStoryline;
 
     Player player;
 
-    public HealthBar healthBar;
+    public HealthBarPlayer healthBar;
     private boolean addedHealthBar = false;
 
     public PlayWorld() {
@@ -64,7 +64,7 @@ public MainStoryline mainStoryline;
     Picture barBack=new Picture("UI/hud/healthBar.png");
     private void addHealthBar() {
         
-        healthBar = new HealthBar("", "", player.getHp(), player.getHpMax());
+        healthBar = new HealthBarPlayer("", "", player.getHp(), player.getHpMax());
         
         Color colorSafeHealth = new Color(95, 205, 228), colorDangerHealth = new Color(222, 93, 18);
         healthBar.setSafeColor(colorSafeHealth);

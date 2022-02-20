@@ -69,18 +69,20 @@ public class WorldListener extends WorldSection {
      */
     void clearWorldObjects() {
         List<Actor> list = world.getObjects(Actor.class);
+        
         for (Actor actor : list) {
-            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBar || actor instanceof Picture || actor instanceof Buton) {
+            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBarPlayer || actor instanceof Picture || actor instanceof Buton) {
             } else {
                 world.removeObject(actor);
+                
             }
         }
-
+       
     }
 
     /*
     *pune playerul in functie de directie acolo unde trebuie ca sa fie in continuarea sectiunii din care pleaca
-     */
+    */
     int relocateX = 60, relocateY = 60;
 
     void relocatePlayer() {

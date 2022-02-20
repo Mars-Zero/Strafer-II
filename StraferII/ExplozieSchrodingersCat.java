@@ -18,6 +18,7 @@ public class ExplozieSchrodingersCat extends NpcItem {
                 if (!gaveDamage) {
                     player.takeDamage(player.getHp()/2);
                     gaveDamage = true;
+                    getWorld().removeObject(this);
                 }
             }
         }

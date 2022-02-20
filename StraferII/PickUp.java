@@ -1,19 +1,20 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
-/**
- * Write a description of class PickUp here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class PickUp extends Item
-{
-    /**
-     * Act - do whatever the PickUp wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+public class PickUp extends Item{
+   
+    protected boolean picked=false;
+    
+    public void act() {
+        
+    }
+    
+    protected void pick(){
+        if(isTouching(Player.class)){
+            picked=true;
+        }
+    }
+    
+    protected Player getPlayer(){
+        return (Player)(getWorld().getObjects(Player.class).get(0));
+    }
 }

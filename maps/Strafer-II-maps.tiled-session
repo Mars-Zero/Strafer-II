@@ -6,8 +6,8 @@
     "activeFile": "map11.tmx",
     "expandedProjectPaths": [
         "tilesets",
-        "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
-        "."
+        ".",
+        "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
     "exportAsImage.useCurrentScale": true,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.0625,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 7848,
-                "y": 12536
+                "x": 9971.212121212122,
+                "y": 6756.060606060606
             }
         },
         "map11.tmx#Terrain": {
@@ -293,10 +293,10 @@
         },
         "map12.tmx": {
             "scale": 0.0625,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": -72,
-                "y": 7208
+                "x": 488,
+                "y": 9800
             }
         },
         "map12.tmx#Terrain": {
@@ -354,8 +354,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -8168,
-                "y": 10424
+                "x": 4072,
+                "y": 4104
             }
         },
         "map13.tmx#Terrain": {
@@ -413,8 +413,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3000,
-                "y": -3048
+                "x": 4072,
+                "y": 4104
             }
         },
         "map21.tmx#Terrain": {
@@ -472,8 +472,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 8,
-                "y": 2200
+                "x": 4104,
+                "y": 4104
             }
         },
         "map22.tmx#Terrain": {
@@ -532,8 +532,8 @@
             "scale": 0.015625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -26912,
-                "y": 3360
+                "x": 4064,
+                "y": 4128
             }
         },
         "map23.tmx#Terrain": {

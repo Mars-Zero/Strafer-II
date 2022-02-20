@@ -7,3 +7,7 @@ WS13:0
 WS21:1
 WS22:0
 WS23:0
+Item:sword
+Item:lantern
+Item:portalgun
+Item:laser

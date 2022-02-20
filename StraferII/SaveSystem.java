@@ -77,8 +77,8 @@ abstract class SaveSystem {
     public static void load(int saveNumber, Player playerref) {
         File director = new File(SaveSystem.directoryName);
         File file = new File(director.getAbsoluteFile(), "save" + saveNumber + ".txt");
-        List<Item> iteme = new ArrayList<>();
-        //List<Tutorial> tutor = new ArrayList<>();
+        
+        //
 
         Player player = playerref;
        
@@ -91,8 +91,35 @@ abstract class SaveSystem {
                 String str = fin.nextLine();
                 String tip = getTipString(str);
                 if (tip.equalsIgnoreCase("Item:")) {
-                    //Item itm = new Item(getContentString(str));
-                    //iteme.add(itm);
+                    String itm = new String(getContentString(str));
+                    WorldData.items.add(itm);
+                    switch(itm){
+                        case "sword":{
+                            WorldData.hasSword=true;
+                            break;
+                        }
+                        case "laser":{
+                            WorldData.hasLaser=true;
+                            break;
+                        }
+                        case "portalgun":{
+                            WorldData.hasPortalGun=true;
+                            break;
+                        }
+                        case "icelock":{
+                            WorldData.hasIceLock=true;
+                            break;
+                        }
+                        case "blackhole":{
+                            WorldData.hasBlackHole=true;
+                            break;
+                        }
+                        case "lantern":{
+                            WorldData.hasLantern=true;
+                            break;
+                        }
+                        default:{}
+                    }
                 } else if (tip.equalsIgnoreCase("Tutorial:")) {
 
                     String[] arr = getContentString(str).split(" ");
