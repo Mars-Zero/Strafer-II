@@ -11,3 +11,4 @@ Item:sword
 Item:lantern
 Item:portalgun
 Item:laser
+Item:icelock

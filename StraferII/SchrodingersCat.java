@@ -10,8 +10,9 @@ public class SchrodingersCat extends Goblin {
 
     boolean exploding;
     boolean inBox;
+    boolean metPlayer;
     int inBoxTime;
-    ExplozieSchrodingersCat explozie=new ExplozieSchrodingersCat();
+    ExplozieSchrodingersCat explozie = new ExplozieSchrodingersCat();
 
     public SchrodingersCat(Scroller scrl, int x, int y) {
         super(scrl, x, y);
@@ -27,19 +28,19 @@ public class SchrodingersCat extends Goblin {
         changedAnimation = false;
 
         inBox = false;
-        mort=false;
-
+        mort = false;
+        metPlayer = false;
     }
 
     private void closeBox() {
-        if (!inBox) {
+        if (!inBox && metPlayer) {
             changeAnimation("Enter", 10, 5);
             inBox = true;
         }
     }
 
     private void openBox() {
-        if (inBox) {
+        if (inBox && metPlayer) {
             int seed = Greenfoot.getRandomNumber(2);
 
             switch (seed) {
@@ -58,20 +59,23 @@ public class SchrodingersCat extends Goblin {
     }
 
     private void explode() {
-        changeAnimation("Explode", 16, 6);
-        getWorld().addObject(explozie,this.getX(),this.getY());
+        if (metPlayer) {
+            changeAnimation("Explode", 16, 6);
+            getWorld().addObject(explozie, this.getX(), this.getY());
+
+        }
     }
 
     int cntAs = 0;//engings in animation
 
     private void checkAction() {
-        if (!animation.isActive()) {
+        if (!animation.isActive() && metPlayer) {
             changedAnimation = false;
             switch (animationName) {
                 case "Explode": {
                     mort = true;
-                    
-                    if(explozie!=null){
+
+                    if (explozie != null) {
                         getWorld().removeObject(explozie);
                     }
                     getWorld().removeObject(this);
@@ -90,7 +94,6 @@ public class SchrodingersCat extends Goblin {
         }
     }
 
-
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
@@ -105,7 +108,6 @@ public class SchrodingersCat extends Goblin {
             }
 
             if (mort == true) {
-                
 
             } else {
 
@@ -147,27 +149,28 @@ public class SchrodingersCat extends Goblin {
                     else {
                         //daca e in range sa nu l caute in toata lumea
                         List players = getWorld().getObjects(Player.class);
-                        Player player = (Player) players.get(0);
-                        int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
-                        if (deltaPGX < 0) {
-                            deltaPGX *= (-1);
-                        }
-                        int deltaPGY = player.getWorldY() - (this.worldY + Scroller.scrolledY);
-                        if (deltaPGY < 0) {
-                            deltaPGY *= (-1);
-                        }
-                        if (deltaPGX <= 600 && deltaPGY <= 400) {
-
-                            if (!changedAnimation) {
-                                cntAs++;
-                                closeBox();
-                                changedAnimation = true;
+                        if (!players.isEmpty()) {
+                            Player player = (Player) players.get(0);
+                            int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
+                            if (deltaPGX < 0) {
+                                deltaPGX *= (-1);
                             }
+                            int deltaPGY = player.getWorldY() - (this.worldY + Scroller.scrolledY);
+                            if (deltaPGY < 0) {
+                                deltaPGY *= (-1);
+                            }
+                            if (deltaPGX <= 600 && deltaPGY <= 400) {
+                                metPlayer = true;
+                                if (!changedAnimation) {
+                                    cntAs++;
+                                    closeBox();
+                                    changedAnimation = true;
+                                }
 
-                            gaseste();//cauta playerul
+                                gaseste();//cauta playerul
 
+                            }
                         }
-
                         int waitOpen = waitseed / 10;
                         inBoxTime++;
                         if (inBoxTime >= waitOpen) {
@@ -204,7 +207,6 @@ public class SchrodingersCat extends Goblin {
         }
     }
 
-    
     protected void lovitSabie() {
         super.lovitSabie(this.mass);
         if (isTouching(Sabie.class)) {
@@ -221,8 +223,7 @@ public class SchrodingersCat extends Goblin {
             explode();
         }
     }
-    
-    
+
     private void changeAnimation(String anim, int nrframeuri, int scalar) {
 
         animationName = anim;

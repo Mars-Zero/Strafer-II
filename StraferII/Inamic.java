@@ -23,6 +23,8 @@ public class Inamic extends Npc {
     protected boolean mort = false;
     protected long timpPrec;
     public boolean usedItem;
+    public boolean freeze=false;
+
 
 
     protected long timpPauzaRange;
@@ -376,4 +378,11 @@ public class Inamic extends Npc {
         this.usedItem = usedItem;
     }
 
+    public boolean isFreeze() {
+        return freeze;
+    }
+
+    public void setFreeze(boolean freeze) {
+        this.freeze = freeze;
+    }
 }

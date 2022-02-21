@@ -362,6 +362,30 @@ public class Player extends Jucator {
         }
         //lantern
 
+        //icelock
+         if (equipIceLock) {
+            long timpCurent = System.currentTimeMillis();
+            if (timpCurent - timpPrec >= 20) {
+                if (getWorld().getObjects(IceLock.class).isEmpty()) {
+                    getWorld().addObject(new IceLock(), getX(), getY());
+                }
+                timpPrec = timpCurent;
+            }
+            Item.itemGif = gif;
+
+            if (Greenfoot.mouseClicked(null)) {
+                if (Greenfoot.getMouseInfo().getButton() == 3) {
+                    equipIceLock= false;
+                }
+            }
+        }
+        //icelock
+        
+        
+        //blackHole
+        
+        //blackhole
+        
     }
 
     protected void checkPauza() {

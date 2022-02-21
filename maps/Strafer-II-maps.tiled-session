@@ -232,10 +232,10 @@
         },
         "map11.tmx": {
             "scale": 0.33,
-            "selectedLayer": 2,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 9971.212121212122,
-                "y": 6756.060606060606
+                "x": 2554.5454545454545,
+                "y": 701.5151515151515
             }
         },
         "map11.tmx#Terrain": {
@@ -291,12 +291,24 @@
         "map11.tmx#snow1": {
             "scaleInDock": 1
         },
+        "map11.tmx#zCat": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#zDolpatian": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#zDroid": {
+            "scaleInDock": 1
+        },
+        "map11.tmx#zGoblin": {
+            "scaleInDock": 1
+        },
         "map12.tmx": {
             "scale": 0.0625,
-            "selectedLayer": 2,
+            "selectedLayer": 5,
             "viewCenter": {
                 "x": 488,
-                "y": 9800
+                "y": 9784
             }
         },
         "map12.tmx#Terrain": {
@@ -350,9 +362,21 @@
         "map12.tmx#snow1": {
             "scaleInDock": 1
         },
+        "map12.tmx#zCat": {
+            "scaleInDock": 1
+        },
+        "map12.tmx#zDolpatian": {
+            "scaleInDock": 1
+        },
+        "map12.tmx#zDroid": {
+            "scaleInDock": 1
+        },
+        "map12.tmx#zGoblin": {
+            "scaleInDock": 1
+        },
         "map13.tmx": {
             "scale": 0.0625,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 4072,
                 "y": 4104
@@ -409,12 +433,24 @@
         "map13.tmx#snow1": {
             "scaleInDock": 1
         },
+        "map13.tmx#zCat": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#zDolpatian": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#zDroid": {
+            "scaleInDock": 1
+        },
+        "map13.tmx#zGoblin": {
+            "scaleInDock": 1
+        },
         "map21.tmx": {
-            "scale": 0.0625,
+            "scale": 0.125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4072,
-                "y": 4104
+                "x": 4068,
+                "y": 4092
             }
         },
         "map21.tmx#Terrain": {
@@ -466,6 +502,18 @@
             "scaleInDock": 1
         },
         "map21.tmx#snow1": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#zCat": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#zDolpatian": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#zDroid": {
+            "scaleInDock": 1
+        },
+        "map21.tmx#zGoblin": {
             "scaleInDock": 1
         },
         "map22.tmx": {
@@ -528,6 +576,18 @@
         "map22.tmx#snow1": {
             "scaleInDock": 1
         },
+        "map22.tmx#zCat": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#zDolpatian": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#zDroid": {
+            "scaleInDock": 1
+        },
+        "map22.tmx#zGoblin": {
+            "scaleInDock": 1
+        },
         "map23.tmx": {
             "scale": 0.015625,
             "selectedLayer": 1,
@@ -586,6 +646,18 @@
             "scaleInDock": 1
         },
         "map23.tmx#snow1": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#zCat": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#zDolpatian": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#zDroid": {
+            "scaleInDock": 1
+        },
+        "map23.tmx#zGoblin": {
             "scaleInDock": 1
         },
         "snow.tsx": {
@@ -663,6 +735,18 @@
         "tilesets/snow1.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tilesets/zCat.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/zDolpatian.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/zDroid.tsx": {
+            "scaleInDock": 1
+        },
+        "tilesets/zGoblin.tsx": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "D:/Games/CV9 projekt red/Strafer II/Strafer-II/maps",

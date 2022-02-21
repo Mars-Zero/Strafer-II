@@ -5,6 +5,8 @@
 #include <sstream>
 #include <cstddef> 
 #include <tileson.h>
+#include <stdlib.h>
+#include <string>
 
 namespace fisier {
 	std::string fisierFolosit;
@@ -150,9 +152,10 @@ void wallsGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout) {
     if (map->getStatus() == tson::ParseStatus::OK) {
 
         tson::Layer* layer = map->getLayer("WallLayer1"); ///walls on floor 1
-
+wout << R"(//Walls)"<<"\n";
         if (layer->getType() == tson::LayerType::TileLayer) {
 
+            
             //pos = position in tile units
             for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
             {
@@ -213,23 +216,81 @@ void wallsGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout) {
 
             }
         }
+        wout << R"(//Walls)" << "\n";
 
 
     }
 }
 
+void npcGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout){
+    if (map->getStatus() == tson::ParseStatus::OK) {
+
+        tson::Layer* layer = map->getLayer("NpcLayer"); ///walls on floor 1
+
+        if (layer->getType() == tson::LayerType::TileLayer) {
+
+
+            wout << R"(//npc)" << "\n";
+            //pos = position in tile units
+            for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
+            {
+                tson::Tileset* tileset = tileObject.getTile()->getTileset();
+
+                tson::Vector2f position = tileObject.getPosition();
+                int pX = position.x;
+                int pY = position.y;
+
+                if (tileset->getName() == "zGoblin") {
+                    wout << R"(world.initObject(new Goblin(scroller, )" << pX  << ", " << pY  << "),"<<pX<<", "<<pY<<");\n";
+                }
+
+
+                if (tileset->getName() == "zCat") {
+                    wout << R"(world.initObject(new SchrodingersCat(scroller, )" << pX << ", " << pY << ")," << pX << ", " << pY << ");\n";
+                }
+
+
+                if (tileset->getName() == "zDolpatian") {
+                    wout << R"(world.initObject(new Dolpatian(scroller, )" << pX << ", " << pY << ")," << pX << ", " << pY << ");\n";
+                }
+
+                if (tileset->getName() == "zDroid") {
+                    
+                    int xy = rand() ;
+                    std::string XY="";
+                    int dist;
+                    if (xy % 2 == 0) {
+                        XY = "ox";
+                        dist = 600;
+                    }
+                    else {
+                        XY = "oy";
+                        dist = 400;
+                    }
+                    wout << R"(world.initObject(new Droid(scroller, )" << pX << ", " << pY << ", \""<<XY<<"\","<<dist<<"),"<< pX << ", " << pY << ");\n";
+                }
+
+
+                /// world.initObject(new PereteInvizibil("W", 1, "mic"), i, 16);
+                /// world.initObject(new PereteInvizibil("A", 1, "mic90"), i, 16);
+
+            }
+            wout << R"(//npc)" << "\n";
+        }
+    }
+}
 
 
 
 int main() {
 	openFile();
-
+    srand(time(0));
 
 	tson::Tileson t;
 	std::unique_ptr<tson::Map> map = t.parse(fs::path(fisier::fisierFolosit));
     
     int caz;
-    std::cout << " Npc matrix press 1 \n Wall code press 2\n"; std::cin >> caz;
+    std::cout << " Npc matrix press 1 \n Worldcode press 2\n "; std::cin >> caz;
 
     switch (caz) {
     case 1: {
@@ -237,6 +298,7 @@ int main() {
         break;
     }
     case 2: {
+        npcGen(map, fisier::wallsFile);
         wallsGen(map, fisier::wallsFile);
         break;
     }

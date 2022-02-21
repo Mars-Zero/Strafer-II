@@ -10,7 +10,7 @@ public class Dolpatian extends Goblin {
 
     private long timpSab = 0;
     private long timpBolt = 0;
-
+    
     Animation animation;
     boolean startedAnimation = false;
     int cntDeath = 0;
@@ -101,7 +101,7 @@ public class Dolpatian extends Goblin {
     
     public void act() {
 
-        if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
+        if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true && !freeze) {
 
             gif = "idle";
 
@@ -208,5 +208,12 @@ public class Dolpatian extends Goblin {
         animation.setScalar(5);
         animation.run();
         animation.setActiveState(true);
+    }
+ public boolean isFreeze() {
+        return freeze;
+    }
+
+    public void setFreeze(boolean freeze) {
+        this.freeze = freeze;
     }
 }

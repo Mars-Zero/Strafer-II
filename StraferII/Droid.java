@@ -148,7 +148,7 @@ public class Droid extends Inamic {
 
     public void act() {
 
-        if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
+        if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true && !freeze) {
 
             if (mort == true) {
                 cntDeath++;
@@ -223,5 +223,12 @@ public class Droid extends Inamic {
         animation.setScalar(5);
         animation.run();
         animation.setActiveState(true);
+    }
+ public boolean isFreeze() {
+        return freeze;
+    }
+
+    public void setFreeze(boolean freeze) {
+        this.freeze = freeze;
     }
 }
