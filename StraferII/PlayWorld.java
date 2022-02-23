@@ -4,37 +4,45 @@ import greenfoot.*;
 public class PlayWorld extends World {
 
     int WIDE, HIGH;
-    
-    int originalX = 100, originalY=100;
+
+    public static int originalX = 150, originalY = 200;
 
     public WorldListener worldListener;
-public MainStoryline mainStoryline;
+    public MainStoryline mainStoryline;
 
-   
     public Scroller scroller;
 
     Player player;
 
     public HealthBarPlayer healthBar;
     private boolean addedHealthBar = false;
+    
+    public GreenfootSound musicIdle=new GreenfootSound("sounds/music/Default.mp3");
+    public GreenfootSound musicCombat=new GreenfootSound("sounds/music/Combat.mp3") ;
+
+
+  
 
     public PlayWorld() {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
 
-        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class,MapMenu.class, Tutorial.class, Dialog.class,
-                Floor.class, Item.class,NpcItem.class, Lantern.class, Light.class, Droid.class,Player.class, Npc.class);
+        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class, MapMenu.class, Tutorial.class, Dialog.class,
+                Floor.class, Item.class, NpcItem.class, Lantern.class, Light.class, Droid.class, Player.class, Npc.class);
 
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;
 
-         WorldData.loadWorldMatrices();
-        
+        WorldData.loadWorldMatrices();
+
         addPlayer();
         WorldData.addedDialogs = false;
         addedHealthBar = false;
+        
+        musicCombat.setVolume(30);
+        musicIdle.setVolume(30);
+        
         addMainMenu();
 
-        //AssetsCache.storeAssets();
     }
 
     private void addMainMenu() {
@@ -44,28 +52,28 @@ public MainStoryline mainStoryline;
     public void addPlayer() {
         GreenfootImage background = new GreenfootImage("map/worldSection/worldSection11.png");//imi pun fundalul
         scroller = new Scroller(this, background, 8192, 8192);
-        
+
         player = new Player();
 
-        addObject(player, 1, 1);
+        addObject(player, originalX, originalY);//pozitia pe newGame
 
         scroll();
 
         worldListener = new WorldListener(this);
-        mainStoryline=new MainStoryline();
-        
+        mainStoryline = new MainStoryline();
+
         addObject(worldListener, 1, 1);
-        addObject(mainStoryline,1,1);
-        
-        
+        addObject(mainStoryline, 1, 1);
+
         addObject(new Fps(), 150, 50);
     }
 
-    Picture barBack=new Picture("UI/hud/healthBar.png");
+    Picture barBack = new Picture("UI/hud/healthBar.png");
+
     private void addHealthBar() {
-        
+
         healthBar = new HealthBarPlayer("", "", player.getHp(), player.getHpMax());
-        
+
         Color colorSafeHealth = new Color(95, 205, 228), colorDangerHealth = new Color(222, 93, 18);
         healthBar.setSafeColor(colorSafeHealth);
         healthBar.setDangerColor(colorDangerHealth);
@@ -73,19 +81,18 @@ public MainStoryline mainStoryline;
         healthBar.setBarHeight(14);
         healthBar.setReferenceText("");
         healthBar.setTextColor(new Color(4, 69, 85, 214));
-        
-        
+
         addObject(barBack, 148, 40);
         addObject(healthBar, 172, 32);
     }
-    void relocBar(){
-        if(WorldData.PAUZA){
-            if(getObjects(Inventory.class).isEmpty()){
-            barBack.setLocation(-300,-100); 
+
+    void relocBar() {
+        if (WorldData.PAUZA) {
+            if (getObjects(Inventory.class).isEmpty()) {
+                barBack.setLocation(-300, -100);
             }
-        }
-        else{
-            barBack.setLocation(148,40); 
+        } else {
+            barBack.setLocation(148, 40);
         }
     }
 
@@ -109,20 +116,16 @@ public MainStoryline mainStoryline;
     }
 
     public void act() {
-        
+
         scroll();
         if (!addedHealthBar) {
             addHealthBar();
             addedHealthBar = true;
         }
         relocBar();
-        
 
     }
 
-    
-
-    
     public WorldListener getWorldListener() {
         return worldListener;
     }
@@ -134,5 +137,18 @@ public MainStoryline mainStoryline;
     public HealthBar getHealthBar() {
         return healthBar;
     }
+    
+    public GreenfootSound getMusicIdle() {
+        return musicIdle;
+    }
+    public GreenfootSound getMusicCombat() {
+        return musicCombat;
+    }
+    
+    public void updateMusic(){
+        
+    }
+    
+  
 
 }

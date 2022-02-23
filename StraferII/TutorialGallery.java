@@ -12,7 +12,7 @@ public class TutorialGallery extends Pause{
      * Key- the category of the tutorial
      * Value- a list of all the tutorials mapped at the key
      */
-    public static HashMap<String,List<Tutorial>> tutorialsInFolder=new HashMap<>();
+    public static HashMap<String,ArrayList<Tutorial>> tutorialsInFolder=new HashMap<>();
  
     
            
@@ -39,7 +39,7 @@ public class TutorialGallery extends Pause{
     /**
      * This method retrieves which tutorials are unlocked by the player at the given key
      */
-    public static List<Tutorial> retrieveTutorials(String key)
+    public static ArrayList<Tutorial> retrieveTutorials(String key)
     {
         return tutorialsInFolder.get(key);
     }

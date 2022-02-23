@@ -99,7 +99,7 @@ public class Player extends Jucator {
     public void load() {
 
         if (!loaded) {
-            SaveSystem.load(0, this);
+            SaveSystem.load(WorldData.saveFileNumber, this);
             loaded = true;
         }
 

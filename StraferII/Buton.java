@@ -8,19 +8,19 @@ public class Buton extends UI {
 
     GreenfootImage img0, img1;
     private String img = "";
-    
+
     private String tipTutorial;
     Tutorial tutorial;
     ArrayList<Tutorial> tutorials;
     Tutorial tutorialToOpen;
     TutorialFolder tutorialFolderToOpen;
-     HashMap<String,List<GreenfootImage>> tutorialsImages;
-    
+    HashMap<String, List<GreenfootImage>> tutorialsImages;
+
     Dialog dialog;
-    
+
     boolean clicked = false;
     Object obj;
-    
+
     public Buton(String imgref, Object menuref) {
         img = imgref;
         obj = menuref;
@@ -35,13 +35,13 @@ public class Buton extends UI {
         setImage(img0);
 
     }
-    
-    public Buton(String imgref, Object menuref,String tipref, ArrayList<Tutorial> tutorials) {      ///for opening a tutorial category
+
+    public Buton(String imgref, Object menuref, String tipref, ArrayList<Tutorial> tutorials) {      ///for opening a tutorial category
         img = imgref;
         obj = menuref;
-        tipTutorial=tipref;
-        this.tutorials=tutorials;
-        
+        tipTutorial = tipref;
+        this.tutorials = tutorials;
+
         if (obj instanceof Dialog) {
             dialog = (Dialog) obj;
         }
@@ -53,19 +53,19 @@ public class Buton extends UI {
         setImage(img0);
 
     }
-    
-    public Buton(String imgref, Object menuref,String tipref, Menu menuObject) {                  ///for opening a tutorial tutorial from a category
+
+    public Buton(String imgref, Object menuref, String tipref, Menu tutToOp) {                  ///for opening a tutorial tutorial from a category
         img = imgref;
         obj = menuref;
-        tipTutorial=tipref;
-        if(menuObject instanceof Tutorial){
-            tutorialToOpen=(Tutorial)menuObject;
+        tipTutorial = tipref;
+        if (tutToOp instanceof Tutorial) {
+            tutorialToOpen = (Tutorial) tutToOp;
         }
-        if(menuObject instanceof TutorialFolder){
-          tutorialFolderToOpen=(TutorialFolder)menuObject;
+        if (tutToOp instanceof TutorialFolder) {
+            tutorialFolderToOpen = (TutorialFolder) tutToOp;
         }
-        this.tutorials=tutorials;
-        
+        this.tutorials = tutorials;
+
         if (obj instanceof Dialog) {
             dialog = (Dialog) obj;
         }
@@ -119,7 +119,7 @@ public class Buton extends UI {
                         }
                         break;
                     }
-                    
+
                     case "X": {
                         if (obj instanceof Dialog) {
                             WorldData.PAUZA = false;
@@ -127,6 +127,7 @@ public class Buton extends UI {
                             WorldData.addedDialogs = false;
 
                             dialog.setAddedText(false);
+                            SaveSystem.save(WorldData.saveFileNumber, ((PlayWorld) getWorld()).getPlayer());
 
                             getWorld().removeObjects(getWorld().getObjects(Text.class));
                         }
@@ -136,54 +137,51 @@ public class Buton extends UI {
                             WorldData.addedDialogs = false;
 
                             tutorial.setAddedPicture(false);
+                            getWorld().removeObject(tutorial.getPicture());
 
-                            getWorld().removeObject(tutorial.getPicture()); 
-                            
-                            
+                            SaveSystem.save(WorldData.saveFileNumber, ((PlayWorld) getWorld()).getPlayer());
+
                             if (!tutorial.isInPause()) {        //daca e direct in lume 
                                 WorldData.PAUZA = false;
                             }
-                            if(tutorial.isInPause()){           //daca a fost deschis din tutorial gallery
-                               // getWorld().addObject(new TutorialFolder(tutorials), WorldData.WIDTH/2, WorldData.HIGHT/2);
+                            if (tutorial.isInPause()) {           //daca a fost deschis din tutorial gallery
+                                // getWorld().addObject(new TutorialFolder(tutorials), WorldData.WIDTH/2, WorldData.HIGHT/2);
                             }
                         }
-                      
-                        if(obj instanceof TutorialGallery){
-                        
+
+                        if (obj instanceof TutorialGallery) {
+
                         }
-                        if(obj instanceof TutorialFolder){
-                            
-                        }  
-                        if(obj instanceof MapMenu){
-                            MapMenu mm=(MapMenu)obj;
+                        if (obj instanceof TutorialFolder) {
+
+                        }
+                        if (obj instanceof MapMenu) {
+                            MapMenu mm = (MapMenu) obj;
                             mm.clear();
                             getWorld().removeObject(mm);
-                            getWorld().addObject(new Pause(), WorldData.menuX,WorldData.menuY);
+                            getWorld().addObject(new Pause(), WorldData.menuX, WorldData.menuY);
                         }
 
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
                     }
-                    
+
                     case "Open": {
-                        
-                        
-                        if(obj instanceof TutorialGallery){             ///da open la o categorie adica un folder de tutoriale
-                            
-                            TutorialGallery tg=(TutorialGallery)obj;
-                            
+
+                        if (obj instanceof TutorialGallery) {             ///da open la o categorie adica un folder de tutoriale
+
+                            TutorialGallery tg = (TutorialGallery) obj;
+
                             //getWorld().addObject(new TutorialFolder(tutorials,tg.retrieveTutorials()),  WorldData.menuX,WorldData.menuY);
                         }
-                        
-                        
-                        if(obj instanceof TutorialFolder){              ///da open la un tutorial
-                            getWorld().addObject(tutorialToOpen, WorldData.menuX,WorldData.menuY);
+
+                        if (obj instanceof TutorialFolder) {              ///da open la un tutorial
+                            getWorld().addObject(tutorialToOpen, WorldData.menuX, WorldData.menuY);
                         }
-                        
-                        
+
                         break;
                     }
-                    
+
                     case "Resume": {
 
                         WorldData.PAUZA = false;
@@ -196,29 +194,30 @@ public class Buton extends UI {
                         break;
 
                     }
-                    case "Map": {  
-                         
-                        getWorld().addObject(new MapMenu((PlayWorld)getWorld()), WorldData.menuX,WorldData.menuY);
-                        
-                        getWorld().removeObject((Menu)obj);
+                    case "Map": {
+
+                        getWorld().addObject(new MapMenu((PlayWorld) getWorld()), WorldData.menuX, WorldData.menuY);
+
+                        getWorld().removeObject((Menu) obj);
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
-                        
+
                         break;
                     }
                     case "Main Menu": {
-                        getWorld().addObject(new MainMenu(), WorldData.menuX,WorldData.menuY);
-                        
+                        getWorld().addObject(new MainMenu(), WorldData.menuX, WorldData.menuY);
+
                         getWorld().getObjects(Player.class).get(0).setLoaded(false);
                         Player.toggledPause = false;
-                        
+
                         if (obj instanceof Menu) {
                             getWorld().removeObject((Menu) obj);
+                            SaveSystem.save(WorldData.saveFileNumber, ((PlayWorld) getWorld()).getPlayer());
                         }
-                        if(obj instanceof GameOver){
-                            GameOver go=(GameOver)obj;
+                        if (obj instanceof GameOver) {
+                            GameOver go = (GameOver) obj;
                             go.getMusic().stop();
                         }
-                        
+
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
 
                         /////se da save
@@ -228,16 +227,30 @@ public class Buton extends UI {
                         //tutorialGallery
                         break;
                     }
-                    case "New Game": {
-                        
+                    case "New Game": {//continue fara load
+                        WorldData.PAUZA = false;
+                        Player.toggledPause = false;
+                        if (obj instanceof Menu) {
+                            getWorld().removeObject((Menu) obj);
+                        }
+
                         //save file nou
                         //inceputu jocului
-
-                        
-                        if(obj instanceof MainMenu){
-                            MainMenu mm=(MainMenu)obj;
+                        if (obj instanceof MainMenu) {
+                            MainMenu mm = (MainMenu) obj;
                             mm.getMusic().stop();
+                            Player player = getWorld().getObjects(Player.class).get(0);
+                            WorldData.reset();
+                            WorldData.saveFileNumber++;
+                            SaveSystem.save(WorldData.saveFileNumber, player);
+                            player.load();
+
+                            if (!player.isInViata()) {
+                                player.revive();
+                            }
                         }
+
+                        getWorld().removeObjects(getWorld().getObjects(Buton.class));
                         break;
                     }
                     case "Continue": {
@@ -246,24 +259,26 @@ public class Buton extends UI {
                         if (obj instanceof Menu) {
                             getWorld().removeObject((Menu) obj);
                         }
-                        if(obj instanceof MainMenu){
-                            MainMenu mm=(MainMenu)obj;
+                        if (obj instanceof MainMenu) {
+                            MainMenu mm = (MainMenu) obj;
                             mm.getMusic().stop();
-                            getWorld().getObjects(Player.class).get(0).load();
-                            getWorld().getObjects(Player.class).get(0).revive();
+                            Player player = getWorld().getObjects(Player.class).get(0);
+                            player.load();
+
+                            if (!player.isInViata()) {
+                                player.revive();
+                            }
                         }
-                        if(obj instanceof GameOver){
-                            GameOver go=(GameOver)obj;
+                        if (obj instanceof GameOver) {
+                            GameOver go = (GameOver) obj;
                             go.getMusic().stop();
                             getWorld().getObjects(Player.class).get(0).setLoaded(false);
                             getWorld().getObjects(Player.class).get(0).load();
                             getWorld().getObjects(Player.class).get(0).revive();
                         }
-                        
+
                         getWorld().removeObjects(getWorld().getObjects(Buton.class));
-                        
-                        
-                        
+
                         break;
                     }
                     default: {
@@ -276,7 +291,6 @@ public class Buton extends UI {
 
     }
 
-    
     public void exists() {
         switch (img) {
             case "Next": {

@@ -40,17 +40,20 @@ public class Stroke extends Inamic {
 
     }
 
+    LaserStroke laserStroke;
+
     protected void addLasers() {
         ochix = getX() - 50;
         ochiy = getY() - 35;
-        getWorld().addObject(new LaserStroke(this, 100), WorldData.menuX, WorldData.menuY);
+        laserStroke = new LaserStroke(this, 100);
+        getWorld().addObject(laserStroke, WorldData.menuX, WorldData.menuY);
+
         super.atac();
     }
 
     protected void atacLaser() {
-       
-            addLasers();
-     
+
+        addLasers();
 
     }
 
@@ -199,8 +202,8 @@ public class Stroke extends Inamic {
     }
 
     protected void atac() {
-      
-        if (hp%3==0) {
+
+        if (hp % 3 == 0) {
             //atac cu lee
             gaseste();
         } else {
@@ -210,11 +213,12 @@ public class Stroke extends Inamic {
                 npcImg = directie.get(super.gif);
                 getWorld().removeObjects(getWorld().getObjects(LaserStroke.class));
                 atacLaser();
+
                 timpLaser = 0;
 
             }
             timpLaser++;
-        } 
+        }
     }
 
     public Player getPlayer() {
@@ -236,7 +240,7 @@ public class Stroke extends Inamic {
         healthBar.setDangerColor(new Color(41, 77, 66));
         healthBar.setBarWidth(567);
         healthBar.setBarHeight(8);
-        healthBar.setTextColor(new Color(155,173,183));
+        healthBar.setTextColor(new Color(155, 173, 183));
         healthBarImg = new Picture("npc/inamic/stroke/healthBar.png", true);
 
     }

@@ -66,7 +66,6 @@ public class Animation {
 
         }
         if (timer == 0 && cyclesToRun > 0 && (++cycleCount == cyclesToRun*scalar )) {
-            System.out.println("tits");
             cycleCount = 0;
             active=false;
         }

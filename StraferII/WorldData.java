@@ -16,8 +16,13 @@ public class WorldData {
 
 //
     public static boolean addedDialogs = false;
+    public static boolean isFighting=false;
+    public static boolean isWalking=false;
 //
-   
+
+//
+    public static int saveFileNumber = -1;
+
 //
     static List<String> items = new ArrayList<>();
     public static boolean hasSword = false;
@@ -26,18 +31,17 @@ public class WorldData {
     public static boolean hasLantern = false;
     public static boolean hasPortalGun = false;
     public static boolean hasIceLock = false;
-    
-//
 
 //
-    
-    public static final int worldSectionNumber = 6;
+//
+    public static int worldSection = 11;
+    public static int worldSectionShortNumber = 6;
     public static final int maxWidthWorld = 128;
     public static final int maxLengthWorld = 128;
 
     public static boolean[][] visitedWorldSections = {{false, false, false, false}, {false, false, false, false}, {false, false, false, false}};
 
-    public static int[][][] worldSectionMatrix = new int[worldSectionNumber + 1][maxLengthWorld + 1][maxWidthWorld + 1];
+    public static int[][][] worldSectionMatrix = new int[worldSectionShortNumber + 1][maxLengthWorld + 1][maxWidthWorld + 1];
 
     /**
      * Numarul maxim de sectiuni de pe o linie
@@ -68,13 +72,30 @@ public class WorldData {
             worldSectionMatrix[i] = Loader.loadMatrix(new File(director + i + ".txt"));
         }
     }
-    
+
     //
-    
     //
-    
-    List<Tutorial> tutorials = new ArrayList<>();
-    
-    
-    
+    public static List<String> tutorials = new ArrayList<>();
+
+    public static void reset() {
+
+        worldSection = 11;
+        worldSectionShortNumber = 6;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<2;j++){
+                visitedWorldSections[i][j]=false;
+            }
+        }
+        hasSword = false;
+        hasLaser = false;
+        hasBlackHole = false;
+        hasLantern = false;
+        hasPortalGun = false;
+        hasIceLock = false;
+        items.clear();
+        tutorials.clear();
+        
+        
+    }
+
 }

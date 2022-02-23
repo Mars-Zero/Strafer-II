@@ -5,8 +5,8 @@
     },
     "activeFile": "map11.tmx",
     "expandedProjectPaths": [
-        "tilesets",
         ".",
+        "tilesets",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
     "exportAsImage.useCurrentScale": true,
@@ -307,8 +307,8 @@
             "scale": 0.0625,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 488,
-                "y": 9784
+                "x": 4064,
+                "y": 4104
             }
         },
         "map12.tmx#Terrain": {
@@ -378,7 +378,7 @@
             "scale": 0.0625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 4072,
+                "x": 4064,
                 "y": 4104
             }
         },
@@ -449,7 +449,7 @@
             "scale": 0.125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4068,
+                "x": 4064,
                 "y": 4092
             }
         },
@@ -520,7 +520,7 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4104,
+                "x": 4096,
                 "y": 4104
             }
         },
@@ -592,7 +592,7 @@
             "scale": 0.015625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4064,
+                "x": 4096,
                 "y": 4128
             }
         },

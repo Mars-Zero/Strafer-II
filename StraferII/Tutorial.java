@@ -1,8 +1,9 @@
 
 import greenfoot.*;
- /**
-     * O clasa pentru meniurile de tutorial, folosita si pentru cutsceneuri
-     */
+
+/**
+ * O clasa pentru meniurile de tutorial, folosita si pentru cutsceneuri
+ */
 public class Tutorial extends Menu {
 
     private int nrSlide;
@@ -13,33 +14,12 @@ public class Tutorial extends Menu {
      * numele tutorialului
      */
     private String img;
-
-    /**
-     * Tipul tutorialului
-     */
     private String tip;
-
-    /**
-     * Aici scrii comentariul@Stoic
-     */
     private Picture picture = new Picture("UI/tutorial/tutorial.png");
 
-    /**
-     * Aici scrii comentariul@Stoic
-     */
     private boolean addedButon = false;
-    /**
-     * Aici scrii comentariul@Stoic
-     */
     private boolean addedButonBack = false;
-    /**
-     * Aici scrii comentariul@Stoic
-     */
     private boolean inPause;
-
-    /**
-     * Aici scrii comentariul@Stoic
-     */
     private boolean addedPicture = false;
 
     public Tutorial(String tipref, String imgref, int slideref, boolean inPauseref) {
@@ -53,12 +33,14 @@ public class Tutorial extends Menu {
         this.inPause = inPauseref;
 
         setImage("UI/tutorial/tutorial.png");
+        
+        
     }
 
     public void displayPicture() {
 
         if (!addedPicture) {
-            getWorld().addObject(picture, 522, 500);
+            getWorld().addObject(picture, WorldData.menuX, WorldData.menuY);
             updateImage();
 
             addedPicture = true;
@@ -68,7 +50,7 @@ public class Tutorial extends Menu {
 
     public void addButon() {
         if (!addedButon) {
-            getWorld().addObject(new Buton("Next", this), 730, 470);
+            getWorld().addObject(new Buton("Next", this), 945, 485);
             addedButon = true;
         }
     }
@@ -78,17 +60,17 @@ public class Tutorial extends Menu {
         displayPicture();
     }
 
-    public String toString() {
-        String str = tip + " " + img + " " + nrSlideMax;
-        return str;
-    }
-
     public void updateImage() {
         if (tip == "Cutscene") {
-             picture.setImageName("cutscene/"+img+".png");
+            picture.setImageName("cutscene/" + img + ".png");
         } else {
             picture.setImageName("UI/tutorial/tutorialSlides/" + tip + "/" + img + "/" + tip + "#" + "tutorial" + img + nrSlide + ".png");
         }
+    }
+
+    public String toString() {
+        String str = tip + " " + img + " " + nrSlideMax;
+        return str;
     }
 
     public int getNrSlideMax() {

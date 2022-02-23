@@ -16,6 +16,7 @@ public class WorldSection11 extends WorldSection{
     public void init(){
           Stroke stroke=new Stroke(scroller,500,200,player);
          world.initObject(stroke,500,200);
+         world.initObject(new Keanu(world,scroller,"Keanu",1),500,2000);
          
   //npc
 world.initObject(new SchrodingersCat(scroller, 2688, 576),2688, 576);

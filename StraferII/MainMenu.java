@@ -14,7 +14,7 @@ public class MainMenu extends Menu {
 
         WorldData.PAUZA = true;
         setImage("fundal/titleScreen1.png");
-       
+       WorldData.saveFileNumber=SaveSystem.getNumberOfSaveFiles()-1;
             
     }
 

@@ -5,8 +5,6 @@ import java.util.List;
 
 public class WorldListener extends WorldSection {
 
-   
-
     public int worldSection = 11;
     int playerDirection = 0;
     boolean loaded = false;
@@ -16,8 +14,7 @@ public class WorldListener extends WorldSection {
     public WorldListener(PlayWorld world) {
         this.loaded = false;
         this.world = world;
-               
-        
+
         scroller = world.getScroller();
         player = world.getObjects(Player.class).get(0);
         loadImages();
@@ -25,17 +22,16 @@ public class WorldListener extends WorldSection {
     }
 
     void changeWorldSection(boolean atLoad) {     //daca e schimbata pt load sau pt miscare
-        scroller.setScrollImage(fundaluri.get(WorldData.getWorldSectionShort(worldSection)-1));
-        
+        scroller.setScrollImage(fundaluri.get(WorldData.getWorldSectionShort(worldSection) - 1));
+
         if (!atLoad) {
             relocatePlayer();
-        } else {
-            System.out.println("schimb");
-        }
+            
+        } 
         clearWorldObjects();
-        
-        addObjects();
 
+        addObjects();
+        SaveSystem.save(WorldData.saveFileNumber, player);
     }
 
     int cnt = 0;
@@ -44,7 +40,7 @@ public class WorldListener extends WorldSection {
 
         if (player.isAtEdge()) {
             this.worldSection = getNextWorldSection();
-            
+
             changeWorldSection(false);
         }
         load();
@@ -69,20 +65,20 @@ public class WorldListener extends WorldSection {
      */
     void clearWorldObjects() {
         List<Actor> list = world.getObjects(Actor.class);
-        
+
         for (Actor actor : list) {
             if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBarPlayer || actor instanceof Picture || actor instanceof Buton) {
             } else {
                 world.removeObject(actor);
-                
+
             }
         }
-       
+        
     }
 
     /*
     *pune playerul in functie de directie acolo unde trebuie ca sa fie in continuarea sectiunii din care pleaca
-    */
+     */
     int relocateX = 60, relocateY = 60;
 
     void relocatePlayer() {
@@ -119,6 +115,7 @@ public class WorldListener extends WorldSection {
      * This method adds all objects that need to be put in the world
      */
     void addObjects() {
+        
         //add the player to it's position
         //call different methods based on the world that needs to be changed
         switch (worldSection) {
@@ -218,7 +215,6 @@ urmatoare:        |____|_________|_______|________|
         }
     }
 
-
     public int getWorldSection() {
         return worldSection;
     }
@@ -240,8 +236,6 @@ urmatoare:        |____|_________|_______|________|
 
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
     }
-
-    
 
     public boolean isLoaded() {
         return loaded;

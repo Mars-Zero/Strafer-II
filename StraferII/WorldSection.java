@@ -12,6 +12,8 @@ public class WorldSection extends Actor {
         WorldData.visitedWorldSections[1][1] = true;
 
         world.initObject(new Fps(), 150, 50);
+        
+        world.initObject(new Tutorial("Cutscene","wakeup",1,false),WorldData.menuX,WorldData.menuY);
         WorldSection11 ws = new WorldSection11(world, scroller, player);
         ws.init();
 
