@@ -16,12 +16,9 @@ public class PlayWorld extends World {
 
     public HealthBarPlayer healthBar;
     private boolean addedHealthBar = false;
-    
-    public GreenfootSound musicIdle=new GreenfootSound("sounds/music/Default.mp3");
-    public GreenfootSound musicCombat=new GreenfootSound("sounds/music/Combat.mp3") ;
 
-
-  
+    public GreenfootSound musicIdle = new GreenfootSound("sounds/music/Default.mp3");
+    public GreenfootSound musicCombat = new GreenfootSound("sounds/music/Combat.mp3");
 
     public PlayWorld() {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
@@ -37,10 +34,10 @@ public class PlayWorld extends World {
         addPlayer();
         WorldData.addedDialogs = false;
         addedHealthBar = false;
-        
+
         musicCombat.setVolume(30);
         musicIdle.setVolume(30);
-        
+
         addMainMenu();
 
     }
@@ -123,6 +120,7 @@ public class PlayWorld extends World {
             addedHealthBar = true;
         }
         relocBar();
+        updateMusic();
 
     }
 
@@ -137,18 +135,42 @@ public class PlayWorld extends World {
     public HealthBar getHealthBar() {
         return healthBar;
     }
-    
+
     public GreenfootSound getMusicIdle() {
         return musicIdle;
     }
+
     public GreenfootSound getMusicCombat() {
         return musicCombat;
     }
-    
-    public void updateMusic(){
-        
-    }
-    
-  
 
+    public void updateMusic() {
+        if (!WorldData.PAUZA) {
+            if (!musicIdle.isPlaying()) {
+                if(WorldData.isWalking&&!WorldData.isFighting){
+                    musicIdle.play();
+                }
+            }
+            if (!musicCombat.isPlaying()) {
+                if(WorldData.isFighting){
+                    musicCombat.play();
+                    musicIdle.pause();
+                }
+            }
+            
+            if (musicCombat.isPlaying()) {
+                if(!WorldData.isFighting){
+                    musicCombat.pause();
+                }
+            }
+        } else {
+            if (musicIdle.isPlaying()) {
+                musicIdle.pause();
+            }
+            if (musicCombat.isPlaying()) {
+                musicCombat.pause();
+            }
+        }
+    }
+ 
 }

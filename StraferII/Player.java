@@ -17,7 +17,6 @@ public class Player extends Jucator {
     PlayWorld playWorld;
 
     private int worldX, worldY;
-    boolean isMoving;
     public static int floorLevel = 1;
 
     private boolean inViata = true;
@@ -143,6 +142,7 @@ public class Player extends Jucator {
 
         }
         if (apas == false) {
+            WorldData.isWalking=true;
             if (equipSword == false && equipLaser == false && equipPortalGun == false && equipIceLock == false && equipLantern == false && equipBlackHole == false) {
                 gif = "idle";
 
@@ -194,6 +194,8 @@ public class Player extends Jucator {
 
             }
 
+        }else{
+            WorldData.isWalking=false;
         }
 
     }
@@ -414,10 +416,22 @@ public class Player extends Jucator {
 
     }
 
-    protected void hit() {
-        
+    long cntF=0;
+    public void lookForEnemies(){
+        if(!getObjectsInRange(1200,Inamic.class).isEmpty()){
+            WorldData.isFighting=true; 
+        }
+        else{
+            if(WorldData.isFighting){
+                cntF++;
+                if(cntF>2000){
+                    WorldData.isFighting=false;
+                    cntF=0;
+                }
+            }
+        }
     }
-
+    
     protected void takeDamage(int dmg) {
         hp -= dmg;
         getHealthBar().subtract(dmg);
@@ -457,9 +471,8 @@ public class Player extends Jucator {
 
         if (inViata) {
             if (!WorldData.PAUZA) {
-
+                lookForEnemies();
                 useItem();
-                hit();
                 move();
                 super.knockbackMove();
                 die();
