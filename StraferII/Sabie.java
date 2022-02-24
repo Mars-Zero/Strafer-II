@@ -34,6 +34,7 @@ public class Sabie extends Item {
 
         sabieImg = directie.get("D");
         this.time = 0;
+        Greenfoot.playSound("sounds/sabie.mp3");
 
     }
 
@@ -49,7 +50,6 @@ public class Sabie extends Item {
 
     protected void atac() {
         sabieImg = directie.get(Item.itemGif);
-        //super.damage();
     }
 
     public void act() {

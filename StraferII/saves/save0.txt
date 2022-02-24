@@ -1,6 +1,6 @@
-PlayerX:2677
-PlayerY:2046
-Health:400
+PlayerX:2275
+PlayerY:2060
+Health:368
 WorldSection:11
 WS11:true
 WS12:false
@@ -8,3 +8,8 @@ WS13:false
 WS21:false
 WS22:false
 WS23:false
+Item:laser
+Item:lantern
+Item:portalgun
+Item:icelock
+Item:sword

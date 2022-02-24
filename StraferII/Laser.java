@@ -22,8 +22,7 @@ public class Laser extends Item
         this.time=0;
        
 
-        //GreenfootSound sunet=new GreenfootSound("shootshoot.mp3");
-       // sunet.play();
+        Greenfoot.playSound("sounds/laser.mp3");
     }
     
     

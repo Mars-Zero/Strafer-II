@@ -42,7 +42,7 @@ public class Goblin extends Inamic {
         super.lovitSabie(this.mass);
         if (isTouching(Sabie.class)) {
             timpSab++;
-            if (timpSab >= 6) {
+            if (timpSab >= 15) {
                 takeDamage(Sabie.damage);
                 timpSab = 0;
             }

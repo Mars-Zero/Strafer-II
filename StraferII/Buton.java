@@ -93,7 +93,7 @@ public class Buton extends UI {
     protected void checkClick() {
 
         if (Greenfoot.mouseClicked(this)) {
-
+            
             if (Greenfoot.getMouseInfo().getButton() == 1) {
                 switch (img) {
                     case "Next": {

@@ -4,22 +4,26 @@ import greenfoot.*;
 public class Pill extends PickUp{
     
     int hpToAdd;
+    GifImage gif=new GifImage("item/pickUp/pill.gif");
 
    
-    public Pill(){
-        
+    public Pill(int hpToAdd){
+        this.hpToAdd = hpToAdd;
     }
     
     protected void pick(){
-    
-        super.pick();
+        if(isTouching(Player.class)){
+            Player player=(Player)getOneIntersectingObject(Player.class);
+            player.takeDamage(-hpToAdd);//adauga viata
+            getWorld().removeObject(this);
+        }
     }
     
-    public void act() {
-        
-    }     
-    public void setHpToAdd(int hpToAdd) {
-        this.hpToAdd = hpToAdd;
+      public void act() {
+        if(!WorldData.PAUZA){
+            setImage(gif.getCurrentImage());
+            pick();
+        }
     }
     
 }

@@ -33,6 +33,11 @@ public class WorldData {
     public static boolean hasIceLock = false;
 
 //
+    public static boolean metDroid=false;
+    public static boolean metGoblin=false;
+    public static boolean metDolpatian=false;
+    public static boolean metSchrodingersCat=false;
+    
 //
     public static int worldSection = 11;
     public static int worldSectionShortNumber = 6;

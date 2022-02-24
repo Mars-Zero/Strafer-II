@@ -2,7 +2,9 @@
 import greenfoot.*;
 
 public class LaserStroke extends NpcItem {
-
+    int damage=2;
+    boolean gaveDamage=false;
+    
     Stroke stroke;
     GreenfootImage art = new GreenfootImage(512, 288);
     int xStart, yStart, dist;
@@ -49,9 +51,22 @@ public class LaserStroke extends NpcItem {
 
     }
 
+    public void atac(){
+        int r=Greenfoot.getRandomNumber(100);
+        if(r%5==0){
+            gaveDamage=true;
+        }
+        Player player=stroke.getPlayer();
+        if(!gaveDamage){
+            player.takeDamage(damage);
+            gaveDamage=true;
+        }
+    }
+    
     public void act() {
         if (!WorldData.PAUZA) {
             setLocation(getX()-(xStart-stroke.getOchix()), getY()-(yStart-stroke.getOchiy()));
+            atac();
         }
     }
 }

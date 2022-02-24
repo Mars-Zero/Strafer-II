@@ -58,6 +58,7 @@ public class Tutorial extends Menu {
     public void act() {
         addButon();
         displayPicture();
+        this.setLocation(WorldData.menuX,WorldData.menuY);
     }
 
     public void updateImage() {

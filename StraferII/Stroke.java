@@ -60,12 +60,15 @@ public class Stroke extends Inamic {
     protected void atacMelee() {
         //quierres
         super.atac();
+        if (getWorld().getObjects(LaserStroke.class).isEmpty()) {
+            getWorld().addObject(new RumbleStroke(this), getX(), getY());
+        }
     }
 
     protected void lovitSabie() {
         if (isTouching(Sabie.class)) {
             timpSab++;
-            if (timpSab >= 6) {
+            if (timpSab >= 15) {
                 takeDamage(Sabie.damage);
                 timpSab = 0;
             }
@@ -116,6 +119,7 @@ public class Stroke extends Inamic {
                     animation.run();
                 }
                 if (startedAnimation && !animation.isActive()) {
+                    getWorld().removeObjects(getWorld().getObjects(LaserStroke.class));
                     getWorld().removeObject(healthBar);
                     getWorld().removeObject(healthBarImg);
                     getWorld().removeObject(this);
@@ -205,6 +209,7 @@ public class Stroke extends Inamic {
 
         if (hp % 3 == 0) {
             //atac cu lee
+            getWorld().removeObjects(getWorld().getObjects(LaserStroke.class));
             gaseste();
         } else {
 
@@ -246,13 +251,13 @@ public class Stroke extends Inamic {
     }
 
     private void changeAnimation() {
-        java.util.List<GreenfootImage> imgs = new GifImage("npc/inamic/goblin/goblin_death.gif").getImages();
+        java.util.List<GreenfootImage> imgs = new GifImage("npc/inamic/stroke/stroke_death.gif").getImages();
         GreenfootImage[] images = new GreenfootImage[imgs.size()];
         for (int i = 0; i < imgs.size(); i++) {
             images[i] = (GreenfootImage) imgs.get(i);
         }
         animation = new Animation(this, images);
-        animation.setCycleActs(22);
+        animation.setCycleActs(17);
         animation.setCycleCount(1);
         animation.setScalar(5);
         animation.run();

@@ -35,8 +35,8 @@ public class PlayWorld extends World {
         WorldData.addedDialogs = false;
         addedHealthBar = false;
 
-        musicCombat.setVolume(30);
-        musicIdle.setVolume(30);
+        musicCombat.setVolume(45);
+        musicIdle.setVolume(45);
 
         addMainMenu();
 
