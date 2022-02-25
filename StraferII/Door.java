@@ -14,24 +14,26 @@ public class Door extends PereteInvizibil {
     int b = -1;
 
     void update() {
+        Player player = ((PlayWorld) getWorld()).getPlayer();
         setImage(img);
         if (isTouching(Light.class)) {
             img.setTransparency(100);
-            
+
         } else {
             img.setTransparency(0);
         }
-        if (isTouching(Player.class)) {
-            b *= (-1);
-            if (b == 1) {
-                img.setTransparency(0);
-            } else {
-                img.setTransparency(100);
+            if (isTouching(Player.class)) {
+                b *= (-1);
+                if (b == 1) {
+                    img.setTransparency(0);
+                } else {
+                    img.setTransparency(100);
+                }
+
+                player.knockbacked = true;
+                player.knockback(0.1, this, 80, 100);
             }
-            Player player = ((PlayWorld) getWorld()).getPlayer();
-            player.knockbacked = true;
-            player.knockback(0.1, this, 80, 100);
-        }
+        
         if (isTouching(Light.class)) {
             if (WorldData.hasBlackHole && WorldData.hasIceLock && WorldData.hasSword && WorldData.hasLaser && WorldData.hasLantern && WorldData.hasPortalGun) {
                 getWorld().removeObject(this);

@@ -27,6 +27,7 @@ public class WorldSection extends Actor {
         WorldData.visitedWorldSections[1][2] = true;
 
        world.initObject(new Door(), 3200, 6080);
+        world.initObject(new Stroke(scroller,3520,960,player),3520,960);
         WorldSection12 ws = new WorldSection12(world, scroller, player);
         ws.init();
 

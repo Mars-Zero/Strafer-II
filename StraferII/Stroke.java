@@ -13,7 +13,7 @@ public class Stroke extends Inamic {
     int hpMax = 1000;
 
     public HealthBar healthBar;
-    Picture healthBarImg;
+    HealthBarImg healthBarImg=new HealthBarImg();
     private Color cSQ = new Color(41, 77, 66);
     private boolean addedHealthBar = false;
 
@@ -171,8 +171,10 @@ public class Stroke extends Inamic {
                             atac();//cauta playerul
                             if (!addedHealthBar) {
                                 getWorld().addObject(healthBar, WorldData.menuX + 40, 544);
-                                healthBar.setValue(this.hp);
+                                healthBar.setValue(this.hp); 
+                               
                                 getWorld().addObject(healthBarImg, WorldData.menuX, 540);
+                                
                                 addedHealthBar = true;
                             }
                         } else {
@@ -246,8 +248,8 @@ public class Stroke extends Inamic {
         healthBar.setBarWidth(567);
         healthBar.setBarHeight(8);
         healthBar.setTextColor(new Color(155, 173, 183));
-        healthBarImg = new Picture("npc/inamic/stroke/healthBar.png", true);
-
+       
+        
     }
 
     private void changeAnimation() {
