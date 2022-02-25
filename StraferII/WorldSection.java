@@ -11,13 +11,13 @@ public class WorldSection extends Actor {
     public void initWorldSection11() {
         WorldData.visitedWorldSections[1][1] = true;
 
-        world.initObject(new Fps(), 150, 50);
+      
 
         //world.initObject(new Tutorial("Cutscene", "wakeup", 1, false), WorldData.menuX, WorldData.menuY);
         if (!WorldData.hasSword) {
             world.initObject(new PickUp("sword"), 2000, 2000);
         }
-        world.initObject(new BlackHole(), 400, 400);
+        
         WorldSection11 ws = new WorldSection11(world, scroller, player);
         ws.init();
 
@@ -26,7 +26,7 @@ public class WorldSection extends Actor {
     public void initWorldSection12() {
         WorldData.visitedWorldSections[1][2] = true;
 
-        getWorld().addObject(new Fps(), 150, 50);
+       world.initObject(new Door(), 3200, 6080);
         WorldSection12 ws = new WorldSection12(world, scroller, player);
         ws.init();
 

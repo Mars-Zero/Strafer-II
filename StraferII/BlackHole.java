@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 public class BlackHole extends Item {
+ private final long constantEraseTime = 600;int time=0;
+    
 
     GifImage gif = new GifImage("item/blackHole.gif");
 
@@ -23,12 +25,27 @@ public class BlackHole extends Item {
         }
 
     }
-
+      private void removeBlackHole() {
+        List players = getWorld().getObjects(Player.class);
+        Player player = (Player) players.get(0);
+        if (!player.isEquipBlackHole()) {
+            getWorld().removeObject(this);
+            player.setEquipBlackHole(false);
+        }
+        time++;
+            if (time > constantEraseTime) {
+                getWorld().removeObject(this);
+                player.setEquipBlackHole(false);
+            }
+    }
     public void act() {
 
         if (!WorldData.PAUZA) {
+           
             suck();
-            setImage(gif.getCurrentImage());
+            
+            setImage(gif.getCurrentImage()); 
+            removeBlackHole();
         }
 
     }

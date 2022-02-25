@@ -142,7 +142,7 @@ public class Player extends Jucator {
 
         }
         if (apas == false) {
-            WorldData.isWalking=true;
+            WorldData.isWalking = true;
             if (equipSword == false && equipLaser == false && equipPortalGun == false && equipIceLock == false && equipLantern == false && equipBlackHole == false) {
                 gif = "idle";
 
@@ -194,8 +194,8 @@ public class Player extends Jucator {
 
             }
 
-        }else{
-            WorldData.isWalking=false;
+        } else {
+            WorldData.isWalking = false;
         }
 
     }
@@ -365,7 +365,7 @@ public class Player extends Jucator {
         //lantern
 
         //icelock
-         if (equipIceLock) {
+        if (equipIceLock) {
             long timpCurent = System.currentTimeMillis();
             if (timpCurent - timpPrec >= 20) {
                 if (getWorld().getObjects(IceLock.class).isEmpty()) {
@@ -377,17 +377,33 @@ public class Player extends Jucator {
 
             if (Greenfoot.mouseClicked(null)) {
                 if (Greenfoot.getMouseInfo().getButton() == 3) {
-                    equipIceLock= false;
+                    equipIceLock = false;
                 }
             }
         }
         //icelock
-        
-        
+
         //blackHole
-        
+        if (equipBlackHole) {
+
+            long timpCurent = System.currentTimeMillis();
+            if (timpCurent - timpPrec >= 20) {
+
+                if (getWorld().getObjects(BlackHole.class).isEmpty()) {
+                    getWorld().addObject(new BlackHole(), getX()+150, getY());
+                }
+
+                timpPrec = timpCurent;
+            }
+
+            if (Greenfoot.mouseClicked(null)) {
+                if (Greenfoot.getMouseInfo().getButton() == 3) {
+                    equipBlackHole = false;
+                }
+            }
+        }
         //blackhole
-        
+
     }
 
     protected void checkPauza() {
@@ -416,22 +432,22 @@ public class Player extends Jucator {
 
     }
 
-    long cntF=0;
-    public void lookForEnemies(){
-        if(!getObjectsInRange(1200,Inamic.class).isEmpty()){
-            WorldData.isFighting=true; 
-        }
-        else{
-            if(WorldData.isFighting){
+    long cntF = 0;
+
+    public void lookForEnemies() {
+        if (!getObjectsInRange(1200, Inamic.class).isEmpty()) {
+            WorldData.isFighting = true;
+        } else {
+            if (WorldData.isFighting) {
                 cntF++;
-                if(cntF>2000){
-                    WorldData.isFighting=false;
-                    cntF=0;
+                if (cntF > 2000) {
+                    WorldData.isFighting = false;
+                    cntF = 0;
                 }
             }
         }
     }
-    
+
     protected void takeDamage(int dmg) {
         hp -= dmg;
         getHealthBar().subtract(dmg);
@@ -440,9 +456,9 @@ public class Player extends Jucator {
     boolean firstCycle = false;
 
     public void die() {
-        if(hp>=hpMax){//sa nu aiba mai multa
-            hp=hpMax;
-             getHealthBar().setValue(getHealthBar().getMaximumValue());
+        if (hp >= hpMax) {//sa nu aiba mai multa
+            hp = hpMax;
+            getHealthBar().setValue(getHealthBar().getMaximumValue());
         }
         if (hp <= 0) {
             getHealthBar().setValue(getHealthBar().getMinimumValue());

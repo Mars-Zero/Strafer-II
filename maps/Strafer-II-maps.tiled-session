@@ -307,8 +307,8 @@
             "scale": 0.0625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 8624,
-                "y": 6808
+                "x": 4080,
+                "y": 8184
             }
         },
         "map12.tmx#Terrain": {
@@ -375,11 +375,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.0625,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 432,
-                "y": 6808
+                "x": -4057.5757575757575,
+                "y": 5762.121212121212
             }
         },
         "map13.tmx#Terrain": {
@@ -521,8 +521,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6832,
-                "y": 3712
+                "x": 4080,
+                "y": 8
             }
         },
         "map22.tmx#Terrain": {
@@ -593,8 +593,8 @@
             "scale": 0.03125,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 3232,
-                "y": -1040
+                "x": -4096,
+                "y": 16
             }
         },
         "map23.tmx#Terrain": {
