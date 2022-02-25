@@ -17,6 +17,7 @@ public class WorldSection extends Actor {
         if (!WorldData.hasSword) {
             world.initObject(new PickUp("sword"), 2000, 2000);
         }
+        world.initObject(new BlackHole(), 400, 400);
         WorldSection11 ws = new WorldSection11(world, scroller, player);
         ws.init();
 
@@ -34,7 +35,7 @@ public class WorldSection extends Actor {
     public void initWorldSection13() {
         WorldData.visitedWorldSections[1][3] = true;
 
-        WorldSection12 ws = new WorldSection12(world, scroller, player);
+        WorldSection13 ws = new WorldSection13(world, scroller, player);
         ws.init();
     }
 

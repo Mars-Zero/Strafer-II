@@ -135,7 +135,11 @@ public class Droid extends Inamic {
             }
         }
     }
-
+  private void suckedBlackHole(){
+        if(isTouching(BlackHole.class)){
+            takeDamage(10);
+        }
+    }
     private void takeDamage(int dmg) {
         hp -= dmg;
     }
@@ -168,6 +172,7 @@ public class Droid extends Inamic {
 
                 lovitSabie();
                 lovitLaser();
+                suckedBlackHole();
                 die();
 
                 timpAtins = 0;//{

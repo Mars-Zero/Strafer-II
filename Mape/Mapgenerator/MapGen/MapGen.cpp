@@ -151,14 +151,28 @@ void matrixGen(std::unique_ptr<tson::Map>& map, short int mapMatrix[10001][10001
 void wallsGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout) {
     if (map->getStatus() == tson::ParseStatus::OK) {
 
+int nr = 1;
+wout << "\n\n\npublic void init" << nr << "(){" << "\n";
+nr++;
+
         tson::Layer* layer = map->getLayer("WallLayer1"); ///walls on floor 1
 wout << R"(//Walls)"<<"\n";
         if (layer->getType() == tson::LayerType::TileLayer) {
-
+            
+            int n = 0;
             
             //pos = position in tile units
             for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
             {
+
+                n++;
+                if (n >= 1500) {
+                   
+                    n = 0;
+                    wout << "\n}\n\n\n\n";
+                    wout << "\n\n\npublic void init" << nr << "(){" << "\n"; 
+                    nr++;
+                }
                 tson::Tileset* tileset = tileObject.getTile()->getTileset();
                 
                 tson::Vector2f position = tileObject.getPosition();
@@ -187,10 +201,19 @@ wout << R"(//Walls)"<<"\n";
         layer = map->getLayer("WallLayer2"); ///walls on floor 1
 
         if (layer->getType() == tson::LayerType::TileLayer) {
-
+            int n = 0;
+            
             //pos = position in tile units
             for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
             {
+                n++;
+                if (n >= 1500) {
+                    
+                    n = 0;
+                    wout << "\n}\n\n\n\n";
+                    wout << "\n\n\npublic void init"<<nr<<"(){" << "\n";
+                    nr++;
+                }
                 tson::Tileset* tileset = tileObject.getTile()->getTileset();
 
                 tson::Vector2f position = tileObject.getPosition();
@@ -216,7 +239,7 @@ wout << R"(//Walls)"<<"\n";
 
             }
         }
-        wout << R"(//Walls)" << "\n";
+        wout << R"(//Walls)" << "\n}";
 
 
     }
@@ -229,7 +252,7 @@ void npcGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout){
 
         if (layer->getType() == tson::LayerType::TileLayer) {
 
-
+            wout << R"(public void initNpc(){)" << "\n";
             wout << R"(//npc)" << "\n";
             //pos = position in tile units
             for (auto& [pos, tileObject] : layer->getTileObjects()) //Loops through absolutely all existing tileObjects
@@ -276,6 +299,7 @@ void npcGen(std::unique_ptr<tson::Map>& map, std::ofstream& wout){
 
             }
             wout << R"(//npc)" << "\n";
+            wout << "}\n";
         }
     }
 }
@@ -298,6 +322,7 @@ int main() {
         break;
     }
     case 2: {
+        
         npcGen(map, fisier::wallsFile);
         wallsGen(map, fisier::wallsFile);
         break;

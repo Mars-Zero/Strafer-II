@@ -9,7 +9,7 @@
         "tilesets",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II"
     ],
-    "exportAsImage.useCurrentScale": true,
+    "exportAsImage.useCurrentScale": false,
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.33,
+            "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 10109.090909090908,
-                "y": 6728.787878787878
+                "x": 5088,
+                "y": 3456
             }
         },
         "map11.tmx#Terrain": {
@@ -305,10 +305,10 @@
         },
         "map12.tmx": {
             "scale": 0.0625,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 8352,
-                "y": 10888
+                "x": 8624,
+                "y": 6808
             }
         },
         "map12.tmx#Terrain": {
@@ -375,11 +375,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.03125,
-            "selectedLayer": 1,
+            "scale": 0.0625,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": -4160,
-                "y": 3632
+                "x": 432,
+                "y": 6808
             }
         },
         "map13.tmx#Terrain": {
@@ -404,7 +404,8 @@
             "scaleInDock": 1
         },
         "map13.tmx#dungeon3": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 0.75
         },
         "map13.tmx#grass1": {
             "scaleInDock": 1
@@ -446,11 +447,11 @@
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 0.03,
-            "selectedLayer": 2,
+            "scale": 0.0625,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 8666.666666666666,
-                "y": -1783.333333333334
+                "x": 15024,
+                "y": 3712
             }
         },
         "map21.tmx#Terrain": {
@@ -520,8 +521,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3872,
-                "y": -696
+                "x": 6832,
+                "y": 3712
             }
         },
         "map22.tmx#Terrain": {
@@ -589,11 +590,11 @@
             "scaleInDock": 1
         },
         "map23.tmx": {
-            "scale": 0.125,
-            "selectedLayer": 0,
+            "scale": 0.03125,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": -1248,
-                "y": -164
+                "x": 3232,
+                "y": -1040
             }
         },
         "map23.tmx#Terrain": {
@@ -618,7 +619,7 @@
             "scaleInDock": 1
         },
         "map23.tmx#dungeon3": {
-            "scaleInDock": 1
+            "scaleInDock": 0.75
         },
         "map23.tmx#grass1": {
             "scaleInDock": 1

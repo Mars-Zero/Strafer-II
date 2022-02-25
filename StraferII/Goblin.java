@@ -63,7 +63,11 @@ public class Goblin extends Inamic {
             }
         }
     }
-
+    private void suckedBlackHole(){
+        if(isTouching(BlackHole.class)){
+            takeDamage(10);
+        }
+    }
     private void takeDamage(int dmg) {
         hp -= dmg;
     }
@@ -98,6 +102,7 @@ public class Goblin extends Inamic {
 
                 lovitSabie();
                 lovitLaser();
+                suckedBlackHole();
                 long waitseed = Greenfoot.getRandomNumber(2500);
 
                 if (isTouching(Jucator.class)) {

@@ -164,32 +164,32 @@ abstract class SaveSystem {
                     player.setHp(h);
                     player.getHealthBar().setValue(h);
                 } else if (tip.equalsIgnoreCase("WS11:")) {
-                    if (getContentString(str) == "true") {
+                    if (getContentString(str).equalsIgnoreCase("true")) {
                         WorldData.visitedWorldSections[1][1] = true;
                     }
 
                 } else if (tip.equalsIgnoreCase("WS12:")) {
-                    if (getContentString(str) == "true") {
+                    if (getContentString(str).equalsIgnoreCase("true")) {
                         WorldData.visitedWorldSections[1][2] = true;
                     }
 
                 } else if (tip.equalsIgnoreCase("WS13:")) {
-                    if (getContentString(str) == "true") {
+                    if (getContentString(str).equalsIgnoreCase("true")) {
                         WorldData.visitedWorldSections[1][3] = true;
                     }
 
                 } else if (tip.equalsIgnoreCase("WS21:")) {
-                    if (getContentString(str) == "true") {
+                    if (getContentString(str).equalsIgnoreCase("true")) {
                         WorldData.visitedWorldSections[2][1] = true;
                     }
 
                 } else if (tip.equalsIgnoreCase("WS22:")) {
-                    if (getContentString(str) == "true") {
+                    if (getContentString(str).equalsIgnoreCase("true")) {
                         WorldData.visitedWorldSections[2][2] = true;
                     }
 
                 } else if (tip.equalsIgnoreCase("WS23:")) {
-                    if (getContentString(str) == "true") {
+                    if (getContentString(str).equalsIgnoreCase("true")) {
                         WorldData.visitedWorldSections[2][3] = true;
                     }
 
