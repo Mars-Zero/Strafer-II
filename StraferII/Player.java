@@ -21,7 +21,7 @@ public class Player extends Jucator {
 
     private boolean inViata = true;
     private int hp = 400;
-    private final int hpMax = 400;
+    public static final int hpMax = 400;
     private int speed = 7;
 
     private boolean equipSword = false;

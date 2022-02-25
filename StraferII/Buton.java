@@ -242,6 +242,8 @@ public class Buton extends UI {
                             Player player = getWorld().getObjects(Player.class).get(0);
                             WorldData.reset();
                             WorldData.saveFileNumber++;
+                            player.setLocation(PlayWorld.originalX-Scroller.scrolledX,PlayWorld.originalY-Scroller.scrolledY);
+                            player.setHp(Player.hpMax);
                             SaveSystem.save(WorldData.saveFileNumber, player);
                             player.load();
 

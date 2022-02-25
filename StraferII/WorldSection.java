@@ -13,7 +13,7 @@ public class WorldSection extends Actor {
 
         world.initObject(new Fps(), 150, 50);
 
-        world.initObject(new Tutorial("Cutscene", "wakeup", 1, false), WorldData.menuX, WorldData.menuY);
+        //world.initObject(new Tutorial("Cutscene", "wakeup", 1, false), WorldData.menuX, WorldData.menuY);
         if (!WorldData.hasSword) {
             world.initObject(new PickUp("sword"), 2000, 2000);
         }
