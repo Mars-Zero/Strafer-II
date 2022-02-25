@@ -1,11 +1,11 @@
-PlayerX:4209
-PlayerY:1853
-Health:170
-WorldSection:12
+PlayerX:8132
+PlayerY:6760
+Health:217
+WorldSection:11
 WS11:true
 WS12:true
 WS13:false
-WS21:false
+WS21:true
 WS22:true
 WS23:true
 Item:sword

@@ -236,11 +236,19 @@ public class Inamic extends Npc {
         }
     }
 
-   
+   int blinks=0;
     protected void knockbackMove() {//boolean knockbacked) {
 
         if (knockbacked) {
             this.frameuri_trecute++;
+            blinks++;
+            if(this.frameuri_trecute%2==0&& blinks<5){
+                getImage().setTransparency(80);
+                
+            }
+            else{
+                getImage().setTransparency(100);
+            }
             setLocation((int) (getX() + viteza_frame_x * Math.cos(grade_rezultanta)), (int) (getY() + viteza_frame_y * Math.sin(grade_rezultanta)));
             worldX += viteza_frame_x * Math.cos(grade_rezultanta);
             worldY += viteza_frame_y * Math.sin(grade_rezultanta);
@@ -248,6 +256,7 @@ public class Inamic extends Npc {
 
             if (this.frameuri_trecute >= this.timp_knockback * 60) {
                 this.frameuri_trecute = 0;
+                getImage().setTransparency(100);
                 knockbacked = false;
             }
         }
