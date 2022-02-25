@@ -41,9 +41,13 @@ public class MainStoryline extends Storyline{
             e.printStackTrace();
         }
     }
-
-    public void isRelevantEvent(Event event) {
-        if (questQueue.peek().isRelevantEvent(event)) {
+    
+    /**
+     * This method checks whether the event is relevant
+     * This method should be called by an actor that is in the world so that a reference to the world can be passed
+     */
+    public void isRelevantEvent(Event event,PlayWorld world) {
+        if (questQueue.peek().isRelevantEvent(event,world)) {
             if (questQueue.peek().isFinished()) {
                 questQueue.poll();
             }

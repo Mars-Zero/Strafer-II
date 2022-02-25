@@ -18,4 +18,19 @@ public class EventForcedAction extends EventSystem
        this.event=e;
        this.action=tut;
    }
+   
+   /**
+    * Returns the event index
+    */
+   public int getEvent()
+   {
+       return event;
+   }
+   
+   /**
+    * Executes the scripted action
+    */
+   public void scriptedAction(PlayWorld world){
+       world.initObject(action, WorldData.menuX, WorldData.menuY);
+   }
 }

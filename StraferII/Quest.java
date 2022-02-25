@@ -26,7 +26,7 @@ public class Quest extends EventSystem{
     /**
      * The number of the current event in the original queue
      */
-    private int currentEventNumber=1;
+    private int currentEventNumber=0;
     
      /**
      * This method loads the whole quest from a file
@@ -36,6 +36,7 @@ public class Quest extends EventSystem{
             file.createNewFile();
             Scanner fin = new Scanner(file, "UTF-8");
             
+            currentEventNumber=0;
             int n=0;
             int val=0;
             String action;
@@ -93,17 +94,27 @@ public class Quest extends EventSystem{
         }
     }
     
-    public boolean isRelevantEvent(Event event)
+    public boolean isRelevantEvent(Event event,PlayWorld world)
     {
         if(eventQueue.peek().isEqual(event))
         {
             eventQueue.poll();
             currentEventNumber++;
+            findForcedAction(world);
             return true;
         }
         return false;
     }
-    
+    /**
+     * This method checks whether the event that was finished should trigger
+     * a forced/scripted action
+     */
+    void findForcedAction(PlayWorld world){
+        if(actionsQueue.peek().getEvent()==currentEventNumber)
+        {
+            actionsQueue.poll();
+        }
+    }
     public String nextToDo(){
         return eventQueue.peek().toDo();
     }
