@@ -51,7 +51,7 @@ public class MapMenu extends Pause {
                 int ws = i * 10 + j;
                 if (WorldData.visitedWorldSections[i][j] == true) {
                     Picture pic = new Picture("UI/mapMenu/mapMenu" + ws + ".png");
-                    playWorld.addObject(pic, 246 * j - 84, 246 * i - 84);
+                    playWorld.addObject(pic, 247 * j - 84, 247 * i - 84);
                     thingsToClear.add(pic);
                 }
             }

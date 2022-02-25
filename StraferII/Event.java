@@ -57,8 +57,7 @@ public class Event extends EventSystem{
       * A constructor used to load an event by using directly it's code
       * @param eventCode
       */
-     public Event(String eventCode,String toDo,int worldSec,int pX,int pY)
-     {
+     public Event(String eventCode,String toDo,int worldSec,int pX,int pY){
          this.action=toDo;
          this.eventCode=eventCode;
          this.worldSection=worldSec;

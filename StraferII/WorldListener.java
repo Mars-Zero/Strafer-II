@@ -23,7 +23,7 @@ public class WorldListener extends WorldSection {
 
     void changeWorldSection(boolean atLoad) {     //daca e schimbata pt load sau pt miscare
         scroller.setScrollImage(fundaluri.get(WorldData.getWorldSectionShort(worldSection) - 1));
-
+        WorldData.worldSection=this.worldSection;
         if (!atLoad) {
             relocatePlayer();
             

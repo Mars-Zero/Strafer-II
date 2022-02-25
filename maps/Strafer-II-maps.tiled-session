@@ -232,10 +232,10 @@
         },
         "map11.tmx": {
             "scale": 0.33,
-            "selectedLayer": 5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 2554.5454545454545,
-                "y": 701.5151515151515
+                "x": 10109.090909090908,
+                "y": 6728.787878787878
             }
         },
         "map11.tmx#Terrain": {
@@ -305,10 +305,10 @@
         },
         "map12.tmx": {
             "scale": 0.0625,
-            "selectedLayer": 5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 4064,
-                "y": 4104
+                "x": 8352,
+                "y": 10888
             }
         },
         "map12.tmx#Terrain": {
@@ -330,7 +330,7 @@
             "scaleInDock": 1
         },
         "map12.tmx#dungeon2": {
-            "scaleInDock": 1
+            "scaleInDock": 0.5
         },
         "map12.tmx#dungeon3": {
             "scaleInDock": 1
@@ -375,11 +375,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.0625,
-            "selectedLayer": 2,
+            "scale": 0.03125,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 4064,
-                "y": 4104
+                "x": -4160,
+                "y": 3632
             }
         },
         "map13.tmx#Terrain": {
@@ -446,11 +446,11 @@
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 0.125,
-            "selectedLayer": 1,
+            "scale": 0.03,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 4064,
-                "y": 4092
+                "x": 8666.666666666666,
+                "y": -1783.333333333334
             }
         },
         "map21.tmx#Terrain": {
@@ -520,8 +520,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4096,
-                "y": 4104
+                "x": 3872,
+                "y": -696
             }
         },
         "map22.tmx#Terrain": {
@@ -589,11 +589,11 @@
             "scaleInDock": 1
         },
         "map23.tmx": {
-            "scale": 0.015625,
-            "selectedLayer": 1,
+            "scale": 0.125,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 4096,
-                "y": 4128
+                "x": -1248,
+                "y": -164
             }
         },
         "map23.tmx#Terrain": {

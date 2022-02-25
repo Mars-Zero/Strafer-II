@@ -24,6 +24,10 @@ public class WorldData {
     public static int saveFileNumber = -1;
 
 //
+    public static String objective="";
+//
+    
+//
     static List<String> items = new ArrayList<>();
     public static boolean hasSword = false;
     public static boolean hasLaser = false;
