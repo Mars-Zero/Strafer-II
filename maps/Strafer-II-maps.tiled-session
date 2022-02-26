@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map11.tmx",
+    "activeFile": "map22.tmx",
     "expandedProjectPaths": [
+        "tilesets",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
-        ".",
-        "tilesets"
+        "."
     ],
     "exportAsImage.useCurrentScale": false,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.0625,
+            "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 7456,
-                "y": 4040
+                "x": 11327.272727272728,
+                "y": 6431.818181818182
             }
         },
         "map11.tmx#Terrain": {
@@ -304,11 +304,11 @@
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.125,
+            "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4672,
-                "y": 7180
+                "x": 3360,
+                "y": 10232
             }
         },
         "map12.tmx#Terrain": {
@@ -375,11 +375,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.125,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 4063.6363636363635,
-                "y": 4095.4545454545455
+                "x": -10360,
+                "y": 13964
             }
         },
         "map13.tmx#Terrain": {
@@ -447,11 +447,11 @@
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 0.0625,
-            "selectedLayer": 1,
+            "scale": 1.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 4080,
-                "y": 4104
+                "x": 4229.333333333333,
+                "y": 4291.666666666666
             }
         },
         "map21.tmx#Terrain": {
@@ -518,11 +518,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 0.03125,
+            "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4416,
-                "y": 1840
+                "x": 3360,
+                "y": 2040
             }
         },
         "map22.tmx#Terrain": {
@@ -591,10 +591,10 @@
         },
         "map23.tmx": {
             "scale": 0.03125,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 4064,
-                "y": 4112
+                "x": -864,
+                "y": 1936
             }
         },
         "map23.tmx#Terrain": {
@@ -777,12 +777,12 @@
     "project": "Strafer-II-maps.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "map11.tmx",
+        "map12.tmx",
+        "map13.tmx",
+        "map21.tmx",
         "map23.tmx",
         "map22.tmx",
-        "map21.tmx",
-        "map13.tmx",
-        "map12.tmx",
-        "map11.tmx",
         "tilesets/Terrain.tsx",
         "tilesets/pereteS.tsx",
         "map.json",

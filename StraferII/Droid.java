@@ -168,6 +168,7 @@ public class Droid extends Inamic {
                     animation.run();
                 }
                 if (startedAnimation && !animation.isActive()) {
+                    super.generateRandomHealthBoost();
                     getWorld().removeObject(this);
                 }
             } else {

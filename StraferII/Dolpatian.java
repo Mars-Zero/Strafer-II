@@ -121,6 +121,7 @@ public class Dolpatian extends Goblin {
                     animation.run();
                 }
                 if (startedAnimation && !animation.isActive()) {
+                    super.generateRandomHealthBoost();
                     getWorld().removeObject(this);
                 }
 
@@ -170,7 +171,7 @@ public class Dolpatian extends Goblin {
                         }
                         if (deltaPGX <= 600 && deltaPGY <= 400) {
                             
-                             if(!WorldData.metDolpatian){
+                             if(!WorldData.metDolpatian&& WorldData.nrEvent<=15){
                                 getWorld().addObject(new Tutorial("Combat","Dolpatian",3,false), WorldData.menuX, WorldData.menuY);
                                 WorldData.metDolpatian=true;
                             }

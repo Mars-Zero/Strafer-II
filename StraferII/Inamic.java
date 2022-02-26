@@ -256,7 +256,7 @@ public class Inamic extends Npc {
 
             if (this.frameuri_trecute >= this.timp_knockback * 60) {
                 this.frameuri_trecute = 0;
-                
+                 getImage().setTransparency(100);
                 knockbacked = false;
             }
         }

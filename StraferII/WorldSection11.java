@@ -21,18 +21,7 @@ public class WorldSection11 extends WorldSection{
     }
     public void initNpc(){
 //npc
-world.initObject(new SchrodingersCat(scroller, 2688, 576),2688, 576);
-world.initObject(new Dolpatian(scroller, 2752, 576),2752, 576);
-world.initObject(new Droid(scroller, 2816, 576, "oy",400),2816, 576);
-world.initObject(new Droid(scroller, 2816, 704, "ox",600),2816, 704);
-world.initObject(new Droid(scroller, 2816, 768, "oy",400),2816, 768);
-world.initObject(new Droid(scroller, 2816, 832, "ox",600),2816, 832);
-world.initObject(new Goblin(scroller, 3008, 384),3008, 384);
-world.initObject(new Goblin(scroller, 3008, 448),3008, 448);
-world.initObject(new Goblin(scroller, 3008, 512),3008, 512);
-world.initObject(new Goblin(scroller, 3072, 448),3072, 448);
-world.initObject(new Goblin(scroller, 3136, 448),3136, 448);
-world.initObject(new Goblin(scroller, 3200, 448),3200, 448);
+
 //npc
 }
 

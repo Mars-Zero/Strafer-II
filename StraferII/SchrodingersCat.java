@@ -160,7 +160,7 @@ public class SchrodingersCat extends Goblin {
                                 deltaPGY *= (-1);
                             }
                             if (deltaPGX <= 600 && deltaPGY <= 400) {
-                                if (!WorldData.metSchrodingersCat) {
+                                if (!WorldData.metSchrodingersCat &&WorldData.nrEvent<=22) {
                                     getWorld().addObject(new Tutorial("Combat", "SchrodingersCat", 3, false), WorldData.menuX, WorldData.menuY);
                                     WorldData.metSchrodingersCat = true;
                                 }

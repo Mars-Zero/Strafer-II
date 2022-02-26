@@ -166,7 +166,7 @@ public class EventSystem extends Actor {
                 //L:CastleDoor
                 //
                 case 13: {
-                      makeObjective("Get To Door", 53 * 64, 99 * 64, 12);
+                    makeObjective("Get To Door", 53 * 64, 99 * 64, 12);
                     if (worldListener.getWorldSection() == 12 && player.getWorldX() >= 53 * 64 && player.getWorldY() >= 100 * 64) {
                         WorldData.nrEvent++;
                     }
@@ -205,7 +205,7 @@ public class EventSystem extends Actor {
                 //
                 case 16: {
                     makeObjective("Get To Field", 64 * 64, 3 * 64, 22);
-                    if (worldListener.getWorldSection() == 22 && player.getWorldX() >= 64 * 64 && player.getWorldY() >=3 * 64) {
+                    if (worldListener.getWorldSection() == 22 && player.getWorldX() >= 64 * 64 && player.getWorldY() >= 3 * 64) {
                         playWorld.initObject(new Tutorial("Cutscene", "field", 1, false), WorldData.menuX, WorldData.menuY);
                     }
                     break;
@@ -214,7 +214,7 @@ public class EventSystem extends Actor {
                 //D:Tsoukalos6
                 //
                 case 17: {
-                      makeObjective("Talk to Mr.T", 110 * 64, 6 * 64, 22);
+                    makeObjective("Talk to Mr.T", 110 * 64, 6 * 64, 22);
                     if (worldListener.getWorldSection() == 22) {
                         WorldData.dialogIndex = 6;
                         tsoukalos = new Tsoukalos(playWorld, scroller, "Tsoukalos", WorldData.dialogIndex);
@@ -227,8 +227,8 @@ public class EventSystem extends Actor {
                 //D:Tsoukalos7
                 //
                 case 18: {
-                       makeObjective("Talk to Mr.T", 45* 64, 101 * 64, 22);
-                    if (worldListener.getWorldSection() == 22) {
+                    makeObjective("Talk to Mr.T", 45 * 64, 101 * 64, 23);
+                    if (worldListener.getWorldSection() == 23) {
                         WorldData.dialogIndex = 7;
                         tsoukalos = new Tsoukalos(playWorld, scroller, "Tsoukalos", WorldData.dialogIndex);
                         playWorld.initUniqueObject(tsoukalos, 45 * 64, 101 * 64);
@@ -239,9 +239,95 @@ public class EventSystem extends Actor {
                 //
                 //i:blackhole
                 //
-                case 19:{
-                    
+                case 19: {
+                    makeObjective("Get Black Hole", 60 * 64, 45 * 64, 23);
+                    if (worldListener.getWorldSection() == 23) {
+                        playWorld.initUniqueObject(new PickUp("blackhole"), 60 * 64, 45 * 64);
+                    }
+                    break;
                 }
+                //
+                //D:Keanu8
+                //
+                case 20: {
+                    makeObjective("Talk to Mr.K", 20 * 64, 11 * 64, 23);
+
+                    WorldData.dialogIndex = 8;
+                    if (playWorld.getObjects(Keanu.class).isEmpty()) {
+                        keanu = new Keanu(playWorld, scroller, "Keanu", WorldData.dialogIndex);
+                        playWorld.initUniqueObject(keanu, 1, 1);
+                    } else {
+                        keanu = playWorld.getObjects(Keanu.class).get(0);
+                    }
+                    keanu.setNrDialog(WorldData.dialogIndex);
+                    keanu.setLocation(20 * 64 - Scroller.scrolledX, 11 * 64 - Scroller.scrolledY);
+
+                    break;
+                }
+                //ws13
+                //i:portalgun
+                //
+                case 21: {
+                    makeObjective("Get Portal Gun", 80 * 64, 10 * 64, 13);
+                    if (worldListener.getWorldSection() == 13) {
+                        playWorld.initUniqueObject(new PickUp("portalgun"), 80 * 64, 10 * 64);
+                    }
+                    break;
+                }
+                //
+                //D:Stonks9
+                //
+                case 22: {
+                    WorldData.dialogIndex = 9;
+                    if (playWorld.getObjects(Keanu.class).isEmpty()) {
+                        stonks = new Stonks(playWorld, scroller, "Stonks", WorldData.dialogIndex);
+                        playWorld.initUniqueObject(stonks, 1, 1);
+                    } else {
+                        stonks = playWorld.getObjects(Stonks.class).get(0);
+                    }
+                    stonks.setNrDialog(WorldData.dialogIndex);
+                    stonks.setLocation(20 * 64 - Scroller.scrolledX, 125 * 64 - Scroller.scrolledY);
+                    makeObjective("Talk to Mr.S", 20 * 64, 125 * 64, 13);
+                    break;
+                }
+                //ws21
+                //D:Tsoukalos10
+                //
+                case 23: {
+                    makeObjective("Talk to Mr.T", 125 * 64, 85 * 64, 21);
+                    if (worldListener.getWorldSection() == 21) {
+                        WorldData.dialogIndex = 10;
+                        tsoukalos = new Tsoukalos(playWorld, scroller, "Tsoukalos", WorldData.dialogIndex);
+                        playWorld.initUniqueObject(tsoukalos, 125 * 64, 85 * 64);
+
+                    }
+                    break;
+
+                }
+                //
+                //i:icelock
+                //
+                case 24: {
+                    makeObjective("Get Ice Lock", 63 * 64, 67 * 64, 21);
+                    if (worldListener.getWorldSection() == 21) {
+                        playWorld.initUniqueObject(new PickUp("icelock"), 63 * 64, 67 * 64);
+                    }
+                    break;
+                }
+                //ws22
+                //D:Keanu11
+                //
+                case 25:{
+                    makeObjective("Talk to Mr.K", 100 * 64, 5 * 64, 22);
+                    if (worldListener.getWorldSection() == 22) {
+                        WorldData.dialogIndex = 11;
+                        keanu = new Keanu(playWorld, scroller, "Keanu", WorldData.dialogIndex);
+                        playWorld.initUniqueObject(keanu, 100 * 64, 5 * 64);
+
+                    }
+                    break;
+                }
+                
 
             }
         }
