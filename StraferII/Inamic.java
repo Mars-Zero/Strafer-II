@@ -394,4 +394,22 @@ public class Inamic extends Npc {
     public void setFreeze(boolean freeze) {
         this.freeze = freeze;
     }
+    
+    /**
+     * This method spawns a pill that heals the player a random amount 
+     */
+    protected void generateRandomHealthBoost(){
+        int chance = Greenfoot.getRandomNumber(6);
+        if(chance==0){
+            //add the healthBoost
+            int currentHp=getWorld().getObjects(Player.class).get(0).getHp();
+            int possibleHealth=Player.hpMax-currentHp;
+            int alwaysAdd=possibleHealth*40/100;
+            chance=Greenfoot.getRandomNumber(10);
+            if(chance==0){
+                alwaysAdd=possibleHealth;
+            }
+            getWorld().addObject(new Pill(alwaysAdd),getX(),getY());
+        }
+    }
 }
