@@ -247,7 +247,7 @@ public class Inamic extends Npc {
                 
             }
             else{
-                getImage().setTransparency(100);
+                getImage().setTransparency(80);
             }
             setLocation((int) (getX() + viteza_frame_x * Math.cos(grade_rezultanta)), (int) (getY() + viteza_frame_y * Math.sin(grade_rezultanta)));
             worldX += viteza_frame_x * Math.cos(grade_rezultanta);
@@ -256,11 +256,13 @@ public class Inamic extends Npc {
 
             if (this.frameuri_trecute >= this.timp_knockback * 60) {
                 this.frameuri_trecute = 0;
-                getImage().setTransparency(100);
+                
                 knockbacked = false;
             }
         }
-
+        else{
+        getImage().setTransparency(255);
+        }
     }
 
     protected void lovitSabie(int masa) {

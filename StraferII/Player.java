@@ -36,7 +36,6 @@ public class Player extends Jucator {
     private boolean toggledGameOver = false;
 
     private boolean loaded = false;
-    public boolean hasObjective = false;
 
     Animation animation;
     boolean playedAnimation;
@@ -554,10 +553,6 @@ public class Player extends Jucator {
 
     public void setWorldY(int val) {
         worldY = val;
-    }
-
-    public boolean hasObjective() {
-        return hasObjective;
     }
 
     public HealthBarPlayer getHealthBar() {

@@ -7,6 +7,8 @@ public class Tsoukalos extends Friendly
     private String dialogFile;
   
     private int nrDialog;
+
+ 
     GifImage img=new GifImage("npc/friendly/tsoukalos_idle.gif");
     
     public Tsoukalos(PlayWorld pw,Scroller scrl, String dialogFileref, int nrDialog) {
@@ -33,5 +35,12 @@ public class Tsoukalos extends Friendly
             }
             setImage(img.getCurrentImage());
         }
+    }
+   public int getNrDialog() {
+        return nrDialog;
+    }
+
+    public void setNrDialog(int nrDialog) {
+        this.nrDialog = nrDialog;
     }    
 }

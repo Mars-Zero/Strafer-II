@@ -135,11 +135,13 @@ public class Droid extends Inamic {
             }
         }
     }
-  private void suckedBlackHole(){
-        if(isTouching(BlackHole.class)){
+
+    private void suckedBlackHole() {
+        if (isTouching(BlackHole.class)) {
             takeDamage(10);
         }
     }
+
     private void takeDamage(int dmg) {
         hp -= dmg;
     }
@@ -181,9 +183,9 @@ public class Droid extends Inamic {
                 //daca e in range sa nu l caute in toata lumea
                 List players = getWorld().getObjects(Player.class);
                 Player player = (Player) players.get(0);
-                
+
                 move();
-                
+
                 int deltaPGX = player.getWorldX() - (this.worldX + Scroller.scrolledX);
                 if (deltaPGX < 0) {
                     deltaPGX *= (-1);
@@ -193,9 +195,13 @@ public class Droid extends Inamic {
                     deltaPGY *= (-1);
                 }
                 if (deltaPGX <= 600 && deltaPGY <= 400) {
+                    if (!WorldData.metDroid&&WorldData.nrEvent<=7) {
+                        getWorld().addObject(new Tutorial("Combat", "Droid", 3, false), WorldData.menuX, WorldData.menuY);
+                        WorldData.metDroid = true;
+                    }
                     //aici intra functia de move 
                     gaseste();
-                    
+
                 }
                 int difpx = Scroller.scrolledX - prevsx;
                 int difpy = Scroller.scrolledY - prevsy;
@@ -229,7 +235,8 @@ public class Droid extends Inamic {
         animation.run();
         animation.setActiveState(true);
     }
- public boolean isFreeze() {
+
+    public boolean isFreeze() {
         return freeze;
     }
 

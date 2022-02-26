@@ -14,7 +14,7 @@ public class WorldData {
     public static int menuY = 288;
 //
 
-//
+    //player state
     public static boolean addedDialogs = false;
     public static boolean isFighting=false;
     public static boolean isWalking=false;
@@ -24,10 +24,13 @@ public class WorldData {
     public static int saveFileNumber = -1;
 
 //
+    public static int nrEvent=1;
     public static String objective="";
+    public static int objectiveX=1000,objectiveY=1000;
+    public static int objectiveWS=22;
 //
     
-//
+    //iteme obtinute
     static List<String> items = new ArrayList<>();
     public static boolean hasSword = false;
     public static boolean hasLaser = false;
@@ -37,12 +40,16 @@ public class WorldData {
     public static boolean hasIceLock = false;
 
 //
+    //inamici intalniti
     public static boolean metDroid=false;
     public static boolean metGoblin=false;
     public static boolean metDolpatian=false;
     public static boolean metSchrodingersCat=false;
+     public static boolean metStroke=false;
     
 //
+     
+     //worldsection
     public static int worldSection = 11;
     public static int worldSectionShortNumber = 6;
     public static final int maxWidthWorld = 128;
@@ -52,14 +59,10 @@ public class WorldData {
 
     public static int[][][] worldSectionMatrix = new int[worldSectionShortNumber + 1][maxLengthWorld + 1][maxWidthWorld + 1];
 
-    /**
-     * Numarul maxim de sectiuni de pe o linie
-     */
-    public static final int numberOfCollumns = 3;
+    //nr maxim de sectiuni de pe o linie
+        public static final int numberOfCollumns = 3;
 
-    /**
-     * This method returns the specific code for the world you need
-     */
+    // nr scurt pt un nr de sectiune (ex ws11->1)
     public static int getWorldSectionShort(int world) {
         int col = world % 10;
         int lin = world / 10;
@@ -70,9 +73,9 @@ public class WorldData {
         return sol;
     }
 
-    /**
-     * This method loads the matrixes of the worlds
-     */
+    
+    
+    //incarca matricele de pathfind pt fiecare mapa 
     public static void loadWorldMatrices() {
 
         String director = new String("maps/");
@@ -83,10 +86,18 @@ public class WorldData {
     }
 
     //
+    
     //
     public static List<String> tutorials = new ArrayList<>();
+    
+    public static int dialogIndex=0;
+    public static int[] dialogSuccesion =new int[]{0,3,6,9,12,15,17,18} ;//index e nr dialog care e in numele txt-ului cu dialogul
+                                                            //valoarea e nr eventului la care e dialogul asta
+    public static boolean talked=false; //verifica daca un dialog a fost accesat odata
+    
+    
 
-    public static void reset() {
+    public static void reset() {//pt save file nou
 
         worldSection = 11;
         worldSectionShortNumber = 6;
@@ -103,6 +114,9 @@ public class WorldData {
         hasIceLock = false;
         items.clear();
         tutorials.clear();
+        dialogIndex=0;
+        talked=false;
+        nrEvent=1;
         
         
     }

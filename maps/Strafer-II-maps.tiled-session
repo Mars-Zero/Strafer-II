@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.03125,
-            "selectedLayer": 1,
+            "scale": 0.0625,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 3168,
-                "y": 5360
+                "x": 7456,
+                "y": 4040
             }
         },
         "map11.tmx#Terrain": {
@@ -304,11 +304,11 @@
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.125,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 4133.333333333334,
-                "y": 1180.30303030303
+                "x": 4672,
+                "y": 7180
             }
         },
         "map12.tmx#Terrain": {
@@ -378,8 +378,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -4057.5757575757575,
-                "y": 5762.121212121212
+                "x": 4063.6363636363635,
+                "y": 4095.4545454545455
             }
         },
         "map13.tmx#Terrain": {
@@ -450,8 +450,8 @@
             "scale": 0.0625,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 15024,
-                "y": 3712
+                "x": 4080,
+                "y": 4104
             }
         },
         "map21.tmx#Terrain": {
@@ -518,11 +518,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 0.0625,
-            "selectedLayer": 1,
+            "scale": 0.03125,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 4080,
-                "y": 8
+                "x": 4416,
+                "y": 1840
             }
         },
         "map22.tmx#Terrain": {
@@ -593,8 +593,8 @@
             "scale": 0.03125,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -4096,
-                "y": 16
+                "x": 4064,
+                "y": 4112
             }
         },
         "map23.tmx#Terrain": {

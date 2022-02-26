@@ -18,8 +18,7 @@ import greenfoot.*;
  * 
  * @author Mars 
  */
-abstract class AssetsCache  
-{
+abstract class AssetsCache  {
     private static HashMap<String, GifImage> mapGifs = new HashMap<String, GifImage>();
     private static HashMap<String, GreenfootImage> mapImages = new HashMap<String, GreenfootImage>();
     private static HashMap<String, GreenfootSound> mapAudio = new HashMap<String, GreenfootSound>();

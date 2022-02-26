@@ -67,7 +67,7 @@ public class WorldListener extends WorldSection {
         List<Actor> list = world.getObjects(Actor.class);
 
         for (Actor actor : list) {
-            if (actor instanceof Player || actor instanceof WorldListener || actor instanceof HealthBarPlayer || actor instanceof Picture || actor instanceof Buton) {
+            if (actor instanceof Player || actor instanceof WorldListener ||actor instanceof EventSystem|| actor instanceof HealthBarPlayer || actor instanceof Picture || actor instanceof Buton) {
             } else {
                 world.removeObject(actor);
 

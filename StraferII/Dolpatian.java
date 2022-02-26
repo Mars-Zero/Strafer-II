@@ -169,7 +169,11 @@ public class Dolpatian extends Goblin {
                             deltaPGY *= (-1);
                         }
                         if (deltaPGX <= 600 && deltaPGY <= 400) {
-
+                            
+                             if(!WorldData.metDolpatian){
+                                getWorld().addObject(new Tutorial("Combat","Dolpatian",3,false), WorldData.menuX, WorldData.menuY);
+                                WorldData.metDolpatian=true;
+                            }
                             gaseste();//cauta playerul
 
                             if (!eVizibil) {

@@ -93,7 +93,7 @@ public class Buton extends UI {
     protected void checkClick() {
 
         if (Greenfoot.mouseClicked(this)) {
-            
+
             if (Greenfoot.getMouseInfo().getButton() == 1) {
                 switch (img) {
                     case "Next": {
@@ -129,6 +129,8 @@ public class Buton extends UI {
                             dialog.setAddedText(false);
                             SaveSystem.save(WorldData.saveFileNumber, ((PlayWorld) getWorld()).getPlayer());
 
+                            WorldData.nrEvent = WorldData.dialogSuccesion[dialog.getNrDialog()] + 1;
+
                             getWorld().removeObjects(getWorld().getObjects(Text.class));
                         }
                         if (obj instanceof Tutorial) {
@@ -139,6 +141,9 @@ public class Buton extends UI {
                             tutorial.setAddedPicture(false);
                             getWorld().removeObject(tutorial.getPicture());
 
+                            if (tutorial.getTip() != "Combat") {
+                                WorldData.nrEvent++;
+                            }
                             SaveSystem.save(WorldData.saveFileNumber, ((PlayWorld) getWorld()).getPlayer());
 
                             if (!tutorial.isInPause()) {        //daca e direct in lume 
@@ -242,7 +247,7 @@ public class Buton extends UI {
                             Player player = getWorld().getObjects(Player.class).get(0);
                             WorldData.reset();
                             WorldData.saveFileNumber++;
-                            player.setLocation(PlayWorld.originalX-Scroller.scrolledX,PlayWorld.originalY-Scroller.scrolledY);
+                            player.setLocation(PlayWorld.originalX - Scroller.scrolledX, PlayWorld.originalY - Scroller.scrolledY);
                             player.setHp(Player.hpMax);
                             SaveSystem.save(WorldData.saveFileNumber, player);
                             player.load();

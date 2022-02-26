@@ -61,14 +61,15 @@ public class TaserDolpatian extends NpcItem{
         if (!WorldData.PAUZA) {
             atac();
             move();
-
+            setImage(itemImg.getCurrentImage());
             time++;
             if (time > constantEraseTime) {
                 ((Inamic)dolpatian).setUsedItem(false);
                 getWorld().removeObject(this);
                 
             }
-            setImage(itemImg.getCurrentImage());
+            
+            
         }
         
     }

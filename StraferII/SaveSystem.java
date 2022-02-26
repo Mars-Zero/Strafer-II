@@ -143,10 +143,10 @@ abstract class SaveSystem {
                     }
 
                 } else if (tip.equalsIgnoreCase("WorldSection:")) {
-                    int ws=Integer.parseInt(getContentString(str));
+                    int ws = Integer.parseInt(getContentString(str));
                     WorldListener worldListener = player.getWorld().getObjects(WorldListener.class).get(0);
                     worldListener.setWorldSection(ws);
-                    WorldData.worldSection=ws;
+                    WorldData.worldSection = ws;
 
                     worldListener.setLoaded(false);
                     worldListener.load();
@@ -193,6 +193,13 @@ abstract class SaveSystem {
                         WorldData.visitedWorldSections[2][3] = true;
                     }
 
+                } else if (tip.equalsIgnoreCase("DialogIndex:")) {
+                    int nr = Integer.parseInt(getContentString(str));
+                    WorldData.dialogIndex = nr;
+
+                } else if (tip.equalsIgnoreCase("NrEvent:")) {
+                    int nr = Integer.parseInt(getContentString(str));
+                    WorldData.nrEvent = nr;
                 }
 
             }
@@ -246,9 +253,9 @@ abstract class SaveSystem {
                 fout.println("Item:" + it);
             }
 
-            for (String tu : WorldData.tutorials) {
-                fout.println("Tutorial:" + tu);
-            }
+            fout.println("DialogIndex:" + WorldData.dialogIndex);
+           
+            fout.println("NrEvent:" + WorldData.nrEvent);
 
             fout.close();
 
@@ -257,7 +264,6 @@ abstract class SaveSystem {
         }
     }
 
-  
     /**
      *
      * @return The list of all saveFiles
@@ -277,8 +283,8 @@ abstract class SaveSystem {
 
         return fisiere;
     }
-    
-     public static int getNumberOfSaveFiles() {
+
+    public static int getNumberOfSaveFiles() {
         File f = new File(SaveSystem.directoryName);
         File[] matchingFiles = f.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String name) {
@@ -286,7 +292,7 @@ abstract class SaveSystem {
             }
         });
 
-        int nr=0;
+        int nr = 0;
         for (File fis : matchingFiles) {
             nr++;
         }

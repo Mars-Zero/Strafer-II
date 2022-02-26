@@ -33,5 +33,12 @@ public class Keanu extends Friendly
             }
             setImage(img.getCurrentImage());
         }
+    }
+  public int getNrDialog() {
+        return nrDialog;
+    }
+
+    public void setNrDialog(int nrDialog) {
+        this.nrDialog = nrDialog;
     }    
 }

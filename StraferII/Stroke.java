@@ -167,7 +167,10 @@ public class Stroke extends Inamic {
                             deltaPGY *= (-1);
                         }
                         if (deltaPGX <= 800 && deltaPGY <= 600) {//e in range
-
+                             if(!WorldData.metStroke){
+                                getWorld().addObject(new Tutorial("Combat","Stroke",3,false), WorldData.menuX, WorldData.menuY);
+                                WorldData.metStroke=true;
+                            }
                             atac();//cauta playerul
                             if (!addedHealthBar) {
                                 getWorld().addObject(healthBar, WorldData.menuX + 40, 544);

@@ -29,20 +29,22 @@ public class MapMenu extends Pause {
     }
 
     private void addMarkers() {
-        int ws=playWorld.getWorldListener().getWorldSection();
-        playWorld.addObject(markerPlayer,getMapMenuCoordinateX(ws) , getMapMenuCoordinateY(ws)-20);
+        int ws = playWorld.getWorldListener().getWorldSection();
+        
+        playWorld.addObject(markerPlayer, getMapMenuCoordinateX(ws), getMapMenuCoordinateY(ws) - 20);//adauga marker acolo unde e playerul pe mapa
         thingsToClear.add(markerPlayer);
-        if (player.hasObjective()) {
-            //adauga marker acolo unde e obiectivul pe mapa
-            //thingsToClear.add(markerObjective);
-        }
+
+        playWorld.addObject(markerObjective, getMapMenuObjectiveX(WorldData.objectiveWS), getMapMenuObjectiveY(WorldData.objectiveWS) - 20); //adauga marker acolo unde e obiectivul pe map
+        thingsToClear.add(markerObjective);
+
     }
 
     private void addText() {
-        if (player.hasObjective()) {
-            //adaug text cu obiectivul
-            thingsToClear.add(objectiveText);
-        }
+
+        objectiveText = new Text("\n"+WorldData.objective, 30);
+        playWorld.addObject(objectiveText,1024,270);
+        thingsToClear.add(objectiveText);
+
     }
 
     private void addMapSections() {
@@ -74,16 +76,30 @@ public class MapMenu extends Pause {
     }
 
     private int getMapMenuCoordinateX(int ws) {   //sectiunea si dist globala pe sectiunea aia
-        int dist=0;
-        dist+= (8196* (ws%10-1) )+player.getX()+playWorld.getScroller().getScrolledX();
+        int dist = 0;
+        dist += (8196 * (ws % 10 - 1)) + player.getX() + playWorld.getScroller().getScrolledX();
 
-        return dist/33+39;
+        return dist / 33 + 39;
     }
 
     private int getMapMenuCoordinateY(int ws) {
-        int dist=0;
-        dist+= (8196* (ws/10-1) )+player.getY()+playWorld.getScroller().getScrolledY();
+        int dist = 0;
+        dist += (8196 * (ws / 10 - 1)) + player.getY() + playWorld.getScroller().getScrolledY();
 
-        return dist/33+39;
+        return dist / 33 + 39;
+    }
+
+    private int getMapMenuObjectiveX(int ws) {
+        int dist = 0;
+        dist += (8196 * (ws % 10 - 1)) + WorldData.objectiveX;
+
+        return dist / 33 + 39;
+    }
+
+    private int getMapMenuObjectiveY(int ws) {
+        int dist = 0;
+        dist += (8196 * (ws / 10 - 1)) + WorldData.objectiveY;
+
+        return dist / 33 + 39;
     }
 }

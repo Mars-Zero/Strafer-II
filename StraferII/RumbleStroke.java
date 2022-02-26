@@ -46,14 +46,14 @@ public class RumbleStroke extends NpcItem{
         if (!WorldData.PAUZA) {
             atac();
             move();
-
+setImage(gif.getCurrentImage());
             time++;
             if (time > constantEraseTime) {
                 ((Inamic)stroke).setUsedItem(false);
                 getWorld().removeObject(this);
                 
             }
-            setImage(gif.getCurrentImage());
+            
         }
         
     }

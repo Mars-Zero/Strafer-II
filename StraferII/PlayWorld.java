@@ -8,7 +8,7 @@ public class PlayWorld extends World {
     public static int originalX = 150, originalY = 200;
 
     public WorldListener worldListener;
-    public MainStoryline mainStoryline;
+    public EventSystem eventSystem;
 
     public Scroller scroller;
 
@@ -23,8 +23,8 @@ public class PlayWorld extends World {
     public PlayWorld() {
         super(WorldData.WIDTH, WorldData.HIGHT, 1, false); //width, height, cellsize, daca sunt actorii restricted la lume
 
-        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class, MapMenu.class, Tutorial.class, Dialog.class,HealthBarImg.class,
-                 Item.class, NpcItem.class, Lantern.class, Light.class, Droid.class, Player.class, Npc.class);
+        setPaintOrder(Buton.class, Menu.class, HealthBar.class, Text.class, Picture.class, MapMenu.class, Tutorial.class, Dialog.class, HealthBarImg.class,
+                Item.class, NpcItem.class, Lantern.class, Light.class, Droid.class, Player.class, Npc.class);
 
         WIDE = WorldData.WIDTH;
         HIGH = WorldData.HIGHT;
@@ -57,10 +57,10 @@ public class PlayWorld extends World {
         scroll();
 
         worldListener = new WorldListener(this);
-        mainStoryline = new MainStoryline();
+        eventSystem = new EventSystem(this);
 
         addObject(worldListener, 1, 1);
-        addObject(mainStoryline, 1, 1);
+        addObject(eventSystem, 1, 1);
 
         addObject(new Fps(), 150, 50);
     }
@@ -98,6 +98,12 @@ public class PlayWorld extends World {
         this.addObject(actor, x - Scroller.scrolledX, y - Scroller.scrolledY);
     }
 
+    protected <T extends Actor> void initUniqueObject(T actor, int x, int y) {
+        if (this.getObjects(actor.getClass()).isEmpty()) {
+            this.addObject(actor, x- Scroller.scrolledX, y- Scroller.scrolledY);
+        }
+    }
+
     ///scrolleaza lumea
     public void scroll() {
         if (player != null) {
@@ -128,6 +134,10 @@ public class PlayWorld extends World {
         return worldListener;
     }
 
+    public EventSystem getEventSystem() {
+        return eventSystem;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -147,19 +157,19 @@ public class PlayWorld extends World {
     public void updateMusic() {
         if (!WorldData.PAUZA) {
             if (!musicIdle.isPlaying()) {
-                if(WorldData.isWalking&&!WorldData.isFighting){
+                if (WorldData.isWalking && !WorldData.isFighting) {
                     musicIdle.play();
                 }
             }
             if (!musicCombat.isPlaying()) {
-                if(WorldData.isFighting){
+                if (WorldData.isFighting) {
                     musicCombat.play();
                     musicIdle.pause();
                 }
             }
-            
+
             if (musicCombat.isPlaying()) {
-                if(!WorldData.isFighting){
+                if (!WorldData.isFighting) {
                     musicCombat.pause();
                 }
             }
@@ -172,5 +182,5 @@ public class PlayWorld extends World {
             }
         }
     }
- 
+
 }

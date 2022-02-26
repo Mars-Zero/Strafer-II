@@ -38,7 +38,6 @@ public class Tutorial extends Menu {
     }
 
     public void displayPicture() {
-
         if (!addedPicture) {
             getWorld().addObject(picture, WorldData.menuX, WorldData.menuY);
             updateImage();
@@ -63,7 +62,7 @@ public class Tutorial extends Menu {
 
     public void updateImage() {
         if (tip == "Cutscene") {
-            picture.setImageName("cutscene/" + img + ".png");
+            picture.setImageName("UI/cutscene/" + img +"/"+img+nrSlide+ ".png");
         } else {
             picture.setImageName("UI/tutorial/tutorialSlides/" + tip + "/" + img + "/" + tip + "#" + "tutorial" + img + nrSlide + ".png");
         }

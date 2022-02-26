@@ -59,14 +59,16 @@ public class SabieGoblin extends NpcItem{
         if (!WorldData.PAUZA) {
             atac();
             move();
-
+            setImage(sabieImg.getCurrentImage());
             time++;
             if (time > constantEraseTime) {
                 ((Inamic)goblin).setUsedItem(false);
                 getWorld().removeObject(this);
                 
             }
-            setImage(sabieImg.getCurrentImage());
+            
+           
+            
         }
         
     }

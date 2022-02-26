@@ -6,6 +6,8 @@ public class Dialog extends Menu {
     protected int nrSlide;
 
     protected int nrDialog;
+
+   
     protected String img;
     protected Npc npc;
     protected GreenfootImage text;
@@ -72,5 +74,8 @@ public class Dialog extends Menu {
 
     public void setAddedText(boolean addedText) {
         this.addedText = addedText;
+    }
+     public int getNrDialog() {
+        return nrDialog;
     }
 }
