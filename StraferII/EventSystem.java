@@ -167,7 +167,7 @@ public class EventSystem extends Actor {
                 //
                 case 13: {
                     makeObjective("Get To Door", 53 * 64, 99 * 64, 12);
-                    if (worldListener.getWorldSection() == 12 && player.getWorldX() >= 53 * 64 && player.getWorldY() >= 100 * 64) {
+                    if (worldListener.getWorldSection() == 12 && player.getWorldX() >= 40 * 64 && player.getWorldY() >= 100 * 64) {
                         WorldData.nrEvent++;
                     }
                     break;
@@ -187,7 +187,7 @@ public class EventSystem extends Actor {
                 //
                 case 15: {
                     WorldData.dialogIndex = 5;
-                    if (playWorld.getObjects(Keanu.class).isEmpty()) {
+                    if (playWorld.getObjects(Stonks.class).isEmpty()) {
                         stonks = new Stonks(playWorld, scroller, "Stonks", WorldData.dialogIndex);
                         playWorld.initUniqueObject(stonks, 1, 1);
                     } else {

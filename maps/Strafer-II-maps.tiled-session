@@ -234,8 +234,8 @@
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 11327.272727272728,
-                "y": 6431.818181818182
+                "x": 4093.939393939394,
+                "y": 4092.4242424242425
             }
         },
         "map11.tmx#Terrain": {
@@ -307,8 +307,8 @@
             "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 3360,
-                "y": 10232
+                "x": 4064,
+                "y": 4104
             }
         },
         "map12.tmx#Terrain": {
@@ -378,8 +378,8 @@
             "scale": 0.125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -10360,
-                "y": 13964
+                "x": 4072,
+                "y": 4092
             }
         },
         "map13.tmx#Terrain": {
@@ -450,8 +450,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4229.333333333333,
-                "y": 4291.666666666666
+                "x": 4064,
+                "y": 4095.666666666666
             }
         },
         "map21.tmx#Terrain": {
@@ -518,11 +518,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 0.0625,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 3360,
-                "y": 2040
+                "x": 2744,
+                "y": -1894.5
             }
         },
         "map22.tmx#Terrain": {
@@ -593,8 +593,8 @@
             "scale": 0.03125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -864,
-                "y": 1936
+                "x": 4064,
+                "y": 4112
             }
         },
         "map23.tmx#Terrain": {
