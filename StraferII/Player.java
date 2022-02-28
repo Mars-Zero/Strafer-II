@@ -73,7 +73,7 @@ public class Player extends Jucator {
     }
 
     private void prepareData() {
-
+        //date inititale
         equipSword = false;
         equipLaser = false;
         equipPortalGun = false;
@@ -95,7 +95,7 @@ public class Player extends Jucator {
     }
 
     public void load() {
-
+        //incarca salvarea
         if (!loaded) {
             SaveSystem.load(WorldData.saveFileNumber, this);
             loaded = true;
@@ -103,7 +103,7 @@ public class Player extends Jucator {
 
     }
 
-    protected void checkMove() {
+    protected void checkMove() { //verifica tastele pentru mers
         apas = false;
         if(WorldData.worldSection==12&& WorldData.nrEvent>=24){
             speed=10;
@@ -203,7 +203,7 @@ public class Player extends Jucator {
 
     }
 
-    public void move() {
+    public void move() {//se misca daca merge
 
         if (gif != "idle") {
             super.atingeNpc();
@@ -216,11 +216,10 @@ public class Player extends Jucator {
     }
 
     protected void vedere() {
-
         playerImg = directie.get(this.gif);
     }
 
-    protected void toggleMenu() {
+    protected void toggleMenu() {// deschide inventoryul
 
         if (!toggledInventory) {
 
@@ -235,7 +234,7 @@ public class Player extends Jucator {
 
     }
 
-    protected void useItem() {
+    protected void useItem() {      //foloseste itemele equipate
 
         //portalGun
         if (equipPortalGun) {
@@ -311,7 +310,7 @@ public class Player extends Jucator {
                                 gr += (Greenfoot.getRandomNumber(2) - 1) * 5;  //reduce din precizie
                                 grade = gr;
 
-                                if (grade >= -45 && grade < 45) {       //se intoarce in dir in care trage
+                                if (grade >= -45 && grade < 45) {       //se intoarce playerul in dir in care trage 
 
                                     this.gif = "D";
                                 }
@@ -428,11 +427,6 @@ public class Player extends Jucator {
 
         }
 
-        if (Greenfoot.isKeyDown("0")) {///teste
-            hp -= 12;
-            getHealthBar().subtract(12);
-        }
-
     }
 
     long cntF = 0;
@@ -451,13 +445,12 @@ public class Player extends Jucator {
         }
     }
 
-    protected void takeDamage(int dmg) {
+    protected void takeDamage(int dmg) {// cand e atact pierde viata
         hp -= dmg;
         getHealthBar().subtract(dmg);
     }
 
     boolean firstCycle = false;
-
     public void die() {
         if (hp >= hpMax) {//sa nu aiba mai multa
             hp = hpMax;
@@ -470,7 +463,7 @@ public class Player extends Jucator {
 
     }
 
-    public void revive() {
+    public void revive() {      //e inviat la load sau dupa game over
         this.toggledGameOver = false;
         playedAnimation = false;
         prepareAnimation();
@@ -510,7 +503,7 @@ public class Player extends Jucator {
             }
             if (!animation.isActive()) {
                 playedAnimation = true;
-                if (!toggledGameOver && playedAnimation) {
+                if (!toggledGameOver && playedAnimation) {                                              //animatia cand moare
                     getWorld().addObject(new GameOver(playWorld), WorldData.menuX, WorldData.menuY);
                     playedAnimation = false;
                     toggledGameOver = true;
@@ -521,7 +514,7 @@ public class Player extends Jucator {
 
     }
 
-    public int getExitDirection() {
+    public int getExitDirection() {  //directia pe care iese din worldSection
 
         if (getX() >= 1020) {
             direction = 3;
@@ -539,6 +532,9 @@ public class Player extends Jucator {
         return direction;
     }
 
+    
+    
+    //gettere settere
     public PlayWorld getPlayWorld() {
         return playWorld;
     }
@@ -659,7 +655,7 @@ public class Player extends Jucator {
         return hpMax;
     }
 
-    private void prepareAnimation() {
+    private void prepareAnimation() {       //pregateste animatia pt moarte
         java.util.List<GreenfootImage> imgs = new GifImage("player/player_death.gif").getImages();
         GreenfootImage[] images = new GreenfootImage[imgs.size()];
         for (int i = 0; i < imgs.size(); i++) {

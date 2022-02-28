@@ -111,13 +111,9 @@ public class WorldListener extends WorldSection {
 
     }
 
-    /*
-     * This method adds all objects that need to be put in the world
-     */
+
     void addObjects() {
         
-        //add the player to it's position
-        //call different methods based on the world that needs to be changed
         switch (worldSection) {
             case 11: {
                 initWorldSection11();
@@ -237,7 +233,7 @@ urmatoare:        |____|_________|_______|________|
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
     }
    
-    void addBoss(){
+    void addBoss(){                 ///il adauga pe stroke cand e posibil bossfightul
      if(!WorldData.PAUZA){
             if(!WorldData.metStroke){
                 if(WorldData.nrEvent>=26 && worldSection==12){
