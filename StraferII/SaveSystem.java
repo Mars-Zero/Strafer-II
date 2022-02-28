@@ -294,6 +294,9 @@ abstract class SaveSystem {
         });
 
         int nr = 0;
+        if(matchingFiles.length==0){
+            return 0;
+        }
         for (File fis : matchingFiles) {
             nr++;
         }
