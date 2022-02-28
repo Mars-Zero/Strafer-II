@@ -1,6 +1,9 @@
 
 import greenfoot.*;
 
+//lumea in care are loc toata simularea
+
+
 public class PlayWorld extends World {
 
     int WIDE, HIGH;

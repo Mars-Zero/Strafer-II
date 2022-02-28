@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map12.tmx",
+    "activeFile": "map22.tmx",
     "expandedProjectPaths": [
-        "tilesets",
+        ".",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
-        "."
+        "tilesets"
     ],
     "exportAsImage.useCurrentScale": false,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -304,11 +304,11 @@
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.015625,
+            "scale": 0.125,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 35392,
-                "y": 20608
+                "x": 5256,
+                "y": 10248
             }
         },
         "map12.tmx#Terrain": {
@@ -518,11 +518,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 0.03125,
+            "scale": 2,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 4064,
-                "y": 4112
+                "x": 4850,
+                "y": 2874
             }
         },
         "map22.tmx#Terrain": {
@@ -778,11 +778,11 @@
     "property.type": "string",
     "recentFiles": [
         "map11.tmx",
+        "map12.tmx",
+        "map13.tmx",
+        "map21.tmx",
         "map23.tmx",
         "map22.tmx",
-        "map21.tmx",
-        "map13.tmx",
-        "map12.tmx",
         "tilesets/Terrain.tsx",
         "tilesets/pereteS.tsx",
         "map.json",
