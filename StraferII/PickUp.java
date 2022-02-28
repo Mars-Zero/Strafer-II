@@ -31,36 +31,36 @@ public class PickUp extends Item {
                 switch (name) {
                     case "sword": {
                         WorldData.hasSword = true;
-
+                        getWorld().addObject(new Tutorial("Items", name, 2, false), WorldData.menuX, WorldData.menuY);
                         break;
                     }
                     case "laser": {
-
+                        getWorld().addObject(new Tutorial("Items", name, 2, false), WorldData.menuX, WorldData.menuY);
                         WorldData.hasLaser = true;
                         break;
                     }
                     case "blackhole": {
-
+                        getWorld().addObject(new Tutorial("Items", name, 2, false), WorldData.menuX, WorldData.menuY);
                         WorldData.hasBlackHole = true;
                         break;
                     }
                     case "icelock": {
-
+                        getWorld().addObject(new Tutorial("Items", name, 2, false), WorldData.menuX, WorldData.menuY);
                         WorldData.hasIceLock = true;
                         break;
                     }
                     case "lantern": {
-
+                        getWorld().addObject(new Tutorial("Items", name, 3, false), WorldData.menuX, WorldData.menuY);
                         WorldData.hasLantern = true;
                         break;
                     }
                     case "portalgun": {
-
+                        getWorld().addObject(new Tutorial("Items", name, 3, false), WorldData.menuX, WorldData.menuY);
                         WorldData.hasPortalGun = true;
                         break;
                     }
                 }
-                getWorld().addObject(new Tutorial("Items", name, 3, false), WorldData.menuX, WorldData.menuY);
+                
                 picked = true;
                 getWorld().removeObject(this);
             }

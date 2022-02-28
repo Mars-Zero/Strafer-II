@@ -22,9 +22,31 @@ public class WorldSection23 extends WorldSection{
        init5();
 
        
-   }
-    public void initNpc(){
+   }public void initNpc(){
 //npc
+world.initObject(new Goblin(scroller, 1024, 3712),1024, 3712);
+world.initObject(new Goblin(scroller, 1344, 2880),1344, 2880);
+world.initObject(new Goblin(scroller, 1408, 1984),1408, 1984);
+world.initObject(new Goblin(scroller, 1472, 3968),1472, 3968);
+world.initObject(new Goblin(scroller, 1920, 1408),1920, 1408);
+world.initObject(new Goblin(scroller, 2560, 960),2560, 960);
+world.initObject(new Goblin(scroller, 2560, 1408),2560, 1408);
+world.initObject(new Goblin(scroller, 3072, 1088),3072, 1088);
+world.initObject(new Goblin(scroller, 3200, 768),3200, 768);
+world.initObject(new Goblin(scroller, 3968, 832),3968, 832);
+world.initObject(new Goblin(scroller, 4928, 640),4928, 640);
+world.initObject(new Goblin(scroller, 4928, 1152),4928, 1152);
+world.initObject(new Goblin(scroller, 5312, 4480),5312, 4480);
+world.initObject(new Goblin(scroller, 5696, 1344),5696, 1344);
+world.initObject(new Goblin(scroller, 5824, 576),5824, 576);
+world.initObject(new Goblin(scroller, 6272, 3392),6272, 3392);
+world.initObject(new Goblin(scroller, 6464, 3008),6464, 3008);
+world.initObject(new Goblin(scroller, 6528, 3008),6528, 3008);
+world.initObject(new Goblin(scroller, 6656, 1920),6656, 1920);
+world.initObject(new Goblin(scroller, 6848, 896),6848, 896);
+world.initObject(new Goblin(scroller, 7104, 2688),7104, 2688);
+world.initObject(new Goblin(scroller, 7168, 3520),7168, 3520);
+world.initObject(new Goblin(scroller, 7616, 1728),7616, 1728);
 //npc
 }
 
@@ -323,5 +345,4 @@ world.initObject(new PereteInvizibil("D", 1,"mic90"), 8120, 2912);
 world.initObject(new PereteInvizibil("D", 1,"mic90"), 8120, 2976);
 //Walls
 }
-     
 }

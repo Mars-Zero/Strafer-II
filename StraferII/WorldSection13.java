@@ -20,8 +20,19 @@ public class WorldSection13 extends WorldSection{
       
        
    }
-   public void initNpc(){
+public void initNpc(){
 //npc
+world.initObject(new SchrodingersCat(scroller, 1984, 4096),1984, 4096);
+world.initObject(new SchrodingersCat(scroller, 2304, 3264),2304, 3264);
+world.initObject(new SchrodingersCat(scroller, 2304, 5376),2304, 5376);
+world.initObject(new SchrodingersCat(scroller, 3008, 1216),3008, 1216);
+world.initObject(new SchrodingersCat(scroller, 3200, 2240),3200, 2240);
+world.initObject(new SchrodingersCat(scroller, 4544, 5440),4544, 5440);
+world.initObject(new SchrodingersCat(scroller, 4992, 3392),4992, 3392);
+world.initObject(new SchrodingersCat(scroller, 6080, 768),6080, 768);
+world.initObject(new SchrodingersCat(scroller, 6272, 4608),6272, 4608);
+world.initObject(new SchrodingersCat(scroller, 6528, 2496),6528, 2496);
+world.initObject(new SchrodingersCat(scroller, 7040, 6784),7040, 6784);
 //npc
 }
 
@@ -548,6 +559,6 @@ world.initObject(new PereteInvizibil("A", 1,"mic90"), 328, 416);
 world.initObject(new PereteInvizibil("A", 1,"mic90"), 392, 352);
 world.initObject(new PereteInvizibil("A", 1,"mic90"), 456, 288);
 //Walls
-} 
+}
    
 }

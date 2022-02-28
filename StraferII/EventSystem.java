@@ -69,7 +69,7 @@ public class EventSystem extends Actor {
                 //T:inventory
                 //
                 case 4: {
-                    playWorld.initObject(new Tutorial("Mechanics", "inventory", 1, false), WorldData.menuX, WorldData.menuY);
+                    playWorld.initObject(new Tutorial("Mechanics", "inventory", 2, false), WorldData.menuX, WorldData.menuY);
                     break;
                 }
                 //
@@ -317,18 +317,28 @@ public class EventSystem extends Actor {
                 //ws22
                 //D:Keanu11
                 //
-                case 25:{
+                case 25: {
                     makeObjective("Talk to Mr.K", 100 * 64, 5 * 64, 22);
                     if (worldListener.getWorldSection() == 22) {
                         WorldData.dialogIndex = 11;
                         keanu = new Keanu(playWorld, scroller, "Keanu", WorldData.dialogIndex);
                         playWorld.initUniqueObject(keanu, 100 * 64, 5 * 64);
-
                     }
                     break;
                 }
-                
-
+                //ws12
+                //C:bossfight
+                //
+                case 26: {
+                    makeObjective("Defeat Stroke", 55 * 64, 15 * 64, 12);
+                    WorldData.metStroke = false;
+                    WorldData.nrEvent++;
+                    break;
+                }
+                default: {
+                    makeObjective("Defeat Stroke", 55 * 64, 15 * 64, 12);
+                    break;
+                }
             }
         }
 

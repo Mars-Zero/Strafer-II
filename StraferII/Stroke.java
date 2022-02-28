@@ -58,7 +58,7 @@ public class Stroke extends Inamic {
     }
 
     protected void atacMelee() {
-        //quierres
+
         super.atac();
         if (getWorld().getObjects(LaserStroke.class).isEmpty()) {
             getWorld().addObject(new RumbleStroke(this), getX(), getY());
@@ -100,7 +100,7 @@ public class Stroke extends Inamic {
             mort = true;
         }
     }
-
+boolean enter=false;
     public void act() {
 
         if (WorldData.PAUZA == false && super.checkPlayerInChunck() == true) {
@@ -119,6 +119,8 @@ public class Stroke extends Inamic {
                     animation.run();
                 }
                 if (startedAnimation && !animation.isActive()) {
+                    PlayWorld playWorld=(PlayWorld)getWorld();
+                    playWorld.initObject(new Tutorial("Cutscene", "theend", 1, false), WorldData.menuX, WorldData.menuY);
                     getWorld().removeObjects(getWorld().getObjects(LaserStroke.class));
                     getWorld().removeObject(healthBar);
                     getWorld().removeObject(healthBarImg);
@@ -167,10 +169,11 @@ public class Stroke extends Inamic {
                             deltaPGY *= (-1);
                         }
                         if (deltaPGX <= 800 && deltaPGY <= 600) {//e in range
-                             if(!WorldData.metStroke){
-                                getWorld().addObject(new Tutorial("Combat","Stroke",3,false), WorldData.menuX, WorldData.menuY);
-                                WorldData.metStroke=true;
+                            if(!enter){
+                               ((PlayWorld)getWorld()).initObject(new Tutorial("Cutscene", "bossfight", 1, false), WorldData.menuX, WorldData.menuY);
+                                enter=true;
                             }
+                            
                             atac();//cauta playerul
                             if (!addedHealthBar) {
                                 getWorld().addObject(healthBar, WorldData.menuX + 40, 544);

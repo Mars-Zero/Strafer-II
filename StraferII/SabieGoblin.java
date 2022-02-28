@@ -25,6 +25,7 @@ public class SabieGoblin extends NpcItem{
         directie.put("S", new GifImage("npc/inamic/goblin/sabie_goblin_S.gif"));
 
         sabieImg = directie.get("D");
+         setImage(sabieImg.getCurrentImage());
         this.time = 0;
 
     }

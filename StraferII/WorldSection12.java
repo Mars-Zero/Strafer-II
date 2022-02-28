@@ -4,7 +4,7 @@ public class WorldSection12 extends WorldSection{
    PlayWorld world;
    Scroller scroller;
    Player player;
-    
+    boolean addedStroke=false;
     
     public WorldSection12(PlayWorld world,Scroller scroller,Player player){
         this.world=world;
@@ -12,6 +12,8 @@ public class WorldSection12 extends WorldSection{
         this.player=player;
         
     }
+    
+    
     
    public void init(){
        initNpc();
@@ -30,10 +32,29 @@ public class WorldSection12 extends WorldSection{
    
    
    
-   
-    
    public void initNpc(){
 //npc
+WorldData.metStroke=false;
+world.initObject(new Droid(scroller, 1984, 2304, "oy",400),1984, 2304);
+world.initObject(new Dolpatian(scroller, 2240, 4352),2240, 4352);
+world.initObject(new Dolpatian(scroller, 2496, 3520),2496, 3520);
+world.initObject(new Droid(scroller, 2688, 2304, "ox",600),2688, 2304);
+world.initObject(new Droid(scroller, 2816, 3904, "oy",400),2816, 3904);
+world.initObject(new Goblin(scroller, 3072, 4352),3072, 4352);
+world.initObject(new Droid(scroller, 3072, 5440, "ox",600),3072, 5440);
+world.initObject(new Goblin(scroller, 3136, 3456),3136, 3456);
+world.initObject(new Droid(scroller, 3264, 5184, "ox",600),3264, 5184);
+world.initObject(new Droid(scroller, 3456, 5440, "oy",400),3456, 5440);
+world.initObject(new Droid(scroller, 3648, 3904, "oy",400),3648, 3904);
+world.initObject(new SchrodingersCat(scroller, 3776, 2304),3776, 2304);
+world.initObject(new SchrodingersCat(scroller, 3840, 2944),3840, 2944);
+world.initObject(new Goblin(scroller, 4224, 3520),4224, 3520);
+world.initObject(new Goblin(scroller, 4288, 4352),4288, 4352);
+world.initObject(new Droid(scroller, 4544, 3840, "oy",400),4544, 3840);
+world.initObject(new Dolpatian(scroller, 4928, 4288),4928, 4288);
+world.initObject(new SchrodingersCat(scroller, 5056, 2880),5056, 2880);
+world.initObject(new Dolpatian(scroller, 5056, 3584),5056, 3584);
+world.initObject(new Dolpatian(scroller, 6784, 7488),6784, 7488);
 //npc
 }
 

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map22.tmx",
+    "activeFile": "map12.tmx",
     "expandedProjectPaths": [
         "tilesets",
         "D:/Games/CV9 projekt red/Strafer II/Strafer-II",
@@ -231,11 +231,11 @@
             }
         },
         "map11.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 0,
+            "scale": 0.03125,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 4093.939393939394,
-                "y": 4092.4242424242425
+                "x": 4128,
+                "y": 4080
             }
         },
         "map11.tmx#Terrain": {
@@ -304,11 +304,11 @@
             "scaleInDock": 1
         },
         "map12.tmx": {
-            "scale": 0.0625,
-            "selectedLayer": 0,
+            "scale": 0.015625,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 4064,
-                "y": 4104
+                "x": 35392,
+                "y": 20608
             }
         },
         "map12.tmx#Terrain": {
@@ -375,11 +375,11 @@
             "scaleInDock": 1
         },
         "map13.tmx": {
-            "scale": 0.125,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 4072,
-                "y": 4092
+                "x": 4064,
+                "y": 4095.333333333333
             }
         },
         "map13.tmx#Terrain": {
@@ -447,11 +447,11 @@
             "scaleInDock": 1
         },
         "map21.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 0,
+            "scale": 0.03125,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 4064,
-                "y": 4095.666666666666
+                "x": 4096,
+                "y": 4112
             }
         },
         "map21.tmx#Terrain": {
@@ -518,11 +518,11 @@
             "scaleInDock": 1
         },
         "map22.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 0.03125,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 2744,
-                "y": -1894.5
+                "x": 4064,
+                "y": 4112
             }
         },
         "map22.tmx#Terrain": {
@@ -591,7 +591,7 @@
         },
         "map23.tmx": {
             "scale": 0.03125,
-            "selectedLayer": 0,
+            "selectedLayer": 5,
             "viewCenter": {
                 "x": 4064,
                 "y": 4112
@@ -778,11 +778,11 @@
     "property.type": "string",
     "recentFiles": [
         "map11.tmx",
-        "map12.tmx",
-        "map13.tmx",
-        "map21.tmx",
         "map23.tmx",
         "map22.tmx",
+        "map21.tmx",
+        "map13.tmx",
+        "map12.tmx",
         "tilesets/Terrain.tsx",
         "tilesets/pereteS.tsx",
         "map.json",

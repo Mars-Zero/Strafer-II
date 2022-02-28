@@ -10,6 +10,7 @@ public class WorldSection extends Actor {
 
     public void initWorldSection11() {
         WorldData.visitedWorldSections[1][1] = true;
+        
         WorldSection11 ws = new WorldSection11(world, scroller, player);
         ws.init();
 
@@ -21,7 +22,6 @@ public class WorldSection extends Actor {
         WorldData.visitedWorldSections[1][2] = true;
 
         world.initObject(new Door(), 3300, 6080);
-        world.initObject(new Stroke(scroller, 3520, 960, player), 3520, 960);
         WorldSection12 ws = new WorldSection12(world, scroller, player);
         ws.init();
 

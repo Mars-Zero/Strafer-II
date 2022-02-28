@@ -22,8 +22,26 @@ public class WorldSection21 extends WorldSection{
      
        
    }
-    public void initNpc(){
+   public void initNpc(){
 //npc
+world.initObject(new SchrodingersCat(scroller, 896, 6976),896, 6976);
+world.initObject(new SchrodingersCat(scroller, 1152, 1536),1152, 1536);
+world.initObject(new Goblin(scroller, 2176, 4352),2176, 4352);
+world.initObject(new Goblin(scroller, 2560, 3328),2560, 3328);
+world.initObject(new Droid(scroller, 2944, 4416, "ox",600),2944, 4416);
+world.initObject(new Goblin(scroller, 3008, 5760),3008, 5760);
+world.initObject(new Goblin(scroller, 3200, 704),3200, 704);
+world.initObject(new Droid(scroller, 3968, 3072, "oy",400),3968, 3072);
+world.initObject(new Goblin(scroller, 4032, 640),4032, 640);
+world.initObject(new Goblin(scroller, 4032, 2432),4032, 2432);
+world.initObject(new Droid(scroller, 4096, 5376, "oy",400),4096, 5376);
+world.initObject(new Goblin(scroller, 4288, 5952),4288, 5952);
+world.initObject(new Dolpatian(scroller, 4544, 4224),4544, 4224);
+world.initObject(new Droid(scroller, 5312, 4416, "ox",600),5312, 4416);
+world.initObject(new Goblin(scroller, 5568, 3264),5568, 3264);
+world.initObject(new Goblin(scroller, 5952, 4352),5952, 4352);
+world.initObject(new SchrodingersCat(scroller, 6400, 1152),6400, 1152);
+world.initObject(new SchrodingersCat(scroller, 6848, 6720),6848, 6720);
 //npc
 }
 
@@ -3075,5 +3093,4 @@ world.initObject(new PereteInvizibil("A", 1,"mic90"), 8072, 3424);
 world.initObject(new PereteInvizibil("A", 1,"mic90"), 8136, 3360);
 //Walls
 }
-    
 }

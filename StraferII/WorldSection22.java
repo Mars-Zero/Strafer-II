@@ -19,9 +19,39 @@ public class WorldSection22 extends WorldSection{
        init2();
 
        
-   }
-    public void initNpc(){
+   }public void initNpc(){
 //npc
+world.initObject(new Dolpatian(scroller, 1792, 4032),1792, 4032);
+world.initObject(new Goblin(scroller, 1984, 6080),1984, 6080);
+world.initObject(new Goblin(scroller, 2048, 4480),2048, 4480);
+world.initObject(new Dolpatian(scroller, 2752, 6336),2752, 6336);
+world.initObject(new Droid(scroller, 3072, 3840, "oy",400),3072, 3840);
+world.initObject(new Dolpatian(scroller, 3072, 4736),3072, 4736);
+world.initObject(new Droid(scroller, 3648, 4800, "ox",600),3648, 4800);
+world.initObject(new Dolpatian(scroller, 3712, 1216),3712, 1216);
+world.initObject(new Goblin(scroller, 3968, 1600),3968, 1600);
+world.initObject(new Goblin(scroller, 4032, 3520),4032, 3520);
+world.initObject(new Goblin(scroller, 4096, 3520),4096, 3520);
+world.initObject(new Droid(scroller, 4416, 6976, "ox",600),4416, 6976);
+world.initObject(new Droid(scroller, 4736, 2432, "ox",600),4736, 2432);
+world.initObject(new Dolpatian(scroller, 4736, 3200),4736, 3200);
+world.initObject(new Dolpatian(scroller, 4864, 4224),4864, 4224);
+world.initObject(new Droid(scroller, 4864, 5312, "ox",600),4864, 5312);
+world.initObject(new Goblin(scroller, 4864, 5632),4864, 5632);
+world.initObject(new Dolpatian(scroller, 4928, 1216),4928, 1216);
+world.initObject(new Goblin(scroller, 5440, 4608),5440, 4608);
+world.initObject(new Goblin(scroller, 5696, 3584),5696, 3584);
+world.initObject(new Goblin(scroller, 5824, 2048),5824, 2048);
+world.initObject(new Droid(scroller, 5952, 7104, "oy",400),5952, 7104);
+world.initObject(new Dolpatian(scroller, 6272, 6144),6272, 6144);
+world.initObject(new Droid(scroller, 6336, 4480, "ox",600),6336, 4480);
+world.initObject(new Goblin(scroller, 6528, 2624),6528, 2624);
+world.initObject(new Goblin(scroller, 7040, 5824),7040, 5824);
+world.initObject(new Goblin(scroller, 7360, 6080),7360, 6080);
+world.initObject(new Dolpatian(scroller, 7424, 2112),7424, 2112);
+world.initObject(new Dolpatian(scroller, 7488, 3008),7488, 3008);
+world.initObject(new Dolpatian(scroller, 7488, 4032),7488, 4032);
+world.initObject(new Droid(scroller, 7552, 4992, "ox",600),7552, 4992);
 //npc
 }
 
@@ -805,5 +835,4 @@ world.initObject(new PereteInvizibil("D", 1,"mic90"), 6520, 7648);
 world.initObject(new PereteInvizibil("D", 1,"mic90"), 6712, 7584);
 //Walls
 }
-   
 }

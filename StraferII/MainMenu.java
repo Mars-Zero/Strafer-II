@@ -3,7 +3,7 @@ import greenfoot.*;
 
 public class MainMenu extends Menu {
 
-    GifImage background = new GifImage("fundal/title.gif");
+    GifImage background = new GifImage("UI/menu/titleScreen.gif");
 
     
     boolean butoanead = false;
@@ -13,7 +13,7 @@ public class MainMenu extends Menu {
     public MainMenu() {
 
         WorldData.PAUZA = true;
-        setImage("fundal/titleScreen1.png");
+        setImage("UI/menu/titleScreen.png");
        WorldData.saveFileNumber=SaveSystem.getNumberOfSaveFiles()-1;
             
     }

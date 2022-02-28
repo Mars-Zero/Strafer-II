@@ -105,6 +105,10 @@ public class Player extends Jucator {
 
     protected void checkMove() {
         apas = false;
+        if(WorldData.worldSection==12&& WorldData.nrEvent>=24){
+            speed=10;
+        }
+        else{speed=7;}
 
         if (Greenfoot.isKeyDown("w")) {
             //merge in nord 

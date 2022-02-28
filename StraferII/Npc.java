@@ -86,10 +86,12 @@ public class Npc extends Movers {
         if (sectiune == -1) {
             sectiune = WorldData.getWorldSectionShort((~((PlayWorld) getWorld()).getWorldListener().getWorldSection()));
         }
+        // if ( x < 128 && y < 128) {
         if (WorldData.worldSectionMatrix[WorldData.getWorldSectionShort(sectiune)][x][y] == -1) {
             gasit = false;
             return;
-        }
+        //}
+    }
 
         int[][] mat = new int[WorldData.maxLengthWorld + 1][WorldData.maxWidthWorld + 1];
         for (int i = 0; i < WorldData.maxLengthWorld; i++) {

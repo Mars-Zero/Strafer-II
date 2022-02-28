@@ -27,6 +27,7 @@ public class TaserDolpatian extends NpcItem{
         directie.put("S", new GifImage("npc/inamic/dolpatian/taserDolpatian_S.gif"));
 
         itemImg = directie.get("D");
+        setImage(itemImg.getCurrentImage());
         this.time = 0;
 
     }
@@ -57,18 +58,21 @@ public class TaserDolpatian extends NpcItem{
     }
 
     public void act() {
-
+        
         if (!WorldData.PAUZA) {
+            try{
+            setImage(itemImg.getCurrentImage());
             atac();
             move();
-            setImage(itemImg.getCurrentImage());
+            
             time++;
             if (time > constantEraseTime) {
                 ((Inamic)dolpatian).setUsedItem(false);
                 getWorld().removeObject(this);
                 
             }
-            
+        }
+        catch(Exception e){}
             
         }
         

@@ -149,17 +149,10 @@ public class Buton extends UI {
                             if (!tutorial.isInPause()) {        //daca e direct in lume 
                                 WorldData.PAUZA = false;
                             }
-                            if (tutorial.isInPause()) {           //daca a fost deschis din tutorial gallery
-                                // getWorld().addObject(new TutorialFolder(tutorials), WorldData.WIDTH/2, WorldData.HIGHT/2);
-                            }
+                            
                         }
 
-                        if (obj instanceof TutorialGallery) {
-
-                        }
-                        if (obj instanceof TutorialFolder) {
-
-                        }
+                      
                         if (obj instanceof MapMenu) {
                             MapMenu mm = (MapMenu) obj;
                             mm.clear();
@@ -171,22 +164,7 @@ public class Buton extends UI {
                         break;
                     }
 
-                    case "Open": {
-
-                        if (obj instanceof TutorialGallery) {             ///da open la o categorie adica un folder de tutoriale
-
-                            TutorialGallery tg = (TutorialGallery) obj;
-
-                            //getWorld().addObject(new TutorialFolder(tutorials,tg.retrieveTutorials()),  WorldData.menuX,WorldData.menuY);
-                        }
-
-                        if (obj instanceof TutorialFolder) {              ///da open la un tutorial
-                            getWorld().addObject(tutorialToOpen, WorldData.menuX, WorldData.menuY);
-                        }
-
-                        break;
-                    }
-
+                
                     case "Resume": {
 
                         WorldData.PAUZA = false;

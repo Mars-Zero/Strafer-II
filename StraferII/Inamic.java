@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class Inamic extends Npc {
 
     public static int speed = 5;
@@ -23,9 +22,7 @@ public class Inamic extends Npc {
     protected boolean mort = false;
     protected long timpPrec;
     public boolean usedItem;
-    public boolean freeze=false;
-
-
+    public boolean freeze = false;
 
     protected long timpPauzaRange;
     protected long timpPauzaMelee;
@@ -33,9 +30,6 @@ public class Inamic extends Npc {
     protected long nextMeleeAttack;
 
     public String gifItem;
-
-    
-  
 
     public Inamic(Scroller scrl, int x, int y) {
         super(scrl);
@@ -80,9 +74,10 @@ public class Inamic extends Npc {
             if ((worldX + Scroller.scrolledX) % super.rez > 0) {
                 gX++;
             }
-            
-            
-            super.Lee(gY, gX, playerY, playerX);
+
+            if (player.getHp() >= 0 && playerX < 128 && playerY < 128) {
+                super.Lee(gY, gX, playerY, playerX);
+            }
         }
 
         if (super.gasit == true) {
@@ -216,12 +211,12 @@ public class Inamic extends Npc {
             }
             prevsx = Scroller.scrolledX;
             prevsy = Scroller.scrolledY;
-            
+
             if (dist >= 10) {
                 dist = 0;
                 pasi--;
             }
-            
+
             gY = (worldY + Scroller.scrolledY) / super.rez;
             if ((worldY + Scroller.scrolledY) % super.rez > 0) {
                 gY++;
@@ -231,37 +226,37 @@ public class Inamic extends Npc {
                 gX++;
             }
 
-            if(super.matElem[gY][gX]!=-1){super.matElem[gY][gX]=-2;}
+            if (super.matElem[gY][gX] != -1) {
+                super.matElem[gY][gX] = -2;
+            }
             //
         }
     }
 
-   int blinks=0;
+    int blinks = 0;
+
     protected void knockbackMove() {//boolean knockbacked) {
 
         if (knockbacked) {
             this.frameuri_trecute++;
             blinks++;
-            if(this.frameuri_trecute%2==0&& blinks<5){
+            if (this.frameuri_trecute % 2 == 0 && blinks < 5) {
                 getImage().setTransparency(80);
-                
-            }
-            else{
+
+            } else {
                 getImage().setTransparency(80);
             }
             setLocation((int) (getX() + viteza_frame_x * Math.cos(grade_rezultanta)), (int) (getY() + viteza_frame_y * Math.sin(grade_rezultanta)));
             worldX += viteza_frame_x * Math.cos(grade_rezultanta);
             worldY += viteza_frame_y * Math.sin(grade_rezultanta);
-            
 
             if (this.frameuri_trecute >= this.timp_knockback * 60) {
                 this.frameuri_trecute = 0;
-                 getImage().setTransparency(100);
+                getImage().setTransparency(100);
                 knockbacked = false;
             }
-        }
-        else{
-        getImage().setTransparency(255);
+        } else {
+            getImage().setTransparency(255);
         }
     }
 
@@ -288,7 +283,6 @@ public class Inamic extends Npc {
             }
         }
 
-  
     }
 
     protected void lovitLaser() {
@@ -313,7 +307,7 @@ public class Inamic extends Npc {
     }
 
     protected void atac() {
-        usedItem=true;
+        usedItem = true;
     }
 
     protected void attackRange() {
@@ -357,12 +351,8 @@ public class Inamic extends Npc {
     protected boolean traiesc() {
         return hp > 0;
     }
-    
-    
-    
-    
-    
-      public long getpX() {
+
+    public long getpX() {
         return worldX;
     }
 
@@ -377,10 +367,11 @@ public class Inamic extends Npc {
     public void setWorldY(int worldY) {
         this.worldY = worldY;
     }
+
     public String getGifItem() {
         return gifItem;
     }
-    
+
     public boolean isUsedItem() {
         return usedItem;
     }
@@ -396,22 +387,22 @@ public class Inamic extends Npc {
     public void setFreeze(boolean freeze) {
         this.freeze = freeze;
     }
-    
+
     /**
-     * This method spawns a pill that heals the player a random amount 
+     * This method spawns a pill that heals the player a random amount
      */
-    protected void generateRandomHealthBoost(){
+    protected void generateRandomHealthBoost() {
         int chance = Greenfoot.getRandomNumber(6);
-        if(chance==0){
+        if (chance == 0) {
             //add the healthBoost
-            int currentHp=getWorld().getObjects(Player.class).get(0).getHp();
-            int possibleHealth=Player.hpMax-currentHp;
-            int alwaysAdd=possibleHealth*40/100;
-            chance=Greenfoot.getRandomNumber(10);
-            if(chance==0){
-                alwaysAdd=possibleHealth;
+            int currentHp = getWorld().getObjects(Player.class).get(0).getHp();
+            int possibleHealth = Player.hpMax - currentHp;
+            int alwaysAdd = possibleHealth * 40 / 100;
+            chance = Greenfoot.getRandomNumber(10);
+            if (chance == 0) {
+                alwaysAdd = possibleHealth;
             }
-            getWorld().addObject(new Pill(alwaysAdd),getX(),getY());
+            getWorld().addObject(new Pill(alwaysAdd), getX(), getY());
         }
     }
 }

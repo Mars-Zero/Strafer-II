@@ -57,6 +57,7 @@ public class Dolpatian extends Goblin {
 
     protected void atac() {
         if (!usedItem) {
+            getWorld().removeObjects(getWorld().getObjects(TaserDolpatian.class));
             getWorld().addObject(new TaserDolpatian(this), getX(), getY());
         }
         usedItem=true;
@@ -171,7 +172,7 @@ public class Dolpatian extends Goblin {
                         }
                         if (deltaPGX <= 600 && deltaPGY <= 400) {
                             
-                             if(!WorldData.metDolpatian&& WorldData.nrEvent<=15){
+                             if(!WorldData.metDolpatian&& WorldData.nrEvent<=20){
                                 getWorld().addObject(new Tutorial("Combat","Dolpatian",3,false), WorldData.menuX, WorldData.menuY);
                                 WorldData.metDolpatian=true;
                             }

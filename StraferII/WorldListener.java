@@ -37,7 +37,7 @@ public class WorldListener extends WorldSection {
     int cnt = 0;
 
     public void act() {
-
+        addBoss();
         if (player.isAtEdge()) {
             this.worldSection = getNextWorldSection();
 
@@ -235,6 +235,19 @@ urmatoare:        |____|_________|_______|________|
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 22 + ".png"));
 
         fundaluri.add(new GreenfootImage("map/worldSection/worldSection" + 23 + ".png"));
+    }
+   
+    void addBoss(){
+     if(!WorldData.PAUZA){
+            if(!WorldData.metStroke){
+                if(WorldData.nrEvent>=26 && worldSection==12){
+                    PlayWorld playWorld=(PlayWorld)(getWorld());
+                    playWorld.initUniqueObject(new Stroke(playWorld.getScroller(),55*64,15*64,player),55*64,15*64);
+                    
+                   WorldData.metStroke=true;
+                }
+            }
+        }
     }
 
     public boolean isLoaded() {

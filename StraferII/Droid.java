@@ -197,7 +197,7 @@ public class Droid extends Inamic {
                 }
                 if (deltaPGX <= 600 && deltaPGY <= 400) {
                     if (!WorldData.metDroid&&WorldData.nrEvent<=7) {
-                        getWorld().addObject(new Tutorial("Combat", "Droid", 3, false), WorldData.menuX, WorldData.menuY);
+                        getWorld().addObject(new Tutorial("Combat", "Droid", 2, false), WorldData.menuX, WorldData.menuY);
                         WorldData.metDroid = true;
                     }
                     //aici intra functia de move 
